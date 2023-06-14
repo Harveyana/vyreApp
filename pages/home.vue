@@ -44,26 +44,39 @@
             <ion-grid>
                 <ion-row>
                 <ion-col size="8">
-                    <ion-button size="small" fill="clear" @click="switchAssets = true"><span style="font-size: 110%;">crypto</span></ion-button>
-                    <ion-button size="small" fill="clear" @click="switchAssets = false"><span style="font-size: 110%;">fiat</span></ion-button>
+                    <ion-segment :scrollable="true" value="heart">
+                            <ion-segment-button value="home" @click="switchAssets = 'crypto'">
+                            <ion-icon :icon="ioniconsLogoBitcoin"></ion-icon>
+                            </ion-segment-button>
+
+                            <ion-segment-button value="heart" @click="switchAssets = 'fiat'">
+                            <ion-icon :icon="ioniconsLogoUsd"></ion-icon>
+                            </ion-segment-button>
+                    </ion-segment>
+                    <!-- <ion-button size="small" fill="clear" @click="switchAssets = true"><span style="font-size: 110%;">crypto</span></ion-button>
+                    <ion-button size="small" fill="clear" @click="switchAssets = false"><span style="font-size: 110%;">fiat</span></ion-button> -->
                 </ion-col>
                 <ion-col></ion-col>
                 <ion-col>
-                    <ion-button size="small"><ion-icon :icon="ioniconsDuplicate"></ion-icon></ion-button>
+                    <ion-button size="small" @click="setOpen(true)"><ion-icon :icon="ioniconsDuplicate"></ion-icon></ion-button>
                 </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card>
     
-    <ion-card style="max-height: 40%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -3%;box-shadow: none;">
-        <ion-list v-for="(crypto, index) in cryptos" :key="index" style="" v-if="switchAssets">
+    <ion-card style="max-height: 40%;min-height:40%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -3%;box-shadow: none;">
+        <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchAssets == 'crypto'">
             <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
         </ion-list>
 
-        <ion-list v-for="(fiat, index) in fiats" :key="fiat.symbol" v-else>
+        <ion-list v-for="(fiat, index) in fiats" :key="fiat.symbol" v-else >
             <asset :name="fiat.name" :symbol="fiat.symbol" :price="fiat.price" :amount="fiat.amount" :img="fiat.img"/>
         </ion-list>
     </ion-card>
+
+    <!-- modal  -->
+
+    <AddAsset :is-crypto="switchAssets" :ismodal-open="ismodalOpen" @closeModal="setOpen(false)" />
 
     <tabs/>
     </ion-page>
@@ -72,8 +85,13 @@
 
 const isDarkMode = ref<boolean>(false)
 const darkMode = useDarkMode()
-const switchAssets = ref<boolean>(false)
+const switchAssets = ref<string>('fiat')
 const hideTotal = ref<boolean>(false)
+const ismodalOpen = ref<boolean>(false)
+
+const setOpen = (isOpen:boolean)=> {
+       ismodalOpen.value = isOpen;
+    }
 
 watch(isDarkMode,(newValue, oldValue) => {
     console.log(newValue)

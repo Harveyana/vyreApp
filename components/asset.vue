@@ -1,11 +1,11 @@
 <template>
-    <ion-card class="ioncard" style="margin-bottom:-16px;">
+    <ion-card class="ioncard" style="margin-bottom:-9px;">
 
         <div style="display: flex;flex-direction: row;justify-content: start;align-items: center;">
 
             <ion-col class="ion-col">
                 <ion-avatar>
-                <img alt="asset img" :src="$props.img" style="scale: 0.65;"/>
+                <img alt="asset img" :src="$props.img" style="scale: 0.55;"/>
                 </ion-avatar>
             </ion-col>
 

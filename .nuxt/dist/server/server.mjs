@@ -625,11 +625,11 @@ const createLocationHistory = () => {
     clearHistory
   };
 };
-const ids$1 = { main: 0 };
+const ids$2 = { main: 0 };
 const generateId$1 = (type = "main") => {
   var _a;
-  const id = ((_a = ids$1[type]) !== null && _a !== void 0 ? _a : 0) + 1;
-  ids$1[type] = id;
+  const id = ((_a = ids$2[type]) !== null && _a !== void 0 ? _a : 0) + 1;
+  ids$2[type] = id;
   return id.toString();
 };
 const createIonRouter = (opts, router) => {
@@ -1129,7 +1129,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/home-092d2a92.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/home-8dbb0018.js").then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1137,7 +1137,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/index-32e994c1.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/index-45e690e8.js").then((m) => m.default || m)
   },
   {
     name: "intro",
@@ -1145,7 +1145,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/intro-e883e7dc.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/intro-e85fd65a.js").then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -1373,7 +1373,7 @@ const Build = {
 };
 const getAssetPath$1 = (path) => {
   const assetUrl = new URL(path, plt$1.$resourcesUrl$);
-  return assetUrl.origin !== win$1.location.origin ? assetUrl.href : assetUrl.pathname;
+  return assetUrl.origin !== win$2.location.origin ? assetUrl.href : assetUrl.pathname;
 };
 const createTime$1 = (fnName, tagName = "") => {
   {
@@ -1644,7 +1644,7 @@ const setAccessor$1 = (elm, memberName, oldValue, newValue, isSvg, flags) => {
     } else if (!elm.__lookupSetter__(memberName) && memberName[0] === "o" && memberName[1] === "n") {
       if (memberName[2] === "-") {
         memberName = memberName.slice(3);
-      } else if (isMemberInElement$1(win$1, ln)) {
+      } else if (isMemberInElement$1(win$2, ln)) {
         memberName = ln.slice(2);
       } else {
         memberName = ln[2] + memberName.slice(3);
@@ -2520,7 +2520,7 @@ const getHostListenerTarget$1 = (elm, flags) => {
   if (flags & 4)
     return doc$1;
   if (flags & 8)
-    return win$1;
+    return win$2;
   if (flags & 16)
     return doc$1.body;
   return elm;
@@ -2545,9 +2545,9 @@ const isMemberInElement$1 = (elm, memberName) => memberName in elm;
 const consoleError$1 = (e, el) => (0, console.error)(e, el);
 const styles$1 = /* @__PURE__ */ new Map();
 const modeResolutionChain$1 = [];
-const win$1 = {};
-const doc$1 = win$1.document || { head: {} };
-const H$1 = win$1.HTMLElement || class {
+const win$2 = {};
+const doc$1 = win$2.document || { head: {} };
+const H$1 = win$2.HTMLElement || class {
 };
 const plt$1 = {
   $flags$: 0,
@@ -2841,11 +2841,14 @@ const inheritAriaAttributes = (el, ignoreList) => {
   }
   return inheritAttributes$2(el, attributesToInherit);
 };
-const addEventListener = (el, eventName, callback, opts) => {
+const addEventListener$1 = (el, eventName, callback, opts) => {
   return el.addEventListener(eventName, callback, opts);
 };
 const removeEventListener = (el, eventName, callback, opts) => {
   return el.removeEventListener(eventName, callback, opts);
+};
+const getElementRoot = (el, fallback = el) => {
+  return el.shadowRoot || fallback;
 };
 const raf = (h2) => {
   if (typeof __zone_symbol__requestAnimationFrame === "function") {
@@ -2916,7 +2919,7 @@ const assert = (actual, reason) => {
     throw new Error(message);
   }
 };
-const now = (ev) => {
+const now$1 = (ev) => {
   return ev.timeStamp || Date.now();
 };
 const pointerCoord = (ev) => {
@@ -3222,7 +3225,7 @@ const createColorClasses$2 = (color) => {
     [`ion-color-${color}`]: true
   } : null;
 };
-function defineCustomElement$w() {
+function defineCustomElement$A() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3267,7 +3270,7 @@ const Avatar = /* @__PURE__ */ proxyCustomElement$1(class Avatar2 extends H$1 {
     };
   }
 }, [33, "ion-avatar"]);
-function defineCustomElement$1$l() {
+function defineCustomElement$1$o() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3282,7 +3285,271 @@ function defineCustomElement$1$l() {
     }
   });
 }
-const defineCustomElement$v = defineCustomElement$1$l;
+const defineCustomElement$z = defineCustomElement$1$o;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+class GestureController {
+  constructor() {
+    this.gestureId = 0;
+    this.requestedStart = /* @__PURE__ */ new Map();
+    this.disabledGestures = /* @__PURE__ */ new Map();
+    this.disabledScroll = /* @__PURE__ */ new Set();
+  }
+  /**
+   * Creates a gesture delegate based on the GestureConfig passed
+   */
+  createGesture(config2) {
+    var _a;
+    return new GestureDelegate(this, this.newID(), config2.name, (_a = config2.priority) !== null && _a !== void 0 ? _a : 0, !!config2.disableScroll);
+  }
+  /**
+   * Creates a blocker that will block any other gesture events from firing. Set in the ion-gesture component.
+   */
+  createBlocker(opts = {}) {
+    return new BlockerDelegate(this, this.newID(), opts.disable, !!opts.disableScroll);
+  }
+  start(gestureName, id, priority) {
+    if (!this.canStart(gestureName)) {
+      this.requestedStart.delete(id);
+      return false;
+    }
+    this.requestedStart.set(id, priority);
+    return true;
+  }
+  capture(gestureName, id, priority) {
+    if (!this.start(gestureName, id, priority)) {
+      return false;
+    }
+    const requestedStart = this.requestedStart;
+    let maxPriority = -1e4;
+    requestedStart.forEach((value) => {
+      maxPriority = Math.max(maxPriority, value);
+    });
+    if (maxPriority === priority) {
+      this.capturedId = id;
+      requestedStart.clear();
+      const event = new CustomEvent("ionGestureCaptured", { detail: { gestureName } });
+      document.dispatchEvent(event);
+      return true;
+    }
+    requestedStart.delete(id);
+    return false;
+  }
+  release(id) {
+    this.requestedStart.delete(id);
+    if (this.capturedId === id) {
+      this.capturedId = void 0;
+    }
+  }
+  disableGesture(gestureName, id) {
+    let set = this.disabledGestures.get(gestureName);
+    if (set === void 0) {
+      set = /* @__PURE__ */ new Set();
+      this.disabledGestures.set(gestureName, set);
+    }
+    set.add(id);
+  }
+  enableGesture(gestureName, id) {
+    const set = this.disabledGestures.get(gestureName);
+    if (set !== void 0) {
+      set.delete(id);
+    }
+  }
+  disableScroll(id) {
+    this.disabledScroll.add(id);
+    if (this.disabledScroll.size === 1) {
+      document.body.classList.add(BACKDROP_NO_SCROLL);
+    }
+  }
+  enableScroll(id) {
+    this.disabledScroll.delete(id);
+    if (this.disabledScroll.size === 0) {
+      document.body.classList.remove(BACKDROP_NO_SCROLL);
+    }
+  }
+  canStart(gestureName) {
+    if (this.capturedId !== void 0) {
+      return false;
+    }
+    if (this.isDisabled(gestureName)) {
+      return false;
+    }
+    return true;
+  }
+  isCaptured() {
+    return this.capturedId !== void 0;
+  }
+  isScrollDisabled() {
+    return this.disabledScroll.size > 0;
+  }
+  isDisabled(gestureName) {
+    const disabled = this.disabledGestures.get(gestureName);
+    if (disabled && disabled.size > 0) {
+      return true;
+    }
+    return false;
+  }
+  newID() {
+    this.gestureId++;
+    return this.gestureId;
+  }
+}
+class GestureDelegate {
+  constructor(ctrl, id, name, priority, disableScroll) {
+    this.id = id;
+    this.name = name;
+    this.disableScroll = disableScroll;
+    this.priority = priority * 1e6 + id;
+    this.ctrl = ctrl;
+  }
+  canStart() {
+    if (!this.ctrl) {
+      return false;
+    }
+    return this.ctrl.canStart(this.name);
+  }
+  start() {
+    if (!this.ctrl) {
+      return false;
+    }
+    return this.ctrl.start(this.name, this.id, this.priority);
+  }
+  capture() {
+    if (!this.ctrl) {
+      return false;
+    }
+    const captured = this.ctrl.capture(this.name, this.id, this.priority);
+    if (captured && this.disableScroll) {
+      this.ctrl.disableScroll(this.id);
+    }
+    return captured;
+  }
+  release() {
+    if (this.ctrl) {
+      this.ctrl.release(this.id);
+      if (this.disableScroll) {
+        this.ctrl.enableScroll(this.id);
+      }
+    }
+  }
+  destroy() {
+    this.release();
+    this.ctrl = void 0;
+  }
+}
+class BlockerDelegate {
+  constructor(ctrl, id, disable, disableScroll) {
+    this.id = id;
+    this.disable = disable;
+    this.disableScroll = disableScroll;
+    this.ctrl = ctrl;
+  }
+  block() {
+    if (!this.ctrl) {
+      return;
+    }
+    if (this.disable) {
+      for (const gesture of this.disable) {
+        this.ctrl.disableGesture(gesture, this.id);
+      }
+    }
+    if (this.disableScroll) {
+      this.ctrl.disableScroll(this.id);
+    }
+  }
+  unblock() {
+    if (!this.ctrl) {
+      return;
+    }
+    if (this.disable) {
+      for (const gesture of this.disable) {
+        this.ctrl.enableGesture(gesture, this.id);
+      }
+    }
+    if (this.disableScroll) {
+      this.ctrl.enableScroll(this.id);
+    }
+  }
+  destroy() {
+    this.unblock();
+    this.ctrl = void 0;
+  }
+}
+const BACKDROP_NO_SCROLL = "backdrop-no-scroll";
+const GESTURE_CONTROLLER = new GestureController();
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const backdropIosCss = ":host{left:0;right:0;top:0;bottom:0;display:block;position:absolute;-webkit-transform:translateZ(0);transform:translateZ(0);contain:strict;cursor:pointer;opacity:0.01;-ms-touch-action:none;touch-action:none;z-index:2}:host(.backdrop-hide){background:transparent}:host(.backdrop-no-tappable){cursor:auto}:host{background-color:var(--ion-backdrop-color, #000)}";
+const backdropMdCss = ":host{left:0;right:0;top:0;bottom:0;display:block;position:absolute;-webkit-transform:translateZ(0);transform:translateZ(0);contain:strict;cursor:pointer;opacity:0.01;-ms-touch-action:none;touch-action:none;z-index:2}:host(.backdrop-hide){background:transparent}:host(.backdrop-no-tappable){cursor:auto}:host{background-color:var(--ion-backdrop-color, #000)}";
+const Backdrop = /* @__PURE__ */ proxyCustomElement$1(class Backdrop2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.ionBackdropTap = createEvent(this, "ionBackdropTap", 7);
+    this.blocker = GESTURE_CONTROLLER.createBlocker({
+      disableScroll: true
+    });
+    this.visible = true;
+    this.tappable = true;
+    this.stopPropagation = true;
+  }
+  connectedCallback() {
+    if (this.stopPropagation) {
+      this.blocker.block();
+    }
+  }
+  disconnectedCallback() {
+    this.blocker.unblock();
+  }
+  onMouseDown(ev) {
+    this.emitTap(ev);
+  }
+  emitTap(ev) {
+    if (this.stopPropagation) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+    if (this.tappable) {
+      this.ionBackdropTap.emit();
+    }
+  }
+  render() {
+    const mode = getIonMode$2(this);
+    return h$1(Host$1, { tabindex: "-1", "aria-hidden": "true", class: {
+      [mode]: true,
+      "backdrop-hide": !this.visible,
+      "backdrop-no-tappable": !this.tappable
+    } });
+  }
+  static get style() {
+    return {
+      ios: backdropIosCss,
+      md: backdropMdCss
+    };
+  }
+}, [33, "ion-backdrop", {
+  "visible": [4],
+  "tappable": [4],
+  "stopPropagation": [4, "stop-propagation"]
+}, [[2, "click", "onMouseDown"]]]);
+function defineCustomElement$y() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-backdrop"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-backdrop":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Backdrop);
+        }
+        break;
+    }
+  });
+}
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3291,6 +3558,18 @@ const hostContext = (selector, el) => {
 };
 const createColorClasses$1 = (color, cssClassMap) => {
   return typeof color === "string" && color.length > 0 ? Object.assign({ "ion-color": true, [`ion-color-${color}`]: true }, cssClassMap) : cssClassMap;
+};
+const getClassList = (classes) => {
+  if (classes !== void 0) {
+    const array = Array.isArray(classes) ? classes : classes.split(" ");
+    return array.filter((c) => c != null).map((c) => c.trim()).filter((c) => c !== "");
+  }
+  return [];
+};
+const getClassMap = (classes) => {
+  const map = {};
+  getClassList(classes).forEach((c) => map[c] = true);
+  return map;
 };
 const SCHEME = /^[a-z][a-z0-9+\-.]*:/;
 const openURL = async (url, ev, direction, animation2) => {
@@ -3391,7 +3670,7 @@ const removeRipple = (ripple) => {
 };
 const PADDING = 10;
 const INITIAL_ORIGIN_SCALE = 0.5;
-function defineCustomElement$u() {
+function defineCustomElement$x() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3566,7 +3845,7 @@ const Button = /* @__PURE__ */ proxyCustomElement$1(class Button2 extends H$1 {
   "type": [1],
   "form": [1]
 }]);
-function defineCustomElement$t() {
+function defineCustomElement$w() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3580,7 +3859,7 @@ function defineCustomElement$t() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$u();
+          defineCustomElement$x();
         }
         break;
     }
@@ -3589,7 +3868,7 @@ function defineCustomElement$t() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$s = defineCustomElement$t;
+const defineCustomElement$v = defineCustomElement$w;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3617,7 +3896,7 @@ const Buttons = /* @__PURE__ */ proxyCustomElement$1(class Buttons2 extends H$1 
 }, [34, "ion-buttons", {
   "collapse": [4]
 }]);
-function defineCustomElement$r() {
+function defineCustomElement$u() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3635,7 +3914,7 @@ function defineCustomElement$r() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$q = defineCustomElement$r;
+const defineCustomElement$t = defineCustomElement$u;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3708,7 +3987,7 @@ const Card = /* @__PURE__ */ proxyCustomElement$1(class Card2 extends H$1 {
   "routerAnimation": [16],
   "target": [1]
 }]);
-function defineCustomElement$1$k() {
+function defineCustomElement$1$n() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3722,13 +4001,13 @@ function defineCustomElement$1$k() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$u();
+          defineCustomElement$x();
         }
         break;
     }
   });
 }
-const defineCustomElement$p = defineCustomElement$1$k;
+const defineCustomElement$s = defineCustomElement$1$n;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3754,7 +4033,7 @@ const CardContent = /* @__PURE__ */ proxyCustomElement$1(class CardContent2 exte
     };
   }
 }, [32, "ion-card-content"]);
-function defineCustomElement$1$j() {
+function defineCustomElement$1$m() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3769,7 +4048,7 @@ function defineCustomElement$1$j() {
     }
   });
 }
-const defineCustomElement$o = defineCustomElement$1$j;
+const defineCustomElement$r = defineCustomElement$1$m;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3801,7 +4080,7 @@ const CardHeader = /* @__PURE__ */ proxyCustomElement$1(class CardHeader2 extend
   "color": [513],
   "translucent": [4]
 }]);
-function defineCustomElement$1$i() {
+function defineCustomElement$1$l() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3816,7 +4095,7 @@ function defineCustomElement$1$i() {
     }
   });
 }
-const defineCustomElement$n = defineCustomElement$1$i;
+const defineCustomElement$q = defineCustomElement$1$l;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3845,7 +4124,7 @@ const CardSubtitle = /* @__PURE__ */ proxyCustomElement$1(class CardSubtitle2 ex
 }, [33, "ion-card-subtitle", {
   "color": [513]
 }]);
-function defineCustomElement$1$h() {
+function defineCustomElement$1$k() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3860,7 +4139,7 @@ function defineCustomElement$1$h() {
     }
   });
 }
-const defineCustomElement$m = defineCustomElement$1$h;
+const defineCustomElement$p = defineCustomElement$1$k;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3889,7 +4168,7 @@ const CardTitle = /* @__PURE__ */ proxyCustomElement$1(class CardTitle2 extends 
 }, [33, "ion-card-title", {
   "color": [513]
 }]);
-function defineCustomElement$1$g() {
+function defineCustomElement$1$j() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3904,7 +4183,7 @@ function defineCustomElement$1$g() {
     }
   });
 }
-const defineCustomElement$l = defineCustomElement$1$g;
+const defineCustomElement$o = defineCustomElement$1$j;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4083,7 +4362,7 @@ const Col = /* @__PURE__ */ proxyCustomElement$1(class Col2 extends H$1 {
   "sizeLg": [1, "size-lg"],
   "sizeXl": [1, "size-xl"]
 }, [[9, "resize", "onResize"]]]);
-function defineCustomElement$1$f() {
+function defineCustomElement$1$i() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4098,7 +4377,7 @@ function defineCustomElement$1$f() {
     }
   });
 }
-const defineCustomElement$k = defineCustomElement$1$f;
+const defineCustomElement$n = defineCustomElement$1$i;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4449,7 +4728,7 @@ const updateScrollDetail = (detail, el, timestamp, shouldStart) => {
     detail.velocityY = velocityY * 0.7 + detail.velocityY * 0.3;
   }
 };
-function defineCustomElement$1$e() {
+function defineCustomElement$1$h() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4464,7 +4743,7 @@ function defineCustomElement$1$e() {
     }
   });
 }
-const defineCustomElement$j = defineCustomElement$1$e;
+const defineCustomElement$m = defineCustomElement$1$h;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4547,7 +4826,7 @@ const Label = /* @__PURE__ */ proxyCustomElement$1(class Label2 extends H$1 {
   "position": [1],
   "noAnimate": [32]
 }]);
-function defineCustomElement$i() {
+function defineCustomElement$l() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4681,6 +4960,208 @@ const detachComponent = (delegate, element) => {
   }
   return Promise.resolve();
 };
+const CoreDelegate = () => {
+  let BaseComponent;
+  let Reference;
+  const attachViewToDom = async (parentElement, userComponent, userComponentProps = {}, cssClasses = []) => {
+    var _a, _b;
+    BaseComponent = parentElement;
+    if (userComponent) {
+      const el = typeof userComponent === "string" ? (_a = BaseComponent.ownerDocument) === null || _a === void 0 ? void 0 : _a.createElement(userComponent) : userComponent;
+      cssClasses.forEach((c) => el.classList.add(c));
+      Object.assign(el, userComponentProps);
+      BaseComponent.appendChild(el);
+      await new Promise((resolve) => componentOnReady(el, resolve));
+    } else if (BaseComponent.children.length > 0 && (BaseComponent.tagName === "ION-MODAL" || BaseComponent.tagName === "ION-POPOVER")) {
+      const root = BaseComponent.children[0];
+      if (!root.classList.contains("ion-delegate-host")) {
+        const el = (_b = BaseComponent.ownerDocument) === null || _b === void 0 ? void 0 : _b.createElement("div");
+        el.classList.add("ion-delegate-host");
+        cssClasses.forEach((c) => el.classList.add(c));
+        el.append(...BaseComponent.children);
+        BaseComponent.appendChild(el);
+      }
+    }
+    const app = document.querySelector("ion-app") || document.body;
+    Reference = document.createComment("ionic teleport");
+    BaseComponent.parentNode.insertBefore(Reference, BaseComponent);
+    app.appendChild(BaseComponent);
+    return BaseComponent;
+  };
+  const removeViewFromDom = () => {
+    if (BaseComponent && Reference) {
+      Reference.parentNode.insertBefore(BaseComponent, Reference);
+      Reference.remove();
+    }
+    return Promise.resolve();
+  };
+  return { attachViewToDom, removeViewFromDom };
+};
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+let lastOverlayIndex = 0;
+let lastId = 0;
+const activeAnimations = /* @__PURE__ */ new WeakMap();
+const prepareOverlay = (el) => {
+  const overlayIndex = lastOverlayIndex++;
+  el.overlayIndex = overlayIndex;
+};
+const setOverlayId = (el) => {
+  if (!el.hasAttribute("id")) {
+    el.id = `ion-overlay-${++lastId}`;
+  }
+  return el.id;
+};
+const focusableQueryString = '[tabindex]:not([tabindex^="-"]):not([hidden]):not([disabled]), input:not([type=hidden]):not([tabindex^="-"]):not([hidden]):not([disabled]), textarea:not([tabindex^="-"]):not([hidden]):not([disabled]), button:not([tabindex^="-"]):not([hidden]):not([disabled]), select:not([tabindex^="-"]):not([hidden]):not([disabled]), .ion-focusable:not([tabindex^="-"]):not([hidden]):not([disabled]), .ion-focusable[disabled="false"]:not([tabindex^="-"]):not([hidden])';
+const setRootAriaHidden = (hidden = false) => {
+  const root = getAppRoot(document);
+  const viewContainer = root.querySelector("ion-router-outlet, ion-nav, #ion-view-container-root");
+  if (!viewContainer) {
+    return;
+  }
+  if (hidden) {
+    viewContainer.setAttribute("aria-hidden", "true");
+  } else {
+    viewContainer.removeAttribute("aria-hidden");
+  }
+};
+const present = async (overlay, name, iosEnterAnimation2, mdEnterAnimation2, opts) => {
+  var _a, _b;
+  if (overlay.presented) {
+    return;
+  }
+  setRootAriaHidden(true);
+  overlay.presented = true;
+  overlay.willPresent.emit();
+  (_a = overlay.willPresentShorthand) === null || _a === void 0 ? void 0 : _a.emit();
+  const mode = getIonMode$2(overlay);
+  const animationBuilder = overlay.enterAnimation ? overlay.enterAnimation : config.get(name, mode === "ios" ? iosEnterAnimation2 : mdEnterAnimation2);
+  const completed = await overlayAnimation(overlay, animationBuilder, overlay.el, opts);
+  if (completed) {
+    overlay.didPresent.emit();
+    (_b = overlay.didPresentShorthand) === null || _b === void 0 ? void 0 : _b.emit();
+  }
+  if (overlay.el.tagName !== "ION-TOAST") {
+    focusPreviousElementOnDismiss(overlay.el);
+  }
+  if (overlay.keyboardClose && (document.activeElement === null || !overlay.el.contains(document.activeElement))) {
+    overlay.el.focus();
+  }
+};
+const focusPreviousElementOnDismiss = async (overlayEl) => {
+  let previousElement = document.activeElement;
+  if (!previousElement) {
+    return;
+  }
+  const shadowRoot = previousElement === null || previousElement === void 0 ? void 0 : previousElement.shadowRoot;
+  if (shadowRoot) {
+    previousElement = shadowRoot.querySelector(focusableQueryString) || previousElement;
+  }
+  await overlayEl.onDidDismiss();
+  previousElement.focus();
+};
+const dismiss = async (overlay, data, role, name, iosLeaveAnimation2, mdLeaveAnimation2, opts) => {
+  var _a, _b;
+  if (!overlay.presented) {
+    return false;
+  }
+  setRootAriaHidden(false);
+  overlay.presented = false;
+  try {
+    overlay.el.style.setProperty("pointer-events", "none");
+    overlay.willDismiss.emit({ data, role });
+    (_a = overlay.willDismissShorthand) === null || _a === void 0 ? void 0 : _a.emit({ data, role });
+    const mode = getIonMode$2(overlay);
+    const animationBuilder = overlay.leaveAnimation ? overlay.leaveAnimation : config.get(name, mode === "ios" ? iosLeaveAnimation2 : mdLeaveAnimation2);
+    if (role !== GESTURE) {
+      await overlayAnimation(overlay, animationBuilder, overlay.el, opts);
+    }
+    overlay.didDismiss.emit({ data, role });
+    (_b = overlay.didDismissShorthand) === null || _b === void 0 ? void 0 : _b.emit({ data, role });
+    activeAnimations.delete(overlay);
+    overlay.el.classList.add("overlay-hidden");
+    overlay.el.style.removeProperty("pointer-events");
+    if (overlay.el.lastFocus !== void 0) {
+      overlay.el.lastFocus = void 0;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+  overlay.el.remove();
+  return true;
+};
+const getAppRoot = (doc2) => {
+  return doc2.querySelector("ion-app") || doc2.body;
+};
+const overlayAnimation = async (overlay, animationBuilder, baseEl, opts) => {
+  baseEl.classList.remove("overlay-hidden");
+  const aniRoot = overlay.el;
+  const animation2 = animationBuilder(aniRoot, opts);
+  if (!overlay.animated || !config.getBoolean("animated", true)) {
+    animation2.duration(0);
+  }
+  if (overlay.keyboardClose) {
+    animation2.beforeAddWrite(() => {
+      const activeElement = baseEl.ownerDocument.activeElement;
+      if (activeElement === null || activeElement === void 0 ? void 0 : activeElement.matches("input,ion-input, ion-textarea")) {
+        activeElement.blur();
+      }
+    });
+  }
+  const activeAni = activeAnimations.get(overlay) || [];
+  activeAnimations.set(overlay, [...activeAni, animation2]);
+  await animation2.play();
+  return true;
+};
+const eventMethod = (element, eventName) => {
+  let resolve;
+  const promise = new Promise((r) => resolve = r);
+  onceEvent(element, eventName, (event) => {
+    resolve(event.detail);
+  });
+  return promise;
+};
+const onceEvent = (element, eventName, callback) => {
+  const handler = (ev) => {
+    removeEventListener(element, eventName, handler);
+    callback(ev);
+  };
+  addEventListener$1(element, eventName, handler);
+};
+const BACKDROP = "backdrop";
+const GESTURE = "gesture";
+const createTriggerController = () => {
+  let destroyTriggerInteraction;
+  const removeClickListener = () => {
+    if (destroyTriggerInteraction) {
+      destroyTriggerInteraction();
+      destroyTriggerInteraction = void 0;
+    }
+  };
+  const addClickListener = (el, trigger) => {
+    removeClickListener();
+    const triggerEl = trigger !== void 0 ? document.getElementById(trigger) : null;
+    if (!triggerEl) {
+      printIonWarning(`A trigger element with the ID "${trigger}" was not found in the DOM. The trigger element must be in the DOM when the "trigger" property is set on an overlay component.`, el);
+      return;
+    }
+    const configureTriggerInteraction = (targetEl, overlayEl) => {
+      const openOverlay = () => {
+        overlayEl.present();
+      };
+      targetEl.addEventListener("click", openOverlay);
+      return () => {
+        targetEl.removeEventListener("click", openOverlay);
+      };
+    };
+    destroyTriggerInteraction = configureTriggerInteraction(triggerEl, el);
+  };
+  return {
+    addClickListener,
+    removeClickListener
+  };
+};
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4689,8 +5170,8 @@ const LIFECYCLE_DID_ENTER = "ionViewDidEnter";
 const LIFECYCLE_WILL_LEAVE = "ionViewWillLeave";
 const LIFECYCLE_DID_LEAVE = "ionViewDidLeave";
 const LIFECYCLE_WILL_UNLOAD = "ionViewWillUnload";
-const iosTransitionAnimation = () => import("./_nuxt/ios.transition-c805c2a3.js");
-const mdTransitionAnimation = () => import("./_nuxt/md.transition-3754e033.js");
+const iosTransitionAnimation = () => import("./_nuxt/ios.transition-212860e1.js");
+const mdTransitionAnimation = () => import("./_nuxt/md.transition-5ab9762a.js");
 const transition = (opts) => {
   return new Promise((resolve, reject) => {
     writeTask$1(() => {
@@ -4817,6 +5298,9 @@ const lifecycle = (el, eventName) => {
     el.dispatchEvent(ev);
   }
 };
+const waitForMount = () => {
+  return new Promise((resolve) => raf(() => raf(() => resolve())));
+};
 const deepReady = async (el) => {
   const element = el;
   if (element) {
@@ -4864,6 +5348,891 @@ const getIonPageElement = (element) => {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
+const win$1 = void 0;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+let animationPrefix;
+const processKeyframes = (keyframes) => {
+  keyframes.forEach((keyframe) => {
+    for (const key in keyframe) {
+      if (keyframe.hasOwnProperty(key)) {
+        const value = keyframe[key];
+        if (key === "easing") {
+          const newKey = "animation-timing-function";
+          keyframe[newKey] = value;
+          delete keyframe[key];
+        } else {
+          const newKey = convertCamelCaseToHypen(key);
+          if (newKey !== key) {
+            keyframe[newKey] = value;
+            delete keyframe[key];
+          }
+        }
+      }
+    }
+  });
+  return keyframes;
+};
+const convertCamelCaseToHypen = (str) => {
+  return str.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+};
+const getAnimationPrefix = (el) => {
+  if (animationPrefix === void 0) {
+    const supportsUnprefixed = el.style.animationName !== void 0;
+    const supportsWebkitPrefix = el.style.webkitAnimationName !== void 0;
+    animationPrefix = !supportsUnprefixed && supportsWebkitPrefix ? "-webkit-" : "";
+  }
+  return animationPrefix;
+};
+const setStyleProperty = (element, propertyName, value) => {
+  const prefix = propertyName.startsWith("animation") ? getAnimationPrefix(element) : "";
+  element.style.setProperty(prefix + propertyName, value);
+};
+const removeStyleProperty = (element, propertyName) => {
+  const prefix = propertyName.startsWith("animation") ? getAnimationPrefix(element) : "";
+  element.style.removeProperty(prefix + propertyName);
+};
+const animationEnd = (el, callback) => {
+  let unRegTrans;
+  const opts = { passive: true };
+  const unregister = () => {
+    if (unRegTrans) {
+      unRegTrans();
+    }
+  };
+  const onTransitionEnd = (ev) => {
+    if (el === ev.target) {
+      unregister();
+      callback(ev);
+    }
+  };
+  if (el) {
+    el.addEventListener("webkitAnimationEnd", onTransitionEnd, opts);
+    el.addEventListener("animationend", onTransitionEnd, opts);
+    unRegTrans = () => {
+      el.removeEventListener("webkitAnimationEnd", onTransitionEnd, opts);
+      el.removeEventListener("animationend", onTransitionEnd, opts);
+    };
+  }
+  return unregister;
+};
+const generateKeyframeRules = (keyframes = []) => {
+  return keyframes.map((keyframe) => {
+    const offset = keyframe.offset;
+    const frameString = [];
+    for (const property in keyframe) {
+      if (keyframe.hasOwnProperty(property) && property !== "offset") {
+        frameString.push(`${property}: ${keyframe[property]};`);
+      }
+    }
+    return `${offset * 100}% { ${frameString.join(" ")} }`;
+  }).join(" ");
+};
+const keyframeIds = [];
+const generateKeyframeName = (keyframeRules) => {
+  let index = keyframeIds.indexOf(keyframeRules);
+  if (index < 0) {
+    index = keyframeIds.push(keyframeRules) - 1;
+  }
+  return `ion-animation-${index}`;
+};
+const getStyleContainer = (element) => {
+  const rootNode = element.getRootNode !== void 0 ? element.getRootNode() : element;
+  return rootNode.head || rootNode;
+};
+const createKeyframeStylesheet = (keyframeName, keyframeRules, element) => {
+  var _a;
+  const styleContainer = getStyleContainer(element);
+  const keyframePrefix = getAnimationPrefix(element);
+  const existingStylesheet = styleContainer.querySelector("#" + keyframeName);
+  if (existingStylesheet) {
+    return existingStylesheet;
+  }
+  const stylesheet = ((_a = element.ownerDocument) !== null && _a !== void 0 ? _a : document).createElement("style");
+  stylesheet.id = keyframeName;
+  stylesheet.textContent = `@${keyframePrefix}keyframes ${keyframeName} { ${keyframeRules} } @${keyframePrefix}keyframes ${keyframeName}-alt { ${keyframeRules} }`;
+  styleContainer.appendChild(stylesheet);
+  return stylesheet;
+};
+const addClassToArray = (classes = [], className) => {
+  if (className !== void 0) {
+    const classNameToAppend = Array.isArray(className) ? className : [className];
+    return [...classes, ...classNameToAppend];
+  }
+  return classes;
+};
+const createAnimation = (animationId) => {
+  let _delay;
+  let _duration;
+  let _easing;
+  let _iterations;
+  let _fill;
+  let _direction;
+  let _keyframes = [];
+  let beforeAddClasses = [];
+  let beforeRemoveClasses = [];
+  let initialized = false;
+  let parentAnimation;
+  let beforeStylesValue = {};
+  let afterAddClasses = [];
+  let afterRemoveClasses = [];
+  let afterStylesValue = {};
+  let numAnimationsRunning = 0;
+  let shouldForceLinearEasing = false;
+  let shouldForceSyncPlayback = false;
+  let cssAnimationsTimerFallback;
+  let forceDirectionValue;
+  let forceDurationValue;
+  let forceDelayValue;
+  let willComplete = true;
+  let finished = false;
+  let shouldCalculateNumAnimations = true;
+  let keyframeName;
+  let ani;
+  let paused = false;
+  const id = animationId;
+  const onFinishCallbacks = [];
+  const onFinishOneTimeCallbacks = [];
+  const elements = [];
+  const childAnimations = [];
+  const stylesheets = [];
+  const _beforeAddReadFunctions = [];
+  const _beforeAddWriteFunctions = [];
+  const _afterAddReadFunctions = [];
+  const _afterAddWriteFunctions = [];
+  const webAnimations = [];
+  const supportsAnimationEffect = typeof AnimationEffect === "function" || win$1 !== void 0;
+  const supportsWebAnimations = typeof Element === "function" && typeof Element.prototype.animate === "function" && supportsAnimationEffect;
+  const ANIMATION_END_FALLBACK_PADDING_MS = 100;
+  const getWebAnimations = () => {
+    return webAnimations;
+  };
+  const destroy = (clearStyleSheets) => {
+    childAnimations.forEach((childAnimation) => {
+      childAnimation.destroy(clearStyleSheets);
+    });
+    cleanUp(clearStyleSheets);
+    elements.length = 0;
+    childAnimations.length = 0;
+    _keyframes.length = 0;
+    clearOnFinish();
+    initialized = false;
+    shouldCalculateNumAnimations = true;
+    return ani;
+  };
+  const cleanUp = (clearStyleSheets) => {
+    cleanUpElements();
+    if (clearStyleSheets) {
+      cleanUpStyleSheets();
+    }
+  };
+  const resetFlags = () => {
+    shouldForceLinearEasing = false;
+    shouldForceSyncPlayback = false;
+    shouldCalculateNumAnimations = true;
+    forceDirectionValue = void 0;
+    forceDurationValue = void 0;
+    forceDelayValue = void 0;
+    numAnimationsRunning = 0;
+    finished = false;
+    willComplete = true;
+    paused = false;
+  };
+  const isRunning = () => {
+    return numAnimationsRunning !== 0 && !paused;
+  };
+  const onFinish = (callback, opts) => {
+    const callbacks = (opts === null || opts === void 0 ? void 0 : opts.oneTimeCallback) ? onFinishOneTimeCallbacks : onFinishCallbacks;
+    callbacks.push({ c: callback, o: opts });
+    return ani;
+  };
+  const clearOnFinish = () => {
+    onFinishCallbacks.length = 0;
+    onFinishOneTimeCallbacks.length = 0;
+    return ani;
+  };
+  const cleanUpElements = () => {
+    if (supportsWebAnimations) {
+      webAnimations.forEach((animation2) => {
+        animation2.cancel();
+      });
+      webAnimations.length = 0;
+    } else {
+      const elementsArray = elements.slice();
+      raf(() => {
+        elementsArray.forEach((element) => {
+          removeStyleProperty(element, "animation-name");
+          removeStyleProperty(element, "animation-duration");
+          removeStyleProperty(element, "animation-timing-function");
+          removeStyleProperty(element, "animation-iteration-count");
+          removeStyleProperty(element, "animation-delay");
+          removeStyleProperty(element, "animation-play-state");
+          removeStyleProperty(element, "animation-fill-mode");
+          removeStyleProperty(element, "animation-direction");
+        });
+      });
+    }
+  };
+  const cleanUpStyleSheets = () => {
+    stylesheets.forEach((stylesheet) => {
+      if (stylesheet === null || stylesheet === void 0 ? void 0 : stylesheet.parentNode) {
+        stylesheet.parentNode.removeChild(stylesheet);
+      }
+    });
+    stylesheets.length = 0;
+  };
+  const beforeAddRead = (readFn) => {
+    _beforeAddReadFunctions.push(readFn);
+    return ani;
+  };
+  const beforeAddWrite = (writeFn) => {
+    _beforeAddWriteFunctions.push(writeFn);
+    return ani;
+  };
+  const afterAddRead = (readFn) => {
+    _afterAddReadFunctions.push(readFn);
+    return ani;
+  };
+  const afterAddWrite = (writeFn) => {
+    _afterAddWriteFunctions.push(writeFn);
+    return ani;
+  };
+  const beforeAddClass = (className) => {
+    beforeAddClasses = addClassToArray(beforeAddClasses, className);
+    return ani;
+  };
+  const beforeRemoveClass = (className) => {
+    beforeRemoveClasses = addClassToArray(beforeRemoveClasses, className);
+    return ani;
+  };
+  const beforeStyles = (styles2 = {}) => {
+    beforeStylesValue = styles2;
+    return ani;
+  };
+  const beforeClearStyles = (propertyNames = []) => {
+    for (const property of propertyNames) {
+      beforeStylesValue[property] = "";
+    }
+    return ani;
+  };
+  const afterAddClass = (className) => {
+    afterAddClasses = addClassToArray(afterAddClasses, className);
+    return ani;
+  };
+  const afterRemoveClass = (className) => {
+    afterRemoveClasses = addClassToArray(afterRemoveClasses, className);
+    return ani;
+  };
+  const afterStyles = (styles2 = {}) => {
+    afterStylesValue = styles2;
+    return ani;
+  };
+  const afterClearStyles = (propertyNames = []) => {
+    for (const property of propertyNames) {
+      afterStylesValue[property] = "";
+    }
+    return ani;
+  };
+  const getFill = () => {
+    if (_fill !== void 0) {
+      return _fill;
+    }
+    if (parentAnimation) {
+      return parentAnimation.getFill();
+    }
+    return "both";
+  };
+  const getDirection = () => {
+    if (forceDirectionValue !== void 0) {
+      return forceDirectionValue;
+    }
+    if (_direction !== void 0) {
+      return _direction;
+    }
+    if (parentAnimation) {
+      return parentAnimation.getDirection();
+    }
+    return "normal";
+  };
+  const getEasing = () => {
+    if (shouldForceLinearEasing) {
+      return "linear";
+    }
+    if (_easing !== void 0) {
+      return _easing;
+    }
+    if (parentAnimation) {
+      return parentAnimation.getEasing();
+    }
+    return "linear";
+  };
+  const getDuration = () => {
+    if (shouldForceSyncPlayback) {
+      return 0;
+    }
+    if (forceDurationValue !== void 0) {
+      return forceDurationValue;
+    }
+    if (_duration !== void 0) {
+      return _duration;
+    }
+    if (parentAnimation) {
+      return parentAnimation.getDuration();
+    }
+    return 0;
+  };
+  const getIterations = () => {
+    if (_iterations !== void 0) {
+      return _iterations;
+    }
+    if (parentAnimation) {
+      return parentAnimation.getIterations();
+    }
+    return 1;
+  };
+  const getDelay = () => {
+    if (forceDelayValue !== void 0) {
+      return forceDelayValue;
+    }
+    if (_delay !== void 0) {
+      return _delay;
+    }
+    if (parentAnimation) {
+      return parentAnimation.getDelay();
+    }
+    return 0;
+  };
+  const getKeyframes = () => {
+    return _keyframes;
+  };
+  const direction = (animationDirection) => {
+    _direction = animationDirection;
+    update(true);
+    return ani;
+  };
+  const fill = (animationFill) => {
+    _fill = animationFill;
+    update(true);
+    return ani;
+  };
+  const delay = (animationDelay) => {
+    _delay = animationDelay;
+    update(true);
+    return ani;
+  };
+  const easing = (animationEasing) => {
+    _easing = animationEasing;
+    update(true);
+    return ani;
+  };
+  const duration = (animationDuration) => {
+    if (!supportsWebAnimations && animationDuration === 0) {
+      animationDuration = 1;
+    }
+    _duration = animationDuration;
+    update(true);
+    return ani;
+  };
+  const iterations = (animationIterations) => {
+    _iterations = animationIterations;
+    update(true);
+    return ani;
+  };
+  const parent = (animation2) => {
+    parentAnimation = animation2;
+    return ani;
+  };
+  const addElement = (el) => {
+    if (el != null) {
+      if (el.nodeType === 1) {
+        elements.push(el);
+      } else if (el.length >= 0) {
+        for (let i = 0; i < el.length; i++) {
+          elements.push(el[i]);
+        }
+      } else {
+        console.error("Invalid addElement value");
+      }
+    }
+    return ani;
+  };
+  const addAnimation = (animationToAdd) => {
+    if (animationToAdd != null) {
+      if (Array.isArray(animationToAdd)) {
+        for (const animation2 of animationToAdd) {
+          animation2.parent(ani);
+          childAnimations.push(animation2);
+        }
+      } else {
+        animationToAdd.parent(ani);
+        childAnimations.push(animationToAdd);
+      }
+    }
+    return ani;
+  };
+  const keyframes = (keyframeValues) => {
+    const different = _keyframes !== keyframeValues;
+    _keyframes = keyframeValues;
+    if (different) {
+      updateKeyframes(_keyframes);
+    }
+    return ani;
+  };
+  const updateKeyframes = (keyframeValues) => {
+    if (supportsWebAnimations) {
+      getWebAnimations().forEach((animation2) => {
+        if (animation2.effect.setKeyframes) {
+          animation2.effect.setKeyframes(keyframeValues);
+        } else {
+          const newEffect = new KeyframeEffect(animation2.effect.target, keyframeValues, animation2.effect.getTiming());
+          animation2.effect = newEffect;
+        }
+      });
+    } else {
+      initializeCSSAnimation();
+    }
+  };
+  const beforeAnimation = () => {
+    _beforeAddReadFunctions.forEach((callback) => callback());
+    _beforeAddWriteFunctions.forEach((callback) => callback());
+    const addClasses = beforeAddClasses;
+    const removeClasses = beforeRemoveClasses;
+    const styles2 = beforeStylesValue;
+    elements.forEach((el) => {
+      const elementClassList = el.classList;
+      addClasses.forEach((c) => elementClassList.add(c));
+      removeClasses.forEach((c) => elementClassList.remove(c));
+      for (const property in styles2) {
+        if (styles2.hasOwnProperty(property)) {
+          setStyleProperty(el, property, styles2[property]);
+        }
+      }
+    });
+  };
+  const afterAnimation = () => {
+    clearCSSAnimationsTimeout();
+    _afterAddReadFunctions.forEach((callback) => callback());
+    _afterAddWriteFunctions.forEach((callback) => callback());
+    const currentStep = willComplete ? 1 : 0;
+    const addClasses = afterAddClasses;
+    const removeClasses = afterRemoveClasses;
+    const styles2 = afterStylesValue;
+    elements.forEach((el) => {
+      const elementClassList = el.classList;
+      addClasses.forEach((c) => elementClassList.add(c));
+      removeClasses.forEach((c) => elementClassList.remove(c));
+      for (const property in styles2) {
+        if (styles2.hasOwnProperty(property)) {
+          setStyleProperty(el, property, styles2[property]);
+        }
+      }
+    });
+    onFinishCallbacks.forEach((onFinishCallback) => {
+      return onFinishCallback.c(currentStep, ani);
+    });
+    onFinishOneTimeCallbacks.forEach((onFinishCallback) => {
+      return onFinishCallback.c(currentStep, ani);
+    });
+    onFinishOneTimeCallbacks.length = 0;
+    shouldCalculateNumAnimations = true;
+    if (willComplete) {
+      finished = true;
+    }
+    willComplete = true;
+  };
+  const animationFinish = () => {
+    if (numAnimationsRunning === 0) {
+      return;
+    }
+    numAnimationsRunning--;
+    if (numAnimationsRunning === 0) {
+      afterAnimation();
+      if (parentAnimation) {
+        parentAnimation.animationFinish();
+      }
+    }
+  };
+  const initializeCSSAnimation = (toggleAnimationName = true) => {
+    cleanUpStyleSheets();
+    const processedKeyframes = processKeyframes(_keyframes);
+    elements.forEach((element) => {
+      if (processedKeyframes.length > 0) {
+        const keyframeRules = generateKeyframeRules(processedKeyframes);
+        keyframeName = animationId !== void 0 ? animationId : generateKeyframeName(keyframeRules);
+        const stylesheet = createKeyframeStylesheet(keyframeName, keyframeRules, element);
+        stylesheets.push(stylesheet);
+        setStyleProperty(element, "animation-duration", `${getDuration()}ms`);
+        setStyleProperty(element, "animation-timing-function", getEasing());
+        setStyleProperty(element, "animation-delay", `${getDelay()}ms`);
+        setStyleProperty(element, "animation-fill-mode", getFill());
+        setStyleProperty(element, "animation-direction", getDirection());
+        const iterationsCount = getIterations() === Infinity ? "infinite" : getIterations().toString();
+        setStyleProperty(element, "animation-iteration-count", iterationsCount);
+        setStyleProperty(element, "animation-play-state", "paused");
+        if (toggleAnimationName) {
+          setStyleProperty(element, "animation-name", `${stylesheet.id}-alt`);
+        }
+        raf(() => {
+          setStyleProperty(element, "animation-name", stylesheet.id || null);
+        });
+      }
+    });
+  };
+  const initializeWebAnimation = () => {
+    elements.forEach((element) => {
+      const animation2 = element.animate(_keyframes, {
+        id,
+        delay: getDelay(),
+        duration: getDuration(),
+        easing: getEasing(),
+        iterations: getIterations(),
+        fill: getFill(),
+        direction: getDirection()
+      });
+      animation2.pause();
+      webAnimations.push(animation2);
+    });
+    if (webAnimations.length > 0) {
+      webAnimations[0].onfinish = () => {
+        animationFinish();
+      };
+    }
+  };
+  const initializeAnimation = (toggleAnimationName = true) => {
+    beforeAnimation();
+    if (_keyframes.length > 0) {
+      if (supportsWebAnimations) {
+        initializeWebAnimation();
+      } else {
+        initializeCSSAnimation(toggleAnimationName);
+      }
+    }
+    initialized = true;
+  };
+  const setAnimationStep = (step) => {
+    step = Math.min(Math.max(step, 0), 0.9999);
+    if (supportsWebAnimations) {
+      webAnimations.forEach((animation2) => {
+        animation2.currentTime = animation2.effect.getComputedTiming().delay + getDuration() * step;
+        animation2.pause();
+      });
+    } else {
+      const animationDuration = `-${getDuration() * step}ms`;
+      elements.forEach((element) => {
+        if (_keyframes.length > 0) {
+          setStyleProperty(element, "animation-delay", animationDuration);
+          setStyleProperty(element, "animation-play-state", "paused");
+        }
+      });
+    }
+  };
+  const updateWebAnimation = (step) => {
+    webAnimations.forEach((animation2) => {
+      animation2.effect.updateTiming({
+        delay: getDelay(),
+        duration: getDuration(),
+        easing: getEasing(),
+        iterations: getIterations(),
+        fill: getFill(),
+        direction: getDirection()
+      });
+    });
+    if (step !== void 0) {
+      setAnimationStep(step);
+    }
+  };
+  const updateCSSAnimation = (toggleAnimationName = true, step) => {
+    raf(() => {
+      elements.forEach((element) => {
+        setStyleProperty(element, "animation-name", keyframeName || null);
+        setStyleProperty(element, "animation-duration", `${getDuration()}ms`);
+        setStyleProperty(element, "animation-timing-function", getEasing());
+        setStyleProperty(element, "animation-delay", step !== void 0 ? `-${step * getDuration()}ms` : `${getDelay()}ms`);
+        setStyleProperty(element, "animation-fill-mode", getFill() || null);
+        setStyleProperty(element, "animation-direction", getDirection() || null);
+        const iterationsCount = getIterations() === Infinity ? "infinite" : getIterations().toString();
+        setStyleProperty(element, "animation-iteration-count", iterationsCount);
+        if (toggleAnimationName) {
+          setStyleProperty(element, "animation-name", `${keyframeName}-alt`);
+        }
+        raf(() => {
+          setStyleProperty(element, "animation-name", keyframeName || null);
+        });
+      });
+    });
+  };
+  const update = (deep = false, toggleAnimationName = true, step) => {
+    if (deep) {
+      childAnimations.forEach((animation2) => {
+        animation2.update(deep, toggleAnimationName, step);
+      });
+    }
+    if (supportsWebAnimations) {
+      updateWebAnimation(step);
+    } else {
+      updateCSSAnimation(toggleAnimationName, step);
+    }
+    return ani;
+  };
+  const progressStart = (forceLinearEasing = false, step) => {
+    childAnimations.forEach((animation2) => {
+      animation2.progressStart(forceLinearEasing, step);
+    });
+    pauseAnimation();
+    shouldForceLinearEasing = forceLinearEasing;
+    if (!initialized) {
+      initializeAnimation();
+    }
+    update(false, true, step);
+    return ani;
+  };
+  const progressStep = (step) => {
+    childAnimations.forEach((animation2) => {
+      animation2.progressStep(step);
+    });
+    setAnimationStep(step);
+    return ani;
+  };
+  const progressEnd = (playTo, step, dur) => {
+    shouldForceLinearEasing = false;
+    childAnimations.forEach((animation2) => {
+      animation2.progressEnd(playTo, step, dur);
+    });
+    if (dur !== void 0) {
+      forceDurationValue = dur;
+    }
+    finished = false;
+    willComplete = true;
+    if (playTo === 0) {
+      forceDirectionValue = getDirection() === "reverse" ? "normal" : "reverse";
+      if (forceDirectionValue === "reverse") {
+        willComplete = false;
+      }
+      if (supportsWebAnimations) {
+        update();
+        setAnimationStep(1 - step);
+      } else {
+        forceDelayValue = (1 - step) * getDuration() * -1;
+        update(false, false);
+      }
+    } else if (playTo === 1) {
+      if (supportsWebAnimations) {
+        update();
+        setAnimationStep(step);
+      } else {
+        forceDelayValue = step * getDuration() * -1;
+        update(false, false);
+      }
+    }
+    if (playTo !== void 0) {
+      onFinish(() => {
+        forceDurationValue = void 0;
+        forceDirectionValue = void 0;
+        forceDelayValue = void 0;
+      }, {
+        oneTimeCallback: true
+      });
+      if (!parentAnimation) {
+        play();
+      }
+    }
+    return ani;
+  };
+  const pauseAnimation = () => {
+    if (initialized) {
+      if (supportsWebAnimations) {
+        webAnimations.forEach((animation2) => {
+          animation2.pause();
+        });
+      } else {
+        elements.forEach((element) => {
+          setStyleProperty(element, "animation-play-state", "paused");
+        });
+      }
+      paused = true;
+    }
+  };
+  const pause = () => {
+    childAnimations.forEach((animation2) => {
+      animation2.pause();
+    });
+    pauseAnimation();
+    return ani;
+  };
+  const onAnimationEndFallback = () => {
+    cssAnimationsTimerFallback = void 0;
+    animationFinish();
+  };
+  const clearCSSAnimationsTimeout = () => {
+    if (cssAnimationsTimerFallback) {
+      clearTimeout(cssAnimationsTimerFallback);
+    }
+  };
+  const playCSSAnimations = () => {
+    clearCSSAnimationsTimeout();
+    raf(() => {
+      elements.forEach((element) => {
+        if (_keyframes.length > 0) {
+          setStyleProperty(element, "animation-play-state", "running");
+        }
+      });
+    });
+    if (_keyframes.length === 0 || elements.length === 0) {
+      animationFinish();
+    } else {
+      const animationDelay = getDelay() || 0;
+      const animationDuration = getDuration() || 0;
+      const animationIterations = getIterations() || 1;
+      if (isFinite(animationIterations)) {
+        cssAnimationsTimerFallback = setTimeout(onAnimationEndFallback, animationDelay + animationDuration * animationIterations + ANIMATION_END_FALLBACK_PADDING_MS);
+      }
+      animationEnd(elements[0], () => {
+        clearCSSAnimationsTimeout();
+        raf(() => {
+          clearCSSAnimationPlayState();
+          raf(animationFinish);
+        });
+      });
+    }
+  };
+  const clearCSSAnimationPlayState = () => {
+    elements.forEach((element) => {
+      removeStyleProperty(element, "animation-duration");
+      removeStyleProperty(element, "animation-delay");
+      removeStyleProperty(element, "animation-play-state");
+    });
+  };
+  const playWebAnimations = () => {
+    webAnimations.forEach((animation2) => {
+      animation2.play();
+    });
+    if (_keyframes.length === 0 || elements.length === 0) {
+      animationFinish();
+    }
+  };
+  const resetAnimation = () => {
+    if (supportsWebAnimations) {
+      setAnimationStep(0);
+      updateWebAnimation();
+    } else {
+      updateCSSAnimation();
+    }
+  };
+  const play = (opts) => {
+    return new Promise((resolve) => {
+      if (opts === null || opts === void 0 ? void 0 : opts.sync) {
+        shouldForceSyncPlayback = true;
+        onFinish(() => shouldForceSyncPlayback = false, { oneTimeCallback: true });
+      }
+      if (!initialized) {
+        initializeAnimation();
+      }
+      if (finished) {
+        resetAnimation();
+        finished = false;
+      }
+      if (shouldCalculateNumAnimations) {
+        numAnimationsRunning = childAnimations.length + 1;
+        shouldCalculateNumAnimations = false;
+      }
+      onFinish(() => resolve(), { oneTimeCallback: true });
+      childAnimations.forEach((animation2) => {
+        animation2.play();
+      });
+      if (supportsWebAnimations) {
+        playWebAnimations();
+      } else {
+        playCSSAnimations();
+      }
+      paused = false;
+    });
+  };
+  const stop = () => {
+    childAnimations.forEach((animation2) => {
+      animation2.stop();
+    });
+    if (initialized) {
+      cleanUpElements();
+      initialized = false;
+    }
+    resetFlags();
+  };
+  const from = (property, value) => {
+    const firstFrame = _keyframes[0];
+    if (firstFrame !== void 0 && (firstFrame.offset === void 0 || firstFrame.offset === 0)) {
+      firstFrame[property] = value;
+    } else {
+      _keyframes = [{ offset: 0, [property]: value }, ..._keyframes];
+    }
+    return ani;
+  };
+  const to = (property, value) => {
+    const lastFrame = _keyframes[_keyframes.length - 1];
+    if (lastFrame !== void 0 && (lastFrame.offset === void 0 || lastFrame.offset === 1)) {
+      lastFrame[property] = value;
+    } else {
+      _keyframes = [..._keyframes, { offset: 1, [property]: value }];
+    }
+    return ani;
+  };
+  const fromTo = (property, fromValue, toValue) => {
+    return from(property, fromValue).to(property, toValue);
+  };
+  return ani = {
+    parentAnimation,
+    elements,
+    childAnimations,
+    id,
+    animationFinish,
+    from,
+    to,
+    fromTo,
+    parent,
+    play,
+    pause,
+    stop,
+    destroy,
+    keyframes,
+    addAnimation,
+    addElement,
+    update,
+    fill,
+    direction,
+    iterations,
+    duration,
+    easing,
+    delay,
+    getWebAnimations,
+    getKeyframes,
+    getFill,
+    getDirection,
+    getDelay,
+    getIterations,
+    getEasing,
+    getDuration,
+    afterAddRead,
+    afterAddWrite,
+    afterClearStyles,
+    afterStyles,
+    afterRemoveClass,
+    afterAddClass,
+    beforeAddRead,
+    beforeAddWrite,
+    beforeClearStyles,
+    beforeStyles,
+    beforeRemoveClass,
+    beforeAddClass,
+    onFinish,
+    isRunning,
+    progressStart,
+    progressStep,
+    progressEnd
+  };
+};
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
 const ION_CONTENT_TAG_NAME = "ION-CONTENT";
 const ION_CONTENT_ELEMENT_SELECTOR = "ion-content";
 const ION_CONTENT_CLASS_SELECTOR = ".ion-content-scroll-host";
@@ -4899,6 +6268,24 @@ const scrollToTop = (el, durationMs) => {
 };
 const printIonContentErrorMsg = (el) => {
   return printRequiredElementError(el, ION_CONTENT_ELEMENT_SELECTOR);
+};
+const disableContentScrollY = (contentEl) => {
+  if (isIonContent(contentEl)) {
+    const ionContent = contentEl;
+    const initialScrollY = ionContent.scrollY;
+    ionContent.scrollY = false;
+    return initialScrollY;
+  } else {
+    contentEl.style.setProperty("overflow", "hidden");
+    return true;
+  }
+};
+const resetContentScrollY = (contentEl, initialScrollY) => {
+  if (isIonContent(contentEl)) {
+    contentEl.scrollY = initialScrollY;
+  } else {
+    contentEl.style.removeProperty("overflow");
+  }
 };
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -5045,7 +6432,7 @@ const Footer = /* @__PURE__ */ proxyCustomElement$1(class Footer2 extends H$1 {
   "translucent": [4],
   "keyboardVisible": [32]
 }]);
-function defineCustomElement$1$d() {
+function defineCustomElement$1$g() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5060,7 +6447,7 @@ function defineCustomElement$1$d() {
     }
   });
 }
-const defineCustomElement$h = defineCustomElement$1$d;
+const defineCustomElement$k = defineCustomElement$1$g;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -5085,7 +6472,7 @@ const Grid = /* @__PURE__ */ proxyCustomElement$1(class Grid2 extends H$1 {
 }, [1, "ion-grid", {
   "fixed": [4]
 }]);
-function defineCustomElement$1$c() {
+function defineCustomElement$1$f() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5100,7 +6487,7 @@ function defineCustomElement$1$c() {
     }
   });
 }
-const defineCustomElement$g = defineCustomElement$1$c;
+const defineCustomElement$j = defineCustomElement$1$f;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -5371,7 +6758,7 @@ const Header = /* @__PURE__ */ proxyCustomElement$1(class Header2 extends H$1 {
   "collapse": [1],
   "translucent": [4]
 }]);
-function defineCustomElement$1$b() {
+function defineCustomElement$1$e() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5386,11 +6773,11 @@ function defineCustomElement$1$b() {
     }
   });
 }
-const defineCustomElement$f = defineCustomElement$1$b;
+const defineCustomElement$i = defineCustomElement$1$e;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$e = defineCustomElement$i;
+const defineCustomElement$h = defineCustomElement$l;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -5442,7 +6829,7 @@ const List = /* @__PURE__ */ proxyCustomElement$1(class List2 extends H$1 {
   "inset": [4],
   "closeSlidingItems": [64]
 }]);
-function defineCustomElement$d() {
+function defineCustomElement$g() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5460,7 +6847,7 @@ function defineCustomElement$d() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$c = defineCustomElement$d;
+const defineCustomElement$f = defineCustomElement$g;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -5631,7 +7018,7 @@ const Nav = /* @__PURE__ */ proxyCustomElement$1(class Nav2 extends H$1 {
   }
   async componentDidLoad() {
     this.rootChanged();
-    this.gesture = (await import("./_nuxt/swipe-back-1e473c75.js")).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
+    this.gesture = (await import("./_nuxt/swipe-back-08a21c8b.js")).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
     this.swipeGestureChanged();
   }
   connectedCallback() {
@@ -6315,7 +7702,7 @@ const Nav = /* @__PURE__ */ proxyCustomElement$1(class Nav2 extends H$1 {
   "canGoBack": [64],
   "getPrevious": [64]
 }]);
-function defineCustomElement$1$a() {
+function defineCustomElement$1$d() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6330,7 +7717,7 @@ function defineCustomElement$1$a() {
     }
   });
 }
-const defineCustomElement$b = defineCustomElement$1$a;
+const defineCustomElement$e = defineCustomElement$1$d;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -6348,7 +7735,7 @@ const Row = /* @__PURE__ */ proxyCustomElement$1(class Row2 extends H$1 {
     return rowCss;
   }
 }, [1, "ion-row"]);
-function defineCustomElement$1$9() {
+function defineCustomElement$1$c() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6363,7 +7750,917 @@ function defineCustomElement$1$9() {
     }
   });
 }
-const defineCustomElement$a = defineCustomElement$1$9;
+const defineCustomElement$d = defineCustomElement$1$c;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const segmentIosCss = ":host{--ripple-color:currentColor;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-align:stretch;align-items:stretch;-ms-flex-pack:center;justify-content:center;width:100%;background:var(--background);font-family:var(--ion-font-family, inherit);text-align:center;contain:paint;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}:host(.segment-scrollable){-ms-flex-pack:start;justify-content:start;width:auto;overflow-x:auto}:host(.segment-scrollable::-webkit-scrollbar){display:none}:host{--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.065);border-radius:8px;overflow:hidden;z-index:0}:host(.ion-color){background:rgba(var(--ion-color-base-rgb), 0.065)}:host(.in-toolbar){-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto;margin-top:0;margin-bottom:0;width:auto}:host(.in-toolbar:not(.ion-color)){background:var(--ion-toolbar-segment-background, var(--background))}:host(.in-toolbar-color:not(.ion-color)){background:rgba(var(--ion-color-contrast-rgb), 0.11)}";
+const segmentMdCss = ":host{--ripple-color:currentColor;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-align:stretch;align-items:stretch;-ms-flex-pack:center;justify-content:center;width:100%;background:var(--background);font-family:var(--ion-font-family, inherit);text-align:center;contain:paint;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}:host(.segment-scrollable){-ms-flex-pack:start;justify-content:start;width:auto;overflow-x:auto}:host(.segment-scrollable::-webkit-scrollbar){display:none}:host{--background:transparent}:host(.in-toolbar){min-height:var(--min-height)}:host(.segment-scrollable) ::slotted(ion-segment-button){min-width:auto}";
+const Segment = /* @__PURE__ */ proxyCustomElement$1(class Segment2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.ionChange = createEvent(this, "ionChange", 7);
+    this.ionSelect = createEvent(this, "ionSelect", 7);
+    this.ionStyle = createEvent(this, "ionStyle", 7);
+    this.onClick = (ev) => {
+      const current = ev.target;
+      const previous = this.checked;
+      if (current.tagName === "ION-SEGMENT") {
+        return;
+      }
+      this.value = current.value;
+      if (current !== previous) {
+        this.emitValueChange();
+      }
+      if (this.scrollable || !this.swipeGesture) {
+        if (previous) {
+          this.checkButton(previous, current);
+        } else {
+          this.setCheckedClasses();
+        }
+      }
+    };
+    this.getSegmentButton = (selector) => {
+      var _a, _b;
+      const buttons = this.getButtons().filter((button) => !button.disabled);
+      const currIndex = buttons.findIndex((button) => button === document.activeElement);
+      switch (selector) {
+        case "first":
+          return buttons[0];
+        case "last":
+          return buttons[buttons.length - 1];
+        case "next":
+          return (_a = buttons[currIndex + 1]) !== null && _a !== void 0 ? _a : buttons[0];
+        case "previous":
+          return (_b = buttons[currIndex - 1]) !== null && _b !== void 0 ? _b : buttons[buttons.length - 1];
+        default:
+          return null;
+      }
+    };
+    this.activated = false;
+    this.color = void 0;
+    this.disabled = false;
+    this.scrollable = false;
+    this.swipeGesture = true;
+    this.value = void 0;
+    this.selectOnFocus = false;
+  }
+  colorChanged(value, oldValue) {
+    if (oldValue === void 0 && value !== void 0 || oldValue !== void 0 && value === void 0) {
+      this.emitStyle();
+    }
+  }
+  swipeGestureChanged() {
+    this.gestureChanged();
+  }
+  valueChanged(value) {
+    this.ionSelect.emit({ value });
+    if (this.scrollable) {
+      const buttons = this.getButtons();
+      const activeButton = buttons.find((button) => button.value === value);
+      if (activeButton !== void 0) {
+        activeButton.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          /**
+           * Segment should scroll on the
+           * horizontal axis. `block: 'nearest'`
+           * ensures that the vertical axis
+           * does not scroll if the segment
+           * as a whole is already in view.
+           */
+          block: "nearest"
+        });
+      }
+    }
+  }
+  disabledChanged() {
+    this.gestureChanged();
+    const buttons = this.getButtons();
+    for (const button of buttons) {
+      button.disabled = this.disabled;
+    }
+  }
+  gestureChanged() {
+    if (this.gesture) {
+      this.gesture.enable(!this.scrollable && !this.disabled && this.swipeGesture);
+    }
+  }
+  connectedCallback() {
+    this.emitStyle();
+  }
+  componentWillLoad() {
+    this.emitStyle();
+  }
+  async componentDidLoad() {
+    this.setCheckedClasses();
+    this.gesture = (await Promise.resolve().then(function() {
+      return index2;
+    })).createGesture({
+      el: this.el,
+      gestureName: "segment",
+      gesturePriority: 100,
+      threshold: 0,
+      passive: false,
+      onStart: (ev) => this.onStart(ev),
+      onMove: (ev) => this.onMove(ev),
+      onEnd: (ev) => this.onEnd(ev)
+    });
+    this.gestureChanged();
+    if (this.disabled) {
+      this.disabledChanged();
+    }
+  }
+  onStart(detail) {
+    this.valueBeforeGesture = this.value;
+    this.activate(detail);
+  }
+  onMove(detail) {
+    this.setNextIndex(detail);
+  }
+  onEnd(detail) {
+    this.setActivated(false);
+    this.setNextIndex(detail, true);
+    detail.event.stopImmediatePropagation();
+    const value = this.value;
+    if (value !== void 0) {
+      if (this.valueBeforeGesture !== value) {
+        this.emitValueChange();
+      }
+    }
+    this.valueBeforeGesture = void 0;
+  }
+  /**
+   * Emits an `ionChange` event.
+   *
+   * This API should be called for user committed changes.
+   * This API should not be used for external value changes.
+   */
+  emitValueChange() {
+    const { value } = this;
+    this.ionChange.emit({ value });
+  }
+  getButtons() {
+    return Array.from(this.el.querySelectorAll("ion-segment-button"));
+  }
+  get checked() {
+    return this.getButtons().find((button) => button.value === this.value);
+  }
+  /*
+   * Activate both the segment and the buttons
+   * due to a bug with ::slotted in Safari
+   */
+  setActivated(activated) {
+    const buttons = this.getButtons();
+    buttons.forEach((button) => {
+      if (activated) {
+        button.classList.add("segment-button-activated");
+      } else {
+        button.classList.remove("segment-button-activated");
+      }
+    });
+    this.activated = activated;
+  }
+  activate(detail) {
+    const clicked = detail.event.target;
+    const buttons = this.getButtons();
+    const checked = buttons.find((button) => button.value === this.value);
+    if (clicked.tagName !== "ION-SEGMENT-BUTTON") {
+      return;
+    }
+    if (!checked) {
+      this.value = clicked.value;
+      this.setCheckedClasses();
+    }
+    if (this.value === clicked.value) {
+      this.setActivated(true);
+    }
+  }
+  getIndicator(button) {
+    const root = button.shadowRoot || button;
+    return root.querySelector(".segment-button-indicator");
+  }
+  checkButton(previous, current) {
+    const previousIndicator = this.getIndicator(previous);
+    const currentIndicator = this.getIndicator(current);
+    if (previousIndicator === null || currentIndicator === null) {
+      return;
+    }
+    const previousClientRect = previousIndicator.getBoundingClientRect();
+    const currentClientRect = currentIndicator.getBoundingClientRect();
+    const widthDelta = previousClientRect.width / currentClientRect.width;
+    const xPosition = previousClientRect.left - currentClientRect.left;
+    const transform = `translate3d(${xPosition}px, 0, 0) scaleX(${widthDelta})`;
+    writeTask$1(() => {
+      currentIndicator.classList.remove("segment-button-indicator-animated");
+      currentIndicator.style.setProperty("transform", transform);
+      currentIndicator.getBoundingClientRect();
+      currentIndicator.classList.add("segment-button-indicator-animated");
+      currentIndicator.style.setProperty("transform", "");
+    });
+    this.value = current.value;
+    this.setCheckedClasses();
+  }
+  setCheckedClasses() {
+    const buttons = this.getButtons();
+    const index = buttons.findIndex((button) => button.value === this.value);
+    const next = index + 1;
+    for (const button of buttons) {
+      button.classList.remove("segment-button-after-checked");
+    }
+    if (next < buttons.length) {
+      buttons[next].classList.add("segment-button-after-checked");
+    }
+  }
+  setNextIndex(detail, isEnd = false) {
+    const rtl = isRTL$1(this.el);
+    const activated = this.activated;
+    const buttons = this.getButtons();
+    const index = buttons.findIndex((button) => button.value === this.value);
+    const previous = buttons[index];
+    let current;
+    let nextIndex;
+    if (index === -1) {
+      return;
+    }
+    const rect = previous.getBoundingClientRect();
+    const left = rect.left;
+    const width = rect.width;
+    const currentX = detail.currentX;
+    const previousY = rect.top + rect.height / 2;
+    const root = this.el.getRootNode();
+    const nextEl = root.elementFromPoint(currentX, previousY);
+    const decreaseIndex = rtl ? currentX > left + width : currentX < left;
+    const increaseIndex = rtl ? currentX < left : currentX > left + width;
+    if (activated && !isEnd) {
+      if (decreaseIndex) {
+        const newIndex = index - 1;
+        if (newIndex >= 0) {
+          nextIndex = newIndex;
+        }
+      } else if (increaseIndex) {
+        if (activated && !isEnd) {
+          const newIndex = index + 1;
+          if (newIndex < buttons.length) {
+            nextIndex = newIndex;
+          }
+        }
+      }
+      if (nextIndex !== void 0 && !buttons[nextIndex].disabled) {
+        current = buttons[nextIndex];
+      }
+    }
+    if (!activated && isEnd) {
+      current = nextEl;
+    }
+    if (current != null) {
+      if (current.tagName === "ION-SEGMENT") {
+        return false;
+      }
+      if (previous !== current) {
+        this.checkButton(previous, current);
+      }
+    }
+    return true;
+  }
+  emitStyle() {
+    this.ionStyle.emit({
+      segment: true
+    });
+  }
+  onKeyDown(ev) {
+    const rtl = isRTL$1(this.el);
+    let keyDownSelectsButton = this.selectOnFocus;
+    let current;
+    switch (ev.key) {
+      case "ArrowRight":
+        ev.preventDefault();
+        current = rtl ? this.getSegmentButton("previous") : this.getSegmentButton("next");
+        break;
+      case "ArrowLeft":
+        ev.preventDefault();
+        current = rtl ? this.getSegmentButton("next") : this.getSegmentButton("previous");
+        break;
+      case "Home":
+        ev.preventDefault();
+        current = this.getSegmentButton("first");
+        break;
+      case "End":
+        ev.preventDefault();
+        current = this.getSegmentButton("last");
+        break;
+      case " ":
+      case "Enter":
+        ev.preventDefault();
+        current = document.activeElement;
+        keyDownSelectsButton = true;
+    }
+    if (!current) {
+      return;
+    }
+    if (keyDownSelectsButton) {
+      const previous = this.checked;
+      this.checkButton(previous || current, current);
+      if (current !== previous) {
+        this.emitValueChange();
+      }
+    }
+    current.setFocus();
+  }
+  render() {
+    const mode = getIonMode$2(this);
+    return h$1(Host$1, { role: "tablist", onClick: this.onClick, class: createColorClasses$1(this.color, {
+      [mode]: true,
+      "in-toolbar": hostContext("ion-toolbar", this.el),
+      "in-toolbar-color": hostContext("ion-toolbar[color]", this.el),
+      "segment-activated": this.activated,
+      "segment-disabled": this.disabled,
+      "segment-scrollable": this.scrollable
+    }) }, h$1("slot", null));
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "color": ["colorChanged"],
+      "swipeGesture": ["swipeGestureChanged"],
+      "value": ["valueChanged"],
+      "disabled": ["disabledChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: segmentIosCss,
+      md: segmentMdCss
+    };
+  }
+}, [33, "ion-segment", {
+  "color": [513],
+  "disabled": [4],
+  "scrollable": [4],
+  "swipeGesture": [4, "swipe-gesture"],
+  "value": [1025],
+  "selectOnFocus": [4, "select-on-focus"],
+  "activated": [32]
+}, [[0, "keydown", "onKeyDown"]]]);
+function defineCustomElement$1$b() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-segment"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-segment":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Segment);
+        }
+        break;
+    }
+  });
+}
+const defineCustomElement$c = defineCustomElement$1$b;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const segmentButtonIosCss = ':host{--color:initial;--color-hover:var(--color);--color-checked:var(--color);--color-disabled:var(--color);--padding-start:0;--padding-end:0;--padding-top:0;--padding-bottom:0;border-radius:var(--border-radius);display:-ms-flexbox;display:flex;position:relative;-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-direction:column;flex-direction:column;height:auto;background:var(--background);color:var(--color);text-decoration:none;text-overflow:ellipsis;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none;cursor:pointer}.button-native{border-radius:0;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;-webkit-margin-start:var(--margin-start);margin-inline-start:var(--margin-start);-webkit-margin-end:var(--margin-end);margin-inline-end:var(--margin-end);margin-top:var(--margin-top);margin-bottom:var(--margin-bottom);-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);-webkit-transform:translate3d(0,  0,  0);transform:translate3d(0,  0,  0);display:-ms-flexbox;display:flex;position:relative;-ms-flex-direction:inherit;flex-direction:inherit;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;min-width:inherit;max-width:inherit;height:auto;min-height:inherit;max-height:inherit;-webkit-transition:var(--transition);transition:var(--transition);border:none;outline:none;background:transparent;contain:content;pointer-events:none;overflow:hidden;z-index:2}.button-native::after{left:0;right:0;top:0;bottom:0;position:absolute;content:"";opacity:0}.button-inner{display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:inherit;flex-flow:inherit;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;z-index:1}:host(.segment-button-checked){background:var(--background-checked);color:var(--color-checked)}:host(.segment-button-disabled){cursor:default;pointer-events:none}:host(.ion-focused) .button-native{color:var(--color-focused)}:host(.ion-focused) .button-native::after{background:var(--background-focused);opacity:var(--background-focused-opacity)}:host(:focus){outline:none}@media (any-hover: hover){:host(:hover) .button-native{color:var(--color-hover)}:host(:hover) .button-native::after{background:var(--background-hover);opacity:var(--background-hover-opacity)}:host(.segment-button-checked:hover) .button-native{color:var(--color-checked)}}::slotted(ion-icon){-ms-flex-negative:0;flex-shrink:0;-ms-flex-order:-1;order:-1;pointer-events:none}::slotted(ion-label){display:block;-ms-flex-item-align:center;align-self:center;line-height:22px;text-overflow:ellipsis;white-space:nowrap;-webkit-box-sizing:border-box;box-sizing:border-box;pointer-events:none}:host(.segment-button-layout-icon-top) .button-native{-ms-flex-direction:column;flex-direction:column}:host(.segment-button-layout-icon-start) .button-native{-ms-flex-direction:row;flex-direction:row}:host(.segment-button-layout-icon-end) .button-native{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.segment-button-layout-icon-bottom) .button-native{-ms-flex-direction:column-reverse;flex-direction:column-reverse}:host(.segment-button-layout-icon-hide) ::slotted(ion-icon){display:none}:host(.segment-button-layout-label-hide) ::slotted(ion-label){display:none}ion-ripple-effect{color:var(--ripple-color, var(--color-checked))}.segment-button-indicator{-webkit-transform-origin:left;transform-origin:left;position:absolute;opacity:0;-webkit-box-sizing:border-box;box-sizing:border-box;will-change:transform, opacity;pointer-events:none}.segment-button-indicator-background{width:100%;height:var(--indicator-height);-webkit-transform:var(--indicator-transform);transform:var(--indicator-transform);-webkit-box-shadow:var(--indicator-box-shadow);box-shadow:var(--indicator-box-shadow);pointer-events:none}.segment-button-indicator-animated{-webkit-transition:var(--indicator-transition);transition:var(--indicator-transition)}:host(.segment-button-checked) .segment-button-indicator{opacity:1}@media (prefers-reduced-motion: reduce){.segment-button-indicator-background{-webkit-transform:none;transform:none}.segment-button-indicator-animated{-webkit-transition:none;transition:none}}:host{--background:none;--background-checked:none;--background-hover:none;--background-hover-opacity:0;--background-focused:none;--background-focused-opacity:0;--border-radius:7px;--border-width:1px;--border-color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12);--border-style:solid;--indicator-box-shadow:0 0 5px rgba(0, 0, 0, 0.16);--indicator-color:var(--ion-color-step-350, var(--ion-background-color, #fff));--indicator-height:100%;--indicator-transition:transform 260ms cubic-bezier(0.4, 0, 0.2, 1);--indicator-transform:none;--transition:100ms all linear;--padding-top:0;--padding-end:13px;--padding-bottom:0;--padding-start:13px;margin-top:2px;margin-bottom:2px;position:relative;-ms-flex-preferred-size:0;flex-basis:0;-ms-flex-direction:row;flex-direction:row;min-width:70px;min-height:28px;-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0);font-size:13px;font-weight:450;line-height:37px}:host::before{margin-left:0;margin-right:0;margin-top:5px;margin-bottom:5px;-webkit-transition:160ms opacity ease-in-out;transition:160ms opacity ease-in-out;-webkit-transition-delay:100ms;transition-delay:100ms;border-left:var(--border-width) var(--border-style) var(--border-color);content:"";opacity:1;will-change:opacity}:host(:first-of-type)::before{border-left-color:transparent}:host(.segment-button-disabled){opacity:0.3}::slotted(ion-icon){font-size:24px}:host(.segment-button-layout-icon-start) ::slotted(ion-label){-webkit-margin-start:2px;margin-inline-start:2px;-webkit-margin-end:0;margin-inline-end:0}:host(.segment-button-layout-icon-end) ::slotted(ion-label){-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:2px;margin-inline-end:2px}.segment-button-indicator{-webkit-padding-start:2px;padding-inline-start:2px;-webkit-padding-end:2px;padding-inline-end:2px;left:0;right:0;top:0;bottom:0}.segment-button-indicator-background{border-radius:var(--border-radius);background:var(--indicator-color)}.segment-button-indicator-background{-webkit-transition:var(--indicator-transition);transition:var(--indicator-transition)}:host(.segment-button-checked)::before,:host(.segment-button-after-checked)::before{opacity:0}:host(.segment-button-checked){z-index:-1}:host(.segment-button-activated){--indicator-transform:scale(0.95)}:host(.ion-focused) .button-native{opacity:0.7}@media (any-hover: hover){:host(:hover) .button-native{opacity:0.5}:host(.segment-button-checked:hover) .button-native{opacity:1}}:host(.in-segment-color){background:none;color:var(--ion-text-color, #000)}:host(.in-segment-color) .segment-button-indicator-background{background:var(--ion-color-step-350, var(--ion-background-color, #fff))}@media (any-hover: hover){:host(.in-segment-color:hover) .button-native,:host(.in-segment-color.segment-button-checked:hover) .button-native{color:var(--ion-text-color, #000)}}:host(.in-toolbar:not(.in-segment-color)){--background-checked:var(--ion-toolbar-segment-background-checked, none);--color:var(--ion-toolbar-segment-color, var(--ion-toolbar-color), initial);--color-checked:var(--ion-toolbar-segment-color-checked, var(--ion-toolbar-color), initial);--indicator-color:var(--ion-toolbar-segment-indicator-color, var(--ion-color-step-350, var(--ion-background-color, #fff)))}:host(.in-toolbar-color) .segment-button-indicator-background{background:var(--ion-color-contrast)}:host(.in-toolbar-color:not(.in-segment-color)) .button-native{color:var(--ion-color-contrast)}:host(.in-toolbar-color.segment-button-checked:not(.in-segment-color)) .button-native{color:var(--ion-color-base)}@media (any-hover: hover){:host(.in-toolbar-color:not(.in-segment-color):hover) .button-native{color:var(--ion-color-contrast)}:host(.in-toolbar-color.segment-button-checked:not(.in-segment-color):hover) .button-native{color:var(--ion-color-base)}}';
+const segmentButtonMdCss = ':host{--color:initial;--color-hover:var(--color);--color-checked:var(--color);--color-disabled:var(--color);--padding-start:0;--padding-end:0;--padding-top:0;--padding-bottom:0;border-radius:var(--border-radius);display:-ms-flexbox;display:flex;position:relative;-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-direction:column;flex-direction:column;height:auto;background:var(--background);color:var(--color);text-decoration:none;text-overflow:ellipsis;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none;cursor:pointer}.button-native{border-radius:0;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;-webkit-margin-start:var(--margin-start);margin-inline-start:var(--margin-start);-webkit-margin-end:var(--margin-end);margin-inline-end:var(--margin-end);margin-top:var(--margin-top);margin-bottom:var(--margin-bottom);-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);-webkit-transform:translate3d(0,  0,  0);transform:translate3d(0,  0,  0);display:-ms-flexbox;display:flex;position:relative;-ms-flex-direction:inherit;flex-direction:inherit;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;min-width:inherit;max-width:inherit;height:auto;min-height:inherit;max-height:inherit;-webkit-transition:var(--transition);transition:var(--transition);border:none;outline:none;background:transparent;contain:content;pointer-events:none;overflow:hidden;z-index:2}.button-native::after{left:0;right:0;top:0;bottom:0;position:absolute;content:"";opacity:0}.button-inner{display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:inherit;flex-flow:inherit;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;z-index:1}:host(.segment-button-checked){background:var(--background-checked);color:var(--color-checked)}:host(.segment-button-disabled){cursor:default;pointer-events:none}:host(.ion-focused) .button-native{color:var(--color-focused)}:host(.ion-focused) .button-native::after{background:var(--background-focused);opacity:var(--background-focused-opacity)}:host(:focus){outline:none}@media (any-hover: hover){:host(:hover) .button-native{color:var(--color-hover)}:host(:hover) .button-native::after{background:var(--background-hover);opacity:var(--background-hover-opacity)}:host(.segment-button-checked:hover) .button-native{color:var(--color-checked)}}::slotted(ion-icon){-ms-flex-negative:0;flex-shrink:0;-ms-flex-order:-1;order:-1;pointer-events:none}::slotted(ion-label){display:block;-ms-flex-item-align:center;align-self:center;line-height:22px;text-overflow:ellipsis;white-space:nowrap;-webkit-box-sizing:border-box;box-sizing:border-box;pointer-events:none}:host(.segment-button-layout-icon-top) .button-native{-ms-flex-direction:column;flex-direction:column}:host(.segment-button-layout-icon-start) .button-native{-ms-flex-direction:row;flex-direction:row}:host(.segment-button-layout-icon-end) .button-native{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.segment-button-layout-icon-bottom) .button-native{-ms-flex-direction:column-reverse;flex-direction:column-reverse}:host(.segment-button-layout-icon-hide) ::slotted(ion-icon){display:none}:host(.segment-button-layout-label-hide) ::slotted(ion-label){display:none}ion-ripple-effect{color:var(--ripple-color, var(--color-checked))}.segment-button-indicator{-webkit-transform-origin:left;transform-origin:left;position:absolute;opacity:0;-webkit-box-sizing:border-box;box-sizing:border-box;will-change:transform, opacity;pointer-events:none}.segment-button-indicator-background{width:100%;height:var(--indicator-height);-webkit-transform:var(--indicator-transform);transform:var(--indicator-transform);-webkit-box-shadow:var(--indicator-box-shadow);box-shadow:var(--indicator-box-shadow);pointer-events:none}.segment-button-indicator-animated{-webkit-transition:var(--indicator-transition);transition:var(--indicator-transition)}:host(.segment-button-checked) .segment-button-indicator{opacity:1}@media (prefers-reduced-motion: reduce){.segment-button-indicator-background{-webkit-transform:none;transform:none}.segment-button-indicator-animated{-webkit-transition:none;transition:none}}:host{--background:none;--background-checked:none;--background-hover:var(--color-checked);--background-focused:var(--color-checked);--background-activated-opacity:0;--background-focused-opacity:.12;--background-hover-opacity:.04;--color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6);--color-checked:var(--ion-color-primary, #3880ff);--indicator-box-shadow:none;--indicator-color:var(--color-checked);--indicator-height:2px;--indicator-transition:transform 250ms cubic-bezier(0.4, 0, 0.2, 1);--indicator-transform:none;--padding-top:0;--padding-end:16px;--padding-bottom:0;--padding-start:16px;--transition:color 0.15s linear 0s, opacity 0.15s linear 0s;min-width:90px;max-width:360px;min-height:48px;border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);font-size:14px;font-weight:500;letter-spacing:0.06em;line-height:40px;text-transform:uppercase}:host(.segment-button-disabled){opacity:0.3}:host(.in-segment-color){background:none;color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6)}:host(.in-segment-color) ion-ripple-effect{color:var(--ion-color-base)}:host(.in-segment-color) .segment-button-indicator-background{background:var(--ion-color-base)}:host(.in-segment-color.segment-button-checked) .button-native{color:var(--ion-color-base)}:host(.in-segment-color.ion-focused) .button-native::after{background:var(--ion-color-base)}@media (any-hover: hover){:host(.in-segment-color:hover) .button-native{color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6)}:host(.in-segment-color:hover) .button-native::after{background:var(--ion-color-base)}:host(.in-segment-color.segment-button-checked:hover) .button-native{color:var(--ion-color-base)}}:host(.in-toolbar:not(.in-segment-color)){--background:var(--ion-toolbar-segment-background, none);--background-checked:var(--ion-toolbar-segment-background-checked, none);--color:var(--ion-toolbar-segment-color, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6));--color-checked:var(--ion-toolbar-segment-color-checked, var(--ion-color-primary, #3880ff));--indicator-color:var(--ion-toolbar-segment-color-checked, var(--color-checked))}:host(.in-toolbar-color:not(.in-segment-color)) .button-native{color:rgba(var(--ion-color-contrast-rgb), 0.6)}:host(.in-toolbar-color.segment-button-checked:not(.in-segment-color)) .button-native{color:var(--ion-color-contrast)}@media (any-hover: hover){:host(.in-toolbar-color:not(.in-segment-color)) .button-native::after{background:var(--ion-color-contrast)}}::slotted(ion-icon){margin-top:12px;margin-bottom:12px;font-size:24px}::slotted(ion-label){margin-top:12px;margin-bottom:12px}:host(.segment-button-layout-icon-top) ::slotted(ion-label),:host(.segment-button-layout-icon-bottom) ::slotted(ion-icon){margin-top:0}:host(.segment-button-layout-icon-top) ::slotted(ion-icon),:host(.segment-button-layout-icon-bottom) ::slotted(ion-label){margin-bottom:0}:host(.segment-button-layout-icon-start) ::slotted(ion-label){-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:0;margin-inline-end:0}:host(.segment-button-layout-icon-end) ::slotted(ion-label){-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:8px;margin-inline-end:8px}:host(.segment-button-has-icon-only) ::slotted(ion-icon){margin-top:12px;margin-bottom:12px}:host(.segment-button-has-label-only) ::slotted(ion-label){margin-top:12px;margin-bottom:12px}.segment-button-indicator{left:0;right:0;bottom:0}.segment-button-indicator-background{background:var(--indicator-color)}:host(.in-toolbar:not(.in-segment-color)) .segment-button-indicator-background{background:var(--ion-toolbar-segment-indicator-color, var(--indicator-color))}:host(.in-toolbar-color:not(.in-segment-color)) .segment-button-indicator-background{background:var(--ion-color-contrast)}';
+let ids$1 = 0;
+const SegmentButton = /* @__PURE__ */ proxyCustomElement$1(class SegmentButton2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.segmentEl = null;
+    this.inheritedAttributes = {};
+    this.updateStyle = () => {
+      forceUpdate(this);
+    };
+    this.updateState = () => {
+      const { segmentEl } = this;
+      if (segmentEl) {
+        this.checked = segmentEl.value === this.value;
+        if (segmentEl.disabled) {
+          this.disabled = true;
+        }
+      }
+    };
+    this.checked = false;
+    this.disabled = false;
+    this.layout = "icon-top";
+    this.type = "button";
+    this.value = "ion-sb-" + ids$1++;
+  }
+  valueChanged() {
+    this.updateState();
+  }
+  connectedCallback() {
+    const segmentEl = this.segmentEl = this.el.closest("ion-segment");
+    if (segmentEl) {
+      this.updateState();
+      addEventListener$1(segmentEl, "ionSelect", this.updateState);
+      addEventListener$1(segmentEl, "ionStyle", this.updateStyle);
+    }
+  }
+  disconnectedCallback() {
+    const segmentEl = this.segmentEl;
+    if (segmentEl) {
+      removeEventListener(segmentEl, "ionSelect", this.updateState);
+      removeEventListener(segmentEl, "ionStyle", this.updateStyle);
+      this.segmentEl = null;
+    }
+  }
+  componentWillLoad() {
+    this.inheritedAttributes = Object.assign({}, inheritAttributes$2(this.el, ["aria-label"]));
+  }
+  get hasLabel() {
+    return !!this.el.querySelector("ion-label");
+  }
+  get hasIcon() {
+    return !!this.el.querySelector("ion-icon");
+  }
+  /**
+   * @internal
+   * Focuses the native <button> element
+   * inside of ion-segment-button.
+   */
+  async setFocus() {
+    const { nativeEl } = this;
+    if (nativeEl !== void 0) {
+      nativeEl.focus();
+    }
+  }
+  render() {
+    const { checked, type, disabled, hasIcon, hasLabel, layout, segmentEl } = this;
+    const mode = getIonMode$2(this);
+    const hasSegmentColor = () => (segmentEl === null || segmentEl === void 0 ? void 0 : segmentEl.color) !== void 0;
+    return h$1(Host$1, { class: {
+      [mode]: true,
+      "in-toolbar": hostContext("ion-toolbar", this.el),
+      "in-toolbar-color": hostContext("ion-toolbar[color]", this.el),
+      "in-segment": hostContext("ion-segment", this.el),
+      "in-segment-color": hasSegmentColor(),
+      "segment-button-has-label": hasLabel,
+      "segment-button-has-icon": hasIcon,
+      "segment-button-has-label-only": hasLabel && !hasIcon,
+      "segment-button-has-icon-only": hasIcon && !hasLabel,
+      "segment-button-disabled": disabled,
+      "segment-button-checked": checked,
+      [`segment-button-layout-${layout}`]: true,
+      "ion-activatable": true,
+      "ion-activatable-instant": true,
+      "ion-focusable": true
+    } }, h$1("button", Object.assign({ "aria-selected": checked ? "true" : "false", role: "tab", ref: (el) => this.nativeEl = el, type, class: "button-native", part: "native", disabled }, this.inheritedAttributes), h$1("span", { class: "button-inner" }, h$1("slot", null)), mode === "md" && h$1("ion-ripple-effect", null)), h$1("div", { part: "indicator", class: {
+      "segment-button-indicator": true,
+      "segment-button-indicator-animated": true
+    } }, h$1("div", { part: "indicator-background", class: "segment-button-indicator-background" })));
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "value": ["valueChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: segmentButtonIosCss,
+      md: segmentButtonMdCss
+    };
+  }
+}, [33, "ion-segment-button", {
+  "disabled": [1028],
+  "layout": [1],
+  "type": [1],
+  "value": [1],
+  "checked": [32],
+  "setFocus": [64]
+}]);
+function defineCustomElement$1$a() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-segment-button", "ion-ripple-effect"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-segment-button":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, SegmentButton);
+        }
+        break;
+      case "ion-ripple-effect":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$x();
+        }
+        break;
+    }
+  });
+}
+const defineCustomElement$b = defineCustomElement$1$a;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const addEventListener = (el, eventName, callback, opts) => {
+  const listenerOpts = supportsPassive(el) ? {
+    capture: !!opts.capture,
+    passive: !!opts.passive
+  } : !!opts.capture;
+  let add;
+  let remove;
+  if (el["__zone_symbol__addEventListener"]) {
+    add = "__zone_symbol__addEventListener";
+    remove = "__zone_symbol__removeEventListener";
+  } else {
+    add = "addEventListener";
+    remove = "removeEventListener";
+  }
+  el[add](eventName, callback, listenerOpts);
+  return () => {
+    el[remove](eventName, callback, listenerOpts);
+  };
+};
+const supportsPassive = (node) => {
+  if (_sPassive === void 0) {
+    try {
+      const opts = Object.defineProperty({}, "passive", {
+        get: () => {
+          _sPassive = true;
+        }
+      });
+      node.addEventListener("optsTest", () => {
+        return;
+      }, opts);
+    } catch (e) {
+      _sPassive = false;
+    }
+  }
+  return !!_sPassive;
+};
+let _sPassive;
+const MOUSE_WAIT = 2e3;
+const createPointerEvents = (el, pointerDown, pointerMove, pointerUp, options) => {
+  let rmTouchStart;
+  let rmTouchMove;
+  let rmTouchEnd;
+  let rmTouchCancel;
+  let rmMouseStart;
+  let rmMouseMove;
+  let rmMouseUp;
+  let lastTouchEvent = 0;
+  const handleTouchStart = (ev) => {
+    lastTouchEvent = Date.now() + MOUSE_WAIT;
+    if (!pointerDown(ev)) {
+      return;
+    }
+    if (!rmTouchMove && pointerMove) {
+      rmTouchMove = addEventListener(el, "touchmove", pointerMove, options);
+    }
+    if (!rmTouchEnd) {
+      rmTouchEnd = addEventListener(ev.target, "touchend", handleTouchEnd, options);
+    }
+    if (!rmTouchCancel) {
+      rmTouchCancel = addEventListener(ev.target, "touchcancel", handleTouchEnd, options);
+    }
+  };
+  const handleMouseDown = (ev) => {
+    if (lastTouchEvent > Date.now()) {
+      return;
+    }
+    if (!pointerDown(ev)) {
+      return;
+    }
+    if (!rmMouseMove && pointerMove) {
+      rmMouseMove = addEventListener(getDocument(el), "mousemove", pointerMove, options);
+    }
+    if (!rmMouseUp) {
+      rmMouseUp = addEventListener(getDocument(el), "mouseup", handleMouseUp, options);
+    }
+  };
+  const handleTouchEnd = (ev) => {
+    stopTouch();
+    if (pointerUp) {
+      pointerUp(ev);
+    }
+  };
+  const handleMouseUp = (ev) => {
+    stopMouse();
+    if (pointerUp) {
+      pointerUp(ev);
+    }
+  };
+  const stopTouch = () => {
+    if (rmTouchMove) {
+      rmTouchMove();
+    }
+    if (rmTouchEnd) {
+      rmTouchEnd();
+    }
+    if (rmTouchCancel) {
+      rmTouchCancel();
+    }
+    rmTouchMove = rmTouchEnd = rmTouchCancel = void 0;
+  };
+  const stopMouse = () => {
+    if (rmMouseMove) {
+      rmMouseMove();
+    }
+    if (rmMouseUp) {
+      rmMouseUp();
+    }
+    rmMouseMove = rmMouseUp = void 0;
+  };
+  const stop = () => {
+    stopTouch();
+    stopMouse();
+  };
+  const enable = (isEnabled = true) => {
+    if (!isEnabled) {
+      if (rmTouchStart) {
+        rmTouchStart();
+      }
+      if (rmMouseStart) {
+        rmMouseStart();
+      }
+      rmTouchStart = rmMouseStart = void 0;
+      stop();
+    } else {
+      if (!rmTouchStart) {
+        rmTouchStart = addEventListener(el, "touchstart", handleTouchStart, options);
+      }
+      if (!rmMouseStart) {
+        rmMouseStart = addEventListener(el, "mousedown", handleMouseDown, options);
+      }
+    }
+  };
+  const destroy = () => {
+    enable(false);
+    pointerUp = pointerMove = pointerDown = void 0;
+  };
+  return {
+    enable,
+    stop,
+    destroy
+  };
+};
+const getDocument = (node) => {
+  return node instanceof Document ? node : node.ownerDocument;
+};
+const createPanRecognizer = (direction, thresh, maxAngle) => {
+  const radians = maxAngle * (Math.PI / 180);
+  const isDirX = direction === "x";
+  const maxCosine = Math.cos(radians);
+  const threshold = thresh * thresh;
+  let startX = 0;
+  let startY = 0;
+  let dirty = false;
+  let isPan = 0;
+  return {
+    start(x, y) {
+      startX = x;
+      startY = y;
+      isPan = 0;
+      dirty = true;
+    },
+    detect(x, y) {
+      if (!dirty) {
+        return false;
+      }
+      const deltaX = x - startX;
+      const deltaY = y - startY;
+      const distance = deltaX * deltaX + deltaY * deltaY;
+      if (distance < threshold) {
+        return false;
+      }
+      const hypotenuse = Math.sqrt(distance);
+      const cosine = (isDirX ? deltaX : deltaY) / hypotenuse;
+      if (cosine > maxCosine) {
+        isPan = 1;
+      } else if (cosine < -maxCosine) {
+        isPan = -1;
+      } else {
+        isPan = 0;
+      }
+      dirty = false;
+      return true;
+    },
+    isGesture() {
+      return isPan !== 0;
+    },
+    getDirection() {
+      return isPan;
+    }
+  };
+};
+const createGesture = (config2) => {
+  let hasCapturedPan = false;
+  let hasStartedPan = false;
+  let hasFiredStart = true;
+  let isMoveQueued = false;
+  const finalConfig = Object.assign({ disableScroll: false, direction: "x", gesturePriority: 0, passive: true, maxAngle: 40, threshold: 10 }, config2);
+  const canStart = finalConfig.canStart;
+  const onWillStart = finalConfig.onWillStart;
+  const onStart = finalConfig.onStart;
+  const onEnd = finalConfig.onEnd;
+  const notCaptured = finalConfig.notCaptured;
+  const onMove = finalConfig.onMove;
+  const threshold = finalConfig.threshold;
+  const passive = finalConfig.passive;
+  finalConfig.blurOnStart;
+  const detail = {
+    type: "pan",
+    startX: 0,
+    startY: 0,
+    startTime: 0,
+    currentX: 0,
+    currentY: 0,
+    velocityX: 0,
+    velocityY: 0,
+    deltaX: 0,
+    deltaY: 0,
+    currentTime: 0,
+    event: void 0,
+    data: void 0
+  };
+  const pan = createPanRecognizer(finalConfig.direction, finalConfig.threshold, finalConfig.maxAngle);
+  const gesture = GESTURE_CONTROLLER.createGesture({
+    name: config2.gestureName,
+    priority: config2.gesturePriority,
+    disableScroll: config2.disableScroll
+  });
+  const pointerDown = (ev) => {
+    const timeStamp = now(ev);
+    if (hasStartedPan || !hasFiredStart) {
+      return false;
+    }
+    updateDetail(ev, detail);
+    detail.startX = detail.currentX;
+    detail.startY = detail.currentY;
+    detail.startTime = detail.currentTime = timeStamp;
+    detail.velocityX = detail.velocityY = detail.deltaX = detail.deltaY = 0;
+    detail.event = ev;
+    if (canStart && canStart(detail) === false) {
+      return false;
+    }
+    gesture.release();
+    if (!gesture.start()) {
+      return false;
+    }
+    hasStartedPan = true;
+    if (threshold === 0) {
+      return tryToCapturePan();
+    }
+    pan.start(detail.startX, detail.startY);
+    return true;
+  };
+  const pointerMove = (ev) => {
+    if (hasCapturedPan) {
+      if (!isMoveQueued && hasFiredStart) {
+        isMoveQueued = true;
+        calcGestureData(detail, ev);
+        requestAnimationFrame(fireOnMove);
+      }
+      return;
+    }
+    calcGestureData(detail, ev);
+    if (pan.detect(detail.currentX, detail.currentY)) {
+      if (!pan.isGesture() || !tryToCapturePan()) {
+        abortGesture();
+      }
+    }
+  };
+  const fireOnMove = () => {
+    if (!hasCapturedPan) {
+      return;
+    }
+    isMoveQueued = false;
+    if (onMove) {
+      onMove(detail);
+    }
+  };
+  const tryToCapturePan = () => {
+    if (!gesture.capture()) {
+      return false;
+    }
+    hasCapturedPan = true;
+    hasFiredStart = false;
+    detail.startX = detail.currentX;
+    detail.startY = detail.currentY;
+    detail.startTime = detail.currentTime;
+    if (onWillStart) {
+      onWillStart(detail).then(fireOnStart);
+    } else {
+      fireOnStart();
+    }
+    return true;
+  };
+  const fireOnStart = () => {
+    if (onStart) {
+      onStart(detail);
+    }
+    hasFiredStart = true;
+  };
+  const reset = () => {
+    hasCapturedPan = false;
+    hasStartedPan = false;
+    isMoveQueued = false;
+    hasFiredStart = true;
+    gesture.release();
+  };
+  const pointerUp = (ev) => {
+    const tmpHasCaptured = hasCapturedPan;
+    const tmpHasFiredStart = hasFiredStart;
+    reset();
+    if (!tmpHasFiredStart) {
+      return;
+    }
+    calcGestureData(detail, ev);
+    if (tmpHasCaptured) {
+      if (onEnd) {
+        onEnd(detail);
+      }
+      return;
+    }
+    if (notCaptured) {
+      notCaptured(detail);
+    }
+  };
+  const pointerEvents = createPointerEvents(finalConfig.el, pointerDown, pointerMove, pointerUp, {
+    capture: false,
+    passive
+  });
+  const abortGesture = () => {
+    reset();
+    pointerEvents.stop();
+    if (notCaptured) {
+      notCaptured(detail);
+    }
+  };
+  return {
+    enable(enable = true) {
+      if (!enable) {
+        if (hasCapturedPan) {
+          pointerUp(void 0);
+        }
+        reset();
+      }
+      pointerEvents.enable(enable);
+    },
+    destroy() {
+      gesture.destroy();
+      pointerEvents.destroy();
+    }
+  };
+};
+const calcGestureData = (detail, ev) => {
+  if (!ev) {
+    return;
+  }
+  const prevX = detail.currentX;
+  const prevY = detail.currentY;
+  const prevT = detail.currentTime;
+  updateDetail(ev, detail);
+  const currentX = detail.currentX;
+  const currentY = detail.currentY;
+  const timestamp = detail.currentTime = now(ev);
+  const timeDelta = timestamp - prevT;
+  if (timeDelta > 0 && timeDelta < 100) {
+    const velocityX = (currentX - prevX) / timeDelta;
+    const velocityY = (currentY - prevY) / timeDelta;
+    detail.velocityX = velocityX * 0.7 + detail.velocityX * 0.3;
+    detail.velocityY = velocityY * 0.7 + detail.velocityY * 0.3;
+  }
+  detail.deltaX = currentX - detail.startX;
+  detail.deltaY = currentY - detail.startY;
+  detail.event = ev;
+};
+const updateDetail = (ev, detail) => {
+  let x = 0;
+  let y = 0;
+  if (ev) {
+    const changedTouches = ev.changedTouches;
+    if (changedTouches && changedTouches.length > 0) {
+      const touch = changedTouches[0];
+      x = touch.clientX;
+      y = touch.clientY;
+    } else if (ev.pageX !== void 0) {
+      x = ev.pageX;
+      y = ev.pageY;
+    }
+  }
+  detail.currentX = x;
+  detail.currentY = y;
+};
+const now = (ev) => {
+  return ev.timeStamp || Date.now();
+};
+const index2 = /* @__PURE__ */ Object.freeze({
+  __proto__: null,
+  GESTURE_CONTROLLER,
+  createGesture
+});
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -6420,7 +8717,7 @@ const ToolbarTitle = /* @__PURE__ */ proxyCustomElement$1(class ToolbarTitle2 ex
   "color": [513],
   "size": [1]
 }]);
-function defineCustomElement$1$8() {
+function defineCustomElement$1$9() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6435,7 +8732,7 @@ function defineCustomElement$1$8() {
     }
   });
 }
-const defineCustomElement$9 = defineCustomElement$1$8;
+const defineCustomElement$a = defineCustomElement$1$9;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -6458,7 +8755,9 @@ const Toggle = /* @__PURE__ */ proxyCustomElement$1(class Toggle2 extends H$1 {
     this.setupGesture = async () => {
       const { toggleTrack } = this;
       if (toggleTrack) {
-        this.gesture = (await import("./_nuxt/index2-cf5f2b6f.js")).createGesture({
+        this.gesture = (await Promise.resolve().then(function() {
+          return index2;
+        })).createGesture({
           el: toggleTrack,
           gestureName: "toggle",
           gesturePriority: 100,
@@ -6673,7 +8972,7 @@ const shouldToggle = (rtl, checked, deltaX, margin) => {
   }
 };
 let toggleIds = 0;
-function defineCustomElement$1$7() {
+function defineCustomElement$1$8() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6687,13 +8986,13 @@ function defineCustomElement$1$7() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$w();
+          defineCustomElement$A();
         }
         break;
     }
   });
 }
-const defineCustomElement$8 = defineCustomElement$1$7;
+const defineCustomElement$9 = defineCustomElement$1$8;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -6766,7 +9065,7 @@ const Toolbar = /* @__PURE__ */ proxyCustomElement$1(class Toolbar2 extends H$1 
 }, [33, "ion-toolbar", {
   "color": [513]
 }, [[0, "ionStyle", "childrenStyle"]]]);
-function defineCustomElement$1$6() {
+function defineCustomElement$1$7() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6781,7 +9080,7 @@ function defineCustomElement$1$6() {
     }
   });
 }
-const defineCustomElement$7 = defineCustomElement$1$6;
+const defineCustomElement$8 = defineCustomElement$1$7;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -6873,7 +9172,7 @@ const BackButton = /* @__PURE__ */ proxyCustomElement$1(class BackButton2 extend
   "type": [1],
   "routerAnimation": [16]
 }]);
-function defineCustomElement$1$5() {
+function defineCustomElement$1$6() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6887,18 +9186,18 @@ function defineCustomElement$1$5() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$w();
+          defineCustomElement$A();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$u();
+          defineCustomElement$x();
         }
         break;
     }
   });
 }
-const defineCustomElement$6 = defineCustomElement$1$5;
+const defineCustomElement$7 = defineCustomElement$1$6;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -6930,7 +9229,7 @@ const RouterOutlet = /* @__PURE__ */ proxyCustomElement$1(class RouterOutlet2 ex
         this.swipeHandler.onStart();
       }
     };
-    this.gesture = (await import("./_nuxt/swipe-back-1e473c75.js")).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
+    this.gesture = (await import("./_nuxt/swipe-back-08a21c8b.js")).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
       var _a;
       return (_a = this.ani) === null || _a === void 0 ? void 0 : _a.progressStep(step);
     }, (shouldComplete, step, dur) => {
@@ -7081,7 +9380,7 @@ const RouterOutlet = /* @__PURE__ */ proxyCustomElement$1(class RouterOutlet2 ex
   "setRouteId": [64],
   "getRouteId": [64]
 }]);
-function defineCustomElement$1$4() {
+function defineCustomElement$1$5() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -7096,7 +9395,7 @@ function defineCustomElement$1$4() {
     }
   });
 }
-const defineCustomElement$5 = defineCustomElement$1$4;
+const defineCustomElement$6 = defineCustomElement$1$5;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -7199,7 +9498,7 @@ const TabButton = /* @__PURE__ */ proxyCustomElement$1(class TabButton2 extends 
   "tab": [1],
   "target": [1]
 }, [[8, "ionTabBarChanged", "onTabBarChanged"]]]);
-function defineCustomElement$1$3() {
+function defineCustomElement$1$4() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -7213,13 +9512,13 @@ function defineCustomElement$1$3() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$u();
+          defineCustomElement$x();
         }
         break;
     }
   });
 }
-const defineCustomElement$4 = defineCustomElement$1$3;
+const defineCustomElement$5 = defineCustomElement$1$4;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -7285,7 +9584,7 @@ const TabBar = /* @__PURE__ */ proxyCustomElement$1(class TabBar2 extends H$1 {
   "translucent": [4],
   "keyboardVisible": [32]
 }]);
-function defineCustomElement$1$2() {
+function defineCustomElement$1$3() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -7300,7 +9599,7 @@ function defineCustomElement$1$2() {
     }
   });
 }
-const defineCustomElement$3 = defineCustomElement$1$2;
+const defineCustomElement$4 = defineCustomElement$1$3;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -7315,14 +9614,14 @@ const App = /* @__PURE__ */ proxyCustomElement$1(class App2 extends H$1 {
       rIC(async () => {
         const isHybrid2 = isPlatform(window, "hybrid");
         if (!config.getBoolean("_testing")) {
-          import("./_nuxt/index9-619901a5.js").then((module) => module.startTapClick(config));
+          import("./_nuxt/index9-bd0e2137.js").then((module) => module.startTapClick(config));
         }
         if (config.getBoolean("statusTap", isHybrid2)) {
-          import("./_nuxt/status-tap-24afbdbb.js").then((module) => module.startStatusTap());
+          import("./_nuxt/status-tap-13db3026.js").then((module) => module.startStatusTap());
         }
         if (config.getBoolean("inputShims", needInputShims())) {
           const platform = isPlatform(window, "ios") ? "ios" : "android";
-          import("./_nuxt/input-shims-11e860ed.js").then((module) => module.startInputShims(config, platform));
+          import("./_nuxt/input-shims-d19a9677.js").then((module) => module.startInputShims(config, platform));
         }
         const hardwareBackButtonModule = await import("./_nuxt/hardware-back-button-b290b24e.js");
         if (config.getBoolean("hardwareBackButton", isHybrid2)) {
@@ -7384,7 +9683,7 @@ const rIC = (callback) => {
     setTimeout(callback, 32);
   }
 };
-function defineCustomElement$1$1() {
+function defineCustomElement$1$2() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -7399,7 +9698,7 @@ function defineCustomElement$1$1() {
     }
   });
 }
-const defineCustomElement$2 = defineCustomElement$1$1;
+const defineCustomElement$3 = defineCustomElement$1$2;
 const BUILD = {
   allRenderFn: false,
   cmpDidLoad: true,
@@ -8969,7 +11268,7 @@ const createColorClasses = (color) => {
     [`ion-color-${color}`]: true
   } : null;
 };
-function defineCustomElement$1() {
+function defineCustomElement$1$1() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -8984,7 +11283,7 @@ function defineCustomElement$1() {
     }
   });
 }
-const defineCustomElement = defineCustomElement$1;
+const defineCustomElement$2 = defineCustomElement$1$1;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -8994,6 +11293,993 @@ var Style;
   Style2["Light"] = "LIGHT";
   Style2["Default"] = "DEFAULT";
 })(Style || (Style = {}));
+const StatusBar = {
+  getEngine() {
+    var _a;
+    return ((_a = void 0) === null || _a === void 0 ? void 0 : _a.isPluginAvailable("StatusBar")) && void 0;
+  },
+  supportsDefaultStatusBarStyle() {
+    var _a;
+    return !!((_a = void 0) === null || _a === void 0 ? void 0 : _a.PluginHeaders);
+  },
+  setStyle(options) {
+    const engine = this.getEngine();
+    if (!engine) {
+      return;
+    }
+    engine.setStyle(options);
+  },
+  getStyle: async function() {
+    const engine = this.getEngine();
+    if (!engine) {
+      return Style.Default;
+    }
+    const { style } = await engine.getInfo();
+    return style;
+  }
+};
+const getBackdropValueForSheet = (x, backdropBreakpoint) => {
+  if (backdropBreakpoint === 1) {
+    return 0;
+  }
+  const slope = 1 / (1 - backdropBreakpoint);
+  const b = -(backdropBreakpoint * slope);
+  return x * slope + b;
+};
+const setCardStatusBarDefault = (defaultStyle = Style.Default) => {
+  {
+    return;
+  }
+};
+const handleCanDismiss = async (el, animation2) => {
+  if (typeof el.canDismiss !== "function") {
+    return;
+  }
+  const shouldDismiss = await el.canDismiss(void 0, GESTURE);
+  if (!shouldDismiss) {
+    return;
+  }
+  if (animation2.isRunning()) {
+    animation2.onFinish(() => {
+      el.dismiss(void 0, "handler");
+    }, { oneTimeCallback: true });
+  } else {
+    el.dismiss(void 0, "handler");
+  }
+};
+const calculateSpringStep = (t) => {
+  return 255275e-8 * 2.71828 ** (-14.9619 * t) - 1.00255 * 2.71828 ** (-0.0380968 * t) + 1;
+};
+const SwipeToCloseDefaults = {
+  MIN_PRESENTING_SCALE: 0.93
+};
+const createSwipeToCloseGesture = (el, animation2, statusBarStyle, onDismiss) => {
+  const DISMISS_THRESHOLD = 0.5;
+  const height = el.offsetHeight;
+  let isOpen = false;
+  let canDismissBlocksGesture = false;
+  let contentEl = null;
+  let scrollEl = null;
+  const canDismissMaxStep = 0.2;
+  let initialScrollY = true;
+  let lastStep = 0;
+  const getScrollY = () => {
+    if (contentEl && isIonContent(contentEl)) {
+      return contentEl.scrollY;
+    } else {
+      return true;
+    }
+  };
+  const canStart = (detail) => {
+    const target = detail.event.target;
+    if (target === null || !target.closest) {
+      return true;
+    }
+    contentEl = findClosestIonContent(target);
+    if (contentEl) {
+      if (isIonContent(contentEl)) {
+        const root = getElementRoot(contentEl);
+        scrollEl = root.querySelector(".inner-scroll");
+      } else {
+        scrollEl = contentEl;
+      }
+      const hasRefresherInContent = !!contentEl.querySelector("ion-refresher");
+      return !hasRefresherInContent && scrollEl.scrollTop === 0;
+    }
+    const footer = target.closest("ion-footer");
+    if (footer === null) {
+      return true;
+    }
+    return false;
+  };
+  const onStart = (detail) => {
+    const { deltaY } = detail;
+    initialScrollY = getScrollY();
+    canDismissBlocksGesture = el.canDismiss !== void 0 && el.canDismiss !== true;
+    if (deltaY > 0 && contentEl) {
+      disableContentScrollY(contentEl);
+    }
+    animation2.progressStart(true, isOpen ? 1 : 0);
+  };
+  const onMove = (detail) => {
+    const { deltaY } = detail;
+    if (deltaY > 0 && contentEl) {
+      disableContentScrollY(contentEl);
+    }
+    const step = detail.deltaY / height;
+    const isAttemptingDismissWithCanDismiss = step >= 0 && canDismissBlocksGesture;
+    const maxStep = isAttemptingDismissWithCanDismiss ? canDismissMaxStep : 0.9999;
+    const processedStep = isAttemptingDismissWithCanDismiss ? calculateSpringStep(step / maxStep) : step;
+    const clampedStep = clamp(1e-4, processedStep, maxStep);
+    animation2.progressStep(clampedStep);
+    if (clampedStep >= DISMISS_THRESHOLD && lastStep < DISMISS_THRESHOLD) {
+      setCardStatusBarDefault(statusBarStyle);
+    }
+    lastStep = clampedStep;
+  };
+  const onEnd = (detail) => {
+    const velocity = detail.velocityY;
+    const step = detail.deltaY / height;
+    const isAttemptingDismissWithCanDismiss = step >= 0 && canDismissBlocksGesture;
+    const maxStep = isAttemptingDismissWithCanDismiss ? canDismissMaxStep : 0.9999;
+    const processedStep = isAttemptingDismissWithCanDismiss ? calculateSpringStep(step / maxStep) : step;
+    const clampedStep = clamp(1e-4, processedStep, maxStep);
+    const threshold = (detail.deltaY + velocity * 1e3) / height;
+    const shouldComplete = !isAttemptingDismissWithCanDismiss && threshold >= DISMISS_THRESHOLD;
+    let newStepValue = shouldComplete ? -1e-3 : 1e-3;
+    if (!shouldComplete) {
+      animation2.easing("cubic-bezier(1, 0, 0.68, 0.28)");
+      newStepValue += getTimeGivenProgression([0, 0], [1, 0], [0.68, 0.28], [1, 1], clampedStep)[0];
+    } else {
+      animation2.easing("cubic-bezier(0.32, 0.72, 0, 1)");
+      newStepValue += getTimeGivenProgression([0, 0], [0.32, 0.72], [0, 1], [1, 1], clampedStep)[0];
+    }
+    const duration = shouldComplete ? computeDuration(step * height, velocity) : computeDuration((1 - clampedStep) * height, velocity);
+    isOpen = shouldComplete;
+    gesture.enable(false);
+    if (contentEl) {
+      resetContentScrollY(contentEl, initialScrollY);
+    }
+    animation2.onFinish(() => {
+      if (!shouldComplete) {
+        gesture.enable(true);
+      }
+    }).progressEnd(shouldComplete ? 1 : 0, newStepValue, duration);
+    if (isAttemptingDismissWithCanDismiss && clampedStep > maxStep / 4) {
+      handleCanDismiss(el, animation2);
+    } else if (shouldComplete) {
+      onDismiss();
+    }
+  };
+  const gesture = createGesture({
+    el,
+    gestureName: "modalSwipeToClose",
+    gesturePriority: 39,
+    direction: "y",
+    threshold: 10,
+    canStart,
+    onStart,
+    onMove,
+    onEnd
+  });
+  return gesture;
+};
+const computeDuration = (remaining, velocity) => {
+  return clamp(400, remaining / Math.abs(velocity * 1.1), 500);
+};
+const createSheetEnterAnimation = (opts) => {
+  const { currentBreakpoint, backdropBreakpoint } = opts;
+  const shouldShowBackdrop = backdropBreakpoint === void 0 || backdropBreakpoint < currentBreakpoint;
+  const initialBackdrop = shouldShowBackdrop ? `calc(var(--backdrop-opacity) * ${currentBreakpoint})` : "0";
+  const backdropAnimation = createAnimation("backdropAnimation").fromTo("opacity", 0, initialBackdrop);
+  if (shouldShowBackdrop) {
+    backdropAnimation.beforeStyles({
+      "pointer-events": "none"
+    }).afterClearStyles(["pointer-events"]);
+  }
+  const wrapperAnimation = createAnimation("wrapperAnimation").keyframes([
+    { offset: 0, opacity: 1, transform: "translateY(100%)" },
+    { offset: 1, opacity: 1, transform: `translateY(${100 - currentBreakpoint * 100}%)` }
+  ]);
+  return { wrapperAnimation, backdropAnimation };
+};
+const createSheetLeaveAnimation = (opts) => {
+  const { currentBreakpoint, backdropBreakpoint } = opts;
+  const backdropValue = `calc(var(--backdrop-opacity) * ${getBackdropValueForSheet(currentBreakpoint, backdropBreakpoint)})`;
+  const defaultBackdrop = [
+    { offset: 0, opacity: backdropValue },
+    { offset: 1, opacity: 0 }
+  ];
+  const customBackdrop = [
+    { offset: 0, opacity: backdropValue },
+    { offset: backdropBreakpoint, opacity: 0 },
+    { offset: 1, opacity: 0 }
+  ];
+  const backdropAnimation = createAnimation("backdropAnimation").keyframes(backdropBreakpoint !== 0 ? customBackdrop : defaultBackdrop);
+  const wrapperAnimation = createAnimation("wrapperAnimation").keyframes([
+    { offset: 0, opacity: 1, transform: `translateY(${100 - currentBreakpoint * 100}%)` },
+    { offset: 1, opacity: 1, transform: `translateY(100%)` }
+  ]);
+  return { wrapperAnimation, backdropAnimation };
+};
+const createEnterAnimation$1 = () => {
+  const backdropAnimation = createAnimation().fromTo("opacity", 0.01, "var(--backdrop-opacity)").beforeStyles({
+    "pointer-events": "none"
+  }).afterClearStyles(["pointer-events"]);
+  const wrapperAnimation = createAnimation().fromTo("transform", "translateY(100vh)", "translateY(0vh)");
+  return { backdropAnimation, wrapperAnimation };
+};
+const iosEnterAnimation = (baseEl, opts) => {
+  const { presentingEl, currentBreakpoint } = opts;
+  const root = getElementRoot(baseEl);
+  const { wrapperAnimation, backdropAnimation } = currentBreakpoint !== void 0 ? createSheetEnterAnimation(opts) : createEnterAnimation$1();
+  backdropAnimation.addElement(root.querySelector("ion-backdrop"));
+  wrapperAnimation.addElement(root.querySelectorAll(".modal-wrapper, .modal-shadow")).beforeStyles({ opacity: 1 });
+  const baseAnimation = createAnimation("entering-base").addElement(baseEl).easing("cubic-bezier(0.32,0.72,0,1)").duration(500).addAnimation(wrapperAnimation);
+  if (presentingEl) {
+    const isMobile2 = window.innerWidth < 768;
+    const hasCardModal = presentingEl.tagName === "ION-MODAL" && presentingEl.presentingElement !== void 0;
+    const presentingElRoot = getElementRoot(presentingEl);
+    const presentingAnimation = createAnimation().beforeStyles({
+      transform: "translateY(0)",
+      "transform-origin": "top center",
+      overflow: "hidden"
+    });
+    const bodyEl = document.body;
+    if (isMobile2) {
+      const transformOffset = !CSS.supports("width", "max(0px, 1px)") ? "30px" : "max(30px, var(--ion-safe-area-top))";
+      const modalTransform = hasCardModal ? "-10px" : transformOffset;
+      const toPresentingScale = SwipeToCloseDefaults.MIN_PRESENTING_SCALE;
+      const finalTransform = `translateY(${modalTransform}) scale(${toPresentingScale})`;
+      presentingAnimation.afterStyles({
+        transform: finalTransform
+      }).beforeAddWrite(() => bodyEl.style.setProperty("background-color", "black")).addElement(presentingEl).keyframes([
+        { offset: 0, filter: "contrast(1)", transform: "translateY(0px) scale(1)", borderRadius: "0px" },
+        { offset: 1, filter: "contrast(0.85)", transform: finalTransform, borderRadius: "10px 10px 0 0" }
+      ]);
+      baseAnimation.addAnimation(presentingAnimation);
+    } else {
+      baseAnimation.addAnimation(backdropAnimation);
+      if (!hasCardModal) {
+        wrapperAnimation.fromTo("opacity", "0", "1");
+      } else {
+        const toPresentingScale = hasCardModal ? SwipeToCloseDefaults.MIN_PRESENTING_SCALE : 1;
+        const finalTransform = `translateY(-10px) scale(${toPresentingScale})`;
+        presentingAnimation.afterStyles({
+          transform: finalTransform
+        }).addElement(presentingElRoot.querySelector(".modal-wrapper")).keyframes([
+          { offset: 0, filter: "contrast(1)", transform: "translateY(0) scale(1)" },
+          { offset: 1, filter: "contrast(0.85)", transform: finalTransform }
+        ]);
+        const shadowAnimation = createAnimation().afterStyles({
+          transform: finalTransform
+        }).addElement(presentingElRoot.querySelector(".modal-shadow")).keyframes([
+          { offset: 0, opacity: "1", transform: "translateY(0) scale(1)" },
+          { offset: 1, opacity: "0", transform: finalTransform }
+        ]);
+        baseAnimation.addAnimation([presentingAnimation, shadowAnimation]);
+      }
+    }
+  } else {
+    baseAnimation.addAnimation(backdropAnimation);
+  }
+  return baseAnimation;
+};
+const createLeaveAnimation$1 = () => {
+  const backdropAnimation = createAnimation().fromTo("opacity", "var(--backdrop-opacity)", 0);
+  const wrapperAnimation = createAnimation().fromTo("transform", "translateY(0vh)", "translateY(100vh)");
+  return { backdropAnimation, wrapperAnimation };
+};
+const iosLeaveAnimation = (baseEl, opts, duration = 500) => {
+  const { presentingEl, currentBreakpoint } = opts;
+  const root = getElementRoot(baseEl);
+  const { wrapperAnimation, backdropAnimation } = currentBreakpoint !== void 0 ? createSheetLeaveAnimation(opts) : createLeaveAnimation$1();
+  backdropAnimation.addElement(root.querySelector("ion-backdrop"));
+  wrapperAnimation.addElement(root.querySelectorAll(".modal-wrapper, .modal-shadow")).beforeStyles({ opacity: 1 });
+  const baseAnimation = createAnimation("leaving-base").addElement(baseEl).easing("cubic-bezier(0.32,0.72,0,1)").duration(duration).addAnimation(wrapperAnimation);
+  if (presentingEl) {
+    const isMobile2 = window.innerWidth < 768;
+    const hasCardModal = presentingEl.tagName === "ION-MODAL" && presentingEl.presentingElement !== void 0;
+    const presentingElRoot = getElementRoot(presentingEl);
+    const presentingAnimation = createAnimation().beforeClearStyles(["transform"]).afterClearStyles(["transform"]).onFinish((currentStep) => {
+      if (currentStep !== 1) {
+        return;
+      }
+      presentingEl.style.setProperty("overflow", "");
+      const numModals = Array.from(bodyEl.querySelectorAll("ion-modal")).filter((m) => m.presentingElement !== void 0).length;
+      if (numModals <= 1) {
+        bodyEl.style.setProperty("background-color", "");
+      }
+    });
+    const bodyEl = document.body;
+    if (isMobile2) {
+      const transformOffset = !CSS.supports("width", "max(0px, 1px)") ? "30px" : "max(30px, var(--ion-safe-area-top))";
+      const modalTransform = hasCardModal ? "-10px" : transformOffset;
+      const toPresentingScale = SwipeToCloseDefaults.MIN_PRESENTING_SCALE;
+      const finalTransform = `translateY(${modalTransform}) scale(${toPresentingScale})`;
+      presentingAnimation.addElement(presentingEl).keyframes([
+        { offset: 0, filter: "contrast(0.85)", transform: finalTransform, borderRadius: "10px 10px 0 0" },
+        { offset: 1, filter: "contrast(1)", transform: "translateY(0px) scale(1)", borderRadius: "0px" }
+      ]);
+      baseAnimation.addAnimation(presentingAnimation);
+    } else {
+      baseAnimation.addAnimation(backdropAnimation);
+      if (!hasCardModal) {
+        wrapperAnimation.fromTo("opacity", "1", "0");
+      } else {
+        const toPresentingScale = hasCardModal ? SwipeToCloseDefaults.MIN_PRESENTING_SCALE : 1;
+        const finalTransform = `translateY(-10px) scale(${toPresentingScale})`;
+        presentingAnimation.addElement(presentingElRoot.querySelector(".modal-wrapper")).afterStyles({
+          transform: "translate3d(0, 0, 0)"
+        }).keyframes([
+          { offset: 0, filter: "contrast(0.85)", transform: finalTransform },
+          { offset: 1, filter: "contrast(1)", transform: "translateY(0) scale(1)" }
+        ]);
+        const shadowAnimation = createAnimation().addElement(presentingElRoot.querySelector(".modal-shadow")).afterStyles({
+          transform: "translateY(0) scale(1)"
+        }).keyframes([
+          { offset: 0, opacity: "0", transform: finalTransform },
+          { offset: 1, opacity: "1", transform: "translateY(0) scale(1)" }
+        ]);
+        baseAnimation.addAnimation([presentingAnimation, shadowAnimation]);
+      }
+    }
+  } else {
+    baseAnimation.addAnimation(backdropAnimation);
+  }
+  return baseAnimation;
+};
+const createEnterAnimation = () => {
+  const backdropAnimation = createAnimation().fromTo("opacity", 0.01, "var(--backdrop-opacity)").beforeStyles({
+    "pointer-events": "none"
+  }).afterClearStyles(["pointer-events"]);
+  const wrapperAnimation = createAnimation().keyframes([
+    { offset: 0, opacity: 0.01, transform: "translateY(40px)" },
+    { offset: 1, opacity: 1, transform: `translateY(0px)` }
+  ]);
+  return { backdropAnimation, wrapperAnimation };
+};
+const mdEnterAnimation = (baseEl, opts) => {
+  const { currentBreakpoint } = opts;
+  const root = getElementRoot(baseEl);
+  const { wrapperAnimation, backdropAnimation } = currentBreakpoint !== void 0 ? createSheetEnterAnimation(opts) : createEnterAnimation();
+  backdropAnimation.addElement(root.querySelector("ion-backdrop"));
+  wrapperAnimation.addElement(root.querySelector(".modal-wrapper"));
+  return createAnimation().addElement(baseEl).easing("cubic-bezier(0.36,0.66,0.04,1)").duration(280).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const createLeaveAnimation = () => {
+  const backdropAnimation = createAnimation().fromTo("opacity", "var(--backdrop-opacity)", 0);
+  const wrapperAnimation = createAnimation().keyframes([
+    { offset: 0, opacity: 0.99, transform: `translateY(0px)` },
+    { offset: 1, opacity: 0, transform: "translateY(40px)" }
+  ]);
+  return { backdropAnimation, wrapperAnimation };
+};
+const mdLeaveAnimation = (baseEl, opts) => {
+  const { currentBreakpoint } = opts;
+  const root = getElementRoot(baseEl);
+  const { wrapperAnimation, backdropAnimation } = currentBreakpoint !== void 0 ? createSheetLeaveAnimation(opts) : createLeaveAnimation();
+  backdropAnimation.addElement(root.querySelector("ion-backdrop"));
+  wrapperAnimation.addElement(root.querySelector(".modal-wrapper"));
+  return createAnimation().easing("cubic-bezier(0.47,0,0.745,0.715)").duration(200).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const createSheetGesture = (baseEl, backdropEl, wrapperEl, initialBreakpoint, backdropBreakpoint, animation2, breakpoints = [], getCurrentBreakpoint, onDismiss, onBreakpointChange) => {
+  const defaultBackdrop = [
+    { offset: 0, opacity: "var(--backdrop-opacity)" },
+    { offset: 1, opacity: 0.01 }
+  ];
+  const customBackdrop = [
+    { offset: 0, opacity: "var(--backdrop-opacity)" },
+    { offset: 1 - backdropBreakpoint, opacity: 0 },
+    { offset: 1, opacity: 0 }
+  ];
+  const SheetDefaults = {
+    WRAPPER_KEYFRAMES: [
+      { offset: 0, transform: "translateY(0%)" },
+      { offset: 1, transform: "translateY(100%)" }
+    ],
+    BACKDROP_KEYFRAMES: backdropBreakpoint !== 0 ? customBackdrop : defaultBackdrop
+  };
+  const contentEl = baseEl.querySelector("ion-content");
+  const height = wrapperEl.clientHeight;
+  let currentBreakpoint = initialBreakpoint;
+  let offset = 0;
+  let canDismissBlocksGesture = false;
+  const canDismissMaxStep = 0.95;
+  const wrapperAnimation = animation2.childAnimations.find((ani) => ani.id === "wrapperAnimation");
+  const backdropAnimation = animation2.childAnimations.find((ani) => ani.id === "backdropAnimation");
+  const maxBreakpoint = breakpoints[breakpoints.length - 1];
+  const minBreakpoint = breakpoints[0];
+  const enableBackdrop = () => {
+    baseEl.style.setProperty("pointer-events", "auto");
+    backdropEl.style.setProperty("pointer-events", "auto");
+    baseEl.classList.remove("ion-disable-focus-trap");
+  };
+  const disableBackdrop = () => {
+    baseEl.style.setProperty("pointer-events", "none");
+    backdropEl.style.setProperty("pointer-events", "none");
+    baseEl.classList.add("ion-disable-focus-trap");
+  };
+  if (wrapperAnimation && backdropAnimation) {
+    wrapperAnimation.keyframes([...SheetDefaults.WRAPPER_KEYFRAMES]);
+    backdropAnimation.keyframes([...SheetDefaults.BACKDROP_KEYFRAMES]);
+    animation2.progressStart(true, 1 - currentBreakpoint);
+    const shouldEnableBackdrop = currentBreakpoint > backdropBreakpoint;
+    if (shouldEnableBackdrop) {
+      enableBackdrop();
+    } else {
+      disableBackdrop();
+    }
+  }
+  if (contentEl && currentBreakpoint !== maxBreakpoint) {
+    contentEl.scrollY = false;
+  }
+  const canStart = (detail) => {
+    const content = detail.event.target.closest("ion-content");
+    currentBreakpoint = getCurrentBreakpoint();
+    if (currentBreakpoint === 1 && content) {
+      return false;
+    }
+    return true;
+  };
+  const onStart = () => {
+    canDismissBlocksGesture = baseEl.canDismiss !== void 0 && baseEl.canDismiss !== true && minBreakpoint === 0;
+    if (contentEl) {
+      contentEl.scrollY = false;
+    }
+    raf(() => {
+      baseEl.focus();
+    });
+    animation2.progressStart(true, 1 - currentBreakpoint);
+  };
+  const onMove = (detail) => {
+    const initialStep = 1 - currentBreakpoint;
+    const secondToLastBreakpoint = breakpoints.length > 1 ? 1 - breakpoints[1] : void 0;
+    const step = initialStep + detail.deltaY / height;
+    const isAttemptingDismissWithCanDismiss = secondToLastBreakpoint !== void 0 && step >= secondToLastBreakpoint && canDismissBlocksGesture;
+    const maxStep = isAttemptingDismissWithCanDismiss ? canDismissMaxStep : 0.9999;
+    const processedStep = isAttemptingDismissWithCanDismiss && secondToLastBreakpoint !== void 0 ? secondToLastBreakpoint + calculateSpringStep((step - secondToLastBreakpoint) / (maxStep - secondToLastBreakpoint)) : step;
+    offset = clamp(1e-4, processedStep, maxStep);
+    animation2.progressStep(offset);
+  };
+  const onEnd = (detail) => {
+    const velocity = detail.velocityY;
+    const threshold = (detail.deltaY + velocity * 350) / height;
+    const diff = currentBreakpoint - threshold;
+    const closest = breakpoints.reduce((a, b) => {
+      return Math.abs(b - diff) < Math.abs(a - diff) ? b : a;
+    });
+    moveSheetToBreakpoint({
+      breakpoint: closest,
+      breakpointOffset: offset,
+      canDismiss: canDismissBlocksGesture
+    });
+  };
+  const moveSheetToBreakpoint = (options) => {
+    const { breakpoint, canDismiss, breakpointOffset } = options;
+    const shouldPreventDismiss = canDismiss && breakpoint === 0;
+    const snapToBreakpoint = shouldPreventDismiss ? currentBreakpoint : breakpoint;
+    const shouldRemainOpen = snapToBreakpoint !== 0;
+    currentBreakpoint = 0;
+    if (wrapperAnimation && backdropAnimation) {
+      wrapperAnimation.keyframes([
+        { offset: 0, transform: `translateY(${breakpointOffset * 100}%)` },
+        { offset: 1, transform: `translateY(${(1 - snapToBreakpoint) * 100}%)` }
+      ]);
+      backdropAnimation.keyframes([
+        {
+          offset: 0,
+          opacity: `calc(var(--backdrop-opacity) * ${getBackdropValueForSheet(1 - breakpointOffset, backdropBreakpoint)})`
+        },
+        {
+          offset: 1,
+          opacity: `calc(var(--backdrop-opacity) * ${getBackdropValueForSheet(snapToBreakpoint, backdropBreakpoint)})`
+        }
+      ]);
+      animation2.progressStep(0);
+    }
+    gesture.enable(false);
+    if (shouldPreventDismiss) {
+      handleCanDismiss(baseEl, animation2);
+    } else if (!shouldRemainOpen) {
+      onDismiss();
+    }
+    return new Promise((resolve) => {
+      animation2.onFinish(() => {
+        if (shouldRemainOpen) {
+          if (wrapperAnimation && backdropAnimation) {
+            raf(() => {
+              wrapperAnimation.keyframes([...SheetDefaults.WRAPPER_KEYFRAMES]);
+              backdropAnimation.keyframes([...SheetDefaults.BACKDROP_KEYFRAMES]);
+              animation2.progressStart(true, 1 - snapToBreakpoint);
+              currentBreakpoint = snapToBreakpoint;
+              onBreakpointChange(currentBreakpoint);
+              if (contentEl && currentBreakpoint === breakpoints[breakpoints.length - 1]) {
+                contentEl.scrollY = true;
+              }
+              const shouldEnableBackdrop = currentBreakpoint > backdropBreakpoint;
+              if (shouldEnableBackdrop) {
+                enableBackdrop();
+              } else {
+                disableBackdrop();
+              }
+              gesture.enable(true);
+              resolve();
+            });
+          } else {
+            gesture.enable(true);
+            resolve();
+          }
+        } else {
+          resolve();
+        }
+      }, { oneTimeCallback: true }).progressEnd(1, 0, 500);
+    });
+  };
+  const gesture = createGesture({
+    el: wrapperEl,
+    gestureName: "modalSheet",
+    gesturePriority: 40,
+    direction: "y",
+    threshold: 10,
+    canStart,
+    onStart,
+    onMove,
+    onEnd
+  });
+  return {
+    gesture,
+    moveSheetToBreakpoint
+  };
+};
+const modalIosCss = ':host{--width:100%;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--overflow:hidden;--border-radius:0;--border-width:0;--border-style:none;--border-color:transparent;--background:var(--ion-background-color, #fff);--box-shadow:none;--backdrop-opacity:0;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;outline:none;color:var(--ion-text-color, #000);contain:strict}.modal-wrapper,ion-backdrop{pointer-events:auto}:host(.overlay-hidden){display:none}.modal-wrapper,.modal-shadow{border-radius:var(--border-radius);width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);overflow:var(--overflow);z-index:10}.modal-shadow{position:absolute;background:transparent}@media only screen and (min-width: 768px) and (min-height: 600px){:host{--width:600px;--height:500px;--ion-safe-area-top:0px;--ion-safe-area-bottom:0px;--ion-safe-area-right:0px;--ion-safe-area-left:0px}}@media only screen and (min-width: 768px) and (min-height: 768px){:host{--width:600px;--height:600px}}.modal-handle{left:0px;right:0px;top:5px;border-radius:8px;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto;position:absolute;width:36px;height:5px;-webkit-transform:translateZ(0);transform:translateZ(0);border:0;background:var(--ion-color-step-350, #c0c0be);cursor:pointer;z-index:11}.modal-handle::before{-webkit-padding-start:4px;padding-inline-start:4px;-webkit-padding-end:4px;padding-inline-end:4px;padding-top:4px;padding-bottom:4px;position:absolute;width:36px;height:5px;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);content:""}:host(.modal-sheet){--height:calc(100% - (var(--ion-safe-area-top) + 10px))}:host(.modal-sheet) .modal-wrapper,:host(.modal-sheet) .modal-shadow{position:absolute;bottom:0}:host{--backdrop-opacity:var(--ion-backdrop-opacity, 0.4)}:host(.modal-card),:host(.modal-sheet){--border-radius:10px}@media only screen and (min-width: 768px) and (min-height: 600px){:host{--border-radius:10px}}.modal-wrapper{-webkit-transform:translate3d(0,  100%,  0);transform:translate3d(0,  100%,  0)}@media screen and (max-width: 767px){@supports (width: max(0px, 1px)){:host(.modal-card){--height:calc(100% - max(30px, var(--ion-safe-area-top)) - 10px)}}@supports not (width: max(0px, 1px)){:host(.modal-card){--height:calc(100% - 40px)}}:host(.modal-card) .modal-wrapper{border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0;border-bottom-left-radius:0}:host-context([dir=rtl]):host(.modal-card) .modal-wrapper,:host-context([dir=rtl]).modal-card .modal-wrapper{border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0;border-bottom-left-radius:0}@supports selector(:dir(rtl)){:host(.modal-card) .modal-wrapper:dir(rtl){border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0;border-bottom-left-radius:0}}:host(.modal-card){--backdrop-opacity:0;--width:100%;-ms-flex-align:end;align-items:flex-end}:host(.modal-card) .modal-shadow{display:none}:host(.modal-card) ion-backdrop{pointer-events:none}}@media screen and (min-width: 768px){:host(.modal-card){--width:calc(100% - 120px);--height:calc(100% - (120px + var(--ion-safe-area-top) + var(--ion-safe-area-bottom)));--max-width:720px;--max-height:1000px;--backdrop-opacity:0;--box-shadow:0px 0px 30px 10px rgba(0, 0, 0, 0.1);-webkit-transition:all 0.5s ease-in-out;transition:all 0.5s ease-in-out}:host(.modal-card) .modal-wrapper{-webkit-box-shadow:none;box-shadow:none}:host(.modal-card) .modal-shadow{-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow)}}:host(.modal-sheet) .modal-wrapper{border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0;border-bottom-left-radius:0}:host-context([dir=rtl]):host(.modal-sheet) .modal-wrapper,:host-context([dir=rtl]).modal-sheet .modal-wrapper{border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0;border-bottom-left-radius:0}@supports selector(:dir(rtl)){:host(.modal-sheet) .modal-wrapper:dir(rtl){border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0;border-bottom-left-radius:0}}';
+const modalMdCss = ':host{--width:100%;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--overflow:hidden;--border-radius:0;--border-width:0;--border-style:none;--border-color:transparent;--background:var(--ion-background-color, #fff);--box-shadow:none;--backdrop-opacity:0;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;outline:none;color:var(--ion-text-color, #000);contain:strict}.modal-wrapper,ion-backdrop{pointer-events:auto}:host(.overlay-hidden){display:none}.modal-wrapper,.modal-shadow{border-radius:var(--border-radius);width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);overflow:var(--overflow);z-index:10}.modal-shadow{position:absolute;background:transparent}@media only screen and (min-width: 768px) and (min-height: 600px){:host{--width:600px;--height:500px;--ion-safe-area-top:0px;--ion-safe-area-bottom:0px;--ion-safe-area-right:0px;--ion-safe-area-left:0px}}@media only screen and (min-width: 768px) and (min-height: 768px){:host{--width:600px;--height:600px}}.modal-handle{left:0px;right:0px;top:5px;border-radius:8px;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto;position:absolute;width:36px;height:5px;-webkit-transform:translateZ(0);transform:translateZ(0);border:0;background:var(--ion-color-step-350, #c0c0be);cursor:pointer;z-index:11}.modal-handle::before{-webkit-padding-start:4px;padding-inline-start:4px;-webkit-padding-end:4px;padding-inline-end:4px;padding-top:4px;padding-bottom:4px;position:absolute;width:36px;height:5px;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);content:""}:host(.modal-sheet){--height:calc(100% - (var(--ion-safe-area-top) + 10px))}:host(.modal-sheet) .modal-wrapper,:host(.modal-sheet) .modal-shadow{position:absolute;bottom:0}:host{--backdrop-opacity:var(--ion-backdrop-opacity, 0.32)}@media only screen and (min-width: 768px) and (min-height: 600px){:host{--border-radius:2px;--box-shadow:0 28px 48px rgba(0, 0, 0, 0.4)}}.modal-wrapper{-webkit-transform:translate3d(0,  40px,  0);transform:translate3d(0,  40px,  0);opacity:0.01}';
+const Modal = /* @__PURE__ */ proxyCustomElement$1(class Modal2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.didPresent = createEvent(this, "ionModalDidPresent", 7);
+    this.willPresent = createEvent(this, "ionModalWillPresent", 7);
+    this.willDismiss = createEvent(this, "ionModalWillDismiss", 7);
+    this.didDismiss = createEvent(this, "ionModalDidDismiss", 7);
+    this.ionBreakpointDidChange = createEvent(this, "ionBreakpointDidChange", 7);
+    this.didPresentShorthand = createEvent(this, "didPresent", 7);
+    this.willPresentShorthand = createEvent(this, "willPresent", 7);
+    this.willDismissShorthand = createEvent(this, "willDismiss", 7);
+    this.didDismissShorthand = createEvent(this, "didDismiss", 7);
+    this.ionMount = createEvent(this, "ionMount", 7);
+    this.triggerController = createTriggerController();
+    this.coreDelegate = CoreDelegate();
+    this.isSheetModal = false;
+    this.inheritedAttributes = {};
+    this.inline = false;
+    this.gestureAnimationDismissing = false;
+    this.onHandleClick = () => {
+      const { sheetTransition, handleBehavior } = this;
+      if (handleBehavior !== "cycle" || sheetTransition !== void 0) {
+        return;
+      }
+      this.moveToNextBreakpoint();
+    };
+    this.onBackdropTap = () => {
+      const { sheetTransition } = this;
+      if (sheetTransition !== void 0) {
+        return;
+      }
+      this.dismiss(void 0, BACKDROP);
+    };
+    this.onLifecycle = (modalEvent) => {
+      const el = this.usersElement;
+      const name = LIFECYCLE_MAP[modalEvent.type];
+      if (el && name) {
+        const ev = new CustomEvent(name, {
+          bubbles: false,
+          cancelable: false,
+          detail: modalEvent.detail
+        });
+        el.dispatchEvent(ev);
+      }
+    };
+    this.presented = false;
+    this.hasController = false;
+    this.overlayIndex = void 0;
+    this.delegate = void 0;
+    this.keyboardClose = true;
+    this.enterAnimation = void 0;
+    this.leaveAnimation = void 0;
+    this.breakpoints = void 0;
+    this.initialBreakpoint = void 0;
+    this.backdropBreakpoint = 0;
+    this.handle = void 0;
+    this.handleBehavior = "none";
+    this.component = void 0;
+    this.componentProps = void 0;
+    this.cssClass = void 0;
+    this.backdropDismiss = true;
+    this.showBackdrop = true;
+    this.animated = true;
+    this.presentingElement = void 0;
+    this.htmlAttributes = void 0;
+    this.isOpen = false;
+    this.trigger = void 0;
+    this.keepContentsMounted = false;
+    this.canDismiss = true;
+  }
+  onIsOpenChange(newValue, oldValue) {
+    if (newValue === true && oldValue === false) {
+      this.present();
+    } else if (newValue === false && oldValue === true) {
+      this.dismiss();
+    }
+  }
+  triggerChanged() {
+    const { trigger, el, triggerController } = this;
+    if (trigger) {
+      triggerController.addClickListener(el, trigger);
+    }
+  }
+  breakpointsChanged(breakpoints) {
+    if (breakpoints !== void 0) {
+      this.sortedBreakpoints = breakpoints.sort((a, b) => a - b);
+    }
+  }
+  connectedCallback() {
+    const { el } = this;
+    prepareOverlay(el);
+    this.triggerChanged();
+  }
+  disconnectedCallback() {
+    this.triggerController.removeClickListener();
+  }
+  componentWillLoad() {
+    const { breakpoints, initialBreakpoint, el } = this;
+    const isSheetModal = this.isSheetModal = breakpoints !== void 0 && initialBreakpoint !== void 0;
+    this.inheritedAttributes = inheritAttributes$2(el, ["aria-label", "role"]);
+    if (isSheetModal) {
+      this.currentBreakpoint = this.initialBreakpoint;
+    }
+    if (breakpoints !== void 0 && initialBreakpoint !== void 0 && !breakpoints.includes(initialBreakpoint)) {
+      printIonWarning("Your breakpoints array must include the initialBreakpoint value.");
+    }
+    setOverlayId(el);
+  }
+  componentDidLoad() {
+    if (this.isOpen === true) {
+      raf(() => this.present());
+    }
+    this.breakpointsChanged(this.breakpoints);
+  }
+  /**
+   * Determines whether or not an overlay
+   * is being used inline or via a controller/JS
+   * and returns the correct delegate.
+   * By default, subsequent calls to getDelegate
+   * will use a cached version of the delegate.
+   * This is useful for calling dismiss after
+   * present so that the correct delegate is given.
+   */
+  getDelegate(force = false) {
+    if (this.workingDelegate && !force) {
+      return {
+        delegate: this.workingDelegate,
+        inline: this.inline
+      };
+    }
+    const parentEl = this.el.parentNode;
+    const inline = this.inline = parentEl !== null && !this.hasController;
+    const delegate = this.workingDelegate = inline ? this.delegate || this.coreDelegate : this.delegate;
+    return { inline, delegate };
+  }
+  /**
+   * Determines whether or not the
+   * modal is allowed to dismiss based
+   * on the state of the canDismiss prop.
+   */
+  async checkCanDismiss(data, role) {
+    const { canDismiss } = this;
+    if (typeof canDismiss === "function") {
+      return canDismiss(data, role);
+    }
+    return canDismiss;
+  }
+  /**
+   * Present the modal overlay after it has been created.
+   */
+  async present() {
+    if (this.presented) {
+      return;
+    }
+    const { presentingElement, el } = this;
+    if (this.currentTransition !== void 0) {
+      await this.currentTransition;
+    }
+    this.currentBreakpoint = this.initialBreakpoint;
+    const { inline, delegate } = this.getDelegate(true);
+    this.usersElement = await attachComponent(delegate, el, this.component, ["ion-page"], this.componentProps, inline);
+    this.ionMount.emit();
+    if (hasLazyBuild(el)) {
+      await deepReady(this.usersElement);
+    } else if (!this.keepContentsMounted) {
+      await waitForMount();
+    }
+    writeTask$1(() => this.el.classList.add("show-modal"));
+    this.currentTransition = present(this, "modalEnter", iosEnterAnimation, mdEnterAnimation, {
+      presentingEl: presentingElement,
+      currentBreakpoint: this.initialBreakpoint,
+      backdropBreakpoint: this.backdropBreakpoint
+    });
+    const hasCardModal = presentingElement !== void 0;
+    if (hasCardModal && getIonMode$2(this) === "ios") {
+      this.statusBarStyle = await StatusBar.getStyle();
+    }
+    await this.currentTransition;
+    if (this.isSheetModal) {
+      this.initSheetGesture();
+    } else if (hasCardModal) {
+      this.initSwipeToClose();
+    }
+    this.currentTransition = void 0;
+  }
+  initSwipeToClose() {
+    var _a;
+    if (getIonMode$2(this) !== "ios") {
+      return;
+    }
+    const { el } = this;
+    const animationBuilder = this.leaveAnimation || config.get("modalLeave", iosLeaveAnimation);
+    const ani = this.animation = animationBuilder(el, { presentingEl: this.presentingElement });
+    const contentEl = findIonContent(el);
+    if (!contentEl) {
+      printIonContentErrorMsg(el);
+      return;
+    }
+    const statusBarStyle = (_a = this.statusBarStyle) !== null && _a !== void 0 ? _a : Style.Default;
+    this.gesture = createSwipeToCloseGesture(el, ani, statusBarStyle, () => {
+      this.gestureAnimationDismissing = true;
+      this.animation.onFinish(async () => {
+        await this.dismiss(void 0, GESTURE);
+        this.gestureAnimationDismissing = false;
+      });
+    });
+    this.gesture.enable(true);
+  }
+  initSheetGesture() {
+    const { wrapperEl, initialBreakpoint, backdropBreakpoint } = this;
+    if (!wrapperEl || initialBreakpoint === void 0) {
+      return;
+    }
+    const animationBuilder = this.enterAnimation || config.get("modalEnter", iosEnterAnimation);
+    const ani = this.animation = animationBuilder(this.el, {
+      presentingEl: this.presentingElement,
+      currentBreakpoint: initialBreakpoint,
+      backdropBreakpoint
+    });
+    ani.progressStart(true, 1);
+    const { gesture, moveSheetToBreakpoint } = createSheetGesture(this.el, this.backdropEl, wrapperEl, initialBreakpoint, backdropBreakpoint, ani, this.sortedBreakpoints, () => {
+      var _a;
+      return (_a = this.currentBreakpoint) !== null && _a !== void 0 ? _a : 0;
+    }, () => this.sheetOnDismiss(), (breakpoint) => {
+      if (this.currentBreakpoint !== breakpoint) {
+        this.currentBreakpoint = breakpoint;
+        this.ionBreakpointDidChange.emit({ breakpoint });
+      }
+    });
+    this.gesture = gesture;
+    this.moveSheetToBreakpoint = moveSheetToBreakpoint;
+    this.gesture.enable(true);
+  }
+  sheetOnDismiss() {
+    this.gestureAnimationDismissing = true;
+    this.animation.onFinish(async () => {
+      this.currentBreakpoint = 0;
+      this.ionBreakpointDidChange.emit({ breakpoint: this.currentBreakpoint });
+      await this.dismiss(void 0, GESTURE);
+      this.gestureAnimationDismissing = false;
+    });
+  }
+  /**
+   * Dismiss the modal overlay after it has been presented.
+   *
+   * @param data Any data to emit in the dismiss events.
+   * @param role The role of the element that is dismissing the modal. For example, 'cancel' or 'backdrop'.
+   */
+  async dismiss(data, role) {
+    var _a;
+    if (this.gestureAnimationDismissing && role !== GESTURE) {
+      return false;
+    }
+    if (role !== "handler" && !await this.checkCanDismiss(data, role)) {
+      return false;
+    }
+    const { presentingElement } = this;
+    const hasCardModal = presentingElement !== void 0;
+    if (hasCardModal && getIonMode$2(this) === "ios") {
+      setCardStatusBarDefault(this.statusBarStyle);
+    }
+    if (this.currentTransition !== void 0) {
+      await this.currentTransition;
+    }
+    const enteringAnimation = activeAnimations.get(this) || [];
+    this.currentTransition = dismiss(this, data, role, "modalLeave", iosLeaveAnimation, mdLeaveAnimation, {
+      presentingEl: presentingElement,
+      currentBreakpoint: (_a = this.currentBreakpoint) !== null && _a !== void 0 ? _a : this.initialBreakpoint,
+      backdropBreakpoint: this.backdropBreakpoint
+    });
+    const dismissed = await this.currentTransition;
+    if (dismissed) {
+      const { delegate } = this.getDelegate();
+      await detachComponent(delegate, this.usersElement);
+      writeTask$1(() => this.el.classList.remove("show-modal"));
+      if (this.animation) {
+        this.animation.destroy();
+      }
+      if (this.gesture) {
+        this.gesture.destroy();
+      }
+      enteringAnimation.forEach((ani) => ani.destroy());
+    }
+    this.currentBreakpoint = void 0;
+    this.currentTransition = void 0;
+    this.animation = void 0;
+    return dismissed;
+  }
+  /**
+   * Returns a promise that resolves when the modal did dismiss.
+   */
+  onDidDismiss() {
+    return eventMethod(this.el, "ionModalDidDismiss");
+  }
+  /**
+   * Returns a promise that resolves when the modal will dismiss.
+   */
+  onWillDismiss() {
+    return eventMethod(this.el, "ionModalWillDismiss");
+  }
+  /**
+   * Move a sheet style modal to a specific breakpoint. The breakpoint value must
+   * be a value defined in your `breakpoints` array.
+   */
+  async setCurrentBreakpoint(breakpoint) {
+    if (!this.isSheetModal) {
+      printIonWarning("setCurrentBreakpoint is only supported on sheet modals.");
+      return;
+    }
+    if (!this.breakpoints.includes(breakpoint)) {
+      printIonWarning(`Attempted to set invalid breakpoint value ${breakpoint}. Please double check that the breakpoint value is part of your defined breakpoints.`);
+      return;
+    }
+    const { currentBreakpoint, moveSheetToBreakpoint, canDismiss, breakpoints } = this;
+    if (currentBreakpoint === breakpoint) {
+      return;
+    }
+    if (moveSheetToBreakpoint) {
+      this.sheetTransition = moveSheetToBreakpoint({
+        breakpoint,
+        breakpointOffset: 1 - currentBreakpoint,
+        canDismiss: canDismiss !== void 0 && canDismiss !== true && breakpoints[0] === 0
+      });
+      await this.sheetTransition;
+      this.sheetTransition = void 0;
+    }
+  }
+  /**
+   * Returns the current breakpoint of a sheet style modal
+   */
+  async getCurrentBreakpoint() {
+    return this.currentBreakpoint;
+  }
+  async moveToNextBreakpoint() {
+    const { breakpoints, currentBreakpoint } = this;
+    if (!breakpoints || currentBreakpoint == null) {
+      return false;
+    }
+    const allowedBreakpoints = breakpoints.filter((b) => b !== 0);
+    const currentBreakpointIndex = allowedBreakpoints.indexOf(currentBreakpoint);
+    const nextBreakpointIndex = (currentBreakpointIndex + 1) % allowedBreakpoints.length;
+    const nextBreakpoint = allowedBreakpoints[nextBreakpointIndex];
+    await this.setCurrentBreakpoint(nextBreakpoint);
+    return true;
+  }
+  render() {
+    const { handle, isSheetModal, presentingElement, htmlAttributes, handleBehavior, inheritedAttributes } = this;
+    const showHandle = handle !== false && isSheetModal;
+    const mode = getIonMode$2(this);
+    const isCardModal = presentingElement !== void 0 && mode === "ios";
+    const isHandleCycle = handleBehavior === "cycle";
+    return h$1(Host$1, Object.assign({ "no-router": true, tabindex: "-1" }, htmlAttributes, { style: {
+      zIndex: `${2e4 + this.overlayIndex}`
+    }, class: Object.assign({ [mode]: true, ["modal-default"]: !isCardModal && !isSheetModal, [`modal-card`]: isCardModal, [`modal-sheet`]: isSheetModal, "overlay-hidden": true }, getClassMap(this.cssClass)), onIonBackdropTap: this.onBackdropTap, onIonModalDidPresent: this.onLifecycle, onIonModalWillPresent: this.onLifecycle, onIonModalWillDismiss: this.onLifecycle, onIonModalDidDismiss: this.onLifecycle }), h$1("ion-backdrop", { ref: (el) => this.backdropEl = el, visible: this.showBackdrop, tappable: this.backdropDismiss, part: "backdrop" }), mode === "ios" && h$1("div", { class: "modal-shadow" }), h$1("div", Object.assign({
+      /*
+        role and aria-modal must be used on the
+        same element. They must also be set inside the
+        shadow DOM otherwise ion-button will not be highlighted
+        when using VoiceOver: https://bugs.webkit.org/show_bug.cgi?id=247134
+      */
+      role: "dialog"
+    }, inheritedAttributes, { "aria-modal": "true", class: "modal-wrapper ion-overlay-wrapper", part: "content", ref: (el) => this.wrapperEl = el }), showHandle && h$1("button", {
+      class: "modal-handle",
+      // Prevents the handle from receiving keyboard focus when it does not cycle
+      tabIndex: !isHandleCycle ? -1 : 0,
+      "aria-label": "Activate to adjust the size of the dialog overlaying the screen",
+      onClick: isHandleCycle ? this.onHandleClick : void 0,
+      part: "handle"
+    }), h$1("slot", null)));
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "isOpen": ["onIsOpenChange"],
+      "trigger": ["triggerChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: modalIosCss,
+      md: modalMdCss
+    };
+  }
+}, [33, "ion-modal", {
+  "hasController": [4, "has-controller"],
+  "overlayIndex": [2, "overlay-index"],
+  "delegate": [16],
+  "keyboardClose": [4, "keyboard-close"],
+  "enterAnimation": [16],
+  "leaveAnimation": [16],
+  "breakpoints": [16],
+  "initialBreakpoint": [2, "initial-breakpoint"],
+  "backdropBreakpoint": [2, "backdrop-breakpoint"],
+  "handle": [4],
+  "handleBehavior": [1, "handle-behavior"],
+  "component": [1],
+  "componentProps": [16],
+  "cssClass": [1, "css-class"],
+  "backdropDismiss": [4, "backdrop-dismiss"],
+  "showBackdrop": [4, "show-backdrop"],
+  "animated": [4],
+  "presentingElement": [16],
+  "htmlAttributes": [16],
+  "isOpen": [4, "is-open"],
+  "trigger": [1],
+  "keepContentsMounted": [4, "keep-contents-mounted"],
+  "canDismiss": [4, "can-dismiss"],
+  "presented": [32],
+  "present": [64],
+  "dismiss": [64],
+  "onDidDismiss": [64],
+  "onWillDismiss": [64],
+  "setCurrentBreakpoint": [64],
+  "getCurrentBreakpoint": [64]
+}]);
+const LIFECYCLE_MAP = {
+  ionModalDidPresent: "ionViewDidEnter",
+  ionModalWillPresent: "ionViewWillEnter",
+  ionModalWillDismiss: "ionViewWillLeave",
+  ionModalDidDismiss: "ionViewDidLeave"
+};
+function defineCustomElement$1() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-modal", "ion-backdrop"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-modal":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Modal);
+        }
+        break;
+      case "ion-backdrop":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$y();
+        }
+        break;
+    }
+  });
+}
+const defineCustomElement = defineCustomElement$1;
 const UPDATE_VALUE_EVENT = "update:modelValue";
 const MODEL_VALUE = "modelValue";
 const ROUTER_LINK_VALUE = "routerLink";
@@ -9103,8 +12389,8 @@ const defineContainer = (name, defineCustomElement2, componentProps = [], modelP
   }
   return Container;
 };
-const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$v);
-const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$s, [
+const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$z);
+const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$v, [
   "color",
   "buttonType",
   "disabled",
@@ -9124,10 +12410,10 @@ const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElem
   "ionFocus",
   "ionBlur"
 ]);
-const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$q, [
+const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$t, [
   "collapse"
 ]);
-const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$p, [
+const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$s, [
   "color",
   "button",
   "type",
@@ -9139,18 +12425,18 @@ const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$
   "routerAnimation",
   "target"
 ]);
-const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$o);
-const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$n, [
+const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$r);
+const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$q, [
   "color",
   "translucent"
 ]);
-const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$m, [
+const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$p, [
   "color"
 ]);
-const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$l, [
+const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$o, [
   "color"
 ]);
-const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$k, [
+const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$n, [
   "offset",
   "offsetXs",
   "offsetSm",
@@ -9176,7 +12462,7 @@ const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$k,
   "sizeLg",
   "sizeXl"
 ]);
-const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomElement$j, [
+const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomElement$m, [
   "color",
   "fullscreen",
   "forceOverscroll",
@@ -9187,34 +12473,51 @@ const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomEl
   "ionScroll",
   "ionScrollEnd"
 ]);
-const IonFooter = /* @__PURE__ */ defineContainer("ion-footer", defineCustomElement$h, [
+const IonFooter = /* @__PURE__ */ defineContainer("ion-footer", defineCustomElement$k, [
   "collapse",
   "translucent"
 ]);
-const IonGrid = /* @__PURE__ */ defineContainer("ion-grid", defineCustomElement$g, [
+const IonGrid = /* @__PURE__ */ defineContainer("ion-grid", defineCustomElement$j, [
   "fixed"
 ]);
-const IonHeader = /* @__PURE__ */ defineContainer("ion-header", defineCustomElement$f, [
+const IonHeader = /* @__PURE__ */ defineContainer("ion-header", defineCustomElement$i, [
   "collapse",
   "translucent"
 ]);
-const IonLabel = /* @__PURE__ */ defineContainer("ion-label", defineCustomElement$e, [
+const IonLabel = /* @__PURE__ */ defineContainer("ion-label", defineCustomElement$h, [
   "color",
   "position",
   "ionColor",
   "ionStyle"
 ]);
-const IonList = /* @__PURE__ */ defineContainer("ion-list", defineCustomElement$c, [
+const IonList = /* @__PURE__ */ defineContainer("ion-list", defineCustomElement$f, [
   "lines",
   "inset"
 ]);
-const IonRow = /* @__PURE__ */ defineContainer("ion-row", defineCustomElement$a);
-const IonTitle = /* @__PURE__ */ defineContainer("ion-title", defineCustomElement$9, [
+const IonRow = /* @__PURE__ */ defineContainer("ion-row", defineCustomElement$d);
+const IonSegment = /* @__PURE__ */ defineContainer("ion-segment", defineCustomElement$c, [
+  "color",
+  "disabled",
+  "scrollable",
+  "swipeGesture",
+  "value",
+  "selectOnFocus",
+  "ionChange",
+  "ionSelect",
+  "ionStyle"
+], "value", "v-ion-change", "ionChange");
+const IonSegmentButton = /* @__PURE__ */ defineContainer("ion-segment-button", defineCustomElement$b, [
+  "disabled",
+  "layout",
+  "type",
+  "value"
+], "value", "v-ion-change", "ionChange");
+const IonTitle = /* @__PURE__ */ defineContainer("ion-title", defineCustomElement$a, [
   "color",
   "size",
   "ionStyle"
 ]);
-const IonToggle = /* @__PURE__ */ defineContainer("ion-toggle", defineCustomElement$8, [
+const IonToggle = /* @__PURE__ */ defineContainer("ion-toggle", defineCustomElement$9, [
   "color",
   "name",
   "checked",
@@ -9229,7 +12532,7 @@ const IonToggle = /* @__PURE__ */ defineContainer("ion-toggle", defineCustomElem
   "ionBlur",
   "ionStyle"
 ], "checked", "v-ion-change", "ionChange");
-const IonToolbar = /* @__PURE__ */ defineContainer("ion-toolbar", defineCustomElement$7, [
+const IonToolbar = /* @__PURE__ */ defineContainer("ion-toolbar", defineCustomElement$8, [
   "color"
 ]);
 var LifecycleHooks;
@@ -9338,7 +12641,7 @@ const IonicVue = {
   }
 };
 const IonBackButton = /* @__PURE__ */ defineComponent((_, { attrs, slots }) => {
-  defineCustomElement$6();
+  defineCustomElement$7();
   const ionRouter = inject("navManager");
   const onClick = () => {
     if (ionRouter === void 0) {
@@ -9376,7 +12679,7 @@ const viewDepthKey = Symbol(0);
 const IonRouterOutlet = /* @__PURE__ */ defineComponent({
   name: "IonRouterOutlet",
   setup() {
-    defineCustomElement$5();
+    defineCustomElement$6();
     const injectedRoute = inject(routeLocationKey);
     const route = useRoute$1();
     const depth = inject(viewDepthKey, 0);
@@ -9628,7 +12931,7 @@ const IonTabButton = /* @__PURE__ */ defineComponent({
     target: String
   },
   setup(props, { slots }) {
-    defineCustomElement$4();
+    defineCustomElement$5();
     const ionRouter = inject("navManager");
     const onClick = (ev) => {
       if (ev.cancelable) {
@@ -9820,7 +13123,7 @@ const IonTabBar = /* @__PURE__ */ defineComponent({
     ionRouter.registerHistoryChangeListener(() => this.checkActiveTab(ionRouter));
   },
   setup(_, { slots }) {
-    defineCustomElement$3();
+    defineCustomElement$4();
     return () => {
       return h$2("ion-tab-bar", { ref: "ionTabBar" }, slots.default && slots.default());
     };
@@ -9828,7 +13131,7 @@ const IonTabBar = /* @__PURE__ */ defineComponent({
 });
 const userComponents = shallowRef([]);
 const IonApp = /* @__PURE__ */ defineComponent((_, { attrs, slots }) => {
-  defineCustomElement$2();
+  defineCustomElement$3();
   return () => {
     return h$2("ion-app", Object.assign({}, attrs), [slots.default && slots.default(), ...userComponents.value]);
   };
@@ -9859,7 +13162,7 @@ const VueDelegate = (addFn = addTeleportedUserComponent, removeFn = removeTelepo
   return { attachViewToDom, removeViewFromDom };
 };
 const IonNav = /* @__PURE__ */ defineComponent(() => {
-  defineCustomElement$b();
+  defineCustomElement$e();
   const views = shallowRef([]);
   const addView = (component) => views.value = [...views.value, component];
   const removeView = (component) => views.value = views.value.filter((cmp) => cmp !== component);
@@ -9884,7 +13187,7 @@ const IonIcon = /* @__PURE__ */ defineComponent({
     src: String
   },
   setup(props, { slots }) {
-    defineCustomElement();
+    defineCustomElement$2();
     return () => {
       var _a, _b;
       const { icon, ios, md, mode } = props;
@@ -9904,6 +13207,127 @@ const IonIcon = /* @__PURE__ */ defineComponent({
     };
   }
 });
+const EMPTY_PROP$1 = Symbol();
+const DEFAULT_EMPTY_PROP$1 = { default: EMPTY_PROP$1 };
+const defineOverlayContainer = (name, defineCustomElement2, componentProps = [], hasDelegateHost, controller) => {
+  const createControllerComponent = () => {
+    return /* @__PURE__ */ defineComponent((props, { slots, emit }) => {
+      const eventListeners = [
+        { componentEv: `${name}-will-present`, frameworkEv: "willPresent" },
+        { componentEv: `${name}-did-present`, frameworkEv: "didPresent" },
+        { componentEv: `${name}-will-dismiss`, frameworkEv: "willDismiss" },
+        { componentEv: `${name}-did-dismiss`, frameworkEv: "didDismiss" }
+      ];
+      if (defineCustomElement2 !== void 0) {
+        defineCustomElement2();
+      }
+      const overlay = ref();
+      const onVnodeMounted = async () => {
+        const isOpen = props.isOpen;
+        isOpen && await present2(props);
+      };
+      const onVnodeUpdated = async (node, prevNode) => {
+        const isOpen = node.props.isOpen;
+        const prevIsOpen = prevNode.props.isOpen;
+        if (isOpen === prevIsOpen)
+          return;
+        if (isOpen) {
+          await present2(props);
+        } else {
+          await dismiss2();
+        }
+      };
+      const onVnodeBeforeUnmount = async () => {
+        await dismiss2();
+      };
+      const dismiss2 = async () => {
+        if (!overlay.value)
+          return;
+        await overlay.value;
+        overlay.value = overlay.value.dismiss();
+        await overlay.value;
+        overlay.value = void 0;
+      };
+      const present2 = async (props2) => {
+        var _a;
+        if (overlay.value) {
+          await overlay.value;
+        }
+        if ((_a = overlay.value) === null || _a === void 0 ? void 0 : _a.present) {
+          await overlay.value.present();
+          return;
+        }
+        let restOfProps = {};
+        for (const key in props2) {
+          const value = props2[key];
+          if (props2.hasOwnProperty(key) && value !== EMPTY_PROP$1) {
+            restOfProps[key] = value;
+          }
+        }
+        delete restOfProps.onWillPresent;
+        delete restOfProps.onDidPresent;
+        delete restOfProps.onWillDismiss;
+        delete restOfProps.onDidDismiss;
+        const component = slots.default && slots.default()[0];
+        overlay.value = controller.create(Object.assign(Object.assign({}, restOfProps), { component }));
+        overlay.value = await overlay.value;
+        eventListeners.forEach((eventListener) => {
+          overlay.value.addEventListener(eventListener.componentEv, () => {
+            emit(eventListener.frameworkEv);
+          });
+        });
+        await overlay.value.present();
+      };
+      return () => {
+        return h$2("div", {
+          style: { display: "none" },
+          onVnodeMounted,
+          onVnodeUpdated,
+          onVnodeBeforeUnmount,
+          isOpen: props.isOpen === true
+        });
+      };
+    });
+  };
+  const createInlineComponent = () => {
+    return /* @__PURE__ */ defineComponent((props, { slots }) => {
+      if (defineCustomElement2 !== void 0) {
+        defineCustomElement2();
+      }
+      const isOpen = ref(false);
+      const elementRef = ref();
+      return () => {
+        let restOfProps = {};
+        for (const key in props) {
+          const value = props[key];
+          if (props.hasOwnProperty(key) && value !== EMPTY_PROP$1) {
+            restOfProps[key] = value;
+          }
+        }
+        const renderChildren = () => {
+          if (hasDelegateHost) {
+            return h$2("div", { className: "ion-delegate-host ion-page" }, slots);
+          }
+          return slots;
+        };
+        return h$2(name, Object.assign(Object.assign({}, restOfProps), { ref: elementRef }), isOpen.value || restOfProps.keepContentsMounted ? renderChildren() : void 0);
+      };
+    });
+  };
+  const Container = controller !== void 0 ? createControllerComponent() : createInlineComponent();
+  Container.name = name;
+  Container.props = {
+    "isOpen": DEFAULT_EMPTY_PROP$1
+  };
+  componentProps.forEach((componentProp) => {
+    Container.props[componentProp] = DEFAULT_EMPTY_PROP$1;
+  });
+  if (controller !== void 0) {
+    Container.emits = ["willPresent", "didPresent", "willDismiss", "didDismiss"];
+  }
+  return Container;
+};
+const IonModal = /* @__PURE__ */ defineOverlayContainer("ion-modal", defineCustomElement, ["animated", "backdropBreakpoint", "backdropDismiss", "breakpoints", "canDismiss", "enterAnimation", "handle", "handleBehavior", "htmlAttributes", "initialBreakpoint", "isOpen", "keepContentsMounted", "keyboardClose", "leaveAnimation", "mode", "presentingElement", "showBackdrop", "trigger"], true);
 const ionicVueConfig = {};
 const ionic_JZxaXwxCQa = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(IonicVue, ionicVueConfig);
@@ -9950,7 +13374,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import("./_nuxt/error-component-d23d7532.js").then((r) => r.default || r));
+    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import("./_nuxt/error-component-25a7aa77.js").then((r) => r.default || r));
     const IslandRenderer = /* @__PURE__ */ defineAsyncComponent(() => import("./_nuxt/island-renderer-8b0a9e87.js").then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
@@ -10016,52 +13440,57 @@ const plugins = normalizePlugins(_plugins);
 }
 const entry$1 = (ctx) => entry(ctx);
 export {
-  isRTL$1 as A,
-  clamp as B,
-  getIonPageElement as C,
-  raf as D,
-  now as E,
-  pointerCoord as F,
-  readTask as G,
-  findClosestIonContent as H,
+  IonToggle as A,
+  IonFooter as B,
+  useIonRouter as C,
+  isRTL$1 as D,
+  createGesture as E,
+  clamp as F,
+  createAnimation as G,
+  getIonPageElement as H,
   IonCard as I,
-  componentOnReady as J,
-  writeTask$1 as K,
-  scrollToTop as L,
-  Keyboard as M,
-  addEventListener as N,
-  removeEventListener as O,
-  KeyboardResize as P,
-  useRouter as Q,
-  navigateTo as R,
-  useHead as S,
+  now$1 as J,
+  pointerCoord as K,
+  readTask as L,
+  findClosestIonContent as M,
+  componentOnReady as N,
+  writeTask$1 as O,
+  scrollToTop as P,
+  Keyboard as Q,
+  addEventListener$1 as R,
+  removeEventListener as S,
+  KeyboardResize as T,
+  raf as U,
+  useRouter as V,
+  navigateTo as W,
+  useHead as X,
   _export_sfc as _,
   IonCol as a,
   IonAvatar as b,
   createError as c,
   IonCardTitle as d,
   entry$1 as default,
-  IonToolbar as e,
-  IonTabs as f,
-  IonRouterOutlet as g,
-  IonTabBar as h,
-  IonTabButton as i,
-  IonIcon as j,
-  IonLabel as k,
-  IonPage as l,
-  IonHeader as m,
-  IonButtons as n,
-  IonButton as o,
-  IonCardHeader as p,
-  IonCardSubtitle as q,
-  IonGrid as r,
-  IonRow as s,
-  IonList as t,
-  IonTitle as u,
-  IonCardContent as v,
-  IonToggle as w,
-  IonFooter as x,
-  useIonRouter as y,
-  IonContent as z
+  IonModal as e,
+  IonHeader as f,
+  IonToolbar as g,
+  IonSegment as h,
+  IonSegmentButton as i,
+  IonLabel as j,
+  IonButtons as k,
+  IonButton as l,
+  IonContent as m,
+  IonCardHeader as n,
+  IonCardContent as o,
+  IonList as p,
+  IonTabs as q,
+  IonRouterOutlet as r,
+  IonTabBar as s,
+  IonTabButton as t,
+  IonIcon as u,
+  IonPage as v,
+  IonCardSubtitle as w,
+  IonGrid as x,
+  IonRow as y,
+  IonTitle as z
 };
 //# sourceMappingURL=server.mjs.map
