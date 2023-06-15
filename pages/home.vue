@@ -189,7 +189,7 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
     {
         name:'British Pounds',
         img:'/ripple.svg',
-        symbol:'Pounds',
+        symbol:'GBP',
         price: 0.42,
         amount:367
     },

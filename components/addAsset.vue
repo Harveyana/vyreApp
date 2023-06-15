@@ -22,7 +22,7 @@
       </ion-header>
       <ion-content class="ion-padding">
         <ion-card style="box-shadow: none;">
-            <img alt="coin" src="/coin_top.svg" style="scale: 0.6;margin-top: -30%;margin-bottom: -30%;"/>
+            <img alt="coin" :src="switchAssets == 'crypto' ? '/coin_top.svg':'/compass_top.svg'" style="width:40%;"/>
             <ion-card-header>
             <ion-card-title style="font-size:200%;">Add asset wallet</ion-card-title>
             </ion-card-header>

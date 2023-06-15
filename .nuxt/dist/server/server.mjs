@@ -1129,7 +1129,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/home-1eb1a74a.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/home-accfa2bd.js").then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1137,7 +1137,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/index-7b1585f9.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/index-c0f72eeb.js").then((m) => m.default || m)
   },
   {
     name: "intro",
@@ -1145,7 +1145,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/intro-9e2e5afb.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/intro-fe20d0a6.js").then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -13793,7 +13793,7 @@ export {
   createGesture as F,
   clamp as G,
   createAnimation as H,
-  IonCard as I,
+  IonItem as I,
   getIonPageElement as J,
   now$1 as K,
   pointerCoord as L,
@@ -13811,21 +13811,21 @@ export {
   navigateTo as X,
   useHead as Y,
   _export_sfc as _,
-  IonItem as a,
-  IonAvatar as b,
+  IonAvatar as a,
+  IonCol as b,
   createError as c,
-  IonCol as d,
+  IonCardTitle as d,
   entry$1 as default,
-  IonCardTitle as e,
-  IonModal as f,
-  IonHeader as g,
-  IonToolbar as h,
-  IonSegment as i,
-  IonSegmentButton as j,
-  IonLabel as k,
-  IonButtons as l,
-  IonButton as m,
-  IonContent as n,
+  IonModal as e,
+  IonHeader as f,
+  IonToolbar as g,
+  IonSegment as h,
+  IonSegmentButton as i,
+  IonLabel as j,
+  IonButtons as k,
+  IonButton as l,
+  IonContent as m,
+  IonCard as n,
   IonCardHeader as o,
   IonCardContent as p,
   IonList as q,

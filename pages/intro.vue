@@ -78,7 +78,7 @@ watch(isDarkMode,(newValue, oldValue) => {
 const slides:{title: string,img: string, content: string}[] = [
     {
         title: "A crypto wallet you'll love",
-        img:'/illustration.svg',
+        img:'/coin_top.svg',
         content: 'makes it safe & easy for you to store, send, receive, stake, and swap tokens on the Solana blockchain'
     },
     {

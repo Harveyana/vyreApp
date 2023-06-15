@@ -1,7 +1,7 @@
 <template>
-    <ion-card class="ioncard" style="margin-bottom:-15px;margin-top: -5px;padding-bottom: 3px;">
+    <ion-item button :detail="false" style="--border-radius:13px;">
 
-        <ion-item style="display: flex;flex-direction: row;justify-content: start;align-items: center;">
+        <!-- <ion-item style="display: flex;flex-direction: row;justify-content: start;align-items: center;width: 60%;"> -->
 
             <!-- <ion-col class="ion-col"> -->
                 <ion-avatar slot="start">
@@ -17,7 +17,7 @@
                 </div>
                 
             </ion-col>
-        </ion-item>
+        <!-- </ion-item> -->
 
 
         <div style="display: flex;flex-direction: column;justify-content: start;align-items: flex-end;">
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-    </ion-card>
+    </ion-item>
 </template>
 <script setup lang="ts">
 const props = defineProps<{
@@ -44,14 +44,16 @@ const props = defineProps<{
     margin-left: -3px;
 }
 .ioncard{
-    margin-left:-5px;
-    margin-right: -5px;
+    /* margin-left:-5px;
+    margin-right: -5px; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-left: 2%;
-    padding-right: 3%;
+    flex-wrap: nowrap;
+    /* padding-left: 2%; */
+    /* padding-right: 3%; */
     box-shadow: none;
 }
+/* style="margin-bottom:-15px;margin-top: -5px;padding-bottom: 3px;" */
 </style>
