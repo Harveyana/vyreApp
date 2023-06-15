@@ -1,13 +1,13 @@
 <template>
-    <ion-card class="ioncard" style="margin-bottom:-9px;">
+    <ion-card class="ioncard" style="margin-bottom:-15px;margin-top: -5px;padding-bottom: 3px;">
 
-        <div style="display: flex;flex-direction: row;justify-content: start;align-items: center;">
+        <ion-item style="display: flex;flex-direction: row;justify-content: start;align-items: center;">
 
-            <ion-col class="ion-col">
-                <ion-avatar>
-                <img alt="asset img" :src="$props.img" style="scale: 0.55;"/>
+            <!-- <ion-col class="ion-col"> -->
+                <ion-avatar slot="start">
+                <img alt="asset img" :src="$props.img"/>
                 </ion-avatar>
-            </ion-col>
+            <!-- </ion-col> -->
 
             <ion-col style="--ion-grid-column-padding-xs: none">
                 <ion-card-title style="margin-bottom: 9px;"><strong>{{$props.symbol}}</strong></ion-card-title>
@@ -17,7 +17,7 @@
                 </div>
                 
             </ion-col>
-        </div>
+        </ion-item>
 
 
         <div style="display: flex;flex-direction: column;justify-content: start;align-items: flex-end;">

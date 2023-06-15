@@ -21,8 +21,8 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        <ion-card style="">
-            <img alt="coin" src="/coin_top.svg" style="scale: 0.9;margin-top: -20%;margin-bottom: -20%;"/>
+        <ion-card style="box-shadow: none;">
+            <img alt="coin" src="/coin_top.svg" style="scale: 0.6;margin-top: -30%;margin-bottom: -30%;"/>
             <ion-card-header>
             <ion-card-title style="font-size:200%;">Add asset wallet</ion-card-title>
             </ion-card-header>
