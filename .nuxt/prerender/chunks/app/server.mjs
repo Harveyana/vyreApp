@@ -1132,7 +1132,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-accfa2bd.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-40acc6a7.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1140,7 +1140,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/index-c0f72eeb.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-ec463a99.mjs').then((m) => m.default || m)
   },
   {
     name: "intro",
@@ -1148,7 +1148,15 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/intro-fe20d0a6.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/intro-fd58964c.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "newhome",
+    path: "/newhome",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import('./_nuxt/newhome-3741af42.mjs').then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -3229,7 +3237,7 @@ const createColorClasses$2 = (color) => {
     [`ion-color-${color}`]: true
   } : null;
 };
-function defineCustomElement$D() {
+function defineCustomElement$E() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3277,7 +3285,7 @@ const Avatar = /* @__PURE__ */ proxyCustomElement$1(class Avatar2 extends H$1 {
     };
   }
 }, [33, "ion-avatar"]);
-function defineCustomElement$1$o() {
+function defineCustomElement$1$p() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3292,7 +3300,7 @@ function defineCustomElement$1$o() {
     }
   });
 }
-const defineCustomElement$C = defineCustomElement$1$o;
+const defineCustomElement$D = defineCustomElement$1$p;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3542,7 +3550,7 @@ const Backdrop = /* @__PURE__ */ proxyCustomElement$1(class Backdrop2 extends H$
   "tappable": [4],
   "stopPropagation": [4, "stop-propagation"]
 }, [[2, "click", "onMouseDown"]]]);
-function defineCustomElement$B() {
+function defineCustomElement$C() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3677,7 +3685,7 @@ const removeRipple = (ripple) => {
 };
 const PADDING = 10;
 const INITIAL_ORIGIN_SCALE = 0.5;
-function defineCustomElement$A() {
+function defineCustomElement$B() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3852,7 +3860,7 @@ const Button = /* @__PURE__ */ proxyCustomElement$1(class Button2 extends H$1 {
   "type": [1],
   "form": [1]
 }]);
-function defineCustomElement$z() {
+function defineCustomElement$A() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3866,7 +3874,7 @@ function defineCustomElement$z() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$A();
+          defineCustomElement$B();
         }
         break;
     }
@@ -3875,7 +3883,7 @@ function defineCustomElement$z() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$y = defineCustomElement$z;
+const defineCustomElement$z = defineCustomElement$A;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3903,7 +3911,7 @@ const Buttons = /* @__PURE__ */ proxyCustomElement$1(class Buttons2 extends H$1 
 }, [34, "ion-buttons", {
   "collapse": [4]
 }]);
-function defineCustomElement$x() {
+function defineCustomElement$y() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3921,7 +3929,7 @@ function defineCustomElement$x() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$w = defineCustomElement$x;
+const defineCustomElement$x = defineCustomElement$y;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3994,7 +4002,7 @@ const Card = /* @__PURE__ */ proxyCustomElement$1(class Card2 extends H$1 {
   "routerAnimation": [16],
   "target": [1]
 }]);
-function defineCustomElement$1$n() {
+function defineCustomElement$1$o() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4008,13 +4016,13 @@ function defineCustomElement$1$n() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$A();
+          defineCustomElement$B();
         }
         break;
     }
   });
 }
-const defineCustomElement$v = defineCustomElement$1$n;
+const defineCustomElement$w = defineCustomElement$1$o;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4040,7 +4048,7 @@ const CardContent = /* @__PURE__ */ proxyCustomElement$1(class CardContent2 exte
     };
   }
 }, [32, "ion-card-content"]);
-function defineCustomElement$1$m() {
+function defineCustomElement$1$n() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4055,7 +4063,7 @@ function defineCustomElement$1$m() {
     }
   });
 }
-const defineCustomElement$u = defineCustomElement$1$m;
+const defineCustomElement$v = defineCustomElement$1$n;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4087,7 +4095,7 @@ const CardHeader = /* @__PURE__ */ proxyCustomElement$1(class CardHeader2 extend
   "color": [513],
   "translucent": [4]
 }]);
-function defineCustomElement$1$l() {
+function defineCustomElement$1$m() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4102,7 +4110,7 @@ function defineCustomElement$1$l() {
     }
   });
 }
-const defineCustomElement$t = defineCustomElement$1$l;
+const defineCustomElement$u = defineCustomElement$1$m;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4131,7 +4139,7 @@ const CardSubtitle = /* @__PURE__ */ proxyCustomElement$1(class CardSubtitle2 ex
 }, [33, "ion-card-subtitle", {
   "color": [513]
 }]);
-function defineCustomElement$1$k() {
+function defineCustomElement$1$l() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4146,7 +4154,7 @@ function defineCustomElement$1$k() {
     }
   });
 }
-const defineCustomElement$s = defineCustomElement$1$k;
+const defineCustomElement$t = defineCustomElement$1$l;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4175,7 +4183,7 @@ const CardTitle = /* @__PURE__ */ proxyCustomElement$1(class CardTitle2 extends 
 }, [33, "ion-card-title", {
   "color": [513]
 }]);
-function defineCustomElement$1$j() {
+function defineCustomElement$1$k() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4190,7 +4198,7 @@ function defineCustomElement$1$j() {
     }
   });
 }
-const defineCustomElement$r = defineCustomElement$1$j;
+const defineCustomElement$s = defineCustomElement$1$k;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4224,6 +4232,57 @@ const hasLabelSlot = (controlEl) => {
 };
 const NAMED_LABEL_SLOT_COMPONENTS = ["ION-RANGE"];
 const UNNAMED_LABEL_SLOT_COMPONENTS = ["ION-TOGGLE", "ION-CHECKBOX", "ION-RADIO"];
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const chipCss = ":host{--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12);--color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.87);border-radius:16px;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-margin-start:4px;margin-inline-start:4px;-webkit-margin-end:4px;margin-inline-end:4px;margin-top:4px;margin-bottom:4px;-webkit-padding-start:12px;padding-inline-start:12px;-webkit-padding-end:12px;padding-inline-end:12px;padding-top:7px;padding-bottom:7px;display:-ms-inline-flexbox;display:inline-flex;position:relative;-ms-flex-align:center;align-items:center;height:32px;background:var(--background);color:var(--color);font-family:var(--ion-font-family, inherit);font-size:14px;cursor:pointer;overflow:hidden;vertical-align:middle;-webkit-box-sizing:border-box;box-sizing:border-box}:host(.chip-disabled){cursor:default;opacity:0.4;pointer-events:none}:host(.ion-color){background:rgba(var(--ion-color-base-rgb), 0.08);color:var(--ion-color-shade)}:host(.ion-color:focus){background:rgba(var(--ion-color-base-rgb), 0.12)}:host(.ion-color.ion-activated){background:rgba(var(--ion-color-base-rgb), 0.16)}:host(.chip-outline){border-width:1px;border-style:solid}:host(.chip-outline){border-color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.32);background:transparent}:host(.chip-outline.ion-color){border-color:rgba(var(--ion-color-base-rgb), 0.32)}:host(.chip-outline:not(.ion-color):focus){background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.04)}:host(.chip-outline.ion-activated:not(.ion-color)){background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.08)}::slotted(ion-icon){font-size:20px}:host(:not(.ion-color)) ::slotted(ion-icon){color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.54)}::slotted(ion-icon:first-child){-webkit-margin-start:-4px;margin-inline-start:-4px;-webkit-margin-end:8px;margin-inline-end:8px;margin-top:-4px;margin-bottom:-4px}::slotted(ion-icon:last-child){-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:-4px;margin-inline-end:-4px;margin-top:-4px;margin-bottom:-4px}::slotted(ion-avatar){width:24px;height:24px}::slotted(ion-avatar:first-child){-webkit-margin-start:-8px;margin-inline-start:-8px;-webkit-margin-end:8px;margin-inline-end:8px;margin-top:-4px;margin-bottom:-4px}::slotted(ion-avatar:last-child){-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:-8px;margin-inline-end:-8px;margin-top:-4px;margin-bottom:-4px}:host(:focus){outline:none}:host(:focus){--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.16)}:host(.ion-activated){--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2)}@media (any-hover: hover){:host(:hover){--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.16)}:host(.ion-color:hover){background:rgba(var(--ion-color-base-rgb), 0.12)}:host(.chip-outline:not(.ion-color):hover){background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.04)}}";
+const Chip = /* @__PURE__ */ proxyCustomElement$1(class Chip2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.color = void 0;
+    this.outline = false;
+    this.disabled = false;
+  }
+  render() {
+    const mode = getIonMode$2(this);
+    return h$1(Host$1, { "aria-disabled": this.disabled ? "true" : null, class: createColorClasses$1(this.color, {
+      [mode]: true,
+      "chip-outline": this.outline,
+      "chip-disabled": this.disabled,
+      "ion-activatable": true
+    }) }, h$1("slot", null), mode === "md" && h$1("ion-ripple-effect", null));
+  }
+  static get style() {
+    return chipCss;
+  }
+}, [1, "ion-chip", {
+  "color": [513],
+  "outline": [4],
+  "disabled": [4]
+}]);
+function defineCustomElement$1$j() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-chip", "ion-ripple-effect"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-chip":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Chip);
+        }
+        break;
+      case "ion-ripple-effect":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$B();
+        }
+        break;
+    }
+  });
+}
+const defineCustomElement$r = defineCustomElement$1$j;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -5053,7 +5112,7 @@ function defineCustomElement$n() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$D();
+          defineCustomElement$E();
         }
         break;
       case "ion-note":
@@ -5063,7 +5122,7 @@ function defineCustomElement$n() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$A();
+          defineCustomElement$B();
         }
         break;
     }
@@ -5495,8 +5554,8 @@ const LIFECYCLE_DID_ENTER = "ionViewDidEnter";
 const LIFECYCLE_WILL_LEAVE = "ionViewWillLeave";
 const LIFECYCLE_DID_LEAVE = "ionViewDidLeave";
 const LIFECYCLE_WILL_UNLOAD = "ionViewWillUnload";
-const iosTransitionAnimation = () => import('./_nuxt/ios.transition-d5fd8f37.mjs');
-const mdTransitionAnimation = () => import('./_nuxt/md.transition-4fb9d347.mjs');
+const iosTransitionAnimation = () => import('./_nuxt/ios.transition-95c45aa2.mjs');
+const mdTransitionAnimation = () => import('./_nuxt/md.transition-f52d8a76.mjs');
 const transition = (opts) => {
   return new Promise((resolve, reject) => {
     writeTask$1(() => {
@@ -7347,7 +7406,7 @@ const Nav = /* @__PURE__ */ proxyCustomElement$1(class Nav2 extends H$1 {
   }
   async componentDidLoad() {
     this.rootChanged();
-    this.gesture = (await import('./_nuxt/swipe-back-6b80783d.mjs')).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
+    this.gesture = (await import('./_nuxt/swipe-back-e05d01b4.mjs')).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
     this.swipeGestureChanged();
   }
   connectedCallback() {
@@ -8582,7 +8641,7 @@ function defineCustomElement$1$a() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$A();
+          defineCustomElement$B();
         }
         break;
     }
@@ -9315,7 +9374,7 @@ function defineCustomElement$1$8() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$D();
+          defineCustomElement$E();
         }
         break;
     }
@@ -9515,12 +9574,12 @@ function defineCustomElement$1$6() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$D();
+          defineCustomElement$E();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$A();
+          defineCustomElement$B();
         }
         break;
     }
@@ -9558,7 +9617,7 @@ const RouterOutlet = /* @__PURE__ */ proxyCustomElement$1(class RouterOutlet2 ex
         this.swipeHandler.onStart();
       }
     };
-    this.gesture = (await import('./_nuxt/swipe-back-6b80783d.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
+    this.gesture = (await import('./_nuxt/swipe-back-e05d01b4.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
       var _a;
       return (_a = this.ani) === null || _a === void 0 ? void 0 : _a.progressStep(step);
     }, (shouldComplete, step, dur) => {
@@ -9841,7 +9900,7 @@ function defineCustomElement$1$4() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$A();
+          defineCustomElement$B();
         }
         break;
     }
@@ -9943,14 +10002,14 @@ const App = /* @__PURE__ */ proxyCustomElement$1(class App2 extends H$1 {
       rIC(async () => {
         const isHybrid2 = isPlatform(window, "hybrid");
         if (!config.getBoolean("_testing")) {
-          import('./_nuxt/index9-a49f3070.mjs').then((module) => module.startTapClick(config));
+          import('./_nuxt/index9-781de4c3.mjs').then((module) => module.startTapClick(config));
         }
         if (config.getBoolean("statusTap", isHybrid2)) {
-          import('./_nuxt/status-tap-26dd13a9.mjs').then((module) => module.startStatusTap());
+          import('./_nuxt/status-tap-b744b558.mjs').then((module) => module.startStatusTap());
         }
         if (config.getBoolean("inputShims", needInputShims())) {
           const platform = isPlatform(window, "ios") ? "ios" : "android";
-          import('./_nuxt/input-shims-a697f401.mjs').then((module) => module.startInputShims(config, platform));
+          import('./_nuxt/input-shims-80154fab.mjs').then((module) => module.startInputShims(config, platform));
         }
         const hardwareBackButtonModule = await import('./_nuxt/hardware-back-button-b290b24e.mjs');
         if (config.getBoolean("hardwareBackButton", isHybrid2)) {
@@ -12602,7 +12661,7 @@ function defineCustomElement$1() {
         break;
       case "ion-backdrop":
         if (!customElements.get(tagName)) {
-          defineCustomElement$B();
+          defineCustomElement$C();
         }
         break;
     }
@@ -12718,8 +12777,8 @@ const defineContainer = (name, defineCustomElement2, componentProps = [], modelP
   }
   return Container;
 };
-const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$C);
-const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$y, [
+const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$D);
+const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$z, [
   "color",
   "buttonType",
   "disabled",
@@ -12739,10 +12798,10 @@ const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElem
   "ionFocus",
   "ionBlur"
 ]);
-const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$w, [
+const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$x, [
   "collapse"
 ]);
-const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$v, [
+const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$w, [
   "color",
   "button",
   "type",
@@ -12754,16 +12813,21 @@ const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$
   "routerAnimation",
   "target"
 ]);
-const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$u);
-const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$t, [
+const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$v);
+const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$u, [
   "color",
   "translucent"
 ]);
-const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$s, [
+const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$t, [
   "color"
 ]);
-const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$r, [
+const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$s, [
   "color"
+]);
+const IonChip = /* @__PURE__ */ defineContainer("ion-chip", defineCustomElement$r, [
+  "color",
+  "outline",
+  "disabled"
 ]);
 const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$q, [
   "offset",
@@ -13709,7 +13773,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-dbb219e4.mjs').then((r) => r.default || r));
+    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-9878bce8.mjs').then((r) => r.default || r));
     const IslandRenderer = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/island-renderer-8b0a9e87.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
@@ -13775,5 +13839,5 @@ const plugins = normalizePlugins(_plugins);
 }
 const entry$1 = (ctx) => entry(ctx);
 
-export { IonTitle as A, IonToggle as B, IonFooter as C, useIonRouter as D, isRTL$1 as E, createGesture as F, clamp as G, createAnimation as H, IonItem as I, getIonPageElement as J, now$1 as K, pointerCoord as L, readTask as M, findClosestIonContent as N, componentOnReady as O, writeTask$1 as P, scrollToTop as Q, Keyboard as R, addEventListener$1 as S, removeEventListener as T, KeyboardResize as U, raf as V, useRouter as W, navigateTo as X, useHead as Y, _export_sfc as _, IonAvatar as a, IonCol as b, createError as c, IonCardTitle as d, entry$1 as default, IonModal as e, IonHeader as f, IonToolbar as g, IonSegment as h, IonSegmentButton as i, IonLabel as j, IonButtons as k, IonButton as l, IonContent as m, IonCard as n, IonCardHeader as o, IonCardContent as p, IonList as q, IonTabs as r, IonRouterOutlet as s, IonTabBar as t, IonTabButton as u, IonIcon as v, IonPage as w, IonCardSubtitle as x, IonGrid as y, IonRow as z };
+export { IonModal as A, IonTabs as B, IonRouterOutlet as C, IonTabBar as D, IonTabButton as E, isRTL$1 as F, createGesture as G, clamp as H, IonPage as I, createAnimation as J, getIonPageElement as K, now$1 as L, pointerCoord as M, readTask as N, findClosestIonContent as O, componentOnReady as P, writeTask$1 as Q, scrollToTop as R, Keyboard as S, addEventListener$1 as T, removeEventListener as U, KeyboardResize as V, raf as W, useRouter as X, navigateTo as Y, useHead as Z, _export_sfc as _, IonHeader as a, IonToolbar as b, createError as c, IonButtons as d, entry$1 as default, IonButton as e, IonIcon as f, IonCard as g, IonCardHeader as h, IonCardSubtitle as i, IonCardTitle as j, IonCol as k, IonGrid as l, IonRow as m, IonSegment as n, IonSegmentButton as o, IonLabel as p, IonList as q, IonTitle as r, IonCardContent as s, IonToggle as t, IonFooter as u, useIonRouter as v, IonContent as w, IonChip as x, IonAvatar as y, IonItem as z };
 //# sourceMappingURL=server.mjs.map

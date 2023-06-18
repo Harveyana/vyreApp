@@ -8,12 +8,12 @@
           <ion-label>Listen now</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button class="ion-tab-button" tab="radio" href="/intro">
+        <ion-tab-button class="ion-tab-button" tab="radio" href="/newhome">
           <ion-icon :icon="ioniconsRadio" />
           <ion-label>Radio</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button class="ion-tab-button" tab="library" href="/home">
+        <ion-tab-button class="ion-tab-button" tab="library" href="/newhome">
           <ion-icon :icon="ioniconsLibrary" />
           <ion-label>Library</ion-label>
         </ion-tab-button>

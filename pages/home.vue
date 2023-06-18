@@ -46,11 +46,13 @@
                 <ion-col size="8">
                     <ion-segment :scrollable="true" :value=switchAssets>
                             <ion-segment-button value="home" @click="switchAssets = 'crypto'">
-                            <ion-icon :icon="ioniconsLogoBitcoin"></ion-icon>
+                                <ion-label>crypto</ion-label>
+                                <ion-icon :icon="ioniconsLogoBitcoin"></ion-icon>
                             </ion-segment-button>
 
                             <ion-segment-button value="heart" @click="switchAssets = 'fiat'">
-                            <ion-icon :icon="ioniconsLogoUsd"></ion-icon>
+                                <ion-label>fiat</ion-label>   
+                                <ion-icon :icon="ioniconsLogoUsd"></ion-icon>
                             </ion-segment-button>
                     </ion-segment>
                     <!-- <ion-button size="small" fill="clear" @click="switchAssets = true"><span style="font-size: 110%;">crypto</span></ion-button>
@@ -64,7 +66,7 @@
             </ion-grid>
         </ion-card>
     
-    <ion-card style="max-height: 40%;min-height:40%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -3%;box-shadow: none;border:1px solid black">
+    <ion-card style="max-height: 40%;min-height:40%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -3%;box-shadow: none;">
         <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchAssets == 'crypto'">
             <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
         </ion-list>
