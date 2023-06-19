@@ -1136,7 +1136,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-40acc6a7.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-9f31bb2b.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1144,7 +1144,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/index-ec463a99.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-4f8d9d29.mjs').then((m) => m.default || m)
   },
   {
     name: "intro",
@@ -1152,7 +1152,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/intro-fd58964c.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/intro-328c0177.mjs').then((m) => m.default || m)
   },
   {
     name: "newhome",
@@ -1160,7 +1160,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/newhome-3741af42.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/newhome-766cfde5.mjs').then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -13843,5 +13843,5 @@ const plugins = normalizePlugins(_plugins);
 }
 const entry$1 = (ctx) => entry(ctx);
 
-export { IonModal as A, IonTabs as B, IonRouterOutlet as C, IonTabBar as D, IonTabButton as E, isRTL$1 as F, createGesture as G, clamp as H, IonPage as I, createAnimation as J, getIonPageElement as K, now$1 as L, pointerCoord as M, readTask as N, findClosestIonContent as O, componentOnReady as P, writeTask$1 as Q, scrollToTop as R, Keyboard as S, addEventListener$1 as T, removeEventListener as U, KeyboardResize as V, raf as W, useRouter as X, navigateTo as Y, useHead as Z, _export_sfc as _, IonHeader as a, IonToolbar as b, createError as c, IonButtons as d, entry$1 as default, IonButton as e, IonIcon as f, IonCard as g, IonCardHeader as h, IonCardSubtitle as i, IonCardTitle as j, IonCol as k, IonGrid as l, IonRow as m, IonSegment as n, IonSegmentButton as o, IonLabel as p, IonList as q, IonTitle as r, IonCardContent as s, IonToggle as t, IonFooter as u, useIonRouter as v, IonContent as w, IonChip as x, IonAvatar as y, IonItem as z };
+export { IonContent as A, IonModal as B, IonChip as C, IonAvatar as D, IonItem as E, isRTL$1 as F, createGesture as G, clamp as H, IonToolbar as I, createAnimation as J, getIonPageElement as K, now$1 as L, pointerCoord as M, readTask as N, findClosestIonContent as O, componentOnReady as P, writeTask$1 as Q, scrollToTop as R, Keyboard as S, addEventListener$1 as T, removeEventListener as U, KeyboardResize as V, raf as W, useRouter as X, navigateTo as Y, useHead as Z, _export_sfc as _, IonTabs as a, IonRouterOutlet as b, createError as c, IonTabBar as d, entry$1 as default, IonTabButton as e, IonIcon as f, IonLabel as g, IonPage as h, IonHeader as i, IonButtons as j, IonButton as k, IonCard as l, IonCardHeader as m, IonCardSubtitle as n, IonCardTitle as o, IonCol as p, IonGrid as q, IonRow as r, IonSegment as s, IonSegmentButton as t, IonList as u, IonTitle as v, IonCardContent as w, IonToggle as x, IonFooter as y, useIonRouter as z };
 //# sourceMappingURL=server.mjs.map

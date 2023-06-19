@@ -48,17 +48,17 @@
 
         <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 100%;width:30%;border-radius: 12px;padding: 3%;margin-right: -2%;">
             <ion-icon color="primary" :icon="ioniconsArrowUpCircleSharp" size="large" style="align-self: flex-start;"/>
-            <ion-button fill="clear" @click="setOpen(true)">Send</ion-button>
+            <ion-button fill="clear" >Send</ion-button>
         </ion-card>
 
         <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 100%;width:30%;border-radius: 12px;padding: 3%;margin-right:-2%;">
             <ion-icon color="primary" :icon="ioniconsArrowDownCircleSharp" size="large" style="align-self: flex-start;"/>
-            <ion-button fill="clear" @click="setOpen(true)">Recieve</ion-button>
+            <ion-button fill="clear" >Recieve</ion-button>
         </ion-card>
 
         <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 100%;width:30%;border-radius: 12px;padding: 3%;">
             <ion-icon color="primary" :icon="ioniconsPeopleCircleOutline" size="large" style="align-self: flex-start;"/>
-            <ion-button fill="clear"  @click="setOpen(true)">P2P</ion-button>
+            <ion-button fill="clear" >P2P x</ion-button>
         </ion-card>
 
     </ion-card>
@@ -81,11 +81,11 @@
                 </ion-col>
 
                 <ion-card style="width: 30%;height:70%;border-radius: 12px;display: flex;flex-direction: row;justify-content: center;align-items: center;">
-                    <ion-button fill="clear" size="large" @click="setOpen(true)"><ion-icon size="large" :icon="ioniconsDuplicate"></ion-icon></ion-button>
+                    <ion-button fill="clear" size="large" @click="setAddAssetOpen(true)"><ion-icon size="large" :icon="ioniconsDuplicate"></ion-icon></ion-button>
                 </ion-card>
     </ion-card>
     
-    <ion-card style="max-height: 40%;min-height:40%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -3%;border-radius: 12px;">
+    <ion-card style="max-height: 30%;min-height:30%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -3%;border-radius: 12px;">
         <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchAssets == 'crypto'">
             <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
         </ion-list>
@@ -95,11 +95,17 @@
         </ion-list>
     </ion-card>
 
+    <ion-card style="width: 50%;min-height:5%;max-height:8%;border-radius: 12px;display: flex;flex-direction: row;justify-content: center;align-items: center;">
+        <ion-button fill="clear" size="small" @click="setAllAssetsOpen(true)">show all assets</ion-button>
+    </ion-card>
+
     <!-- modal  -->
 
-    <AddAsset :is-crypto="switchAssets" :ismodal-open="ismodalOpen" @closeModal="setOpen(false)" />
+    <AddAsset :ismodal-open="isAddAssetsModalOpen" @closeModal="setAddAssetOpen(false)" />
+    <AllAssets :is-all-assetmodal-open="isAllAssetsModalOpen" @closeModal="setAllAssetsOpen(false)" />
 
-    <tabs/>
+
+    <!-- <tabs/> -->
     </ion-page>
 </template>
 <script setup lang="ts">
@@ -108,11 +114,17 @@ const isDarkMode = ref<boolean>(false)
 const darkMode = useDarkMode()
 const switchAssets = ref<string>('fiat')
 const hideTotal = ref<boolean>(false)
-const ismodalOpen = ref<boolean>(false)
+const isAddAssetsModalOpen = ref<boolean>(false)
+const isAllAssetsModalOpen = ref<boolean>(false)
 
-const setOpen = (isOpen:boolean)=> {
-       ismodalOpen.value = isOpen;
-    }
+
+const setAddAssetOpen = (isOpen:boolean)=> {
+    isAddAssetsModalOpen.value = isOpen;
+}
+
+const setAllAssetsOpen = (isOpen:boolean)=> {
+    isAllAssetsModalOpen.value = isOpen;
+}    
 
 watch(isDarkMode,(newValue, oldValue) => {
     console.log(newValue)

@@ -2,7 +2,7 @@
     <ion-modal :is-open="props.ismodalOpen">
       <ion-header>
         <ion-toolbar>
-      <ion-segment :value=switchAssets>
+      <ion-segment color="primary" :value=switchAssets>
 
         <ion-segment-button value="fiat" @click="switchAssets = 'fiat'">
           <ion-label>Fiat</ion-label>
@@ -34,11 +34,11 @@
 
         <ion-card style="max-height: 50%;min-height:50%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;box-shadow: none;">
             <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchAssets == 'crypto'">
-                <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
+                <tempAsset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
             </ion-list>
 
             <ion-list v-for="(fiat, index) in fiats" :key="fiat.symbol" v-else >
-                <asset :name="fiat.name" :symbol="fiat.symbol" :price="fiat.price" :amount="fiat.amount" :img="fiat.img"/>
+                <tempAsset :name="fiat.name" :symbol="fiat.symbol" :price="fiat.price" :amount="fiat.amount" :img="fiat.img"/>
             </ion-list>
         </ion-card>
 
@@ -48,7 +48,6 @@
 <script setup lang="ts">
 const props = defineProps<{
     ismodalOpen:boolean
-    isCrypto:string
 }>()
 
 const switchAssets = ref<string>('fiat')
