@@ -21,7 +21,7 @@
 
 
         <div style="display: flex;flex-direction: column;justify-content: start;align-items: flex-end;">
-            <ion-icon color="primary" :icon="ioniconsAddCircle" style="font-size: 350%;"/>
+            <ion-icon color="primary" :icon="ioniconsAddCircle" style="font-size: 200%;"/>
         </div>
 
     </ion-item>

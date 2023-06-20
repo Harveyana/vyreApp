@@ -48,17 +48,18 @@
 
         <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 100%;width:30%;border-radius: 12px;padding: 3%;margin-right: -2%;">
             <ion-icon color="primary" :icon="ioniconsArrowUpCircleSharp" size="large" style="align-self: flex-start;"/>
-            <ion-button fill="clear" >Send</ion-button>
+            <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:23%">Send</ion-card-subtitle>
         </ion-card>
 
         <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 100%;width:30%;border-radius: 12px;padding: 3%;margin-right:-2%;">
             <ion-icon color="primary" :icon="ioniconsArrowDownCircleSharp" size="large" style="align-self: flex-start;"/>
-            <ion-button fill="clear" >Recieve</ion-button>
+            <!-- <ion-button fill="clear" >Recieve</ion-button> -->
+            <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:15%">Recieve</ion-card-subtitle>
         </ion-card>
 
         <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 100%;width:30%;border-radius: 12px;padding: 3%;">
             <ion-icon color="primary" :icon="ioniconsPeopleCircleOutline" size="large" style="align-self: flex-start;"/>
-            <ion-button fill="clear" >P2P x</ion-button>
+            <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:15%">P2P ex</ion-card-subtitle>
         </ion-card>
 
     </ion-card>
@@ -69,12 +70,12 @@
                 <ion-col style="width: 65%;height:90%;display: flex;flex-direction: row;justify-content: center;align-items: flex-end;margin-right:-1%;border-radius: 12px;background: none;box-shadow: none;">
                     <ion-segment :scrollable="true" :value=switchAssets>
                             <ion-segment-button value="home" @click="switchAssets = 'crypto'">
-                                <ion-label>crypto</ion-label>
+                                <ion-label style="font-size: 75%;">crypto</ion-label>
                                 <ion-icon color="primary" :icon="ioniconsLogoBitcoin"></ion-icon>
                             </ion-segment-button>
 
                             <ion-segment-button value="heart" @click="switchAssets = 'fiat'">
-                                <ion-label>fiat</ion-label>   
+                                <ion-label style="font-size: 75%;">fiat</ion-label>   
                                 <ion-icon color="primary" :icon="ioniconsLogoUsd"></ion-icon>
                             </ion-segment-button>
                     </ion-segment>
@@ -85,7 +86,7 @@
                 </ion-card>
     </ion-card>
     
-    <ion-card style="max-height: 30%;min-height:30%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -3%;border-radius: 12px;">
+    <ion-card style="max-height: 30%;min-height:30%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -3%;border-radius: 12px;box-shadow: none;background: none;">
         <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchAssets == 'crypto'">
             <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
         </ion-list>
@@ -95,8 +96,8 @@
         </ion-list>
     </ion-card>
 
-    <ion-card style="width: 50%;min-height:5%;max-height:8%;border-radius: 12px;display: flex;flex-direction: row;justify-content: center;align-items: center;">
-        <ion-button fill="clear" size="small" @click="setAllAssetsOpen(true)">show all assets</ion-button>
+    <ion-card style="width: 50%;min-height:5%;max-height:8%;border-radius: 12px;display: flex;flex-direction: row;justify-content: center;align-items: center;background: none;box-shadow: none;margin-top: -3%;">
+        <ion-button fill="clear" size="small" @click="setAllAssetsOpen(true)"><ion-icon slot="end" color="primary" :icon="ioniconsOpen" style="font-size: 200%;"></ion-icon>show all assets</ion-button>
     </ion-card>
 
     <!-- modal  -->

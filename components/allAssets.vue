@@ -16,7 +16,7 @@
     </ion-toolbar>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button @click="$emit('closeModal')">Cancel</ion-button>
+            <ion-button @click="$emit('closeModal')"><ion-icon slot="start" color="primary" :icon="ioniconsReturnUpBack" style="font-size: 200%;"></ion-icon>Back</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -39,7 +39,7 @@
                 <mainAsset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
             </ion-list>
 
-            <ion-list v-for="(fiat, index) in fiats" :key="fiat.symbol" v-else >
+            <ion-list v-for="(fiat, index) in fiats" :key="fiat.symbol" style="background: none;" v-else >
                 <mainAsset :name="fiat.name" :symbol="fiat.symbol" :price="fiat.price" :amount="fiat.amount" :img="fiat.img"/>
             </ion-list>
         <!-- </ion-card> -->

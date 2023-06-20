@@ -16,7 +16,7 @@
     </ion-toolbar>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button @click="$emit('closeModal')">Cancel</ion-button>
+            <ion-button @click="$emit('closeModal')"><ion-icon slot="start" color="primary" :icon="ioniconsReturnUpBack" style="font-size: 200%;"></ion-icon>Back</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
