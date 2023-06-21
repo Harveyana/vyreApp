@@ -1,5 +1,6 @@
 const interopDefault = r => r.default || r || [];
 const styles = {
+  "app.vue": () => import('./_nuxt/app-styles.ea48d49d.mjs').then(interopDefault),
   "pages/home.vue": () => import('./_nuxt/home-styles.947b89b9.mjs').then(interopDefault),
   "pages/intro.vue": () => import('./_nuxt/intro-styles.2b4f0fc7.mjs').then(interopDefault),
   "pages/newhome.vue": () => import('./_nuxt/newhome-styles.e6051f39.mjs').then(interopDefault),

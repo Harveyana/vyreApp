@@ -13748,6 +13748,7 @@ const _plugins = [
   router_h7T2ZmMnVl,
   ionic_JZxaXwxCQa
 ];
+const app_vue_vue_type_style_index_0_lang = "";
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
