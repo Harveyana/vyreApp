@@ -1,7 +1,7 @@
 <template>
     <ion-modal :is-open="props.isAllAssetmodalOpen">
       <ion-header>
-        <ion-toolbar>
+        <ion-toolbar style="--background: secondary">
       <ion-segment :value=switchAssets>
 
         <ion-segment-button value="fiat" @click="switchAssets = 'fiat'">
@@ -14,7 +14,7 @@
 
       </ion-segment>
     </ion-toolbar>
-        <ion-toolbar>
+        <ion-toolbar style="--background: secondary">
           <ion-buttons slot="start">
             <ion-button @click="$emit('closeModal')"><ion-icon slot="start" color="primary" :icon="ioniconsReturnUpBack" style="font-size: 200%;"></ion-icon>Back</ion-button>
           </ion-buttons>

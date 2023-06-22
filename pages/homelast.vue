@@ -6,8 +6,8 @@
         
         <ion-toolbar style="border-bottom-right-radius:20%;border-bottom-left-radius: 20%;">
 
-            <ion-card style="width:100%;margin-left:0px;background:none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
-                <ion-chip class="ionchip" color="" style="height: 50px;padding:5%;margin-left:5%;margin-top: 3%;background: none;">
+            <ion-card style="width:100%;margin-left:0px;background:none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;margin-top: 0px;margin-bottom: 0px;">
+                <ion-chip class="ionchip" color="" style="height: 50px;padding:5%;margin-left:5%;background: none;">
                     <ion-avatar >
                     <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
                     </ion-avatar>
@@ -38,7 +38,7 @@
                                     <ion-card-subtitle style="color: green;">+1.12 %</ion-card-subtitle> 
 
                                     <div style="display:flex;flex-direction: row;justify-content: space-between;align-items: center;width: 100%;">
-                                    <ion-card-title color="primary"><strong  style="font-size: 100%;">{{ hideTotal ? '***********' : '$2,260,351.77'}}</strong></ion-card-title>
+                                    <ion-card-title color="primary"><strong  style="font-size: 80%;">{{ hideTotal ? '***********' : '$2,260,351.77'}}</strong></ion-card-title>
                                     <ion-icon color="primary" size="large" :icon="ioniconsEyeOffSharp" style="margin-left:10px;" @click="hideTotal = !hideTotal"></ion-icon>
                                     </div>
                                 </ion-card-header>
@@ -55,22 +55,22 @@
 
     
 
-    <ion-card style="box-shadow:none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;background:none;min-height:16%;max-height:16%;margin-bottom: -1%;z-index: 99;position: relative;top: -14%;margin-left: 0px;margin-right: 0px;">
+    <ion-card style="box-shadow:none;display: flex;flex-direction: row;justify-content: space-around;align-items: center;background:none;min-height:16%;max-height:16%;margin-bottom: -1%;z-index: 99;position: relative;top: -14%;margin-left: 0px;margin-right: 0px;">
 
-        <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 100%;width:30%;border-radius: 12px;padding: 3%;margin-right: -2%;border: 1px solid #1B1D30;">
+        <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 80%;width:25%;border-radius: 18px;padding: 3%;margin-right: -2%;">
             <ion-icon color="primary" :icon="ioniconsArrowUpCircleSharp" size="large" style="align-self: flex-start;"/>
-            <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:23%">Send</ion-card-subtitle>
+            <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:23%;font-size: 70%;">Send</ion-card-subtitle>
         </ion-card>
 
-        <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 100%;width:30%;border-radius: 12px;padding: 3%;margin-right:-2%;border: 1px solid #1B1D30;">
+        <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 80%;width:25%;border-radius: 18px;padding: 3%;margin-right:-2%;">
             <ion-icon color="primary" :icon="ioniconsArrowDownCircleSharp" size="large" style="align-self: flex-start;"/>
             <!-- <ion-button fill="clear" >Recieve</ion-button> -->
-            <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:15%">Recieve</ion-card-subtitle>
+            <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:15%;font-size: 70%;">Recieve</ion-card-subtitle>
         </ion-card>
 
-        <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 100%;width:30%;border-radius: 12px;padding: 3%;box-shadow: 20px;border: 1px solid #1B1D30;">
+        <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 80%;width:25%;border-radius: 18px;padding: 3%;box-shadow: 20px;">
             <ion-icon color="primary" :icon="ioniconsPeopleCircleOutline" size="large" style="align-self: flex-start;"/>
-            <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:15%">P2P ex</ion-card-subtitle>
+            <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:15%;font-size: 70%;">P2P ex</ion-card-subtitle>
         </ion-card>
 
     </ion-card>
@@ -83,15 +83,15 @@
     <ion-card style="box-shadow: none;background: none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;min-height:16%;max-height:16%;margin-top:0px;position: relative;top: -14%;">
             
                 <!-- <ion-card style="width: 75%;height:90%;display: flex;flex-direction: row;justify-content: center;align-items: flex-end;margin-right:-1%;border-radius: 12px;background: none;box-shadow: none;"> -->
-                    <ion-segment :scrollable="true" :value=switchAssets style="width: 75%;height:70%;z-index: 99;">
+                    <ion-segment color="primary" :scrollable="true" :value=switchAssets style="width: 75%;height:30%;z-index: 99;">
                             <ion-segment-button value="home" @click="switchAssets = 'crypto'">
                                 <ion-label style="font-size: 75%;">crypto</ion-label>
-                                <ion-icon color="primary" :icon="ioniconsLogoBitcoin"></ion-icon>
+                                <!-- <ion-icon color="primary" :icon="ioniconsLogoBitcoin"></ion-icon> -->
                             </ion-segment-button>
 
                             <ion-segment-button value="heart" @click="switchAssets = 'fiat'">
                                 <ion-label style="font-size: 75%;">fiat</ion-label>   
-                                <ion-icon color="primary" :icon="ioniconsLogoUsd"></ion-icon>
+                                <!-- <ion-icon color="primary" :icon="ioniconsLogoUsd"></ion-icon> -->
                             </ion-segment-button>
                     </ion-segment>
 

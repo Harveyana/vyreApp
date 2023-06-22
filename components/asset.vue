@@ -10,7 +10,7 @@
             <!-- </ion-col> -->
 
             <ion-col style="--ion-grid-column-padding-xs: none">
-                <ion-card-title style="margin-bottom: 9px;"><strong>{{$props.symbol}}</strong></ion-card-title>
+                <ion-card-title style="margin-bottom: 9px;font-size: 80%;">{{$props.symbol}}</ion-card-title>
                 <div style="display: flex;flex-direction: row;justify-content:start;align-items: center;">
                     <span style="font-size: small;margin-right: 5px;">${{$props.price}}</span>
                     <span style="font-size: x-small;color:red;">-0.89%</span>
@@ -21,7 +21,7 @@
 
 
         <div style="display: flex;flex-direction: column;justify-content: start;align-items: flex-end;">
-            <ion-card-title style="margin-bottom: 9px;"><strong style="font-size: medium;">{{$props.amount}}</strong></ion-card-title>
+            <ion-card-title style="margin-bottom: 9px;"><strong style="font-size: 50%;">{{$props.amount}}</strong></ion-card-title>
             <div style="display: flex;flex-direction: row;justify-content:center;align-items: center;">
                 <span style="font-size: small;margin-right: 5px;">$ {{$props.amount * $props.price}}</span>
             </div>

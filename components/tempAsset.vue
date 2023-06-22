@@ -1,5 +1,5 @@
 <template>
-    <ion-item button :detail="false" style="--border-radius:13px;">
+    <ion-item button :detail="false" style="--border-radius:13px;margin-bottom: 2%;padding-top: 3%;">
 
         <!-- <ion-item style="display: flex;flex-direction: row;justify-content: start;align-items: center;width: 60%;"> -->
 
@@ -10,7 +10,7 @@
             <!-- </ion-col> -->
 
             <ion-col style="--ion-grid-column-padding-xs: none">
-                <ion-card-title style="margin-bottom: 9px;"><strong>{{$props.symbol}}</strong></ion-card-title>
+                <ion-card-title style="margin-bottom: 9px;font-size: 100%;"><strong>{{$props.symbol}}</strong></ion-card-title>
                 <div style="display: flex;flex-direction: row;justify-content:start;align-items: center;">
                     <span style="font-size: small;margin-right: 5px;">${{$props.price}}</span>
                     <span style="font-size: x-small;color:red;">-0.89%</span>
