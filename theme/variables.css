@@ -6,12 +6,15 @@
 body {
     font-family: 'Nunito', Fallback, sans-serif;
     }
-
+ ion-toolbar{
+	--background: #1B1D30;
+	padding: none;
+ }
 
 :root {
 	--ion-background-color: #f6f6f6;
 	--ion-background-color-rgb: 246,246,246;
-    --ion-card-background: #d4af37;
+    --ion-card-background: #f6f6f6;
 	--ion-font-family: 'Nunito', Fallback, sans-serif;
 
 	--ion-text-color: #1B1D30;

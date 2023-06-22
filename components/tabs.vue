@@ -13,7 +13,7 @@
           <ion-label>Radio</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button class="ion-tab-button" tab="library" href="/newhome">
+        <ion-tab-button class="ion-tab-button" tab="library" href="/homelast">
           <ion-icon :icon="ioniconsLibrary" />
           <ion-label>Library</ion-label>
         </ion-tab-button>

@@ -1129,7 +1129,15 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/home-aac85379.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/home-be36ad18.js").then((m) => m.default || m)
+  },
+  {
+    name: "homelast",
+    path: "/homelast",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import("./_nuxt/homelast-dccae094.js").then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1137,7 +1145,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/index-4f8d9d29.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/index-053b97d9.js").then((m) => m.default || m)
   },
   {
     name: "intro",
@@ -1145,7 +1153,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/intro-c19e8c36.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/intro-fbdc13f4.js").then((m) => m.default || m)
   },
   {
     name: "newhome",
@@ -1153,7 +1161,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/newhome-0e555333.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/newhome-a0921bb8.js").then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -13737,7 +13745,7 @@ const defineOverlayContainer = (name, defineCustomElement2, componentProps = [],
   return Container;
 };
 const IonModal = /* @__PURE__ */ defineOverlayContainer("ion-modal", defineCustomElement, ["animated", "backdropBreakpoint", "backdropDismiss", "breakpoints", "canDismiss", "enterAnimation", "handle", "handleBehavior", "htmlAttributes", "initialBreakpoint", "isOpen", "keepContentsMounted", "keyboardClose", "leaveAnimation", "mode", "presentingElement", "showBackdrop", "trigger"], true);
-const ionicVueConfig = {};
+const ionicVueConfig = { "mode": "ios" };
 const ionic_JZxaXwxCQa = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(IonicVue, ionicVueConfig);
 });
@@ -13850,10 +13858,10 @@ const plugins = normalizePlugins(_plugins);
 }
 const entry$1 = (ctx) => entry(ctx);
 export {
-  IonContent as A,
-  IonModal as B,
-  IonChip as C,
-  IonAvatar as D,
+  IonFooter as A,
+  useIonRouter as B,
+  IonContent as C,
+  IonModal as D,
   IonItem as E,
   isRTL$1 as F,
   createGesture as G,
@@ -13899,10 +13907,10 @@ export {
   IonSegment as s,
   IonSegmentButton as t,
   IonList as u,
-  IonTitle as v,
-  IonCardContent as w,
-  IonToggle as x,
-  IonFooter as y,
-  useIonRouter as z
+  IonChip as v,
+  IonAvatar as w,
+  IonTitle as x,
+  IonCardContent as y,
+  IonToggle as z
 };
 //# sourceMappingURL=server.mjs.map

@@ -6,5 +6,10 @@ export default defineNuxtConfig({
         }
       },
     modules: ['@nuxtjs/ionic','nuxt-swiper'],
-    css: ['@/theme/variables.css']
+    css: ['@/theme/variables.css'],
+    ionic: {
+      config: {
+        mode:'ios'
+      }
+    },
 })
