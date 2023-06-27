@@ -7,7 +7,7 @@ body {
     font-family: 'Nunito', Fallback, sans-serif;
     }
  ion-toolbar{
-	--background: #1B1D30;
+	--background: none;
 	padding: none;
  }
 
