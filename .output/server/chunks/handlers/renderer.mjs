@@ -4,22 +4,6 @@ import { stringify, uneval } from 'devalue';
 import { renderToString } from 'vue/server-renderer';
 import { u as useNitroApp, a as useRuntimeConfig, g as getRouteRules } from '../nitro/node-server.mjs';
 import { joinURL } from 'ufo';
-import 'node-fetch-native/polyfill';
-import 'node:http';
-import 'node:https';
-import 'destr';
-import 'ofetch';
-import 'unenv/runtime/fetch/index';
-import 'hookable';
-import 'scule';
-import 'klona';
-import 'defu';
-import 'ohash';
-import 'unstorage';
-import 'radix3';
-import 'node:fs';
-import 'node:url';
-import 'pathe';
 
 function defineRenderHandler(handler) {
   return eventHandler(async (event) => {
@@ -282,5 +266,10 @@ function splitPayload(ssrContext) {
   };
 }
 
-export { renderer as default };
+const renderer$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: renderer
+});
+
+export { buildAssetsURL as b, renderer$1 as r };
 //# sourceMappingURL=renderer.mjs.map

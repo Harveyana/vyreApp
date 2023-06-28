@@ -3,7 +3,7 @@
 
     <ion-header class="ion-no-border" >
         <ion-toolbar style="--background: secondary">
-                <ion-button fill="clear" style="--border-radius: 10px;" @click="$router.push('/homelast')">
+                <ion-button fill="clear" style="--border-radius: 10px;" router-link="/homelast" router-direction="back">
                     <ion-icon slot="end" :icon="ioniconsHome"></ion-icon>
                 </ion-button>
                 <ion-buttons slot="primary">
@@ -50,43 +50,6 @@
                 </ion-card>
             </ion-toolbar>
     </ion-header>
-
-    <!-- <ion-toolbar style="display: flex;flex-direction: row;justify-content: center;align-items: center;border-radius: 12px;border:1px solid gold"> -->
-
-        <!-- <ion-card class="" style="box-shadow:none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;background:none;min-height: 14%;max-height:14%;margin-bottom: -6%;margin-left: 0px;margin-right: 0px;margin-top:0px;"> -->
-
-                <!-- <ion-card :button="true" class="" style="display: flex;flex-direction: row;justify-content: center;align-items: center;min-height: 100%;width:25%;border-radius: 12px;margin-right:-1%;">
-                    <ion-button size="large" fill="clear"><ion-icon :icon="ioniconsSettings" color="primary" size="large" style=""/></ion-button>
-                </ion-card> -->
-
-
-                
-
-                
-            
-        <!-- </ion-card> -->
-
-    <!-- </ion-toolbar> -->
-        
-        <!-- <ion-card class="cardActions">
-
-                <ion-col class="Actions">
-                    <ion-button size="large"><ion-icon size="large" :icon="ioniconsArrowUpCircleSharp" ></ion-icon></ion-button>
-                    <span style="font-size: x-small;color:white">Send</span>
-                </ion-col>
-                <ion-col class="Actions">
-                    <ion-button size="large"><ion-icon size="large" :icon="ioniconsArrowDownCircleSharp" ></ion-icon></ion-button>
-                    <span style="font-size: x-small;color:white">Recieve</span>
-                </ion-col>
-                <ion-col class="Actions">
-                    <ion-button size="large"><ion-icon size="large" :icon="ioniconsWalletSharp" ></ion-icon></ion-button>
-                    <span style="font-size: x-small;color:white">Buy</span>
-                </ion-col>
-
-        </ion-card> -->
-
-        
-    
     
 
     <!-- modal  -->
@@ -94,7 +57,7 @@
     <AddAsset :is-crypto="switchTab" :ismodal-open="ismodalOpen" @closeModal="setOpen(false)" />
 
     <!-- <tabs/> -->
-    <ion-footer class="ion-no-border" style="min-height:65%;background-image: url('/bg1.jpg');border-top-left-radius: 38px;">
+    <ion-footer class="ion-no-border foota" style="min-height:65%;border-top-left-radius: 38px;">
     <!-- <ion-toolbar style="box-shadow: none;background: none;display: flex;flex-direction: column;justify-content:center;align-items: center;border: 1px solid gold;"> -->
 
       <ion-card style="box-shadow: none;background: none;display: flex;flex-direction: row;justify-content:center;align-items: center;min-height:16%;max-height:16%;width:100%;margin-top:0px;margin-left: 0px;">
@@ -274,6 +237,10 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.foota{
+    background: url('~/assets/bg1.jpg') no-repeat fixed center;
+    background-size: auto;
 }
 
 </style>

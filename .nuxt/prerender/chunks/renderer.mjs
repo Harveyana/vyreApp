@@ -4,18 +4,6 @@ import { stringify, uneval } from 'file:///Users/mac/vyreApp/node_modules/devalu
 import { renderToString } from 'file:///Users/mac/vyreApp/node_modules/vue/server-renderer/index.mjs';
 import { u as useNitroApp, a as useRuntimeConfig, g as getRouteRules } from './nitro/nitro-prerenderer.mjs';
 import { joinURL } from 'file:///Users/mac/vyreApp/node_modules/ufo/dist/index.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/node-fetch-native/dist/polyfill.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/ofetch/dist/node.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/destr/dist/index.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/unenv/runtime/fetch/index.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/hookable/dist/index.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/scule/dist/index.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/klona/dist/index.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/defu/dist/defu.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/ohash/dist/index.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/unstorage/dist/index.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/unstorage/drivers/fs.mjs';
-import 'file:///Users/mac/vyreApp/node_modules/radix3/dist/index.mjs';
 
 function defineRenderHandler(handler) {
   return eventHandler(async (event) => {
@@ -289,5 +277,10 @@ function splitPayload(ssrContext) {
   };
 }
 
-export { renderer as default };
+const renderer$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: renderer
+});
+
+export { buildAssetsURL as b, renderer$1 as r };
 //# sourceMappingURL=renderer.mjs.map

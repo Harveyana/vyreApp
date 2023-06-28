@@ -4,7 +4,7 @@
     <ion-header class="ion-no-border" style="">
         
         
-        <ion-toolbar style="border-bottom-right-radius:20%;border-bottom-left-radius: 20%;background-image: url('/bg1.jpg');">
+        <ion-toolbar class="tooba" style="">
 
             <ion-card style="width:100%;margin-left:0px;background:none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;margin-top: 0px;margin-bottom: 0px;">
                 <ion-chip class="ionchip" color="" style="height: 50px;padding:5%;margin-left:5%;background: none;">
@@ -68,7 +68,7 @@
             <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:15%;font-size: 70%;text-transform: lowercase;">Recieve</ion-card-subtitle>
         </ion-card>
 
-        <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 80%;width:25%;border-radius: 18px;padding: 3%;box-shadow: 20px;" @click="$router.push('/p2p')">
+        <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 80%;width:25%;border-radius: 18px;padding: 3%;box-shadow: 20px;" router-link="/p2p" router-direction="forward">
             <ion-icon color="primary" :icon="ioniconsPeopleCircleOutline" size="large" style="align-self: flex-start;"/>
             <ion-card-subtitle color="primary" style="margin-top: 17%;margin-left:15%;font-size: 70%;text-transform: lowercase;">P2P ex</ion-card-subtitle>
         </ion-card>
@@ -282,5 +282,11 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
 
 .carder{
     background: tertiary;
+}
+.tooba{
+    --background: url("~/assets/bg1.jpg") no-repeat fixed center;
+    background-size: cover;
+    border-bottom-right-radius:20%;
+    border-bottom-left-radius: 20%;
 }
 </style>
