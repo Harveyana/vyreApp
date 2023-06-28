@@ -6,10 +6,13 @@
 body {
     font-family: 'Nunito', Fallback, sans-serif;
     }
+	
  ion-toolbar{
-	--background: none;
+	--background: url('~/assets/bg1.jpg') no-repeat fixed center;
+	/* background: none; */
 	padding: none;
  }
+
 
 :root {
 	--ion-background-color: #f6f6f6;

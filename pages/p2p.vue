@@ -57,7 +57,8 @@
     <AddAsset :is-crypto="switchTab" :ismodal-open="ismodalOpen" @closeModal="setOpen(false)" />
 
     <!-- <tabs/> -->
-    <ion-footer class="ion-no-border foota" style="min-height:65%;border-top-left-radius: 38px;">
+    <ion-footer class="ion-no-border" style="min-height:65%;border-top-left-radius: 38px;">
+    <div class="foota">
     <!-- <ion-toolbar style="box-shadow: none;background: none;display: flex;flex-direction: column;justify-content:center;align-items: center;border: 1px solid gold;"> -->
 
       <ion-card style="box-shadow: none;background: none;display: flex;flex-direction: row;justify-content:center;align-items: center;min-height:16%;max-height:16%;width:100%;margin-top:0px;margin-left: 0px;">
@@ -83,7 +84,7 @@
                 <asset :name="fiat.name" :symbol="fiat.symbol" :price="fiat.price" :amount="fiat.amount" :img="fiat.img"/>
             </ion-list>
         </ion-card>
-
+    </div>
     <!-- </ion-toolbar> -->
   </ion-footer>
     </ion-page>
@@ -240,7 +241,10 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
 }
 .foota{
     background: url('~/assets/bg1.jpg') no-repeat fixed center;
-    background-size: auto;
+	background-size: auto;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 38px;
 }
 
 </style>
