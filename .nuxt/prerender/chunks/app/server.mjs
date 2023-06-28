@@ -1140,7 +1140,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/homelast-bd7f4007.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/homelast-fdae8086.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1164,7 +1164,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/newhome-0366ab85.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/newhome-ad4a37ab.mjs').then((m) => m.default || m)
   },
   {
     name: "p2p",
@@ -1172,7 +1172,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/p2p-9b33bf95.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/p2p-d779b5d6.mjs').then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {

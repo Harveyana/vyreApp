@@ -58,7 +58,7 @@
 
     <!-- <tabs/> -->
     <ion-footer class="ion-no-border" style="min-height:65%;border-top-left-radius: 38px;">
-    <div class="foota">
+    <!-- <div class="foota"> -->
     <!-- <ion-toolbar style="box-shadow: none;background: none;display: flex;flex-direction: column;justify-content:center;align-items: center;border: 1px solid gold;"> -->
 
       <ion-card style="box-shadow: none;background: none;display: flex;flex-direction: row;justify-content:center;align-items: center;min-height:16%;max-height:16%;width:100%;margin-top:0px;margin-left: 0px;">
@@ -84,7 +84,7 @@
                 <asset :name="fiat.name" :symbol="fiat.symbol" :price="fiat.price" :amount="fiat.amount" :img="fiat.img"/>
             </ion-list>
         </ion-card>
-    </div>
+    <!-- </div> -->
     <!-- </ion-toolbar> -->
   </ion-footer>
     </ion-page>
@@ -239,7 +239,7 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
     justify-content: center;
     align-items: center;
 }
-.foota{
+ion-footer {
     background: url('~/assets/bg1.jpg') no-repeat fixed center;
 	background-size: auto;
     width: 100%;

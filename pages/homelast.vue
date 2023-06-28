@@ -283,9 +283,10 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
 .carder{
     background: tertiary;
 }
-.tooba{
-    /* --background: url('~/assets/bg1.jpg') no-repeat fixed center;
-    background-size: cover; */
+
+ion-toolbar {
+    --background: url('~/assets/bg1.jpg') no-repeat fixed center;
+    background-size: cover;
     border-bottom-right-radius:20%;
     border-bottom-left-radius: 20%;
 }
