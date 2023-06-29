@@ -21,7 +21,7 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-content class="ion-padding tooba">
+      <ion-content class="ion-padding content">
 
         
 
@@ -181,8 +181,9 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
 ]
 </script>
 <style scoped>
- ion-content{
-    --background: url('~/assets/bg1.jpg') no-repeat fixed center;
-	background-size: auto;
+ ion-modal {
+    /* --background: url('~/assets/bg1.jpg') no-repeat fixed center; */
+    background-image: linear-gradient(180deg, rgba(255,0,0,0), #1B1D30);
+	/* background-size: auto; */
  }
 </style>

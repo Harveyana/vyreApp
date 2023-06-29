@@ -285,7 +285,8 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
 }
 
 ion-toolbar {
-    --background: url('~/assets/bg1.jpg') no-repeat fixed center;
+    --ion-toolbar-background: url('~/assets/bg1.jpg') no-repeat fixed center;
+    /* background: gradie */
     background-size: cover;
     border-bottom-right-radius:20%;
     border-bottom-left-radius: 20%;
