@@ -100,7 +100,7 @@
                 </ion-card>
     </ion-card>
     
-    <ion-card style="max-height: 30%;min-height:30%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -5%;border-radius: 12px;box-shadow: none;background: none;position: relative;top: -14%;margin-left: 0px;margin-right: 0px;">
+    <ion-card style="max-height: 33%;min-height:33%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -7%;border-radius: 12px;box-shadow: none;background: none;position: relative;top: -14%;margin-left: 0px;margin-right: 0px;">
         <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchAssets == 'crypto'">
             <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
         </ion-list>
@@ -288,7 +288,7 @@ ion-toolbar {
     /* --ion-toolbar-background: url('~/assets/bg1.jpg') no-repeat fixed center; */
     /* background-size: cover; */
     /* --background: linear-gradient(45deg, rgba(255,0,0,0), #1B1D30); */
-    --background: url('~/assets/bg1.jpg') no-repeat fixed center;
+    --background: #1B1D30;
     border-bottom-right-radius:20%;
     border-bottom-left-radius: 20%;
 }

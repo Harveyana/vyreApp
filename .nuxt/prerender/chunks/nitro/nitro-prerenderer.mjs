@@ -521,7 +521,7 @@ const errorHandler = (async function errorhandler(error, event) {
 
 const _rldSo3 = defineEventHandler(() => useRuntimeConfig().public.pwaManifest);
 
-const _lazy_tt9yMi = () => import('../renderer.mjs').then(function (n) { return n.r; });
+const _lazy_tt9yMi = () => import('../renderer.mjs');
 
 const handlers = [
   { route: '/manifest.json', handler: _rldSo3, lazy: false, middleware: false, method: undefined },

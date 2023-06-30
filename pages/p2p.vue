@@ -65,11 +65,11 @@
     
                     <ion-segment :value=switchTab style="width: 80%;">
                             <ion-segment-button value="Orders" @click="switchTab = 'Orders'">
-                                <ion-label>Orders</ion-label>
+                                <ion-label style="color: whitesmoke;">Orders</ion-label>
                             </ion-segment-button>
 
                             <ion-segment-button value="Transactions" @click="switchTab = 'Transactions'">
-                                <ion-label>Transactions</ion-label>   
+                                <ion-label style="color: whitesmoke;">Transactions</ion-label>   
                             </ion-segment-button>
                     </ion-segment>
                     
@@ -243,10 +243,18 @@ ion-footer {
     /* background-image: url('~/assets/bg1.jpg') no-repeat fixed center; */
 	/* background-size: auto; */
     /* background-image: linear-gradient(70deg, rgba(255,0,0,0), #1B1D30); */
-    background: #1B1D30;
+    /* background:linear-gradient(230deg, rgba(255,0,0,0), #1B1D30); */
     width: 100%;
     height: 100%;
     border-top-left-radius: 38px;
 }
-
+ion-segment {
+    --background: rgba(66, 65, 65, 0.446);
+} 
+ion-segment-button::part(indicator-background) {
+    background: #1B1D30;
+}
+  .segment-button-checked.ios::part(native) {
+    color:#1B1D30;
+} 
 </style>

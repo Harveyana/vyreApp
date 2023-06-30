@@ -5,11 +5,11 @@
       <ion-segment :value=switchAssets style="">
 
         <ion-segment-button value="fiat" @click="switchAssets = 'fiat'">
-          <ion-label>Fiat</ion-label>
+          <ion-label style="color: whitesmoke;">Fiat</ion-label>
         </ion-segment-button>
 
         <ion-segment-button value="crypto" @click="switchAssets = 'crypto'">
-          <ion-label>Crypto</ion-label>
+          <ion-label style="color: whitesmoke;">Crypto</ion-label>
         </ion-segment-button>
 
       </ion-segment>
@@ -181,9 +181,18 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
 ]
 </script>
 <style scoped>
- ion-modal {
+ ion-content {
     /* --background: url('~/assets/bg1.jpg') no-repeat fixed center; */
-    background-image: linear-gradient(180deg, rgba(255,0,0,0), #1B1D30);
+    --background: linear-gradient(45deg, rgba(255,0,0,0), #1B1D30);
 	/* background-size: auto; */
  }
+ ion-segment {
+    --background: rgba(66, 65, 65, 0.446);
+} 
+ion-segment-button::part(indicator-background) {
+    background: #1B1D30;
+}
+  .segment-button-checked.ios::part(native) {
+    color:#1B1D30;
+} 
 </style>
