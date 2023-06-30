@@ -1,12 +1,12 @@
 <template>
     <ion-page>
 
-    <ion-header class="ion-no-border" style="">
+    <ion-header class="ion-no-border" style="background:none">
         
         
         <ion-toolbar class="tooba" style="">
 
-            <ion-card style="width:100%;margin-left:0px;background:none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;margin-top: 0px;margin-bottom: 0px;">
+            <ion-card style="width:100%;margin-left:0px;background:none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;margin-top: 0px;margin-bottom: 0px;box-shadow: none;">
                 <ion-chip class="ionchip" color="" style="height: 50px;padding:5%;margin-left:5%;background: none;">
                     <ion-avatar >
                     <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
@@ -83,14 +83,14 @@
     <ion-card style="box-shadow: none;background: none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;min-height:16%;max-height:16%;margin-top:0px;position: relative;top: -14%;">
             
                 <!-- <ion-card style="width: 75%;height:90%;display: flex;flex-direction: row;justify-content: center;align-items: flex-end;margin-right:-1%;border-radius: 12px;background: none;box-shadow: none;"> -->
-                    <ion-segment color="primary" :scrollable="true" :value="switchAssets" style="width: 75%;height:30%;z-index: 99;">
-                            <ion-segment-button value="crypto" @click="switchAssets = 'crypto'">
-                                <ion-label style="font-size: 75%;">crypto</ion-label>
+                    <ion-segment :scrollable="true" :value="switchAssets" style="width: 75%;height:30%;z-index: 99;">
+                            <ion-segment-button value="crypto" @click="switchAssets = 'crypto'" style="">
+                                <ion-label style="font-size: 75%;color: whitesmoke;">crypto</ion-label>
                                 <!-- <ion-icon color="primary" :icon="ioniconsLogoBitcoin"></ion-icon> -->
                             </ion-segment-button>
 
                             <ion-segment-button value="fiat" @click="switchAssets = 'fiat'">
-                                <ion-label style="font-size: 75%;">fiat</ion-label>   
+                                <ion-label style="font-size: 75%;color: whitesmoke;">fiat</ion-label>   
                                 <!-- <ion-icon color="primary" :icon="ioniconsLogoUsd"></ion-icon> -->
                             </ion-segment-button>
                     </ion-segment>
@@ -100,7 +100,7 @@
                 </ion-card>
     </ion-card>
     
-    <ion-card style="max-height: 30%;min-height:30%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -3%;border-radius: 12px;box-shadow: none;background: none;position: relative;top: -14%;margin-left: 0px;margin-right: 0px;">
+    <ion-card style="max-height: 30%;min-height:30%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -5%;border-radius: 12px;box-shadow: none;background: none;position: relative;top: -14%;margin-left: 0px;margin-right: 0px;">
         <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchAssets == 'crypto'">
             <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
         </ion-list>
@@ -280,15 +280,27 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
     align-items: center;
 }
 
-.carder{
+/* .carder{
     background: tertiary;
-}
+} */
 
 ion-toolbar {
-    --ion-toolbar-background: url('~/assets/bg1.jpg') no-repeat fixed center;
-    /* background: gradie */
-    background-size: cover;
+    /* --ion-toolbar-background: url('~/assets/bg1.jpg') no-repeat fixed center; */
+    /* background-size: cover; */
+    /* --background: linear-gradient(45deg, rgba(255,0,0,0), #1B1D30); */
+    --background: url('~/assets/bg1.jpg') no-repeat fixed center;
     border-bottom-right-radius:20%;
     border-bottom-left-radius: 20%;
 }
+
+ion-segment {
+    --background: rgba(66, 65, 65, 0.446);
+} 
+ion-segment-button::part(indicator-background) {
+    background: #1B1D30;
+}
+  .segment-button-checked.ios::part(native) {
+    color:#1B1D30;
+} 
+
 </style>

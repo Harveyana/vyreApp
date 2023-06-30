@@ -9,7 +9,7 @@ body {
 	
  ion-toolbar{
 	/* --background: url('~/assets/bg1.jpg') no-repeat fixed center; */
-	background: none;
+	/* --background: none; */
 	padding: none;
  }
 

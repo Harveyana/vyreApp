@@ -242,7 +242,8 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
 ion-footer {
     /* background-image: url('~/assets/bg1.jpg') no-repeat fixed center; */
 	/* background-size: auto; */
-    background-image: linear-gradient(180deg, rgba(255,0,0,0), #1B1D30);
+    /* background-image: linear-gradient(70deg, rgba(255,0,0,0), #1B1D30); */
+    background: #1B1D30;
     width: 100%;
     height: 100%;
     border-top-left-radius: 38px;

@@ -2,7 +2,7 @@
     <ion-modal :is-open="props.isAllAssetmodalOpen">
       <ion-header>
         <ion-toolbar style="--background: secondary">
-      <ion-segment :value=switchAssets>
+      <ion-segment :value=switchAssets style="">
 
         <ion-segment-button value="fiat" @click="switchAssets = 'fiat'">
           <ion-label>Fiat</ion-label>
@@ -21,7 +21,7 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-content class="ion-padding content">
+      <ion-content class="ion-padding content" style="">
 
         
 
