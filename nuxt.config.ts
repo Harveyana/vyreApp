@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     css: ['@/theme/variables.css'],
     ionic: {
       config: {
-        mode:'ios'
+        mode:'ios',
       }
     },
 })

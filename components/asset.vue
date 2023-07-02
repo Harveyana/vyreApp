@@ -1,5 +1,5 @@
 <template>
-    <ion-item button :detail="false" style="--border-radius:13px;">
+    <ion-item button :detail="false" lines="none" style="--border-radius:13px;margin-bottom: 3%;">
 
         <!-- <ion-item style="display: flex;flex-direction: row;justify-content: start;align-items: center;width: 60%;"> -->
 
@@ -21,7 +21,7 @@
 
 
         <div style="display: flex;flex-direction: column;justify-content: start;align-items: flex-end;">
-            <ion-card-title style="margin-bottom: 9px;"><strong style="font-size: 50%;">{{$props.amount}}</strong></ion-card-title>
+            <ion-card-title style="margin-bottom: 9px;font-size: 80%">{{$props.amount}}</ion-card-title>
             <div style="display: flex;flex-direction: row;justify-content:center;align-items: center;">
                 <span style="font-size: small;margin-right: 5px;">$ {{$props.amount * $props.price}}</span>
             </div>

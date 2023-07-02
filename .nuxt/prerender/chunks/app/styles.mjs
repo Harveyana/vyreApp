@@ -1,14 +1,14 @@
 const interopDefault = r => r.default || r || [];
 const styles = {
-  "app.vue": () => import('./_nuxt/app-styles.ea48d49d.mjs').then(interopDefault),
+  "app.vue": () => import('./_nuxt/app-styles.9fa95b5a.mjs').then(interopDefault),
   "pages/home.vue": () => import('./_nuxt/home-styles.947b89b9.mjs').then(interopDefault),
-  "pages/homelast.vue": () => import('./_nuxt/homelast-styles.09a4181f.mjs').then(interopDefault),
+  "pages/homelast.vue": () => import('./_nuxt/homelast-styles.a99d75a8.mjs').then(interopDefault),
   "pages/intro.vue": () => import('./_nuxt/intro-styles.2b4f0fc7.mjs').then(interopDefault),
   "pages/newhome.vue": () => import('./_nuxt/newhome-styles.e6051f39.mjs').then(interopDefault),
-  "pages/p2p.vue": () => import('./_nuxt/p2p-styles.359b53c2.mjs').then(interopDefault),
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": () => import('./_nuxt/error-404-styles.a5c3f351.mjs').then(interopDefault),
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": () => import('./_nuxt/error-500-styles.6b5b5ff2.mjs').then(interopDefault),
-  "components/tabs.vue": () => import('./_nuxt/tabs-styles.b4d53877.mjs').then(interopDefault)
+  "components/tabs.vue": () => import('./_nuxt/tabs-styles.b4d53877.mjs').then(interopDefault),
+  "components/p2p.vue": () => import('./_nuxt/p2p-styles.8b2f3a49.mjs').then(interopDefault)
 };
 
 export { styles as default };
