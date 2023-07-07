@@ -1,10 +1,10 @@
 <template>
     <ion-page style="">
 
-    <ion-header class="ion-no-border" style="background:none">
+    <ion-header class="ion-no-border" style="max-height: 40%;min-height: 40%;">
         
         
-        <ion-toolbar class="tooba" style="">
+        <ion-toolbar class="tooba" style="min-height: 100%;max-height: 100%;">
 
             <ion-card class="headingCard" style="">
                 <ion-chip class="ionchip" color="" style="height: 50px;padding:5%;margin-left:5%;background: none;">
@@ -26,10 +26,10 @@
                    
                 <ion-toolbar style="margin-bottom: 25%;--background:transparent;">
 
-                    <ion-card class="" style="box-shadow:none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;background:none;min-height: 14%;max-height:14%;margin-bottom: -6%;margin-left: 0px;margin-right: 0px;margin-top:0px;">
+                    <ion-card class="" style="box-shadow:none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;background:none;min-height: 14%;max-height:14%;position:relative;bottom: -6%;margin-left: 0px;margin-right: 0px;margin-top:5%;">
 
                             <ion-card class="notificationBox" :button="true" style="">
-                                <ion-button size="large" fill="clear"><ion-icon :icon="ioniconsSettings" color="primary" size="large" style=""/></ion-button>
+                                <ion-button size="large" fill="clear"><ion-icon :icon="ioniconsNotifications" color="primary" size="large" style=""/></ion-button>
                             </ion-card>
 
 
@@ -55,7 +55,7 @@
 
     
 
-    <ion-card style="box-shadow:none;display: flex;flex-direction: row;justify-content: space-around;align-items: center;background:none;min-height:16%;max-height:16%;margin-bottom: -1%;z-index: 99;position: relative;top: -14%;margin-left: 0px;margin-right: 0px;">
+    <ion-card style="box-shadow:none;display: flex;flex-direction: row;justify-content: space-around;align-items: center;background:none;min-height:16%;max-height:16%;margin-bottom: -1%;z-index: 99;position: relative;top: -12%;margin-left: 0px;margin-right: 0px;">
 
         <ion-card :button="true" style="display: flex;flex-direction: column;justify-content: space-between;align-items: center;height: 80%;width:25%;border-radius: 18px;padding: 3%;margin-right: -2%;">
             <ion-icon color="primary" :icon="ioniconsArrowUpCircleSharp" size="large" style="align-self: flex-start;"/>
@@ -80,7 +80,7 @@
     
 
 
-    <ion-card style="box-shadow: none;background: none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;min-height:16%;max-height:16%;margin-top:0px;position: relative;top: -14%;">
+    <ion-card style="box-shadow: none;background: none;display: flex;flex-direction: row;justify-content: space-between;align-items: center;min-height:16%;max-height:16%;margin-top:0px;position: relative;top: -12%;">
             
                 <!-- <ion-card style="width: 75%;height:90%;display: flex;flex-direction: row;justify-content: center;align-items: flex-end;margin-right:-1%;border-radius: 12px;background: none;box-shadow: none;"> -->
                     <ion-segment :scrollable="true" :value="switchAssets" style="width: 75%;height:30%;z-index: 99;">
@@ -100,9 +100,9 @@
                 </ion-card>
     </ion-card>
     
-    <ion-card style="max-height: 30%;min-height:30%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -7%;border-radius: 12px;box-shadow: none;background: none;position: relative;top: -14%;margin-left: 0px;margin-right: 0px;">
+    <ion-card style="max-height: 30%;min-height:30%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -7%;border-radius: 12px;box-shadow: none;background: none;position: relative;top: -12%;margin-left: 0px;margin-right: 0px;">
         <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchAssets == 'crypto'">
-            <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
+            <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img" @click="setAssetPageOpen(true)"/>
         </ion-list>
 
         <ion-list v-for="(fiat, index) in fiats" :key="fiat.symbol" v-else >
@@ -110,7 +110,7 @@
         </ion-list>
     </ion-card>
 
-    <ion-card style="width: 50%;min-height:5%;max-height:8%;border-radius: 12px;display: flex;flex-direction: row;justify-content: center;align-items: center;background: none;box-shadow: none;margin-top: -5%;position: relative;top: -15%;">
+    <ion-card style="width: 50%;min-height:8%;max-height:8%;border-radius: 12px;display: flex;flex-direction: row;justify-content: center;align-items: center;background: none;box-shadow: none;margin-top: -5%;position: relative;top: -13%;">
         <ion-button fill="clear" size="small" @click="setAllAssetsOpen(true)"><ion-icon slot="end" color="primary" :icon="ioniconsOpen" style="font-size: 200%;"></ion-icon>show all assets</ion-button>
     </ion-card>
 
@@ -119,6 +119,7 @@
     <AddAsset :ismodal-open="isAddAssetsModalOpen" @closeModal="setAddAssetOpen(false)" />
     <AllAssets :is-all-assetmodal-open="isAllAssetsModalOpen" @closeModal="setAllAssetsOpen(false)" />
     <P2p :is-all-assetmodal-open="isP2POpen" @closeModal="setP2POpen(false)" />
+    <Assetpage :is-asset-page-open="isAssetsPageOpen" @closeModal="setAssetPageOpen(false)" />
 
     <!-- <tabs/> -->
     </ion-page>
@@ -131,10 +132,16 @@ const switchAssets = ref<string>('crypto')
 const hideTotal = ref<boolean>(false)
 const isAddAssetsModalOpen = ref<boolean>(false)
 const isAllAssetsModalOpen = ref<boolean>(false)
+const isAssetsPageOpen = ref<boolean>(false)
+
 const isP2POpen = ref<boolean>(false)
 
 const setP2POpen = (isOpen:boolean)=> {
     isP2POpen.value = isOpen;
+}
+
+const setAssetPageOpen = (isOpen:boolean)=> {
+    isAssetsPageOpen.value = isOpen;
 }
 
 const setAddAssetOpen = (isOpen:boolean)=> {
@@ -320,6 +327,8 @@ ion-toolbar {
     align-items: center;
     height: 100%;
     width: 70%;
+    min-height: 100%;
+    max-height: 100%;
     border-radius: 12px;
 }
 

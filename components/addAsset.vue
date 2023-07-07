@@ -32,7 +32,7 @@
             </ion-card-content>
         </ion-card>
 
-        <ion-card style="max-height: 50%;min-height:50%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;box-shadow: none;">
+        <ion-card style="max-height: 50%;min-height:50%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;box-shadow: none;background: none;">
             <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchAssets == 'crypto'">
                 <tempAsset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
             </ion-list>

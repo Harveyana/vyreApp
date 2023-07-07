@@ -1129,7 +1129,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/home-04cedb3b.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/home-9df95297.js").then((m) => m.default || m)
   },
   {
     name: "homelast",
@@ -1137,7 +1137,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/homelast-ce2eac60.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/homelast-0420194f.js").then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1145,7 +1145,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/index-146a5bff.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/index-1c2e3680.js").then((m) => m.default || m)
   },
   {
     name: "intro",
@@ -1153,7 +1153,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/intro-ad964105.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/intro-10a90562.js").then((m) => m.default || m)
   },
   {
     name: "newhome",
@@ -1161,7 +1161,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/newhome-feca5dcd.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/newhome-ed220739.js").then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -13907,10 +13907,10 @@ export {
   IonSegment as s,
   IonSegmentButton as t,
   IonList as u,
-  IonModal as v,
-  IonFooter as w,
-  IonChip as x,
-  IonAvatar as y,
+  IonAvatar as v,
+  IonModal as w,
+  IonFooter as x,
+  IonChip as y,
   IonTitle as z
 };
 //# sourceMappingURL=server.mjs.map

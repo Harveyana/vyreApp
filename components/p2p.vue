@@ -13,9 +13,9 @@
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
-            <ion-toolbar style="--background: secondary">
+            <ion-toolbar style="--background: secondary;">
 
-                <ion-card :button="true" style="display: flex;flex-direction: row;justify-content: center;align-items: center;height: 100%;width: 91%;border-radius: 12px;margin-bottom: -10%;">
+                <ion-card :button="true" style="display: flex;flex-direction: row;justify-content: center;align-items: center;height: 100%;width: 91%;border-radius: 12px;margin-bottom: -10%;border:1px solid black">
                     <ion-card-header style="">
                         <ion-card-subtitle style="color: green;">+1.12 %</ion-card-subtitle> 
 
@@ -26,7 +26,7 @@
                     </ion-card-header>
                 </ion-card>
 
-                <ion-card style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;height: 20%;width: 100%;border-radius: 12px;margin-left: 0px;box-shadow: none;">
+                <ion-card style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;height: 20%;width: 100%;border-radius: 12px;margin-left: 0px;box-shadow: none;border:1px solid black">
                     
                     <ion-card :button="true" style="display: flex;flex-direction: row;justify-content: center;align-items: center;max-height: 100%;width: 50%;border-radius: 12px;">
                         <ion-card-header style="">
@@ -58,7 +58,7 @@
     <AddAsset :is-crypto="switchTab" :ismodal-open="ismodalOpen" @closeModal="setOpen(false)" />
 
     <!-- <tabs/> -->
-    <ion-footer class="ion-no-border" style="min-height:65%;border-top-left-radius: 38px;">
+    <ion-footer class="ion-no-border" style="min-height:65%;border-top-left-radius: 38px;border: 1px solid black;">
     <!-- <div class="foota"> -->
     <!-- <ion-toolbar style="box-shadow: none;background: none;display: flex;flex-direction: column;justify-content:center;align-items: center;border: 1px solid gold;"> -->
 
@@ -76,9 +76,10 @@
                     
         </ion-card>
 
-        <ion-card style="max-height:63%;min-height:63%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;margin-top: -7%;box-shadow: none;">
-            <ion-list v-for="(crypto, index) in cryptos" :key="index"  v-if="switchTab == 'Orders'">
-                <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/>
+        <ion-card style="max-height:63%;min-height:63%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;box-shadow: none;background: none;position: relative;bottom: 7%;">
+            <ion-list v-for="(order, index) in orders" :key="index"  v-if="switchTab == 'Orders'">
+                <!-- <asset :name="crypto.name" :symbol="crypto.symbol" :price="crypto.price" :amount="crypto.amount" :img="crypto.img"/> -->
+                <order :base="order.base" :baseImgUrl="order.baseImgUrl" :quote="order.quote" :quote-img-url="order.quoteImgUrl" :order-type="order.orderType" :process-percentage="order.processPercentage" :quantity="order.quantity" />
             </ion-list>
 
             <ion-list v-for="(fiat, index) in fiats" :key="fiat.symbol" v-else >
@@ -214,6 +215,45 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
         symbol:'NGN',
         price: 0.42,
         amount:367
+    }
+]
+
+const orders:{base:string,quote:string,processPercentage:number,orderType:string,baseImgUrl:string,quoteImgUrl:string,quantity:number}[] = [
+    {
+        base:'BTC',
+        quote:'NGN',
+        orderType:'BUY',
+        quantity:120000,
+        processPercentage:60,
+        baseImgUrl:'/BTC.svg',
+        quoteImgUrl:'/nigeria.svg'
+    },
+    {
+        base:'XRP',
+        quote:'USD',
+        orderType:'SELL',
+        quantity:140000,
+        processPercentage:40,
+        baseImgUrl:'/BTC.svg',
+        quoteImgUrl:'/united states.svg'
+    },
+    {
+        base:'ETH',
+        quote:'NGN',
+        orderType:'SELL',
+        quantity:140000,
+        processPercentage:75,
+        baseImgUrl:'/ETH.svg',
+        quoteImgUrl:'/nigeria.svg'
+    },
+    {
+        base:'XRP',
+        quote:'GHS',
+        orderType:'BUY',
+        quantity:140000,
+        processPercentage:80,
+        baseImgUrl:'/XRP.svg',
+        quoteImgUrl:'/ghana.svg'
     }
 ]
 </script>

@@ -9,7 +9,7 @@
                 </ion-avatar>
             <!-- </ion-col> -->
 
-            <ion-col style="--ion-grid-column-padding-xs: none">
+            <ion-col style="--ion-grid-column-padding-xs: none;background: none;">
                 <ion-card-title style="margin-bottom: 9px;font-size: 80%;">{{$props.symbol}}</ion-card-title>
                 <div style="display: flex;flex-direction: row;justify-content:start;align-items: center;">
                     <span style="font-size: small;margin-right: 5px;">${{$props.price}}</span>
