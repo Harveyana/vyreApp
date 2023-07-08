@@ -44,6 +44,8 @@ const props = defineProps<{
     border:0.5px solid #1B1D30;
     margin-bottom: -2%;
     margin-left: 0px;
+    position: relative;
+    margin-top:-1%;
  }
  .green{
     color: green;

@@ -1137,7 +1137,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/homelast-0420194f.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/homelast-cbee43dc.js").then((m) => m.default || m)
   },
   {
     name: "index",
