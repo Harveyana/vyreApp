@@ -1124,20 +1124,20 @@ const routerOptions = {
 };
 const _routes = [
   {
+    name: "home-not",
+    path: "/home-not",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import("./_nuxt/home-not-f4753ca5.js").then((m) => m.default || m)
+  },
+  {
     name: "home",
     path: "/home",
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/home-9df95297.js").then((m) => m.default || m)
-  },
-  {
-    name: "homelast",
-    path: "/homelast",
-    meta: {},
-    alias: [],
-    redirect: void 0,
-    component: () => import("./_nuxt/homelast-cbee43dc.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/home-d3caf9b9.js").then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1145,7 +1145,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/index-1c2e3680.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/index-f5a413f8.js").then((m) => m.default || m)
   },
   {
     name: "intro",
@@ -1153,7 +1153,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/intro-10a90562.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/intro-f57be265.js").then((m) => m.default || m)
   },
   {
     name: "newhome",
@@ -1161,7 +1161,15 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/newhome-ed220739.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/newhome-f4f4e7a5.js").then((m) => m.default || m)
+  },
+  {
+    name: "signUp",
+    path: "/signUp",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import("./_nuxt/signUp-1d9c4ad3.js").then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -2637,6 +2645,8 @@ const arrowBackSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/20
 const checkmarkOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' d='M416 128L192 384l-96-96' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
 const chevronBack = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M328 112L184 256l144 144' class='ionicon-fill-none'/></svg>";
 const chevronForward = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M184 112l144 144-144 144' class='ionicon-fill-none'/></svg>";
+const closeCircle = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z'/></svg>";
+const closeSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M400 145.49L366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49z'/></svg>";
 const ellipseOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><circle cx='256' cy='256' r='192' stroke-linecap='round' stroke-linejoin='round' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
 const removeOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' d='M400 256H112' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
 /*!
@@ -2952,6 +2962,20 @@ const pointerCoord = (ev) => {
   }
   return { x: 0, y: 0 };
 };
+const debounceEvent = (event, wait) => {
+  const original = event._original || event;
+  return {
+    _original: event,
+    emit: debounce(original.emit.bind(original), wait)
+  };
+};
+const debounce = (func, wait = 0) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(func, wait, ...args);
+  };
+};
 const shallowEqualStringMap = (map1, map2) => {
   map1 !== null && map1 !== void 0 ? map1 : map1 = {};
   map2 !== null && map2 !== void 0 ? map2 : map2 = {};
@@ -3242,7 +3266,7 @@ const createColorClasses$2 = (color) => {
     [`ion-color-${color}`]: true
   } : null;
 };
-function defineCustomElement$E() {
+function defineCustomElement$F() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3290,7 +3314,7 @@ const Avatar = /* @__PURE__ */ proxyCustomElement$1(class Avatar2 extends H$1 {
     };
   }
 }, [33, "ion-avatar"]);
-function defineCustomElement$1$p() {
+function defineCustomElement$1$q() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3305,7 +3329,7 @@ function defineCustomElement$1$p() {
     }
   });
 }
-const defineCustomElement$D = defineCustomElement$1$p;
+const defineCustomElement$E = defineCustomElement$1$q;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3555,7 +3579,7 @@ const Backdrop = /* @__PURE__ */ proxyCustomElement$1(class Backdrop2 extends H$
   "tappable": [4],
   "stopPropagation": [4, "stop-propagation"]
 }, [[2, "click", "onMouseDown"]]]);
-function defineCustomElement$C() {
+function defineCustomElement$D() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3690,7 +3714,7 @@ const removeRipple = (ripple) => {
 };
 const PADDING = 10;
 const INITIAL_ORIGIN_SCALE = 0.5;
-function defineCustomElement$B() {
+function defineCustomElement$C() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3865,7 +3889,7 @@ const Button = /* @__PURE__ */ proxyCustomElement$1(class Button2 extends H$1 {
   "type": [1],
   "form": [1]
 }]);
-function defineCustomElement$A() {
+function defineCustomElement$B() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3879,7 +3903,7 @@ function defineCustomElement$A() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$B();
+          defineCustomElement$C();
         }
         break;
     }
@@ -3888,7 +3912,7 @@ function defineCustomElement$A() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$z = defineCustomElement$A;
+const defineCustomElement$A = defineCustomElement$B;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3916,7 +3940,7 @@ const Buttons = /* @__PURE__ */ proxyCustomElement$1(class Buttons2 extends H$1 
 }, [34, "ion-buttons", {
   "collapse": [4]
 }]);
-function defineCustomElement$y() {
+function defineCustomElement$z() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3934,7 +3958,7 @@ function defineCustomElement$y() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$x = defineCustomElement$y;
+const defineCustomElement$y = defineCustomElement$z;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4007,7 +4031,7 @@ const Card = /* @__PURE__ */ proxyCustomElement$1(class Card2 extends H$1 {
   "routerAnimation": [16],
   "target": [1]
 }]);
-function defineCustomElement$1$o() {
+function defineCustomElement$1$p() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4021,13 +4045,13 @@ function defineCustomElement$1$o() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$B();
+          defineCustomElement$C();
         }
         break;
     }
   });
 }
-const defineCustomElement$w = defineCustomElement$1$o;
+const defineCustomElement$x = defineCustomElement$1$p;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4053,7 +4077,7 @@ const CardContent = /* @__PURE__ */ proxyCustomElement$1(class CardContent2 exte
     };
   }
 }, [32, "ion-card-content"]);
-function defineCustomElement$1$n() {
+function defineCustomElement$1$o() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4068,7 +4092,7 @@ function defineCustomElement$1$n() {
     }
   });
 }
-const defineCustomElement$v = defineCustomElement$1$n;
+const defineCustomElement$w = defineCustomElement$1$o;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4100,7 +4124,7 @@ const CardHeader = /* @__PURE__ */ proxyCustomElement$1(class CardHeader2 extend
   "color": [513],
   "translucent": [4]
 }]);
-function defineCustomElement$1$m() {
+function defineCustomElement$1$n() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4115,7 +4139,7 @@ function defineCustomElement$1$m() {
     }
   });
 }
-const defineCustomElement$u = defineCustomElement$1$m;
+const defineCustomElement$v = defineCustomElement$1$n;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4144,7 +4168,7 @@ const CardSubtitle = /* @__PURE__ */ proxyCustomElement$1(class CardSubtitle2 ex
 }, [33, "ion-card-subtitle", {
   "color": [513]
 }]);
-function defineCustomElement$1$l() {
+function defineCustomElement$1$m() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4159,7 +4183,7 @@ function defineCustomElement$1$l() {
     }
   });
 }
-const defineCustomElement$t = defineCustomElement$1$l;
+const defineCustomElement$u = defineCustomElement$1$m;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4188,7 +4212,7 @@ const CardTitle = /* @__PURE__ */ proxyCustomElement$1(class CardTitle2 extends 
 }, [33, "ion-card-title", {
   "color": [513]
 }]);
-function defineCustomElement$1$k() {
+function defineCustomElement$1$l() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4203,7 +4227,7 @@ function defineCustomElement$1$k() {
     }
   });
 }
-const defineCustomElement$s = defineCustomElement$1$k;
+const defineCustomElement$t = defineCustomElement$1$l;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4267,7 +4291,7 @@ const Chip = /* @__PURE__ */ proxyCustomElement$1(class Chip2 extends H$1 {
   "outline": [4],
   "disabled": [4]
 }]);
-function defineCustomElement$1$j() {
+function defineCustomElement$1$k() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4281,13 +4305,13 @@ function defineCustomElement$1$j() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$B();
+          defineCustomElement$C();
         }
         break;
     }
   });
 }
-const defineCustomElement$r = defineCustomElement$1$j;
+const defineCustomElement$s = defineCustomElement$1$k;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4433,7 +4457,7 @@ const Col = /* @__PURE__ */ proxyCustomElement$1(class Col2 extends H$1 {
   "sizeLg": [1, "size-lg"],
   "sizeXl": [1, "size-xl"]
 }, [[9, "resize", "onResize"]]]);
-function defineCustomElement$1$i() {
+function defineCustomElement$1$j() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4448,7 +4472,7 @@ function defineCustomElement$1$i() {
     }
   });
 }
-const defineCustomElement$q = defineCustomElement$1$i;
+const defineCustomElement$r = defineCustomElement$1$j;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4799,7 +4823,7 @@ const updateScrollDetail = (detail, el, timestamp, shouldStart) => {
     detail.velocityY = velocityY * 0.7 + detail.velocityY * 0.3;
   }
 };
-function defineCustomElement$1$h() {
+function defineCustomElement$1$i() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4814,7 +4838,7 @@ function defineCustomElement$1$h() {
     }
   });
 }
-const defineCustomElement$p = defineCustomElement$1$h;
+const defineCustomElement$q = defineCustomElement$1$i;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4842,7 +4866,7 @@ const Note = /* @__PURE__ */ proxyCustomElement$1(class Note2 extends H$1 {
 }, [33, "ion-note", {
   "color": [513]
 }]);
-function defineCustomElement$o() {
+function defineCustomElement$p() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5000,17 +5024,17 @@ const Item = /* @__PURE__ */ proxyCustomElement$1(class Item2 extends H$1 {
   }
   updateCounterOutput(inputEl) {
     var _a, _b;
-    const { counter, counterFormatter, defaultCounterFormatter } = this;
+    const { counter, counterFormatter, defaultCounterFormatter: defaultCounterFormatter2 } = this;
     if (counter && !this.multipleInputs && (inputEl === null || inputEl === void 0 ? void 0 : inputEl.maxlength) !== void 0) {
       const length = (_b = (_a = inputEl === null || inputEl === void 0 ? void 0 : inputEl.value) === null || _a === void 0 ? void 0 : _a.toString().length) !== null && _b !== void 0 ? _b : 0;
       if (counterFormatter === void 0) {
-        this.counterString = defaultCounterFormatter(length, inputEl.maxlength);
+        this.counterString = defaultCounterFormatter2(length, inputEl.maxlength);
       } else {
         try {
           this.counterString = counterFormatter(length, inputEl.maxlength);
         } catch (e) {
           printIonError("Exception in provided `counterFormatter`.", e);
-          this.counterString = defaultCounterFormatter(length, inputEl.maxlength);
+          this.counterString = defaultCounterFormatter2(length, inputEl.maxlength);
         }
       }
     }
@@ -5103,7 +5127,7 @@ const Item = /* @__PURE__ */ proxyCustomElement$1(class Item2 extends H$1 {
   "focusable": [32],
   "counterString": [32]
 }, [[0, "ionInput", "handleIonInput"], [0, "ionColor", "labelColorChanged"], [0, "ionStyle", "itemStyle"]]]);
-function defineCustomElement$n() {
+function defineCustomElement$o() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5117,17 +5141,17 @@ function defineCustomElement$n() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$E();
+          defineCustomElement$F();
         }
         break;
       case "ion-note":
         if (!customElements.get(tagName)) {
-          defineCustomElement$o();
+          defineCustomElement$p();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$B();
+          defineCustomElement$C();
         }
         break;
     }
@@ -5215,7 +5239,7 @@ const Label = /* @__PURE__ */ proxyCustomElement$1(class Label2 extends H$1 {
   "position": [1],
   "noAnimate": [32]
 }]);
-function defineCustomElement$m() {
+function defineCustomElement$n() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5559,8 +5583,8 @@ const LIFECYCLE_DID_ENTER = "ionViewDidEnter";
 const LIFECYCLE_WILL_LEAVE = "ionViewWillLeave";
 const LIFECYCLE_DID_LEAVE = "ionViewDidLeave";
 const LIFECYCLE_WILL_UNLOAD = "ionViewWillUnload";
-const iosTransitionAnimation = () => import("./_nuxt/ios.transition-95c45aa2.js");
-const mdTransitionAnimation = () => import("./_nuxt/md.transition-f52d8a76.js");
+const iosTransitionAnimation = () => import("./_nuxt/ios.transition-8a4fc589.js");
+const mdTransitionAnimation = () => import("./_nuxt/md.transition-e8d46a89.js");
 const transition = (opts) => {
   return new Promise((resolve, reject) => {
     writeTask$1(() => {
@@ -6821,7 +6845,7 @@ const Footer = /* @__PURE__ */ proxyCustomElement$1(class Footer2 extends H$1 {
   "translucent": [4],
   "keyboardVisible": [32]
 }]);
-function defineCustomElement$1$g() {
+function defineCustomElement$1$h() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6836,7 +6860,7 @@ function defineCustomElement$1$g() {
     }
   });
 }
-const defineCustomElement$l = defineCustomElement$1$g;
+const defineCustomElement$m = defineCustomElement$1$h;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -6861,7 +6885,7 @@ const Grid = /* @__PURE__ */ proxyCustomElement$1(class Grid2 extends H$1 {
 }, [1, "ion-grid", {
   "fixed": [4]
 }]);
-function defineCustomElement$1$f() {
+function defineCustomElement$1$g() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6876,7 +6900,7 @@ function defineCustomElement$1$f() {
     }
   });
 }
-const defineCustomElement$k = defineCustomElement$1$f;
+const defineCustomElement$l = defineCustomElement$1$g;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -7147,7 +7171,7 @@ const Header = /* @__PURE__ */ proxyCustomElement$1(class Header2 extends H$1 {
   "collapse": [1],
   "translucent": [4]
 }]);
-function defineCustomElement$1$e() {
+function defineCustomElement$1$f() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -7162,15 +7186,444 @@ function defineCustomElement$1$e() {
     }
   });
 }
+const defineCustomElement$k = defineCustomElement$1$f;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const getCounterText = (value, maxLength, counterFormatter) => {
+  const valueLength = value == null ? 0 : value.toString().length;
+  const defaultCounterText = defaultCounterFormatter(valueLength, maxLength);
+  if (counterFormatter === void 0) {
+    return defaultCounterText;
+  }
+  try {
+    return counterFormatter(valueLength, maxLength);
+  } catch (e) {
+    printIonError("Exception in provided `counterFormatter`.", e);
+    return defaultCounterText;
+  }
+};
+const defaultCounterFormatter = (length, maxlength) => {
+  return `${length} / ${maxlength}`;
+};
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const inputIosCss = ".sc-ion-input-ios-h{--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:0.6;--padding-top:0px;--padding-end:0px;--padding-bottom:0px;--padding-start:0px;--background:transparent;--color:initial;--border-style:solid;--highlight-color-focused:var(--ion-color-primary, #3880ff);--highlight-color-valid:var(--ion-color-success, #2dd36f);--highlight-color-invalid:var(--ion-color-danger, #eb445a);--highlight-color:var(--highlight-color-focused);display:block;position:relative;width:100%;padding:0 !important;color:var(--color);font-family:var(--ion-font-family, inherit);z-index:2}.legacy-input.sc-ion-input-ios-h{display:-ms-flexbox;display:flex;-ms-flex:1;flex:1;-ms-flex-align:center;align-items:center;background:var(--background)}.legacy-input.sc-ion-input-ios-h .native-input.sc-ion-input-ios{-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);border-radius:var(--border-radius)}ion-item.sc-ion-input-ios-h:not(.item-label):not(.item-has-modern-input),ion-item:not(.item-label):not(.item-has-modern-input) .sc-ion-input-ios-h{--padding-start:0}ion-item[slot=start].sc-ion-input-ios-h,ion-item [slot=start].sc-ion-input-ios-h,ion-item[slot=end].sc-ion-input-ios-h,ion-item [slot=end].sc-ion-input-ios-h{width:auto}.legacy-input.ion-color.sc-ion-input-ios-h{color:var(--ion-color-base)}.ion-color.sc-ion-input-ios-h{--highlight-color-focused:var(--ion-color-base)}.native-input.sc-ion-input-ios{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:inline-block;position:relative;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%;border:0;outline:none;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none;z-index:1}.native-input.sc-ion-input-ios::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-ios::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-ios:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-ios::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-ios::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-ios:-webkit-autofill{background-color:transparent}.native-input.sc-ion-input-ios:invalid{-webkit-box-shadow:none;box-shadow:none}.native-input.sc-ion-input-ios::-ms-clear{display:none}.cloned-input.sc-ion-input-ios{top:0;bottom:0;position:absolute;pointer-events:none}@supports (inset-inline-start: 0){.cloned-input.sc-ion-input-ios{inset-inline-start:0}}@supports not (inset-inline-start: 0){.cloned-input.sc-ion-input-ios{left:0}[dir=rtl].sc-ion-input-ios-h .cloned-input.sc-ion-input-ios,[dir=rtl] .sc-ion-input-ios-h .cloned-input.sc-ion-input-ios{left:unset;right:unset;right:0}[dir=rtl].sc-ion-input-ios .cloned-input.sc-ion-input-ios{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){.cloned-input.sc-ion-input-ios:dir(rtl){left:unset;right:unset;right:0}}}.cloned-input.sc-ion-input-ios:disabled{opacity:1}.legacy-input.sc-ion-input-ios-h .input-clear-icon.sc-ion-input-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0}.input-clear-icon.sc-ion-input-ios{-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto;margin-top:auto;margin-bottom:auto;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;background-position:center;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:30px;height:30px;border:0;outline:none;background-color:transparent;background-repeat:no-repeat;color:var(--ion-color-step-600, #666666);visibility:hidden;-webkit-appearance:none;-moz-appearance:none;appearance:none}.in-item-color.sc-ion-input-ios-h .input-clear-icon.sc-ion-input-ios{color:inherit}.input-clear-icon.sc-ion-input-ios:focus{opacity:0.5}.has-value.sc-ion-input-ios-h .input-clear-icon.sc-ion-input-ios{visibility:visible}.has-focus.sc-ion-input-ios-h{pointer-events:none}.has-focus.sc-ion-input-ios-h input.sc-ion-input-ios,.has-focus.sc-ion-input-ios-h a.sc-ion-input-ios,.has-focus.sc-ion-input-ios-h button.sc-ion-input-ios{pointer-events:auto}.item-label-floating.item-has-placeholder.sc-ion-input-ios-h:not(.item-has-value),.item-label-floating.item-has-placeholder:not(.item-has-value) .sc-ion-input-ios-h{opacity:0}.item-label-floating.item-has-placeholder.sc-ion-input-ios-h:not(.item-has-value).item-has-focus,.item-label-floating.item-has-placeholder:not(.item-has-value).item-has-focus .sc-ion-input-ios-h{-webkit-transition:opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);opacity:1}.input-wrapper.sc-ion-input-ios{-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);border-radius:var(--border-radius);display:-ms-flexbox;display:flex;position:relative;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:stretch;align-items:stretch;height:inherit;min-height:inherit;-webkit-transition:background-color 15ms linear;transition:background-color 15ms linear;background:var(--background);line-height:normal}.native-wrapper.sc-ion-input-ios{display:-ms-flexbox;display:flex;position:relative;-ms-flex-positive:1;flex-grow:1;width:100%}.ion-touched.ion-invalid.sc-ion-input-ios-h{--highlight-color:var(--highlight-color-invalid)}.ion-valid.sc-ion-input-ios-h{--highlight-color:var(--highlight-color-valid)}.input-bottom.sc-ion-input-ios{-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:5px;padding-bottom:0;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;border-top:var(--border-width) var(--border-style) var(--border-color);font-size:12px}.has-focus.ion-valid.sc-ion-input-ios-h,.ion-touched.ion-invalid.sc-ion-input-ios-h{--border-color:var(--highlight-color)}.input-bottom.sc-ion-input-ios .error-text.sc-ion-input-ios{display:none;color:var(--highlight-color-invalid)}.input-bottom.sc-ion-input-ios .helper-text.sc-ion-input-ios{display:block;color:var(--ion-color-step-550, #737373)}.ion-touched.ion-invalid.sc-ion-input-ios-h .input-bottom.sc-ion-input-ios .error-text.sc-ion-input-ios{display:block}.ion-touched.ion-invalid.sc-ion-input-ios-h .input-bottom.sc-ion-input-ios .helper-text.sc-ion-input-ios{display:none}.input-bottom.sc-ion-input-ios .counter.sc-ion-input-ios{-webkit-margin-start:auto;margin-inline-start:auto;color:var(--ion-color-step-550, #737373);white-space:nowrap;-webkit-padding-start:16px;padding-inline-start:16px}.has-focus.sc-ion-input-ios-h input.sc-ion-input-ios{caret-color:var(--highlight-color)}.label-text-wrapper.sc-ion-input-ios{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;max-width:200px;-webkit-transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);pointer-events:none}.label-text.sc-ion-input-ios{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.input-wrapper.sc-ion-input-ios input.sc-ion-input-ios{-webkit-transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1)}.input-label-placement-start.sc-ion-input-ios-h .input-wrapper.sc-ion-input-ios{-ms-flex-direction:row;flex-direction:row}.input-label-placement-start.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}.input-label-placement-end.sc-ion-input-ios-h .input-wrapper.sc-ion-input-ios{-ms-flex-direction:row-reverse;flex-direction:row-reverse}.input-label-placement-end.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0}.input-label-placement-fixed.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}.input-label-placement-fixed.sc-ion-input-ios-h .label-text.sc-ion-input-ios{-ms-flex:0 0 100px;flex:0 0 100px;width:100px;min-width:100px;max-width:200px}.input-label-placement-stacked.sc-ion-input-ios-h .input-wrapper.sc-ion-input-ios,.input-label-placement-floating.sc-ion-input-ios-h .input-wrapper.sc-ion-input-ios{-ms-flex-direction:column;flex-direction:column;-ms-flex-align:start;align-items:start}.input-label-placement-stacked.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,.input-label-placement-floating.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios{-webkit-transform-origin:left top;transform-origin:left top;max-width:100%}[dir=rtl].sc-ion-input-ios-h -no-combinator.input-label-placement-stacked.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,[dir=rtl] .sc-ion-input-ios-h -no-combinator.input-label-placement-stacked.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,[dir=rtl].input-label-placement-stacked.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,[dir=rtl] .input-label-placement-stacked.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,[dir=rtl].sc-ion-input-ios-h -no-combinator.input-label-placement-floating.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,[dir=rtl] .sc-ion-input-ios-h -no-combinator.input-label-placement-floating.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,[dir=rtl].input-label-placement-floating.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,[dir=rtl] .input-label-placement-floating.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios{-webkit-transform-origin:right top;transform-origin:right top}@supports selector(:dir(rtl)){.input-label-placement-stacked.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios:dir(rtl),.input-label-placement-floating.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios:dir(rtl){-webkit-transform-origin:right top;transform-origin:right top}}.input-label-placement-stacked.sc-ion-input-ios-h input.sc-ion-input-ios,.input-label-placement-floating.sc-ion-input-ios-h input.sc-ion-input-ios{margin-left:0;margin-right:0;margin-top:1px;margin-bottom:0}.input-label-placement-floating.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios{-webkit-transform:translateY(100%) scale(1);transform:translateY(100%) scale(1)}.input-label-placement-floating.sc-ion-input-ios-h input.sc-ion-input-ios{opacity:0}.has-focus.input-label-placement-floating.sc-ion-input-ios-h input.sc-ion-input-ios,.has-value.input-label-placement-floating.sc-ion-input-ios-h input.sc-ion-input-ios{opacity:1}.input-label-placement-stacked.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,.has-focus.input-label-placement-floating.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios,.has-value.input-label-placement-floating.sc-ion-input-ios-h .label-text-wrapper.sc-ion-input-ios{-webkit-transform:translateY(50%) scale(0.75);transform:translateY(50%) scale(0.75);max-width:calc(100% / 0.75)}.sc-ion-input-ios-h{--border-width:0.55px;--border-color:var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-250, #c8c7cc)));font-size:inherit}.legacy-input.sc-ion-input-ios-h{--padding-top:10px;--padding-end:8px;--padding-bottom:10px;--padding-start:0}.item-label-stacked.sc-ion-input-ios-h,.item-label-stacked .sc-ion-input-ios-h,.item-label-floating.sc-ion-input-ios-h,.item-label-floating .sc-ion-input-ios-h{--padding-top:8px;--padding-bottom:8px;--padding-start:0px}.input-clear-icon.sc-ion-input-ios ion-icon.sc-ion-input-ios{width:18px;height:18px}.sc-ion-input-ios-h:not(.legacy-input){min-height:44px}.input-label-placement-floating.sc-ion-input-ios-h,.input-label-placement-stacked.sc-ion-input-ios-h{min-height:56px}.legacy-input.sc-ion-input-ios-h .native-input[disabled].sc-ion-input-ios,.input-disabled.sc-ion-input-ios-h{opacity:0.3}";
+const inputMdCss = ".sc-ion-input-md-h{--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:0.6;--padding-top:0px;--padding-end:0px;--padding-bottom:0px;--padding-start:0px;--background:transparent;--color:initial;--border-style:solid;--highlight-color-focused:var(--ion-color-primary, #3880ff);--highlight-color-valid:var(--ion-color-success, #2dd36f);--highlight-color-invalid:var(--ion-color-danger, #eb445a);--highlight-color:var(--highlight-color-focused);display:block;position:relative;width:100%;padding:0 !important;color:var(--color);font-family:var(--ion-font-family, inherit);z-index:2}.legacy-input.sc-ion-input-md-h{display:-ms-flexbox;display:flex;-ms-flex:1;flex:1;-ms-flex-align:center;align-items:center;background:var(--background)}.legacy-input.sc-ion-input-md-h .native-input.sc-ion-input-md{-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);border-radius:var(--border-radius)}ion-item.sc-ion-input-md-h:not(.item-label):not(.item-has-modern-input),ion-item:not(.item-label):not(.item-has-modern-input) .sc-ion-input-md-h{--padding-start:0}ion-item[slot=start].sc-ion-input-md-h,ion-item [slot=start].sc-ion-input-md-h,ion-item[slot=end].sc-ion-input-md-h,ion-item [slot=end].sc-ion-input-md-h{width:auto}.legacy-input.ion-color.sc-ion-input-md-h{color:var(--ion-color-base)}.ion-color.sc-ion-input-md-h{--highlight-color-focused:var(--ion-color-base)}.native-input.sc-ion-input-md{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:inline-block;position:relative;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%;border:0;outline:none;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none;z-index:1}.native-input.sc-ion-input-md::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md:-webkit-autofill{background-color:transparent}.native-input.sc-ion-input-md:invalid{-webkit-box-shadow:none;box-shadow:none}.native-input.sc-ion-input-md::-ms-clear{display:none}.cloned-input.sc-ion-input-md{top:0;bottom:0;position:absolute;pointer-events:none}@supports (inset-inline-start: 0){.cloned-input.sc-ion-input-md{inset-inline-start:0}}@supports not (inset-inline-start: 0){.cloned-input.sc-ion-input-md{left:0}[dir=rtl].sc-ion-input-md-h .cloned-input.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h .cloned-input.sc-ion-input-md{left:unset;right:unset;right:0}[dir=rtl].sc-ion-input-md .cloned-input.sc-ion-input-md{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){.cloned-input.sc-ion-input-md:dir(rtl){left:unset;right:unset;right:0}}}.cloned-input.sc-ion-input-md:disabled{opacity:1}.legacy-input.sc-ion-input-md-h .input-clear-icon.sc-ion-input-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0}.input-clear-icon.sc-ion-input-md{-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto;margin-top:auto;margin-bottom:auto;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;background-position:center;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:30px;height:30px;border:0;outline:none;background-color:transparent;background-repeat:no-repeat;color:var(--ion-color-step-600, #666666);visibility:hidden;-webkit-appearance:none;-moz-appearance:none;appearance:none}.in-item-color.sc-ion-input-md-h .input-clear-icon.sc-ion-input-md{color:inherit}.input-clear-icon.sc-ion-input-md:focus{opacity:0.5}.has-value.sc-ion-input-md-h .input-clear-icon.sc-ion-input-md{visibility:visible}.has-focus.sc-ion-input-md-h{pointer-events:none}.has-focus.sc-ion-input-md-h input.sc-ion-input-md,.has-focus.sc-ion-input-md-h a.sc-ion-input-md,.has-focus.sc-ion-input-md-h button.sc-ion-input-md{pointer-events:auto}.item-label-floating.item-has-placeholder.sc-ion-input-md-h:not(.item-has-value),.item-label-floating.item-has-placeholder:not(.item-has-value) .sc-ion-input-md-h{opacity:0}.item-label-floating.item-has-placeholder.sc-ion-input-md-h:not(.item-has-value).item-has-focus,.item-label-floating.item-has-placeholder:not(.item-has-value).item-has-focus .sc-ion-input-md-h{-webkit-transition:opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);opacity:1}.input-wrapper.sc-ion-input-md{-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);border-radius:var(--border-radius);display:-ms-flexbox;display:flex;position:relative;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:stretch;align-items:stretch;height:inherit;min-height:inherit;-webkit-transition:background-color 15ms linear;transition:background-color 15ms linear;background:var(--background);line-height:normal}.native-wrapper.sc-ion-input-md{display:-ms-flexbox;display:flex;position:relative;-ms-flex-positive:1;flex-grow:1;width:100%}.ion-touched.ion-invalid.sc-ion-input-md-h{--highlight-color:var(--highlight-color-invalid)}.ion-valid.sc-ion-input-md-h{--highlight-color:var(--highlight-color-valid)}.input-bottom.sc-ion-input-md{-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:5px;padding-bottom:0;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;border-top:var(--border-width) var(--border-style) var(--border-color);font-size:12px}.has-focus.ion-valid.sc-ion-input-md-h,.ion-touched.ion-invalid.sc-ion-input-md-h{--border-color:var(--highlight-color)}.input-bottom.sc-ion-input-md .error-text.sc-ion-input-md{display:none;color:var(--highlight-color-invalid)}.input-bottom.sc-ion-input-md .helper-text.sc-ion-input-md{display:block;color:var(--ion-color-step-550, #737373)}.ion-touched.ion-invalid.sc-ion-input-md-h .input-bottom.sc-ion-input-md .error-text.sc-ion-input-md{display:block}.ion-touched.ion-invalid.sc-ion-input-md-h .input-bottom.sc-ion-input-md .helper-text.sc-ion-input-md{display:none}.input-bottom.sc-ion-input-md .counter.sc-ion-input-md{-webkit-margin-start:auto;margin-inline-start:auto;color:var(--ion-color-step-550, #737373);white-space:nowrap;-webkit-padding-start:16px;padding-inline-start:16px}.has-focus.sc-ion-input-md-h input.sc-ion-input-md{caret-color:var(--highlight-color)}.label-text-wrapper.sc-ion-input-md{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;max-width:200px;-webkit-transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);pointer-events:none}.label-text.sc-ion-input-md{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.input-wrapper.sc-ion-input-md input.sc-ion-input-md{-webkit-transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1)}.input-label-placement-start.sc-ion-input-md-h .input-wrapper.sc-ion-input-md{-ms-flex-direction:row;flex-direction:row}.input-label-placement-start.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}.input-label-placement-end.sc-ion-input-md-h .input-wrapper.sc-ion-input-md{-ms-flex-direction:row-reverse;flex-direction:row-reverse}.input-label-placement-end.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0}.input-label-placement-fixed.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}.input-label-placement-fixed.sc-ion-input-md-h .label-text.sc-ion-input-md{-ms-flex:0 0 100px;flex:0 0 100px;width:100px;min-width:100px;max-width:200px}.input-label-placement-stacked.sc-ion-input-md-h .input-wrapper.sc-ion-input-md,.input-label-placement-floating.sc-ion-input-md-h .input-wrapper.sc-ion-input-md{-ms-flex-direction:column;flex-direction:column;-ms-flex-align:start;align-items:start}.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-transform-origin:left top;transform-origin:left top;max-width:100%}[dir=rtl].sc-ion-input-md-h -no-combinator.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h -no-combinator.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl].input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl] .input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl].sc-ion-input-md-h -no-combinator.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h -no-combinator.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl].input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl] .input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-transform-origin:right top;transform-origin:right top}@supports selector(:dir(rtl)){.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md:dir(rtl),.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md:dir(rtl){-webkit-transform-origin:right top;transform-origin:right top}}.input-label-placement-stacked.sc-ion-input-md-h input.sc-ion-input-md,.input-label-placement-floating.sc-ion-input-md-h input.sc-ion-input-md{margin-left:0;margin-right:0;margin-top:1px;margin-bottom:0}.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-transform:translateY(100%) scale(1);transform:translateY(100%) scale(1)}.input-label-placement-floating.sc-ion-input-md-h input.sc-ion-input-md{opacity:0}.has-focus.input-label-placement-floating.sc-ion-input-md-h input.sc-ion-input-md,.has-value.input-label-placement-floating.sc-ion-input-md-h input.sc-ion-input-md{opacity:1}.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.has-focus.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.has-value.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-transform:translateY(50%) scale(0.75);transform:translateY(50%) scale(0.75);max-width:calc(100% / 0.75)}.input-fill-solid.sc-ion-input-md-h{--background:var(--ion-color-step-50, #f2f2f2);--border-color:var(--ion-color-step-500, gray);--border-radius:4px;--padding-start:16px;--padding-end:16px}.input-fill-solid.sc-ion-input-md-h .input-wrapper.sc-ion-input-md{border-bottom:var(--border-width) var(--border-style) var(--border-color)}.has-focus.input-fill-solid.ion-valid.sc-ion-input-md-h,.input-fill-solid.ion-touched.ion-invalid.sc-ion-input-md-h{--border-color:var(--highlight-color)}.input-fill-solid.sc-ion-input-md-h .input-bottom.sc-ion-input-md{border-top:none}@media (any-hover: hover){.input-fill-solid.sc-ion-input-md-h:hover{--background:var(--ion-color-step-100, #e6e6e6);--border-color:var(--ion-color-step-750, #404040)}}.input-fill-solid.has-focus.sc-ion-input-md-h{--background:var(--ion-color-step-150, #d9d9d9);--border-color:var(--ion-color-step-750, #404040)}.input-fill-solid.sc-ion-input-md-h .input-wrapper.sc-ion-input-md{border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0px;border-bottom-left-radius:0px}[dir=rtl].sc-ion-input-md-h -no-combinator.input-fill-solid.sc-ion-input-md-h .input-wrapper.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h -no-combinator.input-fill-solid.sc-ion-input-md-h .input-wrapper.sc-ion-input-md,[dir=rtl].input-fill-solid.sc-ion-input-md-h .input-wrapper.sc-ion-input-md,[dir=rtl] .input-fill-solid.sc-ion-input-md-h .input-wrapper.sc-ion-input-md{border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0px;border-bottom-left-radius:0px}@supports selector(:dir(rtl)){.input-fill-solid.sc-ion-input-md-h .input-wrapper.sc-ion-input-md:dir(rtl){border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0px;border-bottom-left-radius:0px}}.input-fill-solid.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.has-focus.input-fill-solid.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.has-value.input-fill-solid.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{max-width:calc(100% / 0.75)}.input-fill-outline.sc-ion-input-md-h{--border-color:var(--ion-color-step-300, #b3b3b3);--border-radius:4px;--padding-start:16px;--padding-end:16px}.input-fill-outline.input-shape-round.sc-ion-input-md-h{--border-radius:28px;--padding-start:32px;--padding-end:32px}.has-focus.input-fill-outline.ion-valid.sc-ion-input-md-h,.input-fill-outline.ion-touched.ion-invalid.sc-ion-input-md-h{--border-color:var(--highlight-color)}@media (any-hover: hover){.input-fill-outline.sc-ion-input-md-h:hover{--border-color:var(--ion-color-step-750, #404040)}}.input-fill-outline.has-focus.sc-ion-input-md-h{--border-width:2px;--border-color:var(--highlight-color)}.input-fill-outline.sc-ion-input-md-h .input-bottom.sc-ion-input-md{border-top:none}.input-fill-outline.sc-ion-input-md-h .input-wrapper.sc-ion-input-md{border-bottom:none}.input-fill-outline.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-transform-origin:left top;transform-origin:left top;position:absolute;max-width:calc(100% - var(--padding-start) - var(--padding-end))}[dir=rtl].sc-ion-input-md-h -no-combinator.input-fill-outline.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h -no-combinator.input-fill-outline.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl].input-fill-outline.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl] .input-fill-outline.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl].sc-ion-input-md-h -no-combinator.input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h -no-combinator.input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl].input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,[dir=rtl] .input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-transform-origin:right top;transform-origin:right top}@supports selector(:dir(rtl)){.input-fill-outline.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md:dir(rtl),.input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md:dir(rtl){-webkit-transform-origin:right top;transform-origin:right top}}.input-fill-outline.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{position:relative;z-index:1}.has-focus.input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.has-value.input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.input-fill-outline.input-label-placement-stacked.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{-webkit-transform:translateY(-32%) scale(0.75);transform:translateY(-32%) scale(0.75);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;max-width:calc((100% - var(--padding-start) - var(--padding-end) - 8px) / 0.75)}.input-fill-outline.input-label-placement-stacked.sc-ion-input-md-h input.sc-ion-input-md,.input-fill-outline.input-label-placement-floating.sc-ion-input-md-h input.sc-ion-input-md{margin-left:0;margin-right:0;margin-top:6px;margin-bottom:6px}.input-fill-outline.sc-ion-input-md-h .input-outline-container.sc-ion-input-md{left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;width:100%;height:100%}.input-fill-outline.sc-ion-input-md-h .input-outline-start.sc-ion-input-md,.input-fill-outline.sc-ion-input-md-h .input-outline-end.sc-ion-input-md{pointer-events:none}.input-fill-outline.sc-ion-input-md-h .input-outline-start.sc-ion-input-md,.input-fill-outline.sc-ion-input-md-h .input-outline-notch.sc-ion-input-md,.input-fill-outline.sc-ion-input-md-h .input-outline-end.sc-ion-input-md{border-top:var(--border-width) var(--border-style) var(--border-color);border-bottom:var(--border-width) var(--border-style) var(--border-color)}.input-fill-outline.sc-ion-input-md-h .input-outline-notch.sc-ion-input-md{max-width:calc(100% - var(--padding-start) - var(--padding-end))}.input-fill-outline.sc-ion-input-md-h .notch-spacer.sc-ion-input-md{-webkit-padding-end:8px;padding-inline-end:8px;font-size:calc(1em * 0.75);opacity:0;pointer-events:none}.input-fill-outline.sc-ion-input-md-h .input-outline-start.sc-ion-input-md{border-top-left-radius:var(--border-radius);border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:var(--border-radius);-webkit-border-start:var(--border-width) var(--border-style) var(--border-color);border-inline-start:var(--border-width) var(--border-style) var(--border-color);width:calc(var(--padding-start) - 4px)}[dir=rtl].sc-ion-input-md-h -no-combinator.input-fill-outline.sc-ion-input-md-h .input-outline-start.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h -no-combinator.input-fill-outline.sc-ion-input-md-h .input-outline-start.sc-ion-input-md,[dir=rtl].input-fill-outline.sc-ion-input-md-h .input-outline-start.sc-ion-input-md,[dir=rtl] .input-fill-outline.sc-ion-input-md-h .input-outline-start.sc-ion-input-md{border-top-left-radius:0px;border-top-right-radius:var(--border-radius);border-bottom-right-radius:var(--border-radius);border-bottom-left-radius:0px}@supports selector(:dir(rtl)){.input-fill-outline.sc-ion-input-md-h .input-outline-start.sc-ion-input-md:dir(rtl){border-top-left-radius:0px;border-top-right-radius:var(--border-radius);border-bottom-right-radius:var(--border-radius);border-bottom-left-radius:0px}}.input-fill-outline.sc-ion-input-md-h .input-outline-end.sc-ion-input-md{-webkit-border-end:var(--border-width) var(--border-style) var(--border-color);border-inline-end:var(--border-width) var(--border-style) var(--border-color);border-top-left-radius:0px;border-top-right-radius:var(--border-radius);border-bottom-right-radius:var(--border-radius);border-bottom-left-radius:0px;-ms-flex-positive:1;flex-grow:1}[dir=rtl].sc-ion-input-md-h -no-combinator.input-fill-outline.sc-ion-input-md-h .input-outline-end.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h -no-combinator.input-fill-outline.sc-ion-input-md-h .input-outline-end.sc-ion-input-md,[dir=rtl].input-fill-outline.sc-ion-input-md-h .input-outline-end.sc-ion-input-md,[dir=rtl] .input-fill-outline.sc-ion-input-md-h .input-outline-end.sc-ion-input-md{border-top-left-radius:var(--border-radius);border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:var(--border-radius)}@supports selector(:dir(rtl)){.input-fill-outline.sc-ion-input-md-h .input-outline-end.sc-ion-input-md:dir(rtl){border-top-left-radius:var(--border-radius);border-top-right-radius:0px;border-bottom-right-radius:0px;border-bottom-left-radius:var(--border-radius)}}.has-focus.input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .input-outline-notch.sc-ion-input-md,.has-value.input-fill-outline.input-label-placement-floating.sc-ion-input-md-h .input-outline-notch.sc-ion-input-md,.input-fill-outline.input-label-placement-stacked.sc-ion-input-md-h .input-outline-notch.sc-ion-input-md{border-top:none}.sc-ion-input-md-h{--border-width:1px;--border-color:var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))));font-size:inherit}.legacy-input.sc-ion-input-md-h{--padding-top:10px;--padding-end:0;--padding-bottom:10px;--padding-start:8px}.item-label-stacked.sc-ion-input-md-h,.item-label-stacked .sc-ion-input-md-h,.item-label-floating.sc-ion-input-md-h,.item-label-floating .sc-ion-input-md-h{--padding-top:8px;--padding-bottom:8px;--padding-start:0}.input-clear-icon.sc-ion-input-md ion-icon.sc-ion-input-md{width:22px;height:22px}.legacy-input.sc-ion-input-md-h .native-input[disabled].sc-ion-input-md,.input-disabled.sc-ion-input-md-h{opacity:0.38}.has-focus.ion-valid.sc-ion-input-md-h,.ion-touched.ion-invalid.sc-ion-input-md-h{--border-color:var(--highlight-color)}.input-bottom.sc-ion-input-md .counter.sc-ion-input-md{letter-spacing:0.0333333333em}.sc-ion-input-md-h:not(.legacy-input){min-height:56px}.input-label-placement-floating.has-focus.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.input-label-placement-stacked.has-focus.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{color:var(--highlight-color)}.has-focus.input-label-placement-floating.ion-valid.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.input-label-placement-floating.ion-touched.ion-invalid.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.has-focus.input-label-placement-stacked.ion-valid.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,.input-label-placement-stacked.ion-touched.ion-invalid.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md{color:var(--highlight-color)}.input-highlight.sc-ion-input-md{bottom:-1px;position:absolute;width:100%;height:2px;-webkit-transform:scale(0);transform:scale(0);-webkit-transition:-webkit-transform 200ms;transition:-webkit-transform 200ms;transition:transform 200ms;transition:transform 200ms, -webkit-transform 200ms;background:var(--highlight-color)}@supports (inset-inline-start: 0){.input-highlight.sc-ion-input-md{inset-inline-start:0}}@supports not (inset-inline-start: 0){.input-highlight.sc-ion-input-md{left:0}[dir=rtl].sc-ion-input-md-h .input-highlight.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h .input-highlight.sc-ion-input-md{left:unset;right:unset;right:0}[dir=rtl].sc-ion-input-md .input-highlight.sc-ion-input-md{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){.input-highlight.sc-ion-input-md:dir(rtl){left:unset;right:unset;right:0}}}.has-focus.sc-ion-input-md-h .input-highlight.sc-ion-input-md{-webkit-transform:scale(1);transform:scale(1)}.in-item.sc-ion-input-md-h .input-highlight.sc-ion-input-md{bottom:0}@supports (inset-inline-start: 0){.in-item.sc-ion-input-md-h .input-highlight.sc-ion-input-md{inset-inline-start:0}}@supports not (inset-inline-start: 0){.in-item.sc-ion-input-md-h .input-highlight.sc-ion-input-md{left:0}[dir=rtl].sc-ion-input-md-h -no-combinator.in-item.sc-ion-input-md-h .input-highlight.sc-ion-input-md,[dir=rtl] .sc-ion-input-md-h -no-combinator.in-item.sc-ion-input-md-h .input-highlight.sc-ion-input-md,[dir=rtl].in-item.sc-ion-input-md-h .input-highlight.sc-ion-input-md,[dir=rtl] .in-item.sc-ion-input-md-h .input-highlight.sc-ion-input-md{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){.in-item.sc-ion-input-md-h .input-highlight.sc-ion-input-md:dir(rtl){left:unset;right:unset;right:0}}}.input-shape-round.sc-ion-input-md-h{--border-radius:16px}";
+const Input = /* @__PURE__ */ proxyCustomElement$1(class Input2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.ionInput = createEvent(this, "ionInput", 7);
+    this.ionChange = createEvent(this, "ionChange", 7);
+    this.ionBlur = createEvent(this, "ionBlur", 7);
+    this.ionFocus = createEvent(this, "ionFocus", 7);
+    this.ionStyle = createEvent(this, "ionStyle", 7);
+    this.inputId = `ion-input-${inputIds++}`;
+    this.inheritedAttributes = {};
+    this.isComposing = false;
+    this.hasLoggedDeprecationWarning = false;
+    this.didInputClearOnEdit = false;
+    this.onInput = (ev) => {
+      const input = ev.target;
+      if (input) {
+        this.value = input.value || "";
+      }
+      this.emitInputChange(ev);
+    };
+    this.onChange = (ev) => {
+      this.emitValueChange(ev);
+    };
+    this.onBlur = (ev) => {
+      this.hasFocus = false;
+      this.emitStyle();
+      if (this.focusedValue !== this.value) {
+        this.emitValueChange(ev);
+      }
+      this.didInputClearOnEdit = false;
+      this.ionBlur.emit(ev);
+    };
+    this.onFocus = (ev) => {
+      this.hasFocus = true;
+      this.focusedValue = this.value;
+      this.emitStyle();
+      this.ionFocus.emit(ev);
+    };
+    this.onKeydown = (ev) => {
+      this.checkClearOnEdit(ev);
+    };
+    this.onCompositionStart = () => {
+      this.isComposing = true;
+    };
+    this.onCompositionEnd = () => {
+      this.isComposing = false;
+    };
+    this.clearTextInput = (ev) => {
+      if (this.clearInput && !this.readonly && !this.disabled && ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        this.setFocus();
+      }
+      this.value = "";
+      this.emitInputChange(ev);
+    };
+    this.hasFocus = false;
+    this.color = void 0;
+    this.accept = void 0;
+    this.autocapitalize = "off";
+    this.autocomplete = "off";
+    this.autocorrect = "off";
+    this.autofocus = false;
+    this.clearInput = false;
+    this.clearOnEdit = void 0;
+    this.counter = false;
+    this.counterFormatter = void 0;
+    this.debounce = void 0;
+    this.disabled = false;
+    this.enterkeyhint = void 0;
+    this.errorText = void 0;
+    this.fill = void 0;
+    this.inputmode = void 0;
+    this.helperText = void 0;
+    this.label = void 0;
+    this.labelPlacement = "start";
+    this.legacy = void 0;
+    this.max = void 0;
+    this.maxlength = void 0;
+    this.min = void 0;
+    this.minlength = void 0;
+    this.multiple = void 0;
+    this.name = this.inputId;
+    this.pattern = void 0;
+    this.placeholder = void 0;
+    this.readonly = false;
+    this.required = false;
+    this.shape = void 0;
+    this.spellcheck = false;
+    this.step = void 0;
+    this.size = void 0;
+    this.type = "text";
+    this.value = "";
+  }
+  debounceChanged() {
+    const { ionInput, debounce: debounce2, originalIonInput } = this;
+    this.ionInput = debounce2 === void 0 ? originalIonInput !== null && originalIonInput !== void 0 ? originalIonInput : ionInput : debounceEvent(ionInput, debounce2);
+  }
+  disabledChanged() {
+    this.emitStyle();
+  }
+  /**
+   * Update the item classes when the placeholder changes
+   */
+  placeholderChanged() {
+    this.emitStyle();
+  }
+  /**
+   * Update the native input element when the value changes
+   */
+  valueChanged() {
+    const nativeInput = this.nativeInput;
+    const value = this.getValue();
+    if (nativeInput && nativeInput.value !== value && !this.isComposing) {
+      nativeInput.value = value;
+    }
+    this.emitStyle();
+  }
+  componentWillLoad() {
+    this.inheritedAttributes = Object.assign(Object.assign({}, inheritAriaAttributes(this.el)), inheritAttributes$2(this.el, ["tabindex", "title", "data-form-type"]));
+  }
+  connectedCallback() {
+    const { el } = this;
+    this.legacyFormController = createLegacyFormController(el);
+    this.emitStyle();
+    this.debounceChanged();
+    {
+      document.dispatchEvent(new CustomEvent("ionInputDidLoad", {
+        detail: this.el
+      }));
+    }
+  }
+  componentDidLoad() {
+    this.originalIonInput = this.ionInput;
+  }
+  disconnectedCallback() {
+    {
+      document.dispatchEvent(new CustomEvent("ionInputDidUnload", {
+        detail: this.el
+      }));
+    }
+  }
+  /**
+   * Sets focus on the native `input` in `ion-input`. Use this method instead of the global
+   * `input.focus()`.
+   *
+   * Developers who wish to focus an input when a page enters
+   * should call `setFocus()` in the `ionViewDidEnter()` lifecycle method.
+   *
+   * Developers who wish to focus an input when an overlay is presented
+   * should call `setFocus` after `didPresent` has resolved.
+   */
+  async setFocus() {
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  }
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  getInputElement() {
+    return Promise.resolve(this.nativeInput);
+  }
+  /**
+   * Emits an `ionChange` event.
+   *
+   * This API should be called for user committed changes.
+   * This API should not be used for external value changes.
+   */
+  emitValueChange(event) {
+    const { value } = this;
+    const newValue = value == null ? value : value.toString();
+    this.focusedValue = newValue;
+    this.ionChange.emit({ value: newValue, event });
+  }
+  /**
+   * Emits an `ionInput` event.
+   */
+  emitInputChange(event) {
+    const { value } = this;
+    const newValue = value == null ? value : value.toString();
+    this.ionInput.emit({ value: newValue, event });
+  }
+  shouldClearOnEdit() {
+    const { type, clearOnEdit } = this;
+    return clearOnEdit === void 0 ? type === "password" : clearOnEdit;
+  }
+  getValue() {
+    return typeof this.value === "number" ? this.value.toString() : (this.value || "").toString();
+  }
+  emitStyle() {
+    if (this.legacyFormController.hasLegacyControl()) {
+      this.ionStyle.emit({
+        interactive: true,
+        input: true,
+        "has-placeholder": this.placeholder !== void 0,
+        "has-value": this.hasValue(),
+        "has-focus": this.hasFocus,
+        "interactive-disabled": this.disabled
+      });
+    }
+  }
+  checkClearOnEdit(ev) {
+    if (!this.shouldClearOnEdit()) {
+      return;
+    }
+    if (!this.didInputClearOnEdit && this.hasValue() && ev.key !== "Enter") {
+      this.value = "";
+      this.emitInputChange(ev);
+    }
+    this.didInputClearOnEdit = true;
+  }
+  hasValue() {
+    return this.getValue().length > 0;
+  }
+  /**
+   * Renders the helper text or error text values
+   */
+  renderHintText() {
+    const { helperText, errorText } = this;
+    return [h$1("div", { class: "helper-text" }, helperText), h$1("div", { class: "error-text" }, errorText)];
+  }
+  renderCounter() {
+    const { counter, maxlength, counterFormatter, value } = this;
+    if (counter !== true || maxlength === void 0) {
+      return;
+    }
+    return h$1("div", { class: "counter" }, getCounterText(value, maxlength, counterFormatter));
+  }
+  /**
+   * Responsible for rendering helper text,
+   * error text, and counter. This element should only
+   * be rendered if hint text is set or counter is enabled.
+   */
+  renderBottomContent() {
+    const { counter, helperText, errorText, maxlength } = this;
+    const hasHintText = !!helperText || !!errorText;
+    const hasCounter = counter === true && maxlength !== void 0;
+    if (!hasHintText && !hasCounter) {
+      return;
+    }
+    return h$1("div", { class: "input-bottom" }, this.renderHintText(), this.renderCounter());
+  }
+  renderLabel() {
+    const { label } = this;
+    if (label === void 0) {
+      return;
+    }
+    return h$1("div", { class: "label-text-wrapper" }, h$1("div", { class: "label-text" }, this.label));
+  }
+  /**
+   * Renders the border container
+   * when fill="outline".
+   */
+  renderLabelContainer() {
+    const mode = getIonMode$2(this);
+    const hasOutlineFill = mode === "md" && this.fill === "outline";
+    if (hasOutlineFill) {
+      return [
+        h$1("div", { class: "input-outline-container" }, h$1("div", { class: "input-outline-start" }), h$1("div", { class: "input-outline-notch" }, h$1("div", { class: "notch-spacer", "aria-hidden": "true" }, this.label)), h$1("div", { class: "input-outline-end" })),
+        this.renderLabel()
+      ];
+    }
+    return this.renderLabel();
+  }
+  renderInput() {
+    const { disabled, fill, readonly, shape, inputId, labelPlacement } = this;
+    const mode = getIonMode$2(this);
+    const value = this.getValue();
+    const inItem = hostContext("ion-item", this.el);
+    const shouldRenderHighlight = mode === "md" && fill !== "outline" && !inItem;
+    return h$1(Host$1, { class: createColorClasses$1(this.color, {
+      [mode]: true,
+      "has-value": this.hasValue(),
+      "has-focus": this.hasFocus,
+      [`input-fill-${fill}`]: fill !== void 0,
+      [`input-shape-${shape}`]: shape !== void 0,
+      [`input-label-placement-${labelPlacement}`]: true,
+      "in-item": inItem,
+      "in-item-color": hostContext("ion-item.ion-color", this.el),
+      "input-disabled": disabled
+    }) }, h$1("label", { class: "input-wrapper" }, this.renderLabelContainer(), h$1("div", { class: "native-wrapper" }, h$1("input", Object.assign({ class: "native-input", ref: (input) => this.nativeInput = input, id: inputId, disabled, accept: this.accept, autoCapitalize: this.autocapitalize, autoComplete: this.autocomplete, autoCorrect: this.autocorrect, autoFocus: this.autofocus, enterKeyHint: this.enterkeyhint, inputMode: this.inputmode, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, multiple: this.multiple, name: this.name, pattern: this.pattern, placeholder: this.placeholder || "", readOnly: readonly, required: this.required, spellcheck: this.spellcheck, step: this.step, size: this.size, type: this.type, value, onInput: this.onInput, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeydown, onCompositionstart: this.onCompositionStart, onCompositionend: this.onCompositionEnd }, this.inheritedAttributes)), this.clearInput && !readonly && !disabled && h$1("button", { "aria-label": "reset", type: "button", class: "input-clear-icon", onPointerDown: (ev) => {
+      ev.preventDefault();
+    }, onClick: this.clearTextInput }, h$1("ion-icon", { "aria-hidden": "true", icon: mode === "ios" ? closeCircle : closeSharp }))), shouldRenderHighlight && h$1("div", { class: "input-highlight" })), this.renderBottomContent());
+  }
+  // TODO FW-2764 Remove this
+  renderLegacyInput() {
+    if (!this.hasLoggedDeprecationWarning) {
+      printIonWarning(`ion-input now requires providing a label with either the "label" property or the "aria-label" attribute. To migrate, remove any usage of "ion-label" and pass the label text to either the "label" property or the "aria-label" attribute.
+
+Example: <ion-input label="Email"></ion-input>
+Example with aria-label: <ion-input aria-label="Email"></ion-input>
+
+For inputs that do not render the label immediately next to the input, developers may continue to use "ion-label" but must manually associate the label with the input by using "aria-labelledby".
+
+Developers can use the "legacy" property to continue using the legacy form markup. This property will be removed in an upcoming major release of Ionic where this form control will use the modern form markup.`, this.el);
+      if (this.legacy) {
+        printIonWarning(`ion-input is being used with the "legacy" property enabled which will forcibly enable the legacy form markup. This property will be removed in an upcoming major release of Ionic where this form control will use the modern form markup.
+
+Developers can dismiss this warning by removing their usage of the "legacy" property and using the new input syntax.`, this.el);
+      }
+      this.hasLoggedDeprecationWarning = true;
+    }
+    const mode = getIonMode$2(this);
+    const value = this.getValue();
+    const labelId = this.inputId + "-lbl";
+    const label = findItemLabel(this.el);
+    if (label) {
+      label.id = labelId;
+    }
+    return h$1(Host$1, { "aria-disabled": this.disabled ? "true" : null, class: createColorClasses$1(this.color, {
+      [mode]: true,
+      "has-value": this.hasValue(),
+      "has-focus": this.hasFocus,
+      "legacy-input": true,
+      "in-item-color": hostContext("ion-item.ion-color", this.el)
+    }) }, h$1("input", Object.assign({ class: "native-input", ref: (input) => this.nativeInput = input, "aria-labelledby": label ? label.id : null, disabled: this.disabled, accept: this.accept, autoCapitalize: this.autocapitalize, autoComplete: this.autocomplete, autoCorrect: this.autocorrect, autoFocus: this.autofocus, enterKeyHint: this.enterkeyhint, inputMode: this.inputmode, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, multiple: this.multiple, name: this.name, pattern: this.pattern, placeholder: this.placeholder || "", readOnly: this.readonly, required: this.required, spellcheck: this.spellcheck, step: this.step, size: this.size, type: this.type, value, onInput: this.onInput, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeydown }, this.inheritedAttributes)), this.clearInput && !this.readonly && !this.disabled && h$1("button", { "aria-label": "reset", type: "button", class: "input-clear-icon", onPointerDown: (ev) => {
+      ev.preventDefault();
+    }, onClick: this.clearTextInput }, h$1("ion-icon", { "aria-hidden": "true", icon: mode === "ios" ? closeCircle : closeSharp })));
+  }
+  render() {
+    const { legacyFormController } = this;
+    return legacyFormController.hasLegacyControl() ? this.renderLegacyInput() : this.renderInput();
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "debounce": ["debounceChanged"],
+      "disabled": ["disabledChanged"],
+      "placeholder": ["placeholderChanged"],
+      "value": ["valueChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: inputIosCss,
+      md: inputMdCss
+    };
+  }
+}, [34, "ion-input", {
+  "color": [513],
+  "accept": [1],
+  "autocapitalize": [1],
+  "autocomplete": [1],
+  "autocorrect": [1],
+  "autofocus": [4],
+  "clearInput": [4, "clear-input"],
+  "clearOnEdit": [4, "clear-on-edit"],
+  "counter": [4],
+  "counterFormatter": [16],
+  "debounce": [2],
+  "disabled": [4],
+  "enterkeyhint": [1],
+  "errorText": [1, "error-text"],
+  "fill": [1],
+  "inputmode": [1],
+  "helperText": [1, "helper-text"],
+  "label": [1],
+  "labelPlacement": [1, "label-placement"],
+  "legacy": [4],
+  "max": [8],
+  "maxlength": [2],
+  "min": [8],
+  "minlength": [2],
+  "multiple": [4],
+  "name": [1],
+  "pattern": [1],
+  "placeholder": [1],
+  "readonly": [4],
+  "required": [4],
+  "shape": [1],
+  "spellcheck": [4],
+  "step": [1],
+  "size": [2],
+  "type": [1],
+  "value": [1032],
+  "hasFocus": [32],
+  "setFocus": [64],
+  "getInputElement": [64]
+}]);
+let inputIds = 0;
+function defineCustomElement$1$e() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-input", "ion-icon"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-input":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Input);
+        }
+        break;
+      case "ion-icon":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$F();
+        }
+        break;
+    }
+  });
+}
 const defineCustomElement$j = defineCustomElement$1$e;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$i = defineCustomElement$n;
+const defineCustomElement$i = defineCustomElement$o;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$h = defineCustomElement$m;
+const defineCustomElement$h = defineCustomElement$n;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -7411,7 +7864,7 @@ const Nav = /* @__PURE__ */ proxyCustomElement$1(class Nav2 extends H$1 {
   }
   async componentDidLoad() {
     this.rootChanged();
-    this.gesture = (await import("./_nuxt/swipe-back-e05d01b4.js")).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
+    this.gesture = (await import("./_nuxt/swipe-back-d4e8e1d5.js")).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
     this.swipeGestureChanged();
   }
   connectedCallback() {
@@ -8646,7 +9099,7 @@ function defineCustomElement$1$a() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$B();
+          defineCustomElement$C();
         }
         break;
     }
@@ -9379,7 +9832,7 @@ function defineCustomElement$1$8() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$E();
+          defineCustomElement$F();
         }
         break;
     }
@@ -9579,12 +10032,12 @@ function defineCustomElement$1$6() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$E();
+          defineCustomElement$F();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$B();
+          defineCustomElement$C();
         }
         break;
     }
@@ -9622,7 +10075,7 @@ const RouterOutlet = /* @__PURE__ */ proxyCustomElement$1(class RouterOutlet2 ex
         this.swipeHandler.onStart();
       }
     };
-    this.gesture = (await import("./_nuxt/swipe-back-e05d01b4.js")).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
+    this.gesture = (await import("./_nuxt/swipe-back-d4e8e1d5.js")).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
       var _a;
       return (_a = this.ani) === null || _a === void 0 ? void 0 : _a.progressStep(step);
     }, (shouldComplete, step, dur) => {
@@ -9905,7 +10358,7 @@ function defineCustomElement$1$4() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$B();
+          defineCustomElement$C();
         }
         break;
     }
@@ -10007,14 +10460,14 @@ const App = /* @__PURE__ */ proxyCustomElement$1(class App2 extends H$1 {
       rIC(async () => {
         const isHybrid2 = isPlatform(window, "hybrid");
         if (!config.getBoolean("_testing")) {
-          import("./_nuxt/index9-781de4c3.js").then((module) => module.startTapClick(config));
+          import("./_nuxt/index9-32440a1c.js").then((module) => module.startTapClick(config));
         }
         if (config.getBoolean("statusTap", isHybrid2)) {
-          import("./_nuxt/status-tap-b744b558.js").then((module) => module.startStatusTap());
+          import("./_nuxt/status-tap-b80c5a06.js").then((module) => module.startStatusTap());
         }
         if (config.getBoolean("inputShims", needInputShims())) {
           const platform = isPlatform(window, "ios") ? "ios" : "android";
-          import("./_nuxt/input-shims-80154fab.js").then((module) => module.startInputShims(config, platform));
+          import("./_nuxt/input-shims-6691001b.js").then((module) => module.startInputShims(config, platform));
         }
         const hardwareBackButtonModule = await import("./_nuxt/hardware-back-button-b290b24e.js");
         if (config.getBoolean("hardwareBackButton", isHybrid2)) {
@@ -12666,7 +13119,7 @@ function defineCustomElement$1() {
         break;
       case "ion-backdrop":
         if (!customElements.get(tagName)) {
-          defineCustomElement$C();
+          defineCustomElement$D();
         }
         break;
     }
@@ -12782,8 +13235,8 @@ const defineContainer = (name, defineCustomElement2, componentProps = [], modelP
   }
   return Container;
 };
-const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$D);
-const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$z, [
+const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$E);
+const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$A, [
   "color",
   "buttonType",
   "disabled",
@@ -12803,10 +13256,10 @@ const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElem
   "ionFocus",
   "ionBlur"
 ]);
-const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$x, [
+const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$y, [
   "collapse"
 ]);
-const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$w, [
+const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$x, [
   "color",
   "button",
   "type",
@@ -12818,23 +13271,23 @@ const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$
   "routerAnimation",
   "target"
 ]);
-const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$v);
-const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$u, [
+const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$w);
+const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$v, [
   "color",
   "translucent"
 ]);
-const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$t, [
+const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$u, [
   "color"
 ]);
-const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$s, [
+const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$t, [
   "color"
 ]);
-const IonChip = /* @__PURE__ */ defineContainer("ion-chip", defineCustomElement$r, [
+const IonChip = /* @__PURE__ */ defineContainer("ion-chip", defineCustomElement$s, [
   "color",
   "outline",
   "disabled"
 ]);
-const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$q, [
+const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$r, [
   "offset",
   "offsetXs",
   "offsetSm",
@@ -12860,7 +13313,7 @@ const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$q,
   "sizeLg",
   "sizeXl"
 ]);
-const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomElement$p, [
+const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomElement$q, [
   "color",
   "fullscreen",
   "forceOverscroll",
@@ -12871,17 +13324,60 @@ const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomEl
   "ionScroll",
   "ionScrollEnd"
 ]);
-const IonFooter = /* @__PURE__ */ defineContainer("ion-footer", defineCustomElement$l, [
+const IonFooter = /* @__PURE__ */ defineContainer("ion-footer", defineCustomElement$m, [
   "collapse",
   "translucent"
 ]);
-const IonGrid = /* @__PURE__ */ defineContainer("ion-grid", defineCustomElement$k, [
+const IonGrid = /* @__PURE__ */ defineContainer("ion-grid", defineCustomElement$l, [
   "fixed"
 ]);
-const IonHeader = /* @__PURE__ */ defineContainer("ion-header", defineCustomElement$j, [
+const IonHeader = /* @__PURE__ */ defineContainer("ion-header", defineCustomElement$k, [
   "collapse",
   "translucent"
 ]);
+const IonInput = /* @__PURE__ */ defineContainer("ion-input", defineCustomElement$j, [
+  "color",
+  "accept",
+  "autocapitalize",
+  "autocomplete",
+  "autocorrect",
+  "autofocus",
+  "clearInput",
+  "clearOnEdit",
+  "counter",
+  "counterFormatter",
+  "debounce",
+  "disabled",
+  "enterkeyhint",
+  "errorText",
+  "fill",
+  "inputmode",
+  "helperText",
+  "label",
+  "labelPlacement",
+  "legacy",
+  "max",
+  "maxlength",
+  "min",
+  "minlength",
+  "multiple",
+  "name",
+  "pattern",
+  "placeholder",
+  "readonly",
+  "required",
+  "shape",
+  "spellcheck",
+  "step",
+  "size",
+  "type",
+  "value",
+  "ionInput",
+  "ionChange",
+  "ionBlur",
+  "ionFocus",
+  "ionStyle"
+], "value", "v-ion-input", "ionInput");
 const IonItem = /* @__PURE__ */ defineContainer("ion-item", defineCustomElement$i, [
   "color",
   "button",
@@ -13745,7 +14241,7 @@ const defineOverlayContainer = (name, defineCustomElement2, componentProps = [],
   return Container;
 };
 const IonModal = /* @__PURE__ */ defineOverlayContainer("ion-modal", defineCustomElement, ["animated", "backdropBreakpoint", "backdropDismiss", "breakpoints", "canDismiss", "enterAnimation", "handle", "handleBehavior", "htmlAttributes", "initialBreakpoint", "isOpen", "keepContentsMounted", "keyboardClose", "leaveAnimation", "mode", "presentingElement", "showBackdrop", "trigger"], true);
-const ionicVueConfig = { "mode": "ios" };
+const ionicVueConfig = { "mode": "ios", "scrollAssist": false };
 const ionic_JZxaXwxCQa = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(IonicVue, ionicVueConfig);
 });
@@ -13792,7 +14288,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import("./_nuxt/error-component-9878bce8.js").then((r) => r.default || r));
+    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import("./_nuxt/error-component-ae89b43c.js").then((r) => r.default || r));
     const IslandRenderer = /* @__PURE__ */ defineAsyncComponent(() => import("./_nuxt/island-renderer-8b0a9e87.js").then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
@@ -13858,32 +14354,33 @@ const plugins = normalizePlugins(_plugins);
 }
 const entry$1 = (ctx) => entry(ctx);
 export {
-  IonCardContent as A,
-  IonToggle as B,
-  useIonRouter as C,
-  IonContent as D,
+  useHead as $,
+  IonChip as A,
+  IonTitle as B,
+  IonToggle as C,
+  useIonRouter as D,
   IonItem as E,
-  isRTL$1 as F,
-  createGesture as G,
-  clamp as H,
+  IonInput as F,
+  isRTL$1 as G,
+  createGesture as H,
   IonToolbar as I,
-  createAnimation as J,
-  getIonPageElement as K,
-  now$1 as L,
-  pointerCoord as M,
-  readTask as N,
-  findClosestIonContent as O,
-  componentOnReady as P,
-  writeTask$1 as Q,
-  scrollToTop as R,
-  Keyboard as S,
-  addEventListener$1 as T,
-  removeEventListener as U,
-  KeyboardResize as V,
-  raf as W,
-  useRouter as X,
-  navigateTo as Y,
-  useHead as Z,
+  clamp as J,
+  createAnimation as K,
+  getIonPageElement as L,
+  now$1 as M,
+  pointerCoord as N,
+  readTask as O,
+  findClosestIonContent as P,
+  componentOnReady as Q,
+  writeTask$1 as R,
+  scrollToTop as S,
+  Keyboard as T,
+  addEventListener$1 as U,
+  removeEventListener as V,
+  KeyboardResize as W,
+  raf as X,
+  useRouter as Y,
+  navigateTo as Z,
   _export_sfc as _,
   IonTabs as a,
   IonRouterOutlet as b,
@@ -13910,7 +14407,7 @@ export {
   IonAvatar as v,
   IonModal as w,
   IonFooter as x,
-  IonChip as y,
-  IonTitle as z
+  IonCardContent as y,
+  IonContent as z
 };
 //# sourceMappingURL=server.mjs.map

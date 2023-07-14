@@ -42,10 +42,10 @@ const props = defineProps<{
     /* max-height:10%; */
     border-radius: 18px;
     border:0.5px solid #1B1D30;
-    margin-bottom: -2%;
+    margin-bottom: 0px;
     margin-left: 0px;
-    position: relative;
-    margin-top:-1%;
+    /* position: relative; */
+    margin-top:2%;
  }
  .green{
     color: green;

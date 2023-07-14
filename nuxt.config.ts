@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     ionic: {
       config: {
         mode:'ios',
+        scrollAssist: false
       }
     },
 })

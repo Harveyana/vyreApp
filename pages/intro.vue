@@ -1,6 +1,6 @@
 <template>
     <ion-page>
-        <ion-header class="ion-no-border">
+        <!-- <ion-header class="ion-no-border">
             <ion-toolbar>
                 <ion-buttons slot="primary">
                     <ion-button fill="solid" style="--border-radius: 10px;" @click="isDarkMode = !isDarkMode">
@@ -8,9 +8,9 @@
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
-        </ion-header>
+        </ion-header> -->
 
-        <ion-content :fullscreen="true">
+        <ion-content :fullscreen="true" >
 
             <Swiper
                 style="padding-bottom: 25px;"
@@ -34,7 +34,7 @@
                     v-for="(slide, index) in slides"
                     :key="index"
                 >
-                    <ion-card style="box-shadow:none;padding-top: 25px;padding-bottom: 25px;margin-top: 20%;">
+                    <ion-card style="box-shadow:none;padding-top: 25px;padding-bottom: 25px;margin-top: 20%;background: #E5E5E5;min-height: 100%;">
                         <img alt="Silhouette of mountains" :src="slide.img" />
                         <ion-card-header>
                         <ion-card-title style="font-size: 30px;font-weight: 800;">{{slide.title}}</ion-card-title>
@@ -77,18 +77,18 @@ watch(isDarkMode,(newValue, oldValue) => {
 
 const slides:{title: string,img: string, content: string}[] = [
     {
-        title: "A crypto wallet you'll love",
-        img:'/coin_top.svg',
-        content: 'makes it safe & easy for you to store, send, receive, stake, and swap tokens on the Solana blockchain'
+        title: "Revolutionizing digital finance",
+        img:'/rocket.png',
+        content: 'Exchange Assets in seconds,lightening fast peer to peer exchange with no inputs from both parties '
     },
     {
-        title: "NFTs and Collectibles",
-        img:'/illustration (2).svg',
-        content: 'We’ve taken special care to make sure your NFTs look great!'
+        title: "Seamless transaction",
+        img:'/rocket.png',
+        content: 'We’ve bridged the world of crypto and fiat, giving you the power to play in both worlds'
     },
     {
-        title: "Your privacy is respected",
-        img:'/illustration (1).svg',
+        title: "Safe and secured wallets",
+        img:'/rocket.png',
         content: 'wallet doesn’t track any personal identifiable information, your account addresses or asset balances.'
     }
 ]
