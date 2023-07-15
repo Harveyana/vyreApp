@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "nuxt-app",
+  "appName": "vyre",
   "webDir": ".output/public",
   "server": {
     "androidScheme": "https"
