@@ -1,7 +1,7 @@
 <template>
     <ion-card class="asset" style="">
 
-        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;height: 70%;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;">
+        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;margin:3%">
             <div style="display: flex;flex-direction: column;justify-content: space-between;align-items: flex-start;max-width:30%;height:100%">
                 <ion-card-title class="title" style="font-size:150%;">{{props.orderType}}</ion-card-title>
                 <ion-card-subtitle class="title" style="font-size: 80%; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ props.base }}/{{ props.quote }}</ion-card-subtitle> 
@@ -19,7 +19,7 @@
             
         </ion-card>
 
-        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;height: 30%;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;">
+        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;margin: 3%;">
             <ion-card-title class="title" style="font-size:150%;">{{props.quantity}} {{props.quote}}</ion-card-title>
             <ion-card-subtitle style="font-size: 120%;color: green;">{{props.processPercentage}}%</ion-card-subtitle>
         </ion-card>
@@ -47,10 +47,10 @@ const props = defineProps<{
     align-items: center;
     width: 100%;
     /* min-height:10%; */
-    /* max-height:10%; */
     border-radius: 18px;
-    /* border:0.5px solid #1B1D30; */
-    margin-bottom: -2%;
+    border:0.5px solid #1B1D30;
+    margin-bottom: 0px;
+
     margin-left: 0px;
  }
  .asset:hover{

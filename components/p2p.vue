@@ -58,7 +58,7 @@
     <AddAsset :is-crypto="switchTab" :ismodal-open="ismodalOpen" @closeModal="setOpen(false)" />
 
     <!-- <tabs/> -->
-    <ion-footer class="ion-no-border" style="min-height:65%;border-top-left-radius: 38px;border: 1px solid black;">
+    <ion-footer class="ion-no-border" style="min-height:45%;border-top-left-radius: 38px;border: 1px solid black;">
     <!-- <div class="foota"> -->
     <!-- <ion-toolbar style="box-shadow: none;background: none;display: flex;flex-direction: column;justify-content:center;align-items: center;border: 1px solid gold;"> -->
 
@@ -292,7 +292,7 @@ ion-footer {
     /* background-image: linear-gradient(70deg, rgba(255,0,0,0), #1B1D30); */
     /* background:linear-gradient(230deg, rgba(255,0,0,0), #1B1D30); */
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     border-top-left-radius: 38px;
 }
 ion-segment {

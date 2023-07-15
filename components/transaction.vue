@@ -1,7 +1,7 @@
 <template>
     <ion-card class="asset" style="">
 
-        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;height: 70%;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;">
+        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;height: 70%;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;margin: 3%;">
             <div style="display: flex;flex-direction: column;justify-content: space-between;align-items: flex-start;max-width:30%;height:100%">
                 <ion-card-title class="title" style="font-size:150%;">{{props.transactionType}}</ion-card-title>
                 <ion-card-subtitle class="title" style="font-size: 80%; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ props.reciepient }}</ion-card-subtitle> 
@@ -14,7 +14,7 @@
             
         </ion-card>
 
-        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;height: 30%;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;">
+        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;height: 30%;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;margin: 3%;">
             <ion-card-title class="title" style="font-size:150%;">{{props.amount}} BTC</ion-card-title>
             <ion-card-subtitle style="font-size: 120%;color: green;">{{ props.time }}</ion-card-subtitle>
         </ion-card>
@@ -41,17 +41,17 @@ const props = defineProps<{
     /* min-height:10%; */
     /* max-height:10%; */
     border-radius: 18px;
-    border:0.5px solid #1B1D30;
+    /* border:0.5px solid #1B1D30; */
     margin-bottom: 0px;
     margin-left: 0px;
     /* position: relative; */
-    margin-top:2%;
+    margin-top:3%;
  }
  .green{
-    color: green;
+    color: rgb(171, 149, 63);
  }
  .red{
-    color: red;
+    color: rgb(34, 34, 61);
  }
  /* .asset:hover .title{
     color: whitesmoke;

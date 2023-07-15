@@ -82,7 +82,7 @@
     
     <footer class="ion-no-border" style="height:50%;border-top-left-radius: 38px;padding:2%;padding-top: -4%;border: 1px solid black;margin:0px">
    
-        <ion-card style="max-height: 100%;min-height:100%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;border-radius: 24px;box-shadow: none;--background: linear-gradient(90deg, rgb(162, 161, 161), #f6f6f6);;position: relative;top: -1%;margin-left: 0px;margin-right: 0px;margin-top: 0px;border:1px solid black">
+        <ion-card style="max-height: 100%;min-height:100%;overflow-y: scroll;scroll-behavior: smooth;padding-bottom: 3%;border-radius: 24px;box-shadow: none;--background: linear-gradient(90deg, rgb(162, 161, 161), #f6f6f6);;position: relative;top: -1%;margin-left: 0px;margin-right: 0px;margin-top: 0px;">
             <ion-list v-for="(transaction, index) in transactions" :key="index"  v-if="switchAssets == 'crypto'">
                 <Transaction :transaction-type="transaction.transactionType" :amount="transaction.amount" :time="transaction.time" :reciepient="transaction.reciepient"/>
             </ion-list>

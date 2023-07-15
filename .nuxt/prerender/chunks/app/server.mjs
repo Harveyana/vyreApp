@@ -1140,7 +1140,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-eacb83eb.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-7ae0ca8b.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1156,7 +1156,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/newhome-ea20e72f.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/newhome-3154e68b.mjs').then((m) => m.default || m)
   },
   {
     name: "notindex",
