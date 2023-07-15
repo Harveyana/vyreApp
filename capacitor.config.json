@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "vyre",
+  "appName": "Vyre",
   "webDir": ".output/public",
   "server": {
     "androidScheme": "https"
@@ -20,7 +20,7 @@
       "splashFullScreen": true,
       "splashImmersive": true,
       "layoutName": "launch_screen",
-      "useDialog": true
+      "useDialog": false
     }
   }
 }
