@@ -1,11 +1,11 @@
 export default {
-  "_addAsset.vue.b0196154.js": {
+  "_addAsset.vue.50844c20.js": {
     "resourceType": "script",
     "module": true,
     "css": [
       "addAsset.e664fc44.css"
     ],
-    "file": "addAsset.vue.b0196154.js",
+    "file": "addAsset.vue.50844c20.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -15,16 +15,16 @@ export default {
     "file": "addAsset.e664fc44.css",
     "resourceType": "style"
   },
-  "_allAssets.558c495c.js": {
+  "_allAssets.f5be299c.js": {
     "resourceType": "script",
     "module": true,
     "css": [
       "allAssets.e6cb1276.css"
     ],
-    "file": "allAssets.558c495c.js",
+    "file": "allAssets.f5be299c.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_addAsset.vue.b0196154.js",
+      "_addAsset.vue.50844c20.js",
       "_swiper-vue.ffa7ca1c.js"
     ]
   },
@@ -75,7 +75,7 @@ export default {
   "node_modules/@ionic/core/components/index9.js": {
     "resourceType": "script",
     "module": true,
-    "file": "index9.339f0ff4.js",
+    "file": "index9.51ad73ad.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -86,7 +86,7 @@ export default {
   "node_modules/@ionic/core/components/input-shims.js": {
     "resourceType": "script",
     "module": true,
-    "file": "input-shims.01fceb2a.js",
+    "file": "input-shims.2a27567e.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -97,7 +97,7 @@ export default {
   "node_modules/@ionic/core/components/ios.transition.js": {
     "resourceType": "script",
     "module": true,
-    "file": "ios.transition.47aa4a21.js",
+    "file": "ios.transition.485ff619.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -108,7 +108,7 @@ export default {
   "node_modules/@ionic/core/components/md.transition.js": {
     "resourceType": "script",
     "module": true,
-    "file": "md.transition.2224b29e.js",
+    "file": "md.transition.8454b27c.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -119,7 +119,7 @@ export default {
   "node_modules/@ionic/core/components/status-tap.js": {
     "resourceType": "script",
     "module": true,
-    "file": "status-tap.2b6f60ba.js",
+    "file": "status-tap.4b33fcd3.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -130,7 +130,7 @@ export default {
   "node_modules/@ionic/core/components/swipe-back.js": {
     "resourceType": "script",
     "module": true,
-    "file": "swipe-back.f9e82da5.js",
+    "file": "swipe-back.fac1d6bc.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -147,7 +147,7 @@ export default {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "error-404.14d0c633.js",
+    "file": "error-404.f80c943b.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -168,7 +168,7 @@ export default {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "error-500.8d26243a.js",
+    "file": "error-500.9c81e36a.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -205,7 +205,7 @@ export default {
       "node_modules/@ionic/core/components/focus-visible.js",
       "virtual:nuxt:/Users/mac/vyreApp/.nuxt/error-component.mjs"
     ],
-    "file": "entry.ac9d091d.js",
+    "file": "entry.4aa02154.js",
     "imports": [
       "_swiper-vue.ffa7ca1c.js"
     ],
@@ -230,10 +230,10 @@ export default {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "home-not.1bc9989b.js",
+    "file": "home-not.28019289.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_addAsset.vue.b0196154.js",
+      "_addAsset.vue.50844c20.js",
       "_swiper-vue.ffa7ca1c.js",
       "_useDarkMode.d10998af.js"
     ],
@@ -253,11 +253,11 @@ export default {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "home.0fe74e36.js",
+    "file": "home.38a146f4.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_addAsset.vue.b0196154.js",
-      "_allAssets.558c495c.js",
+      "_addAsset.vue.50844c20.js",
+      "_allAssets.f5be299c.js",
       "_swiper-vue.ffa7ca1c.js",
       "_useDarkMode.d10998af.js"
     ],
@@ -277,7 +277,7 @@ export default {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "index.0cd9b2ab.js",
+    "file": "index.fdb7138f.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js",
@@ -299,11 +299,11 @@ export default {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "newhome.ff0c3ec5.js",
+    "file": "newhome.bffb4db4.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_addAsset.vue.b0196154.js",
-      "_allAssets.558c495c.js",
+      "_addAsset.vue.50844c20.js",
+      "_allAssets.f5be299c.js",
       "_useDarkMode.d10998af.js",
       "_swiper-vue.ffa7ca1c.js"
     ],
@@ -317,7 +317,7 @@ export default {
   "pages/notindex.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "notindex.28c0d459.js",
+    "file": "notindex.cfa50862.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_useDarkMode.d10998af.js",
@@ -335,7 +335,7 @@ export default {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "signUp.f6096230.js",
+    "file": "signUp.21227db3.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
@@ -359,7 +359,7 @@ export default {
       "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
       "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue"
     ],
-    "file": "error-component.1f26294f.js",
+    "file": "error-component.aababf3d.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_swiper-vue.ffa7ca1c.js"
