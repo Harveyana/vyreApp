@@ -181,11 +181,7 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
 ]
 </script>
 <style scoped>
- ion-content {
-    /* --background: url('~/assets/bg1.jpg') no-repeat fixed center; */
-    --background: linear-gradient(45deg, rgba(255,0,0,0), #1B1D30);
-	/* background-size: auto; */
- }
+ 
  ion-segment {
     --background: rgba(66, 65, 65, 0.446);
 } 
