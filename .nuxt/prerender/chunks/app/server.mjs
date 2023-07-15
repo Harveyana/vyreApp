@@ -1132,7 +1132,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-not-f4753ca5.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-not-61fcbf7d.mjs').then((m) => m.default || m)
   },
   {
     name: "home",
@@ -1140,7 +1140,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-d3caf9b9.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-eacb83eb.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1148,15 +1148,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/index-f5a413f8.mjs').then((m) => m.default || m)
-  },
-  {
-    name: "intro",
-    path: "/intro",
-    meta: {},
-    alias: [],
-    redirect: void 0,
-    component: () => import('./_nuxt/intro-f57be265.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-2ea44ef9.mjs').then((m) => m.default || m)
   },
   {
     name: "newhome",
@@ -1164,7 +1156,15 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/newhome-f4f4e7a5.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/newhome-ea20e72f.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "notindex",
+    path: "/notindex",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import('./_nuxt/notindex-9dbbb734.mjs').then((m) => m.default || m)
   },
   {
     name: "signUp",
@@ -1172,7 +1172,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/signUp-1d9c4ad3.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/signUp-d3cc9885.mjs').then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -14343,5 +14343,5 @@ const plugins = normalizePlugins(_plugins);
 }
 const entry$1 = (ctx) => entry(ctx);
 
-export { useHead as $, IonChip as A, IonTitle as B, IonToggle as C, useIonRouter as D, IonItem as E, IonInput as F, isRTL$1 as G, createGesture as H, IonToolbar as I, clamp as J, createAnimation as K, getIonPageElement as L, now$1 as M, pointerCoord as N, readTask as O, findClosestIonContent as P, componentOnReady as Q, writeTask$1 as R, scrollToTop as S, Keyboard as T, addEventListener$1 as U, removeEventListener as V, KeyboardResize as W, raf as X, useRouter as Y, navigateTo as Z, _export_sfc as _, IonTabs as a, IonRouterOutlet as b, createError as c, IonTabBar as d, entry$1 as default, IonTabButton as e, IonIcon as f, IonLabel as g, IonPage as h, IonHeader as i, IonButtons as j, IonButton as k, IonCard as l, IonCardHeader as m, IonCardSubtitle as n, IonCardTitle as o, IonCol as p, IonGrid as q, IonRow as r, IonSegment as s, IonSegmentButton as t, IonList as u, IonAvatar as v, IonModal as w, IonFooter as x, IonCardContent as y, IonContent as z };
+export { useHead as $, IonChip as A, useIonRouter as B, IonItem as C, IonTitle as D, IonToggle as E, IonInput as F, isRTL$1 as G, createGesture as H, IonToolbar as I, clamp as J, createAnimation as K, getIonPageElement as L, now$1 as M, pointerCoord as N, readTask as O, findClosestIonContent as P, componentOnReady as Q, writeTask$1 as R, scrollToTop as S, Keyboard as T, addEventListener$1 as U, removeEventListener as V, KeyboardResize as W, raf as X, useRouter as Y, navigateTo as Z, _export_sfc as _, IonTabs as a, IonRouterOutlet as b, createError as c, IonTabBar as d, entry$1 as default, IonTabButton as e, IonIcon as f, IonLabel as g, IonPage as h, IonHeader as i, IonButtons as j, IonButton as k, IonCard as l, IonCardHeader as m, IonCardSubtitle as n, IonCardTitle as o, IonCol as p, IonGrid as q, IonRow as r, IonSegment as s, IonSegmentButton as t, IonList as u, IonAvatar as v, IonModal as w, IonFooter as x, IonCardContent as y, IonContent as z };
 //# sourceMappingURL=server.mjs.map

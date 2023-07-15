@@ -1129,7 +1129,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/home-not-f4753ca5.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/home-not-61fcbf7d.js").then((m) => m.default || m)
   },
   {
     name: "home",
@@ -1137,7 +1137,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/home-d3caf9b9.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/home-eacb83eb.js").then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1145,15 +1145,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/index-f5a413f8.js").then((m) => m.default || m)
-  },
-  {
-    name: "intro",
-    path: "/intro",
-    meta: {},
-    alias: [],
-    redirect: void 0,
-    component: () => import("./_nuxt/intro-f57be265.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/index-2ea44ef9.js").then((m) => m.default || m)
   },
   {
     name: "newhome",
@@ -1161,7 +1153,15 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/newhome-f4f4e7a5.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/newhome-ea20e72f.js").then((m) => m.default || m)
+  },
+  {
+    name: "notindex",
+    path: "/notindex",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import("./_nuxt/notindex-9dbbb734.js").then((m) => m.default || m)
   },
   {
     name: "signUp",
@@ -1169,7 +1169,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/signUp-1d9c4ad3.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/signUp-d3cc9885.js").then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -14356,10 +14356,10 @@ const entry$1 = (ctx) => entry(ctx);
 export {
   useHead as $,
   IonChip as A,
-  IonTitle as B,
-  IonToggle as C,
-  useIonRouter as D,
-  IonItem as E,
+  useIonRouter as B,
+  IonItem as C,
+  IonTitle as D,
+  IonToggle as E,
   IonInput as F,
   isRTL$1 as G,
   createGesture as H,
