@@ -118,7 +118,7 @@
 
     <AddAsset :ismodal-open="isAddAssetsModalOpen" @closeModal="setAddAssetOpen(false)" />
     <AllAssets :is-all-assetmodal-open="isAllAssetsModalOpen" @closeModal="setAllAssetsOpen(false)" />
-    <P2p :is-all-assetmodal-open="isP2POpen" @closeModal="setP2POpen(false)" />
+    <!-- <P2p :is-all-assetmodal-open="isP2POpen" @closeModal="setP2POpen(false)" /> -->
     <Assetpage :is-asset-page-open="isAssetsPageOpen" @closeModal="setAssetPageOpen(false)" />
 
     <!-- <tabs/> -->

@@ -1,4 +1,4 @@
-import { version, inject, defineComponent, h as h$2, computed, provide, ref, shallowRef, watch, onUnmounted, getCurrentInstance, hasInjectionContext, watchEffect, useSSRContext, createApp, reactive, unref, onErrorCaptured, onServerPrefetch, createVNode, resolveDynamicComponent, toRef, isReadonly, Teleport, defineAsyncComponent, isRef, isShallow, isReactive, toRaw, withCtx, nextTick as nextTick$2 } from 'file:///Users/mac/vyreApp/node_modules/vue/index.mjs';
+import { version, hasInjectionContext, inject, defineComponent, h as h$2, computed, provide, ref, shallowRef, watch, onUnmounted, getCurrentInstance, watchEffect, useSSRContext, createApp, reactive, unref, onErrorCaptured, onServerPrefetch, createVNode, resolveDynamicComponent, toRef, isReadonly, Teleport, defineAsyncComponent, isRef, isShallow, isReactive, toRaw, withCtx, nextTick as nextTick$2 } from 'file:///Users/mac/vyreApp/node_modules/vue/index.mjs';
 import { $fetch } from 'file:///Users/mac/vyreApp/node_modules/ofetch/dist/node.mjs';
 import { createHooks } from 'file:///Users/mac/vyreApp/node_modules/hookable/dist/index.mjs';
 import { getContext, executeAsync } from 'file:///Users/mac/vyreApp/node_modules/unctx/dist/index.mjs';
@@ -1127,12 +1127,20 @@ const routerOptions = {
 };
 const _routes = [
   {
+    name: "assets",
+    path: "/assets",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import('./_nuxt/assets-e9d9a91e.mjs').then((m) => m.default || m)
+  },
+  {
     name: "home-not",
     path: "/home-not",
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-not-61fcbf7d.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-not-2ba0cfe2.mjs').then((m) => m.default || m)
   },
   {
     name: "home",
@@ -1140,7 +1148,15 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-7ae0ca8b.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-cec0a521.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "home2",
+    path: "/home2",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import('./_nuxt/home2-8d123fed.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1148,7 +1164,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/index-2ea44ef9.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-a765c050.mjs').then((m) => m.default || m)
   },
   {
     name: "newhome",
@@ -1156,7 +1172,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/newhome-3154e68b.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/newhome-4e84e36f.mjs').then((m) => m.default || m)
   },
   {
     name: "notindex",
@@ -1164,7 +1180,15 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/notindex-9dbbb734.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/notindex-c8c5f63c.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "p2p",
+    path: "/p2p",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import('./_nuxt/p2p-9aab3c78.mjs').then((m) => m.default || m)
   },
   {
     name: "signUp",
@@ -1172,7 +1196,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/signUp-d3cc9885.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/signUp-8726a0d8.mjs').then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -2206,15 +2230,15 @@ const dispatchHooks$1 = (hostRef, isInitialLoad) => {
   let maybePromise;
   if (isInitialLoad) {
     {
-      maybePromise = safeCall$1(instance, "componentWillLoad");
+      maybePromise = safeCall$2(instance, "componentWillLoad");
     }
   } else {
     {
-      maybePromise = safeCall$1(instance, "componentWillUpdate");
+      maybePromise = safeCall$2(instance, "componentWillUpdate");
     }
   }
   {
-    maybePromise = enqueue(maybePromise, () => safeCall$1(instance, "componentWillRender"));
+    maybePromise = enqueue(maybePromise, () => safeCall$2(instance, "componentWillRender"));
   }
   endSchedule();
   return enqueue(maybePromise, () => updateComponent$1(hostRef, instance, isInitialLoad));
@@ -2273,17 +2297,17 @@ const postUpdateComponent$1 = (hostRef) => {
   const instance = elm;
   hostRef.$ancestorComponent$;
   {
-    safeCall$1(instance, "componentDidRender");
+    safeCall$2(instance, "componentDidRender");
   }
   if (!(hostRef.$flags$ & 64)) {
     hostRef.$flags$ |= 64;
     {
-      safeCall$1(instance, "componentDidLoad");
+      safeCall$2(instance, "componentDidLoad");
     }
     endPostUpdate();
   } else {
     {
-      safeCall$1(instance, "componentDidUpdate");
+      safeCall$2(instance, "componentDidUpdate");
     }
     endPostUpdate();
   }
@@ -2298,7 +2322,7 @@ const forceUpdate = (ref2) => {
     return isConnected;
   }
 };
-const safeCall$1 = (instance, method, arg) => {
+const safeCall$2 = (instance, method, arg) => {
   if (instance && instance[method]) {
     try {
       return instance[method](arg);
@@ -2645,13 +2669,17 @@ const writeTask$1 = /* @__PURE__ */ queueTask$1(queueDomWrites$1, true);
  * (C) Ionic http://ionicframework.com - MIT License
  */
 const arrowBackSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='square' stroke-miterlimit='10' stroke-width='48' d='M244 400L100 256l144-144M120 256h292' class='ionicon-fill-none'/></svg>";
+const caretDownSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M64 144l192 224 192-224H64z'/></svg>";
 const checkmarkOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' d='M416 128L192 384l-96-96' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
 const chevronBack = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M328 112L184 256l144 144' class='ionicon-fill-none'/></svg>";
+const chevronExpand = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M136 208l120-104 120 104M136 304l120 104 120-104' stroke-width='48' stroke-linecap='round' stroke-linejoin='round' class='ionicon-fill-none'/></svg>";
 const chevronForward = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M184 112l144 144-144 144' class='ionicon-fill-none'/></svg>";
 const closeCircle = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z'/></svg>";
 const closeSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M400 145.49L366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49z'/></svg>";
 const ellipseOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><circle cx='256' cy='256' r='192' stroke-linecap='round' stroke-linejoin='round' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
 const removeOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' d='M400 256H112' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
+const searchOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z' stroke-miterlimit='10' class='ionicon-fill-none ionicon-stroke-width'/><path stroke-linecap='round' stroke-miterlimit='10' d='M338.29 338.29L448 448' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
+const searchSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M464 428L339.92 303.9a160.48 160.48 0 0030.72-94.58C370.64 120.37 298.27 48 209.32 48S48 120.37 48 209.32s72.37 161.32 161.32 161.32a160.48 160.48 0 0094.58-30.72L428 464zM209.32 319.69a110.38 110.38 0 11110.37-110.37 110.5 110.5 0 01-110.37 110.37z'/></svg>";
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -2898,6 +2926,15 @@ const findItemLabel = (componentEl) => {
     return itemEl.querySelector("ion-label");
   }
   return null;
+};
+const focusElement = (el) => {
+  el.focus();
+  if (el.classList.contains("ion-focusable")) {
+    const app = el.closest("ion-app");
+    if (app) {
+      app.setFocus([el]);
+    }
+  }
 };
 const getAriaLabel = (componentEl, inputId) => {
   let labelText;
@@ -3269,7 +3306,7 @@ const createColorClasses$2 = (color) => {
     [`ion-color-${color}`]: true
   } : null;
 };
-function defineCustomElement$F() {
+function defineCustomElement$R() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3317,7 +3354,7 @@ const Avatar = /* @__PURE__ */ proxyCustomElement$1(class Avatar2 extends H$1 {
     };
   }
 }, [33, "ion-avatar"]);
-function defineCustomElement$1$q() {
+function defineCustomElement$1$u() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3332,7 +3369,7 @@ function defineCustomElement$1$q() {
     }
   });
 }
-const defineCustomElement$E = defineCustomElement$1$q;
+const defineCustomElement$Q = defineCustomElement$1$u;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3582,7 +3619,7 @@ const Backdrop = /* @__PURE__ */ proxyCustomElement$1(class Backdrop2 extends H$
   "tappable": [4],
   "stopPropagation": [4, "stop-propagation"]
 }, [[2, "click", "onMouseDown"]]]);
-function defineCustomElement$D() {
+function defineCustomElement$P() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3631,6 +3668,49 @@ const openURL = async (url, ev, direction, animation2) => {
   }
   return false;
 };
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const badgeIosCss = ":host{--background:var(--ion-color-primary, #3880ff);--color:var(--ion-color-primary-contrast, #fff);--padding-top:3px;--padding-end:8px;--padding-bottom:3px;--padding-start:8px;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);display:inline-block;min-width:10px;background:var(--background);color:var(--color);font-family:var(--ion-font-family, inherit);font-size:13px;font-weight:bold;line-height:1;text-align:center;white-space:nowrap;contain:content;vertical-align:baseline}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(:empty){display:none}:host{border-radius:10px}";
+const badgeMdCss = ":host{--background:var(--ion-color-primary, #3880ff);--color:var(--ion-color-primary-contrast, #fff);--padding-top:3px;--padding-end:8px;--padding-bottom:3px;--padding-start:8px;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);display:inline-block;min-width:10px;background:var(--background);color:var(--color);font-family:var(--ion-font-family, inherit);font-size:13px;font-weight:bold;line-height:1;text-align:center;white-space:nowrap;contain:content;vertical-align:baseline}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(:empty){display:none}:host{--padding-top:3px;--padding-end:4px;--padding-bottom:4px;--padding-start:4px;border-radius:4px}";
+const Badge = /* @__PURE__ */ proxyCustomElement$1(class Badge2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.color = void 0;
+  }
+  render() {
+    const mode = getIonMode$2(this);
+    return h$1(Host$1, { class: createColorClasses$1(this.color, {
+      [mode]: true
+    }) }, h$1("slot", null));
+  }
+  static get style() {
+    return {
+      ios: badgeIosCss,
+      md: badgeMdCss
+    };
+  }
+}, [33, "ion-badge", {
+  "color": [513]
+}]);
+function defineCustomElement$1$t() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-badge"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-badge":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Badge);
+        }
+        break;
+    }
+  });
+}
+const defineCustomElement$O = defineCustomElement$1$t;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3717,7 +3797,7 @@ const removeRipple = (ripple) => {
 };
 const PADDING = 10;
 const INITIAL_ORIGIN_SCALE = 0.5;
-function defineCustomElement$C() {
+function defineCustomElement$N() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3892,7 +3972,7 @@ const Button = /* @__PURE__ */ proxyCustomElement$1(class Button2 extends H$1 {
   "type": [1],
   "form": [1]
 }]);
-function defineCustomElement$B() {
+function defineCustomElement$M() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3906,7 +3986,7 @@ function defineCustomElement$B() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$C();
+          defineCustomElement$N();
         }
         break;
     }
@@ -3915,7 +3995,7 @@ function defineCustomElement$B() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$A = defineCustomElement$B;
+const defineCustomElement$L = defineCustomElement$M;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3943,7 +4023,7 @@ const Buttons = /* @__PURE__ */ proxyCustomElement$1(class Buttons2 extends H$1 
 }, [34, "ion-buttons", {
   "collapse": [4]
 }]);
-function defineCustomElement$z() {
+function defineCustomElement$K() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3961,7 +4041,7 @@ function defineCustomElement$z() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$y = defineCustomElement$z;
+const defineCustomElement$J = defineCustomElement$K;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4034,7 +4114,7 @@ const Card = /* @__PURE__ */ proxyCustomElement$1(class Card2 extends H$1 {
   "routerAnimation": [16],
   "target": [1]
 }]);
-function defineCustomElement$1$p() {
+function defineCustomElement$1$s() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4048,13 +4128,13 @@ function defineCustomElement$1$p() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$C();
+          defineCustomElement$N();
         }
         break;
     }
   });
 }
-const defineCustomElement$x = defineCustomElement$1$p;
+const defineCustomElement$I = defineCustomElement$1$s;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4080,7 +4160,7 @@ const CardContent = /* @__PURE__ */ proxyCustomElement$1(class CardContent2 exte
     };
   }
 }, [32, "ion-card-content"]);
-function defineCustomElement$1$o() {
+function defineCustomElement$1$r() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4095,7 +4175,7 @@ function defineCustomElement$1$o() {
     }
   });
 }
-const defineCustomElement$w = defineCustomElement$1$o;
+const defineCustomElement$H = defineCustomElement$1$r;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4127,7 +4207,7 @@ const CardHeader = /* @__PURE__ */ proxyCustomElement$1(class CardHeader2 extend
   "color": [513],
   "translucent": [4]
 }]);
-function defineCustomElement$1$n() {
+function defineCustomElement$1$q() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4142,7 +4222,7 @@ function defineCustomElement$1$n() {
     }
   });
 }
-const defineCustomElement$v = defineCustomElement$1$n;
+const defineCustomElement$G = defineCustomElement$1$q;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4171,7 +4251,7 @@ const CardSubtitle = /* @__PURE__ */ proxyCustomElement$1(class CardSubtitle2 ex
 }, [33, "ion-card-subtitle", {
   "color": [513]
 }]);
-function defineCustomElement$1$m() {
+function defineCustomElement$1$p() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4186,7 +4266,7 @@ function defineCustomElement$1$m() {
     }
   });
 }
-const defineCustomElement$u = defineCustomElement$1$m;
+const defineCustomElement$F = defineCustomElement$1$p;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4215,7 +4295,7 @@ const CardTitle = /* @__PURE__ */ proxyCustomElement$1(class CardTitle2 extends 
 }, [33, "ion-card-title", {
   "color": [513]
 }]);
-function defineCustomElement$1$l() {
+function defineCustomElement$1$o() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4230,7 +4310,7 @@ function defineCustomElement$1$l() {
     }
   });
 }
-const defineCustomElement$t = defineCustomElement$1$l;
+const defineCustomElement$E = defineCustomElement$1$o;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4267,6 +4347,182 @@ const UNNAMED_LABEL_SLOT_COMPONENTS = ["ION-TOGGLE", "ION-CHECKBOX", "ION-RADIO"
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
+const checkboxIosCss = ":host{--checkbox-background-checked:var(--ion-color-primary, #3880ff);--border-color-checked:var(--ion-color-primary, #3880ff);--checkmark-color:var(--ion-color-primary-contrast, #fff);--checkmark-width:1;--transition:none;display:inline-block;position:relative;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(.in-item){width:100%;height:100%}:host([slot=start]:not(.legacy-checkbox)),:host([slot=end]:not(.legacy-checkbox)){width:auto}:host(.legacy-checkbox){width:var(--size);height:var(--size)}:host(.ion-color){--checkbox-background-checked:var(--ion-color-base);--border-color-checked:var(--ion-color-base);--checkmark-color:var(--ion-color-contrast)}:host(.legacy-checkbox) label{top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}@supports (inset-inline-start: 0){:host(.legacy-checkbox) label{inset-inline-start:0}}@supports not (inset-inline-start: 0){:host(.legacy-checkbox) label{left:0}:host-context([dir=rtl]):host(.legacy-checkbox) label,:host-context([dir=rtl]).legacy-checkbox label{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){:host(.legacy-checkbox) label:dir(rtl){left:unset;right:unset;right:0}}}:host(.legacy-checkbox) label::-moz-focus-inner{border:0}.checkbox-wrapper{display:-ms-flexbox;display:flex;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;height:inherit;cursor:inherit}.label-text-wrapper{pointer-events:none;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.label-text-wrapper-hidden{display:none}input{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;outline:0;clip:rect(0 0 0 0);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none}.native-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.checkbox-icon{border-radius:var(--border-radius);position:relative;-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--checkbox-background);-webkit-box-sizing:border-box;box-sizing:border-box}:host(.legacy-checkbox) .checkbox-icon{display:block;width:100%;height:100%}:host(:not(.legacy-checkbox)) .checkbox-icon{width:var(--size);height:var(--size)}.checkbox-icon path{fill:none;stroke:var(--checkmark-color);stroke-width:var(--checkmark-width);opacity:0}:host(.checkbox-justify-space-between) .checkbox-wrapper{-ms-flex-pack:justify;justify-content:space-between}:host(.checkbox-justify-start) .checkbox-wrapper{-ms-flex-pack:start;justify-content:start}:host(.checkbox-justify-end) .checkbox-wrapper{-ms-flex-pack:end;justify-content:end}:host(.checkbox-label-placement-start) .checkbox-wrapper{-ms-flex-direction:row;flex-direction:row}:host(.checkbox-label-placement-start) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.checkbox-label-placement-end) .checkbox-wrapper{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.checkbox-label-placement-end) .label-text-wrapper{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0}:host(.checkbox-label-placement-fixed) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.checkbox-label-placement-fixed) .label-text-wrapper{-ms-flex:0 0 100px;flex:0 0 100px;width:100px;min-width:100px;max-width:200px}:host(.checkbox-checked) .checkbox-icon,:host(.checkbox-indeterminate) .checkbox-icon{border-color:var(--border-color-checked);background:var(--checkbox-background-checked)}:host(.checkbox-checked) .checkbox-icon path,:host(.checkbox-indeterminate) .checkbox-icon path{opacity:1}:host(.checkbox-disabled){pointer-events:none}:host{--border-radius:50%;--border-width:1px;--border-style:solid;--border-color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.23);--checkbox-background:var(--ion-item-background, var(--ion-background-color, #fff));--size:26px}:host(.checkbox-disabled){opacity:0.3}:host(.in-item.legacy-checkbox){-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:8px;margin-inline-end:8px;margin-top:10px;margin-bottom:9px;display:block;position:static}:host(.in-item.legacy-checkbox[slot=start]){-webkit-margin-start:2px;margin-inline-start:2px;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:8px;margin-bottom:8px}";
+const checkboxMdCss = ":host{--checkbox-background-checked:var(--ion-color-primary, #3880ff);--border-color-checked:var(--ion-color-primary, #3880ff);--checkmark-color:var(--ion-color-primary-contrast, #fff);--checkmark-width:1;--transition:none;display:inline-block;position:relative;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(.in-item){width:100%;height:100%}:host([slot=start]:not(.legacy-checkbox)),:host([slot=end]:not(.legacy-checkbox)){width:auto}:host(.legacy-checkbox){width:var(--size);height:var(--size)}:host(.ion-color){--checkbox-background-checked:var(--ion-color-base);--border-color-checked:var(--ion-color-base);--checkmark-color:var(--ion-color-contrast)}:host(.legacy-checkbox) label{top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}@supports (inset-inline-start: 0){:host(.legacy-checkbox) label{inset-inline-start:0}}@supports not (inset-inline-start: 0){:host(.legacy-checkbox) label{left:0}:host-context([dir=rtl]):host(.legacy-checkbox) label,:host-context([dir=rtl]).legacy-checkbox label{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){:host(.legacy-checkbox) label:dir(rtl){left:unset;right:unset;right:0}}}:host(.legacy-checkbox) label::-moz-focus-inner{border:0}.checkbox-wrapper{display:-ms-flexbox;display:flex;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;height:inherit;cursor:inherit}.label-text-wrapper{pointer-events:none;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.label-text-wrapper-hidden{display:none}input{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;outline:0;clip:rect(0 0 0 0);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none}.native-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.checkbox-icon{border-radius:var(--border-radius);position:relative;-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--checkbox-background);-webkit-box-sizing:border-box;box-sizing:border-box}:host(.legacy-checkbox) .checkbox-icon{display:block;width:100%;height:100%}:host(:not(.legacy-checkbox)) .checkbox-icon{width:var(--size);height:var(--size)}.checkbox-icon path{fill:none;stroke:var(--checkmark-color);stroke-width:var(--checkmark-width);opacity:0}:host(.checkbox-justify-space-between) .checkbox-wrapper{-ms-flex-pack:justify;justify-content:space-between}:host(.checkbox-justify-start) .checkbox-wrapper{-ms-flex-pack:start;justify-content:start}:host(.checkbox-justify-end) .checkbox-wrapper{-ms-flex-pack:end;justify-content:end}:host(.checkbox-label-placement-start) .checkbox-wrapper{-ms-flex-direction:row;flex-direction:row}:host(.checkbox-label-placement-start) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.checkbox-label-placement-end) .checkbox-wrapper{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.checkbox-label-placement-end) .label-text-wrapper{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0}:host(.checkbox-label-placement-fixed) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.checkbox-label-placement-fixed) .label-text-wrapper{-ms-flex:0 0 100px;flex:0 0 100px;width:100px;min-width:100px;max-width:200px}:host(.checkbox-checked) .checkbox-icon,:host(.checkbox-indeterminate) .checkbox-icon{border-color:var(--border-color-checked);background:var(--checkbox-background-checked)}:host(.checkbox-checked) .checkbox-icon path,:host(.checkbox-indeterminate) .checkbox-icon path{opacity:1}:host(.checkbox-disabled){pointer-events:none}:host{--border-radius:calc(var(--size) * .125);--border-width:2px;--border-style:solid;--border-color:rgb(var(--ion-text-color-rgb, 0, 0, 0), 0.6);--checkmark-width:3;--checkbox-background:var(--ion-item-background, var(--ion-background-color, #fff));--transition:background 180ms cubic-bezier(0.4, 0, 0.2, 1);--size:18px}.checkbox-icon path{stroke-dasharray:30;stroke-dashoffset:30}:host(.checkbox-checked) .checkbox-icon path,:host(.checkbox-indeterminate) .checkbox-icon path{stroke-dashoffset:0;-webkit-transition:stroke-dashoffset 90ms linear 90ms;transition:stroke-dashoffset 90ms linear 90ms}:host(.legacy-checkbox.checkbox-disabled),:host(.checkbox-disabled) .label-text-wrapper{opacity:0.38}:host(.checkbox-disabled) .native-wrapper{opacity:0.63}:host(.in-item.legacy-checkbox){margin-left:0;margin-right:0;margin-top:18px;margin-bottom:18px;display:block;position:static}:host(.in-item.legacy-checkbox[slot=start]){-webkit-margin-start:4px;margin-inline-start:4px;-webkit-margin-end:36px;margin-inline-end:36px;margin-top:18px;margin-bottom:18px}";
+const Checkbox = /* @__PURE__ */ proxyCustomElement$1(class Checkbox2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.ionChange = createEvent(this, "ionChange", 7);
+    this.ionFocus = createEvent(this, "ionFocus", 7);
+    this.ionBlur = createEvent(this, "ionBlur", 7);
+    this.ionStyle = createEvent(this, "ionStyle", 7);
+    this.inputId = `ion-cb-${checkboxIds++}`;
+    this.inheritedAttributes = {};
+    this.hasLoggedDeprecationWarning = false;
+    this.setChecked = (state) => {
+      const isChecked = this.checked = state;
+      this.ionChange.emit({
+        checked: isChecked,
+        value: this.value
+      });
+    };
+    this.toggleChecked = (ev) => {
+      ev.preventDefault();
+      this.setFocus();
+      this.setChecked(!this.checked);
+      this.indeterminate = false;
+    };
+    this.onFocus = () => {
+      this.ionFocus.emit();
+    };
+    this.onBlur = () => {
+      this.ionBlur.emit();
+    };
+    this.color = void 0;
+    this.name = this.inputId;
+    this.checked = false;
+    this.indeterminate = false;
+    this.disabled = false;
+    this.value = "on";
+    this.labelPlacement = "start";
+    this.justify = "space-between";
+    this.legacy = void 0;
+  }
+  // TODO(FW-3100): remove this
+  connectedCallback() {
+    this.legacyFormController = createLegacyFormController(this.el);
+  }
+  componentWillLoad() {
+    this.emitStyle();
+    if (!this.legacyFormController.hasLegacyControl()) {
+      this.inheritedAttributes = Object.assign({}, inheritAriaAttributes(this.el));
+    }
+  }
+  styleChanged() {
+    this.emitStyle();
+  }
+  emitStyle() {
+    const style = {
+      "interactive-disabled": this.disabled
+    };
+    if (this.legacyFormController.hasLegacyControl()) {
+      style["checkbox-checked"] = this.checked;
+    }
+    this.ionStyle.emit(style);
+  }
+  setFocus() {
+    if (this.focusEl) {
+      this.focusEl.focus();
+    }
+  }
+  // TODO(FW-3100): run contents of renderCheckbox directly instead
+  render() {
+    const { legacyFormController } = this;
+    return legacyFormController.hasLegacyControl() ? this.renderLegacyCheckbox() : this.renderCheckbox();
+  }
+  renderCheckbox() {
+    const { color, checked, disabled, el, getSVGPath, indeterminate, inheritedAttributes, inputId, justify, labelPlacement, name, value } = this;
+    const mode = getIonMode$2(this);
+    const path = getSVGPath(mode, indeterminate);
+    renderHiddenInput(true, el, name, checked ? value : "", disabled);
+    return h$1(Host$1, { class: createColorClasses$1(color, {
+      [mode]: true,
+      "in-item": hostContext("ion-item", el),
+      "checkbox-checked": checked,
+      "checkbox-disabled": disabled,
+      "checkbox-indeterminate": indeterminate,
+      interactive: true,
+      [`checkbox-justify-${justify}`]: true,
+      [`checkbox-label-placement-${labelPlacement}`]: true
+    }) }, h$1("label", { class: "checkbox-wrapper" }, h$1("input", Object.assign({ type: "checkbox", checked: checked ? true : void 0, disabled, id: inputId, onChange: this.toggleChecked, onFocus: () => this.onFocus(), onBlur: () => this.onBlur(), ref: (focusEl) => this.focusEl = focusEl }, inheritedAttributes)), h$1("div", { class: {
+      "label-text-wrapper": true,
+      "label-text-wrapper-hidden": el.textContent === ""
+    } }, h$1("slot", null)), h$1("div", { class: "native-wrapper" }, h$1("svg", { class: "checkbox-icon", viewBox: "0 0 24 24", part: "container" }, path))));
+  }
+  // TODO(FW-3100): remove this
+  renderLegacyCheckbox() {
+    if (!this.hasLoggedDeprecationWarning) {
+      printIonWarning(`ion-checkbox now requires providing a label with either the default slot or the "aria-label" attribute. To migrate, remove any usage of "ion-label" and pass the label text to either the component or the "aria-label" attribute.
+
+Example: <ion-checkbox>Label</ion-checkbox>
+Example with aria-label: <ion-checkbox aria-label="Label"></ion-checkbox>
+
+Developers can use the "legacy" property to continue using the legacy form markup. This property will be removed in an upcoming major release of Ionic where this form control will use the modern form markup.`, this.el);
+      if (this.legacy) {
+        printIonWarning(`ion-checkbox is being used with the "legacy" property enabled which will forcibly enable the legacy form markup. This property will be removed in an upcoming major release of Ionic where this form control will use the modern form markup.
+Developers can dismiss this warning by removing their usage of the "legacy" property and using the new checkbox syntax.`, this.el);
+      }
+      this.hasLoggedDeprecationWarning = true;
+    }
+    const { color, checked, disabled, el, getSVGPath, indeterminate, inputId, name, value } = this;
+    const mode = getIonMode$2(this);
+    const { label, labelId, labelText } = getAriaLabel(el, inputId);
+    const path = getSVGPath(mode, indeterminate);
+    renderHiddenInput(true, el, name, checked ? value : "", disabled);
+    return h$1(Host$1, { "aria-labelledby": label ? labelId : null, "aria-checked": `${checked}`, "aria-hidden": disabled ? "true" : null, role: "checkbox", class: createColorClasses$1(color, {
+      [mode]: true,
+      "in-item": hostContext("ion-item", el),
+      "checkbox-checked": checked,
+      "checkbox-disabled": disabled,
+      "checkbox-indeterminate": indeterminate,
+      "legacy-checkbox": true,
+      interactive: true
+    }) }, h$1("svg", { class: "checkbox-icon", viewBox: "0 0 24 24", part: "container" }, path), h$1("label", { htmlFor: inputId }, labelText), h$1("input", { type: "checkbox", "aria-checked": `${checked}`, disabled, id: inputId, onChange: this.toggleChecked, onFocus: () => this.onFocus(), onBlur: () => this.onBlur(), ref: (focusEl) => this.focusEl = focusEl }));
+  }
+  getSVGPath(mode, indeterminate) {
+    let path = indeterminate ? h$1("path", { d: "M6 12L18 12", part: "mark" }) : h$1("path", { d: "M5.9,12.5l3.8,3.8l8.8-8.8", part: "mark" });
+    if (mode === "md") {
+      path = indeterminate ? h$1("path", { d: "M2 12H22", part: "mark" }) : h$1("path", { d: "M1.73,12.91 8.1,19.28 22.79,4.59", part: "mark" });
+    }
+    return path;
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "checked": ["styleChanged"],
+      "disabled": ["styleChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: checkboxIosCss,
+      md: checkboxMdCss
+    };
+  }
+}, [33, "ion-checkbox", {
+  "color": [513],
+  "name": [1],
+  "checked": [1028],
+  "indeterminate": [1028],
+  "disabled": [4],
+  "value": [8],
+  "labelPlacement": [1, "label-placement"],
+  "justify": [1],
+  "legacy": [4]
+}]);
+let checkboxIds = 0;
+function defineCustomElement$D() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-checkbox"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-checkbox":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Checkbox);
+        }
+        break;
+    }
+  });
+}
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
 const chipCss = ":host{--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12);--color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.87);border-radius:16px;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-margin-start:4px;margin-inline-start:4px;-webkit-margin-end:4px;margin-inline-end:4px;margin-top:4px;margin-bottom:4px;-webkit-padding-start:12px;padding-inline-start:12px;-webkit-padding-end:12px;padding-inline-end:12px;padding-top:7px;padding-bottom:7px;display:-ms-inline-flexbox;display:inline-flex;position:relative;-ms-flex-align:center;align-items:center;height:32px;background:var(--background);color:var(--color);font-family:var(--ion-font-family, inherit);font-size:14px;cursor:pointer;overflow:hidden;vertical-align:middle;-webkit-box-sizing:border-box;box-sizing:border-box}:host(.chip-disabled){cursor:default;opacity:0.4;pointer-events:none}:host(.ion-color){background:rgba(var(--ion-color-base-rgb), 0.08);color:var(--ion-color-shade)}:host(.ion-color:focus){background:rgba(var(--ion-color-base-rgb), 0.12)}:host(.ion-color.ion-activated){background:rgba(var(--ion-color-base-rgb), 0.16)}:host(.chip-outline){border-width:1px;border-style:solid}:host(.chip-outline){border-color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.32);background:transparent}:host(.chip-outline.ion-color){border-color:rgba(var(--ion-color-base-rgb), 0.32)}:host(.chip-outline:not(.ion-color):focus){background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.04)}:host(.chip-outline.ion-activated:not(.ion-color)){background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.08)}::slotted(ion-icon){font-size:20px}:host(:not(.ion-color)) ::slotted(ion-icon){color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.54)}::slotted(ion-icon:first-child){-webkit-margin-start:-4px;margin-inline-start:-4px;-webkit-margin-end:8px;margin-inline-end:8px;margin-top:-4px;margin-bottom:-4px}::slotted(ion-icon:last-child){-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:-4px;margin-inline-end:-4px;margin-top:-4px;margin-bottom:-4px}::slotted(ion-avatar){width:24px;height:24px}::slotted(ion-avatar:first-child){-webkit-margin-start:-8px;margin-inline-start:-8px;-webkit-margin-end:8px;margin-inline-end:8px;margin-top:-4px;margin-bottom:-4px}::slotted(ion-avatar:last-child){-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:-8px;margin-inline-end:-8px;margin-top:-4px;margin-bottom:-4px}:host(:focus){outline:none}:host(:focus){--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.16)}:host(.ion-activated){--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2)}@media (any-hover: hover){:host(:hover){--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.16)}:host(.ion-color:hover){background:rgba(var(--ion-color-base-rgb), 0.12)}:host(.chip-outline:not(.ion-color):hover){background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.04)}}";
 const Chip = /* @__PURE__ */ proxyCustomElement$1(class Chip2 extends H$1 {
   constructor() {
@@ -4294,7 +4550,7 @@ const Chip = /* @__PURE__ */ proxyCustomElement$1(class Chip2 extends H$1 {
   "outline": [4],
   "disabled": [4]
 }]);
-function defineCustomElement$1$k() {
+function defineCustomElement$1$n() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4308,13 +4564,13 @@ function defineCustomElement$1$k() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$C();
+          defineCustomElement$N();
         }
         break;
     }
   });
 }
-const defineCustomElement$s = defineCustomElement$1$k;
+const defineCustomElement$C = defineCustomElement$1$n;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4460,7 +4716,7 @@ const Col = /* @__PURE__ */ proxyCustomElement$1(class Col2 extends H$1 {
   "sizeLg": [1, "size-lg"],
   "sizeXl": [1, "size-xl"]
 }, [[9, "resize", "onResize"]]]);
-function defineCustomElement$1$j() {
+function defineCustomElement$1$m() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4475,7 +4731,7 @@ function defineCustomElement$1$j() {
     }
   });
 }
-const defineCustomElement$r = defineCustomElement$1$j;
+const defineCustomElement$B = defineCustomElement$1$m;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4826,7 +5082,7 @@ const updateScrollDetail = (detail, el, timestamp, shouldStart) => {
     detail.velocityY = velocityY * 0.7 + detail.velocityY * 0.3;
   }
 };
-function defineCustomElement$1$i() {
+function defineCustomElement$1$l() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4841,7 +5097,7 @@ function defineCustomElement$1$i() {
     }
   });
 }
-const defineCustomElement$q = defineCustomElement$1$i;
+const defineCustomElement$A = defineCustomElement$1$l;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4869,7 +5125,7 @@ const Note = /* @__PURE__ */ proxyCustomElement$1(class Note2 extends H$1 {
 }, [33, "ion-note", {
   "color": [513]
 }]);
-function defineCustomElement$p() {
+function defineCustomElement$z() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5130,7 +5386,7 @@ const Item = /* @__PURE__ */ proxyCustomElement$1(class Item2 extends H$1 {
   "focusable": [32],
   "counterString": [32]
 }, [[0, "ionInput", "handleIonInput"], [0, "ionColor", "labelColorChanged"], [0, "ionStyle", "itemStyle"]]]);
-function defineCustomElement$o() {
+function defineCustomElement$y() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5144,17 +5400,17 @@ function defineCustomElement$o() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$F();
+          defineCustomElement$R();
         }
         break;
       case "ion-note":
         if (!customElements.get(tagName)) {
-          defineCustomElement$p();
+          defineCustomElement$z();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$C();
+          defineCustomElement$N();
         }
         break;
     }
@@ -5242,7 +5498,7 @@ const Label = /* @__PURE__ */ proxyCustomElement$1(class Label2 extends H$1 {
   "position": [1],
   "noAnimate": [32]
 }]);
-function defineCustomElement$n() {
+function defineCustomElement$x() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5344,6 +5600,9 @@ const hapticAvailable = () => {
 const hapticSelection = () => {
   hapticAvailable() && HapticEngine.selection();
 };
+const hapticSelectionEnd = () => {
+  hapticAvailable() && HapticEngine.selectionEnd();
+};
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -5419,6 +5678,22 @@ const CoreDelegate = () => {
 let lastOverlayIndex = 0;
 let lastId = 0;
 const activeAnimations = /* @__PURE__ */ new WeakMap();
+const createController = (tagName) => {
+  return {
+    create(options) {
+      return createOverlay();
+    },
+    dismiss(data, role, id) {
+      return dismissOverlay(document, data, role, tagName, id);
+    },
+    async getTop() {
+      return getOverlay(document, tagName);
+    }
+  };
+};
+const alertController = /* @__PURE__ */ createController("ion-alert");
+const actionSheetController = /* @__PURE__ */ createController("ion-action-sheet");
+const popoverController = /* @__PURE__ */ createController("ion-popover");
 const prepareOverlay = (el) => {
   const overlayIndex = lastOverlayIndex++;
   el.overlayIndex = overlayIndex;
@@ -5429,7 +5704,40 @@ const setOverlayId = (el) => {
   }
   return el.id;
 };
+const createOverlay = (tagName, opts) => {
+  return Promise.resolve();
+};
 const focusableQueryString = '[tabindex]:not([tabindex^="-"]):not([hidden]):not([disabled]), input:not([type=hidden]):not([tabindex^="-"]):not([hidden]):not([disabled]), textarea:not([tabindex^="-"]):not([hidden]):not([disabled]), button:not([tabindex^="-"]):not([hidden]):not([disabled]), select:not([tabindex^="-"]):not([hidden]):not([disabled]), .ion-focusable:not([tabindex^="-"]):not([hidden]):not([disabled]), .ion-focusable[disabled="false"]:not([tabindex^="-"]):not([hidden])';
+const focusFirstDescendant = (ref2, overlay) => {
+  let firstInput = ref2.querySelector(focusableQueryString);
+  const shadowRoot = firstInput === null || firstInput === void 0 ? void 0 : firstInput.shadowRoot;
+  if (shadowRoot) {
+    firstInput = shadowRoot.querySelector(focusableQueryString) || firstInput;
+  }
+  if (firstInput) {
+    focusElement(firstInput);
+  } else {
+    overlay.focus();
+  }
+};
+const isOverlayHidden = (overlay) => overlay.classList.contains("overlay-hidden");
+const dismissOverlay = (doc2, data, role, overlayTag, id) => {
+  const overlay = getOverlay(doc2, overlayTag, id);
+  if (!overlay) {
+    return Promise.reject("overlay does not exist");
+  }
+  return overlay.dismiss(data, role);
+};
+const getOverlays = (doc2, selector) => {
+  if (selector === void 0) {
+    selector = "ion-alert,ion-action-sheet,ion-loading,ion-modal,ion-picker,ion-popover,ion-toast";
+  }
+  return Array.from(doc2.querySelectorAll(selector)).filter((c) => c.overlayIndex > 0);
+};
+const getOverlay = (doc2, overlayTag, id) => {
+  const overlays = getOverlays(doc2, overlayTag).filter((o) => !isOverlayHidden(o));
+  return id === void 0 ? overlays[overlays.length - 1] : overlays.find((o) => o.id === id);
+};
 const setRootAriaHidden = (hidden = false) => {
   const root = getAppRoot(document);
   const viewContainer = root.querySelector("ion-router-outlet, ion-nav, #ion-view-container-root");
@@ -5545,8 +5853,64 @@ const onceEvent = (element, eventName, callback) => {
   };
   addEventListener$1(element, eventName, handler);
 };
+const isCancel = (role) => {
+  return role === "cancel" || role === BACKDROP;
+};
+const defaultGate = (h2) => h2();
+const safeCall$1 = (handler, arg) => {
+  if (typeof handler === "function") {
+    const jmp = config.get("_zoneGate", defaultGate);
+    return jmp(() => {
+      try {
+        return handler(arg);
+      } catch (e) {
+        throw e;
+      }
+    });
+  }
+  return void 0;
+};
 const BACKDROP = "backdrop";
 const GESTURE = "gesture";
+const createDelegateController = (ref2) => {
+  let inline = false;
+  let workingDelegate;
+  const coreDelegate = CoreDelegate();
+  const getDelegate = (force = false) => {
+    if (workingDelegate && !force) {
+      return {
+        delegate: workingDelegate,
+        inline
+      };
+    }
+    const { el, hasController, delegate } = ref2;
+    const parentEl = el.parentNode;
+    inline = parentEl !== null && !hasController;
+    workingDelegate = inline ? delegate || coreDelegate : delegate;
+    return { inline, delegate: workingDelegate };
+  };
+  const attachViewToDom = async (component) => {
+    const { delegate } = getDelegate(true);
+    if (delegate) {
+      return await delegate.attachViewToDom(ref2.el, component);
+    }
+    const { hasController } = ref2;
+    if (hasController && component !== void 0) {
+      throw new Error("framework delegate is missing");
+    }
+    return null;
+  };
+  const removeViewFromDom = () => {
+    const { delegate } = getDelegate();
+    if (delegate && ref2.el !== void 0) {
+      delegate.removeViewFromDom(ref2.el.parentElement, ref2.el);
+    }
+  };
+  return {
+    attachViewToDom,
+    removeViewFromDom
+  };
+};
 const createTriggerController = () => {
   let destroyTriggerInteraction;
   const removeClickListener = () => {
@@ -5562,7 +5926,7 @@ const createTriggerController = () => {
       printIonWarning(`A trigger element with the ID "${trigger}" was not found in the DOM. The trigger element must be in the DOM when the "trigger" property is set on an overlay component.`, el);
       return;
     }
-    const configureTriggerInteraction = (targetEl, overlayEl) => {
+    const configureTriggerInteraction2 = (targetEl, overlayEl) => {
       const openOverlay = () => {
         overlayEl.present();
       };
@@ -5571,7 +5935,7 @@ const createTriggerController = () => {
         targetEl.removeEventListener("click", openOverlay);
       };
     };
-    destroyTriggerInteraction = configureTriggerInteraction(triggerEl, el);
+    destroyTriggerInteraction = configureTriggerInteraction2(triggerEl, el);
   };
   return {
     addClickListener,
@@ -5586,8 +5950,8 @@ const LIFECYCLE_DID_ENTER = "ionViewDidEnter";
 const LIFECYCLE_WILL_LEAVE = "ionViewWillLeave";
 const LIFECYCLE_DID_LEAVE = "ionViewDidLeave";
 const LIFECYCLE_WILL_UNLOAD = "ionViewWillUnload";
-const iosTransitionAnimation = () => import('./_nuxt/ios.transition-8a4fc589.mjs');
-const mdTransitionAnimation = () => import('./_nuxt/md.transition-e8d46a89.mjs');
+const iosTransitionAnimation = () => import('./_nuxt/ios.transition-f7cb9539.mjs');
+const mdTransitionAnimation = () => import('./_nuxt/md.transition-43ccf0dd.mjs');
 const transition = (opts) => {
   return new Promise((resolve, reject) => {
     writeTask$1(() => {
@@ -6649,6 +7013,997 @@ const createAnimation = (animationId) => {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
+const getArrowDimensions = (arrowEl) => {
+  if (!arrowEl) {
+    return { arrowWidth: 0, arrowHeight: 0 };
+  }
+  const { width, height } = arrowEl.getBoundingClientRect();
+  return { arrowWidth: width, arrowHeight: height };
+};
+const getPopoverDimensions = (size, contentEl, triggerEl) => {
+  const contentDimentions = contentEl.getBoundingClientRect();
+  const contentHeight = contentDimentions.height;
+  let contentWidth = contentDimentions.width;
+  if (size === "cover" && triggerEl) {
+    const triggerDimensions = triggerEl.getBoundingClientRect();
+    contentWidth = triggerDimensions.width;
+  }
+  return {
+    contentWidth,
+    contentHeight
+  };
+};
+const configureDismissInteraction = (triggerEl, triggerAction, popoverEl, parentPopoverEl) => {
+  let dismissCallbacks = [];
+  const root = getElementRoot(parentPopoverEl);
+  const parentContentEl = root.querySelector(".popover-content");
+  switch (triggerAction) {
+    case "hover":
+      dismissCallbacks = [
+        {
+          /**
+           * Do not use mouseover here
+           * as this will causes the event to
+           * be dispatched on each underlying
+           * element rather than on the popover
+           * content as a whole.
+           */
+          eventName: "mouseenter",
+          callback: (ev) => {
+            const element = document.elementFromPoint(ev.clientX, ev.clientY);
+            if (element === triggerEl) {
+              return;
+            }
+            popoverEl.dismiss(void 0, void 0, false);
+          }
+        }
+      ];
+      break;
+    case "context-menu":
+    case "click":
+    default:
+      dismissCallbacks = [
+        {
+          eventName: "click",
+          callback: (ev) => {
+            const target = ev.target;
+            const closestTrigger = target.closest("[data-ion-popover-trigger]");
+            if (closestTrigger === triggerEl) {
+              ev.stopPropagation();
+              return;
+            }
+            popoverEl.dismiss(void 0, void 0, false);
+          }
+        }
+      ];
+      break;
+  }
+  dismissCallbacks.forEach(({ eventName, callback }) => parentContentEl.addEventListener(eventName, callback));
+  return () => {
+    dismissCallbacks.forEach(({ eventName, callback }) => parentContentEl.removeEventListener(eventName, callback));
+  };
+};
+const configureTriggerInteraction = (triggerEl, triggerAction, popoverEl) => {
+  let triggerCallbacks = [];
+  switch (triggerAction) {
+    case "hover":
+      let hoverTimeout;
+      triggerCallbacks = [
+        {
+          eventName: "mouseenter",
+          callback: async (ev) => {
+            ev.stopPropagation();
+            if (hoverTimeout) {
+              clearTimeout(hoverTimeout);
+            }
+            hoverTimeout = setTimeout(() => {
+              raf(() => {
+                popoverEl.presentFromTrigger(ev);
+                hoverTimeout = void 0;
+              });
+            }, 100);
+          }
+        },
+        {
+          eventName: "mouseleave",
+          callback: (ev) => {
+            if (hoverTimeout) {
+              clearTimeout(hoverTimeout);
+            }
+            const target = ev.relatedTarget;
+            if (!target) {
+              return;
+            }
+            if (target.closest("ion-popover") !== popoverEl) {
+              popoverEl.dismiss(void 0, void 0, false);
+            }
+          }
+        },
+        {
+          /**
+           * stopPropagation here prevents the popover
+           * from dismissing when dismiss-on-select="true".
+           */
+          eventName: "click",
+          callback: (ev) => ev.stopPropagation()
+        },
+        {
+          eventName: "ionPopoverActivateTrigger",
+          callback: (ev) => popoverEl.presentFromTrigger(ev, true)
+        }
+      ];
+      break;
+    case "context-menu":
+      triggerCallbacks = [
+        {
+          eventName: "contextmenu",
+          callback: (ev) => {
+            ev.preventDefault();
+            popoverEl.presentFromTrigger(ev);
+          }
+        },
+        {
+          eventName: "click",
+          callback: (ev) => ev.stopPropagation()
+        },
+        {
+          eventName: "ionPopoverActivateTrigger",
+          callback: (ev) => popoverEl.presentFromTrigger(ev, true)
+        }
+      ];
+      break;
+    case "click":
+    default:
+      triggerCallbacks = [
+        {
+          /**
+           * Do not do a stopPropagation() here
+           * because if you had two click triggers
+           * then clicking the first trigger and then
+           * clicking the second trigger would not cause
+           * the first popover to dismiss.
+           */
+          eventName: "click",
+          callback: (ev) => popoverEl.presentFromTrigger(ev)
+        },
+        {
+          eventName: "ionPopoverActivateTrigger",
+          callback: (ev) => popoverEl.presentFromTrigger(ev, true)
+        }
+      ];
+      break;
+  }
+  triggerCallbacks.forEach(({ eventName, callback }) => triggerEl.addEventListener(eventName, callback));
+  triggerEl.setAttribute("data-ion-popover-trigger", "true");
+  return () => {
+    triggerCallbacks.forEach(({ eventName, callback }) => triggerEl.removeEventListener(eventName, callback));
+    triggerEl.removeAttribute("data-ion-popover-trigger");
+  };
+};
+const getIndexOfItem = (items, item) => {
+  if (!item || item.tagName !== "ION-ITEM") {
+    return -1;
+  }
+  return items.findIndex((el) => el === item);
+};
+const getNextItem = (items, currentItem) => {
+  const currentItemIndex = getIndexOfItem(items, currentItem);
+  return items[currentItemIndex + 1];
+};
+const getPrevItem = (items, currentItem) => {
+  const currentItemIndex = getIndexOfItem(items, currentItem);
+  return items[currentItemIndex - 1];
+};
+const focusItem = (item) => {
+  const root = getElementRoot(item);
+  const button = root.querySelector("button");
+  if (button) {
+    raf(() => button.focus());
+  }
+};
+const isTriggerElement = (el) => el.hasAttribute("data-ion-popover-trigger");
+const configureKeyboardInteraction = (popoverEl) => {
+  const callback = async (ev) => {
+    var _a;
+    const activeElement = document.activeElement;
+    let items = [];
+    const targetTagName = (_a = ev.target) === null || _a === void 0 ? void 0 : _a.tagName;
+    if (targetTagName !== "ION-POPOVER" && targetTagName !== "ION-ITEM") {
+      return;
+    }
+    try {
+      items = Array.from(popoverEl.querySelectorAll("ion-item:not(ion-popover ion-popover *):not([disabled])"));
+    } catch (_b) {
+    }
+    switch (ev.key) {
+      case "ArrowLeft":
+        const parentPopover = await popoverEl.getParentPopover();
+        if (parentPopover) {
+          popoverEl.dismiss(void 0, void 0, false);
+        }
+        break;
+      case "ArrowDown":
+        ev.preventDefault();
+        const nextItem = getNextItem(items, activeElement);
+        if (nextItem !== void 0) {
+          focusItem(nextItem);
+        }
+        break;
+      case "ArrowUp":
+        ev.preventDefault();
+        const prevItem = getPrevItem(items, activeElement);
+        if (prevItem !== void 0) {
+          focusItem(prevItem);
+        }
+        break;
+      case "Home":
+        ev.preventDefault();
+        const firstItem = items[0];
+        if (firstItem !== void 0) {
+          focusItem(firstItem);
+        }
+        break;
+      case "End":
+        ev.preventDefault();
+        const lastItem = items[items.length - 1];
+        if (lastItem !== void 0) {
+          focusItem(lastItem);
+        }
+        break;
+      case "ArrowRight":
+      case " ":
+      case "Enter":
+        if (activeElement && isTriggerElement(activeElement)) {
+          const rightEvent = new CustomEvent("ionPopoverActivateTrigger");
+          activeElement.dispatchEvent(rightEvent);
+        }
+        break;
+    }
+  };
+  popoverEl.addEventListener("keydown", callback);
+  return () => popoverEl.removeEventListener("keydown", callback);
+};
+const getPopoverPosition = (isRTL2, contentWidth, contentHeight, arrowWidth, arrowHeight, reference, side, align, defaultPosition, triggerEl, event) => {
+  var _a;
+  let referenceCoordinates = {
+    top: 0,
+    left: 0,
+    width: 0,
+    height: 0
+  };
+  switch (reference) {
+    case "event":
+      if (!event) {
+        return defaultPosition;
+      }
+      const mouseEv = event;
+      referenceCoordinates = {
+        top: mouseEv.clientY,
+        left: mouseEv.clientX,
+        width: 1,
+        height: 1
+      };
+      break;
+    case "trigger":
+    default:
+      const customEv = event;
+      const actualTriggerEl = triggerEl || ((_a = customEv === null || customEv === void 0 ? void 0 : customEv.detail) === null || _a === void 0 ? void 0 : _a.ionShadowTarget) || (customEv === null || customEv === void 0 ? void 0 : customEv.target);
+      if (!actualTriggerEl) {
+        return defaultPosition;
+      }
+      const triggerBoundingBox = actualTriggerEl.getBoundingClientRect();
+      referenceCoordinates = {
+        top: triggerBoundingBox.top,
+        left: triggerBoundingBox.left,
+        width: triggerBoundingBox.width,
+        height: triggerBoundingBox.height
+      };
+      break;
+  }
+  const coordinates = calculatePopoverSide(side, referenceCoordinates, contentWidth, contentHeight, arrowWidth, arrowHeight, isRTL2);
+  const alignedCoordinates = calculatePopoverAlign(align, side, referenceCoordinates, contentWidth, contentHeight);
+  const top = coordinates.top + alignedCoordinates.top;
+  const left = coordinates.left + alignedCoordinates.left;
+  const { arrowTop, arrowLeft } = calculateArrowPosition(side, arrowWidth, arrowHeight, top, left, contentWidth, contentHeight, isRTL2);
+  const { originX, originY } = calculatePopoverOrigin(side, align, isRTL2);
+  return { top, left, referenceCoordinates, arrowTop, arrowLeft, originX, originY };
+};
+const calculatePopoverOrigin = (side, align, isRTL2) => {
+  switch (side) {
+    case "top":
+      return { originX: getOriginXAlignment(align), originY: "bottom" };
+    case "bottom":
+      return { originX: getOriginXAlignment(align), originY: "top" };
+    case "left":
+      return { originX: "right", originY: getOriginYAlignment(align) };
+    case "right":
+      return { originX: "left", originY: getOriginYAlignment(align) };
+    case "start":
+      return { originX: isRTL2 ? "left" : "right", originY: getOriginYAlignment(align) };
+    case "end":
+      return { originX: isRTL2 ? "right" : "left", originY: getOriginYAlignment(align) };
+  }
+};
+const getOriginXAlignment = (align) => {
+  switch (align) {
+    case "start":
+      return "left";
+    case "center":
+      return "center";
+    case "end":
+      return "right";
+  }
+};
+const getOriginYAlignment = (align) => {
+  switch (align) {
+    case "start":
+      return "top";
+    case "center":
+      return "center";
+    case "end":
+      return "bottom";
+  }
+};
+const calculateArrowPosition = (side, arrowWidth, arrowHeight, top, left, contentWidth, contentHeight, isRTL2) => {
+  const leftPosition = {
+    arrowTop: top + contentHeight / 2 - arrowWidth / 2,
+    arrowLeft: left + contentWidth - arrowWidth / 2
+  };
+  const rightPosition = { arrowTop: top + contentHeight / 2 - arrowWidth / 2, arrowLeft: left - arrowWidth * 1.5 };
+  switch (side) {
+    case "top":
+      return { arrowTop: top + contentHeight, arrowLeft: left + contentWidth / 2 - arrowWidth / 2 };
+    case "bottom":
+      return { arrowTop: top - arrowHeight, arrowLeft: left + contentWidth / 2 - arrowWidth / 2 };
+    case "left":
+      return leftPosition;
+    case "right":
+      return rightPosition;
+    case "start":
+      return isRTL2 ? rightPosition : leftPosition;
+    case "end":
+      return isRTL2 ? leftPosition : rightPosition;
+    default:
+      return { arrowTop: 0, arrowLeft: 0 };
+  }
+};
+const calculatePopoverSide = (side, triggerBoundingBox, contentWidth, contentHeight, arrowWidth, arrowHeight, isRTL2) => {
+  const sideLeft = {
+    top: triggerBoundingBox.top,
+    left: triggerBoundingBox.left - contentWidth - arrowWidth
+  };
+  const sideRight = {
+    top: triggerBoundingBox.top,
+    left: triggerBoundingBox.left + triggerBoundingBox.width + arrowWidth
+  };
+  switch (side) {
+    case "top":
+      return {
+        top: triggerBoundingBox.top - contentHeight - arrowHeight,
+        left: triggerBoundingBox.left
+      };
+    case "right":
+      return sideRight;
+    case "bottom":
+      return {
+        top: triggerBoundingBox.top + triggerBoundingBox.height + arrowHeight,
+        left: triggerBoundingBox.left
+      };
+    case "left":
+      return sideLeft;
+    case "start":
+      return isRTL2 ? sideRight : sideLeft;
+    case "end":
+      return isRTL2 ? sideLeft : sideRight;
+  }
+};
+const calculatePopoverAlign = (align, side, triggerBoundingBox, contentWidth, contentHeight) => {
+  switch (align) {
+    case "center":
+      return calculatePopoverCenterAlign(side, triggerBoundingBox, contentWidth, contentHeight);
+    case "end":
+      return calculatePopoverEndAlign(side, triggerBoundingBox, contentWidth, contentHeight);
+    case "start":
+    default:
+      return { top: 0, left: 0 };
+  }
+};
+const calculatePopoverEndAlign = (side, triggerBoundingBox, contentWidth, contentHeight) => {
+  switch (side) {
+    case "start":
+    case "end":
+    case "left":
+    case "right":
+      return {
+        top: -(contentHeight - triggerBoundingBox.height),
+        left: 0
+      };
+    case "top":
+    case "bottom":
+    default:
+      return {
+        top: 0,
+        left: -(contentWidth - triggerBoundingBox.width)
+      };
+  }
+};
+const calculatePopoverCenterAlign = (side, triggerBoundingBox, contentWidth, contentHeight) => {
+  switch (side) {
+    case "start":
+    case "end":
+    case "left":
+    case "right":
+      return {
+        top: -(contentHeight / 2 - triggerBoundingBox.height / 2),
+        left: 0
+      };
+    case "top":
+    case "bottom":
+    default:
+      return {
+        top: 0,
+        left: -(contentWidth / 2 - triggerBoundingBox.width / 2)
+      };
+  }
+};
+const calculateWindowAdjustment = (side, coordTop, coordLeft, bodyPadding, bodyWidth, bodyHeight, contentWidth, contentHeight, safeAreaMargin, contentOriginX, contentOriginY, triggerCoordinates, coordArrowTop = 0, coordArrowLeft = 0, arrowHeight = 0) => {
+  let arrowTop = coordArrowTop;
+  const arrowLeft = coordArrowLeft;
+  let left = coordLeft;
+  let top = coordTop;
+  let bottom;
+  let originX = contentOriginX;
+  let originY = contentOriginY;
+  let checkSafeAreaLeft = false;
+  let checkSafeAreaRight = false;
+  const triggerTop = triggerCoordinates ? triggerCoordinates.top + triggerCoordinates.height : bodyHeight / 2 - contentHeight / 2;
+  const triggerHeight = triggerCoordinates ? triggerCoordinates.height : 0;
+  let addPopoverBottomClass = false;
+  if (left < bodyPadding + safeAreaMargin) {
+    left = bodyPadding;
+    checkSafeAreaLeft = true;
+    originX = "left";
+  } else if (contentWidth + bodyPadding + left + safeAreaMargin > bodyWidth) {
+    checkSafeAreaRight = true;
+    left = bodyWidth - contentWidth - bodyPadding;
+    originX = "right";
+  }
+  if (triggerTop + triggerHeight + contentHeight > bodyHeight && (side === "top" || side === "bottom")) {
+    if (triggerTop - contentHeight > 0) {
+      top = Math.max(12, triggerTop - contentHeight - triggerHeight - (arrowHeight - 1));
+      arrowTop = top + contentHeight;
+      originY = "bottom";
+      addPopoverBottomClass = true;
+    } else {
+      bottom = bodyPadding;
+    }
+  }
+  return {
+    top,
+    left,
+    bottom,
+    originX,
+    originY,
+    checkSafeAreaLeft,
+    checkSafeAreaRight,
+    arrowTop,
+    arrowLeft,
+    addPopoverBottomClass
+  };
+};
+const shouldShowArrow = (side, didAdjustBounds = false, ev, trigger) => {
+  if (!ev && !trigger) {
+    return false;
+  }
+  if (side !== "top" && side !== "bottom" && didAdjustBounds) {
+    return false;
+  }
+  return true;
+};
+const POPOVER_IOS_BODY_PADDING = 5;
+const iosEnterAnimation$3 = (baseEl, opts) => {
+  var _a;
+  const { event: ev, size, trigger, reference, side, align } = opts;
+  const doc2 = baseEl.ownerDocument;
+  const isRTL2 = doc2.dir === "rtl";
+  const bodyWidth = doc2.defaultView.innerWidth;
+  const bodyHeight = doc2.defaultView.innerHeight;
+  const root = getElementRoot(baseEl);
+  const contentEl = root.querySelector(".popover-content");
+  const arrowEl = root.querySelector(".popover-arrow");
+  const referenceSizeEl = trigger || ((_a = ev === null || ev === void 0 ? void 0 : ev.detail) === null || _a === void 0 ? void 0 : _a.ionShadowTarget) || (ev === null || ev === void 0 ? void 0 : ev.target);
+  const { contentWidth, contentHeight } = getPopoverDimensions(size, contentEl, referenceSizeEl);
+  const { arrowWidth, arrowHeight } = getArrowDimensions(arrowEl);
+  const defaultPosition = {
+    top: bodyHeight / 2 - contentHeight / 2,
+    left: bodyWidth / 2 - contentWidth / 2,
+    originX: isRTL2 ? "right" : "left",
+    originY: "top"
+  };
+  const results = getPopoverPosition(isRTL2, contentWidth, contentHeight, arrowWidth, arrowHeight, reference, side, align, defaultPosition, trigger, ev);
+  const padding = size === "cover" ? 0 : POPOVER_IOS_BODY_PADDING;
+  const margin = size === "cover" ? 0 : 25;
+  const { originX, originY, top, left, bottom, checkSafeAreaLeft, checkSafeAreaRight, arrowTop, arrowLeft, addPopoverBottomClass } = calculateWindowAdjustment(side, results.top, results.left, padding, bodyWidth, bodyHeight, contentWidth, contentHeight, margin, results.originX, results.originY, results.referenceCoordinates, results.arrowTop, results.arrowLeft, arrowHeight);
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const contentAnimation = createAnimation();
+  backdropAnimation.addElement(root.querySelector("ion-backdrop")).fromTo("opacity", 0.01, "var(--backdrop-opacity)").beforeStyles({
+    "pointer-events": "none"
+  }).afterClearStyles(["pointer-events"]);
+  contentAnimation.addElement(root.querySelector(".popover-arrow")).addElement(root.querySelector(".popover-content")).fromTo("opacity", 0.01, 1);
+  return baseAnimation.easing("ease").duration(100).beforeAddWrite(() => {
+    if (size === "cover") {
+      baseEl.style.setProperty("--width", `${contentWidth}px`);
+    }
+    if (addPopoverBottomClass) {
+      baseEl.classList.add("popover-bottom");
+    }
+    if (bottom !== void 0) {
+      contentEl.style.setProperty("bottom", `${bottom}px`);
+    }
+    const safeAreaLeft = " + var(--ion-safe-area-left, 0)";
+    const safeAreaRight = " - var(--ion-safe-area-right, 0)";
+    let leftValue = `${left}px`;
+    if (checkSafeAreaLeft) {
+      leftValue = `${left}px${safeAreaLeft}`;
+    }
+    if (checkSafeAreaRight) {
+      leftValue = `${left}px${safeAreaRight}`;
+    }
+    contentEl.style.setProperty("top", `calc(${top}px + var(--offset-y, 0))`);
+    contentEl.style.setProperty("left", `calc(${leftValue} + var(--offset-x, 0))`);
+    contentEl.style.setProperty("transform-origin", `${originY} ${originX}`);
+    if (arrowEl !== null) {
+      const didAdjustBounds = results.top !== top || results.left !== left;
+      const showArrow = shouldShowArrow(side, didAdjustBounds, ev, trigger);
+      if (showArrow) {
+        arrowEl.style.setProperty("top", `calc(${arrowTop}px + var(--offset-y, 0))`);
+        arrowEl.style.setProperty("left", `calc(${arrowLeft}px + var(--offset-x, 0))`);
+      } else {
+        arrowEl.style.setProperty("display", "none");
+      }
+    }
+  }).addAnimation([backdropAnimation, contentAnimation]);
+};
+const iosLeaveAnimation$3 = (baseEl) => {
+  const root = getElementRoot(baseEl);
+  const contentEl = root.querySelector(".popover-content");
+  const arrowEl = root.querySelector(".popover-arrow");
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const contentAnimation = createAnimation();
+  backdropAnimation.addElement(root.querySelector("ion-backdrop")).fromTo("opacity", "var(--backdrop-opacity)", 0);
+  contentAnimation.addElement(root.querySelector(".popover-arrow")).addElement(root.querySelector(".popover-content")).fromTo("opacity", 0.99, 0);
+  return baseAnimation.easing("ease").afterAddWrite(() => {
+    baseEl.style.removeProperty("--width");
+    baseEl.classList.remove("popover-bottom");
+    contentEl.style.removeProperty("top");
+    contentEl.style.removeProperty("left");
+    contentEl.style.removeProperty("bottom");
+    contentEl.style.removeProperty("transform-origin");
+    if (arrowEl) {
+      arrowEl.style.removeProperty("top");
+      arrowEl.style.removeProperty("left");
+      arrowEl.style.removeProperty("display");
+    }
+  }).duration(300).addAnimation([backdropAnimation, contentAnimation]);
+};
+const POPOVER_MD_BODY_PADDING = 12;
+const mdEnterAnimation$3 = (baseEl, opts) => {
+  var _a;
+  const { event: ev, size, trigger, reference, side, align } = opts;
+  const doc2 = baseEl.ownerDocument;
+  const isRTL2 = doc2.dir === "rtl";
+  const bodyWidth = doc2.defaultView.innerWidth;
+  const bodyHeight = doc2.defaultView.innerHeight;
+  const root = getElementRoot(baseEl);
+  const contentEl = root.querySelector(".popover-content");
+  const referenceSizeEl = trigger || ((_a = ev === null || ev === void 0 ? void 0 : ev.detail) === null || _a === void 0 ? void 0 : _a.ionShadowTarget) || (ev === null || ev === void 0 ? void 0 : ev.target);
+  const { contentWidth, contentHeight } = getPopoverDimensions(size, contentEl, referenceSizeEl);
+  const defaultPosition = {
+    top: bodyHeight / 2 - contentHeight / 2,
+    left: bodyWidth / 2 - contentWidth / 2,
+    originX: isRTL2 ? "right" : "left",
+    originY: "top"
+  };
+  const results = getPopoverPosition(isRTL2, contentWidth, contentHeight, 0, 0, reference, side, align, defaultPosition, trigger, ev);
+  const padding = size === "cover" ? 0 : POPOVER_MD_BODY_PADDING;
+  const { originX, originY, top, left, bottom } = calculateWindowAdjustment(side, results.top, results.left, padding, bodyWidth, bodyHeight, contentWidth, contentHeight, 0, results.originX, results.originY, results.referenceCoordinates);
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  const contentAnimation = createAnimation();
+  const viewportAnimation = createAnimation();
+  backdropAnimation.addElement(root.querySelector("ion-backdrop")).fromTo("opacity", 0.01, "var(--backdrop-opacity)").beforeStyles({
+    "pointer-events": "none"
+  }).afterClearStyles(["pointer-events"]);
+  wrapperAnimation.addElement(root.querySelector(".popover-wrapper")).duration(150).fromTo("opacity", 0.01, 1);
+  contentAnimation.addElement(contentEl).beforeStyles({
+    top: `calc(${top}px + var(--offset-y, 0px))`,
+    left: `calc(${left}px + var(--offset-x, 0px))`,
+    "transform-origin": `${originY} ${originX}`
+  }).beforeAddWrite(() => {
+    if (bottom !== void 0) {
+      contentEl.style.setProperty("bottom", `${bottom}px`);
+    }
+  }).fromTo("transform", "scale(0.8)", "scale(1)");
+  viewportAnimation.addElement(root.querySelector(".popover-viewport")).fromTo("opacity", 0.01, 1);
+  return baseAnimation.easing("cubic-bezier(0.36,0.66,0.04,1)").duration(300).beforeAddWrite(() => {
+    if (size === "cover") {
+      baseEl.style.setProperty("--width", `${contentWidth}px`);
+    }
+    if (originY === "bottom") {
+      baseEl.classList.add("popover-bottom");
+    }
+  }).addAnimation([backdropAnimation, wrapperAnimation, contentAnimation, viewportAnimation]);
+};
+const mdLeaveAnimation$3 = (baseEl) => {
+  const root = getElementRoot(baseEl);
+  const contentEl = root.querySelector(".popover-content");
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  backdropAnimation.addElement(root.querySelector("ion-backdrop")).fromTo("opacity", "var(--backdrop-opacity)", 0);
+  wrapperAnimation.addElement(root.querySelector(".popover-wrapper")).fromTo("opacity", 0.99, 0);
+  return baseAnimation.easing("ease").afterAddWrite(() => {
+    baseEl.style.removeProperty("--width");
+    baseEl.classList.remove("popover-bottom");
+    contentEl.style.removeProperty("top");
+    contentEl.style.removeProperty("left");
+    contentEl.style.removeProperty("bottom");
+    contentEl.style.removeProperty("transform-origin");
+  }).duration(150).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const popoverIosCss = ':host{--background:var(--ion-background-color, #fff);--min-width:0;--min-height:0;--max-width:auto;--height:auto;--offset-x:0px;--offset-y:0px;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:fixed;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;outline:none;color:var(--ion-text-color, #000);z-index:1001}:host(.popover-nested){pointer-events:none}:host(.popover-nested) .popover-wrapper{pointer-events:auto}:host(.overlay-hidden){display:none}.popover-wrapper{z-index:10}.popover-content{display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);overflow:auto;z-index:10}.popover-viewport{--ion-safe-area-top:0px;--ion-safe-area-right:0px;--ion-safe-area-bottom:0px;--ion-safe-area-left:0px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;overflow:hidden}:host(.popover-nested.popover-side-left){--offset-x:5px}:host(.popover-nested.popover-side-right){--offset-x:-5px}:host(.popover-nested.popover-side-start){--offset-x:5px}:host-context([dir=rtl]):host(.popover-nested.popover-side-start),:host-context([dir=rtl]).popover-nested.popover-side-start{--offset-x:-5px}@supports selector(:dir(rtl)){:host(.popover-nested.popover-side-start):dir(rtl){--offset-x:-5px}}:host(.popover-nested.popover-side-end){--offset-x:-5px}:host-context([dir=rtl]):host(.popover-nested.popover-side-end),:host-context([dir=rtl]).popover-nested.popover-side-end{--offset-x:5px}@supports selector(:dir(rtl)){:host(.popover-nested.popover-side-end):dir(rtl){--offset-x:5px}}:host{--width:200px;--max-height:90%;--box-shadow:none;--backdrop-opacity:var(--ion-backdrop-opacity, 0.08)}:host(.popover-desktop){--box-shadow:0px 4px 16px 0px rgba(0, 0, 0, 0.12)}.popover-content{border-radius:10px}:host(.popover-desktop) .popover-content{border:0.5px solid var(--ion-color-step-100, #e6e6e6)}.popover-arrow{display:block;position:absolute;width:20px;height:10px;overflow:hidden}.popover-arrow::after{top:3px;border-radius:3px;position:absolute;width:14px;height:14px;-webkit-transform:rotate(45deg);transform:rotate(45deg);background:var(--background);content:"";z-index:10}@supports (inset-inline-start: 0){.popover-arrow::after{inset-inline-start:3px}}@supports not (inset-inline-start: 0){.popover-arrow::after{left:3px}:host-context([dir=rtl]) .popover-arrow::after{left:unset;right:unset;right:3px}[dir=rtl] .popover-arrow::after{left:unset;right:unset;right:3px}@supports selector(:dir(rtl)){.popover-arrow::after:dir(rtl){left:unset;right:unset;right:3px}}}:host(.popover-bottom) .popover-arrow{top:auto;bottom:-10px}:host(.popover-bottom) .popover-arrow::after{top:-6px}:host(.popover-side-left) .popover-arrow{-webkit-transform:rotate(90deg);transform:rotate(90deg)}:host(.popover-side-right) .popover-arrow{-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}:host(.popover-side-top) .popover-arrow{-webkit-transform:rotate(180deg);transform:rotate(180deg)}:host(.popover-side-start) .popover-arrow{-webkit-transform:rotate(90deg);transform:rotate(90deg)}:host-context([dir=rtl]):host(.popover-side-start) .popover-arrow,:host-context([dir=rtl]).popover-side-start .popover-arrow{-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}@supports selector(:dir(rtl)){:host(.popover-side-start) .popover-arrow:dir(rtl){-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}}:host(.popover-side-end) .popover-arrow{-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}:host-context([dir=rtl]):host(.popover-side-end) .popover-arrow,:host-context([dir=rtl]).popover-side-end .popover-arrow{-webkit-transform:rotate(90deg);transform:rotate(90deg)}@supports selector(:dir(rtl)){:host(.popover-side-end) .popover-arrow:dir(rtl){-webkit-transform:rotate(90deg);transform:rotate(90deg)}}.popover-arrow,.popover-content{opacity:0}@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))){:host(.popover-translucent) .popover-content,:host(.popover-translucent) .popover-arrow::after{background:rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}}';
+const popoverMdCss = ":host{--background:var(--ion-background-color, #fff);--min-width:0;--min-height:0;--max-width:auto;--height:auto;--offset-x:0px;--offset-y:0px;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:fixed;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;outline:none;color:var(--ion-text-color, #000);z-index:1001}:host(.popover-nested){pointer-events:none}:host(.popover-nested) .popover-wrapper{pointer-events:auto}:host(.overlay-hidden){display:none}.popover-wrapper{z-index:10}.popover-content{display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);overflow:auto;z-index:10}.popover-viewport{--ion-safe-area-top:0px;--ion-safe-area-right:0px;--ion-safe-area-bottom:0px;--ion-safe-area-left:0px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;overflow:hidden}:host(.popover-nested.popover-side-left){--offset-x:5px}:host(.popover-nested.popover-side-right){--offset-x:-5px}:host(.popover-nested.popover-side-start){--offset-x:5px}:host-context([dir=rtl]):host(.popover-nested.popover-side-start),:host-context([dir=rtl]).popover-nested.popover-side-start{--offset-x:-5px}@supports selector(:dir(rtl)){:host(.popover-nested.popover-side-start):dir(rtl){--offset-x:-5px}}:host(.popover-nested.popover-side-end){--offset-x:-5px}:host-context([dir=rtl]):host(.popover-nested.popover-side-end),:host-context([dir=rtl]).popover-nested.popover-side-end{--offset-x:5px}@supports selector(:dir(rtl)){:host(.popover-nested.popover-side-end):dir(rtl){--offset-x:5px}}:host{--width:250px;--max-height:90%;--box-shadow:0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);--backdrop-opacity:var(--ion-backdrop-opacity, 0.32)}.popover-content{border-radius:4px;-webkit-transform-origin:left top;transform-origin:left top}:host-context([dir=rtl]) .popover-content{-webkit-transform-origin:right top;transform-origin:right top}[dir=rtl] .popover-content{-webkit-transform-origin:right top;transform-origin:right top}@supports selector(:dir(rtl)){.popover-content:dir(rtl){-webkit-transform-origin:right top;transform-origin:right top}}.popover-viewport{-webkit-transition-delay:100ms;transition-delay:100ms}.popover-wrapper{opacity:0}";
+const Popover = /* @__PURE__ */ proxyCustomElement$1(class Popover2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.didPresent = createEvent(this, "ionPopoverDidPresent", 7);
+    this.willPresent = createEvent(this, "ionPopoverWillPresent", 7);
+    this.willDismiss = createEvent(this, "ionPopoverWillDismiss", 7);
+    this.didDismiss = createEvent(this, "ionPopoverDidDismiss", 7);
+    this.didPresentShorthand = createEvent(this, "didPresent", 7);
+    this.willPresentShorthand = createEvent(this, "willPresent", 7);
+    this.willDismissShorthand = createEvent(this, "willDismiss", 7);
+    this.didDismissShorthand = createEvent(this, "didDismiss", 7);
+    this.ionMount = createEvent(this, "ionMount", 7);
+    this.parentPopover = null;
+    this.coreDelegate = CoreDelegate();
+    this.inline = false;
+    this.focusDescendantOnPresent = false;
+    this.onBackdropTap = () => {
+      this.dismiss(void 0, BACKDROP);
+    };
+    this.onLifecycle = (modalEvent) => {
+      const el = this.usersElement;
+      const name = LIFECYCLE_MAP$1[modalEvent.type];
+      if (el && name) {
+        const event = new CustomEvent(name, {
+          bubbles: false,
+          cancelable: false,
+          detail: modalEvent.detail
+        });
+        el.dispatchEvent(event);
+      }
+    };
+    this.configureTriggerInteraction = () => {
+      const { trigger, triggerAction, el, destroyTriggerInteraction } = this;
+      if (destroyTriggerInteraction) {
+        destroyTriggerInteraction();
+      }
+      if (trigger === void 0) {
+        return;
+      }
+      const triggerEl = this.triggerEl = trigger !== void 0 ? document.getElementById(trigger) : null;
+      if (!triggerEl) {
+        printIonWarning(`A trigger element with the ID "${trigger}" was not found in the DOM. The trigger element must be in the DOM when the "trigger" property is set on ion-popover.`, this.el);
+        return;
+      }
+      this.destroyTriggerInteraction = configureTriggerInteraction(triggerEl, triggerAction, el);
+    };
+    this.configureKeyboardInteraction = () => {
+      const { destroyKeyboardInteraction, el } = this;
+      if (destroyKeyboardInteraction) {
+        destroyKeyboardInteraction();
+      }
+      this.destroyKeyboardInteraction = configureKeyboardInteraction(el);
+    };
+    this.configureDismissInteraction = () => {
+      const { destroyDismissInteraction, parentPopover, triggerAction, triggerEl, el } = this;
+      if (!parentPopover || !triggerEl) {
+        return;
+      }
+      if (destroyDismissInteraction) {
+        destroyDismissInteraction();
+      }
+      this.destroyDismissInteraction = configureDismissInteraction(triggerEl, triggerAction, el, parentPopover);
+    };
+    this.presented = false;
+    this.hasController = false;
+    this.delegate = void 0;
+    this.overlayIndex = void 0;
+    this.enterAnimation = void 0;
+    this.leaveAnimation = void 0;
+    this.component = void 0;
+    this.componentProps = void 0;
+    this.keyboardClose = true;
+    this.cssClass = void 0;
+    this.backdropDismiss = true;
+    this.event = void 0;
+    this.showBackdrop = true;
+    this.translucent = false;
+    this.animated = true;
+    this.htmlAttributes = void 0;
+    this.triggerAction = "click";
+    this.trigger = void 0;
+    this.size = "auto";
+    this.dismissOnSelect = false;
+    this.reference = "trigger";
+    this.side = "bottom";
+    this.alignment = void 0;
+    this.arrow = true;
+    this.isOpen = false;
+    this.keyboardEvents = false;
+    this.keepContentsMounted = false;
+  }
+  onTriggerChange() {
+    this.configureTriggerInteraction();
+  }
+  onIsOpenChange(newValue, oldValue) {
+    if (newValue === true && oldValue === false) {
+      this.present();
+    } else if (newValue === false && oldValue === true) {
+      this.dismiss();
+    }
+  }
+  connectedCallback() {
+    const { configureTriggerInteraction: configureTriggerInteraction2, el } = this;
+    prepareOverlay(el);
+    configureTriggerInteraction2();
+  }
+  disconnectedCallback() {
+    const { destroyTriggerInteraction } = this;
+    if (destroyTriggerInteraction) {
+      destroyTriggerInteraction();
+    }
+  }
+  componentWillLoad() {
+    const { el } = this;
+    const popoverId = setOverlayId(el);
+    this.parentPopover = el.closest(`ion-popover:not(#${popoverId})`);
+    if (this.alignment === void 0) {
+      this.alignment = getIonMode$2(this) === "ios" ? "center" : "start";
+    }
+  }
+  componentDidLoad() {
+    const { parentPopover, isOpen } = this;
+    if (isOpen === true) {
+      raf(() => this.present());
+    }
+    if (parentPopover) {
+      addEventListener$1(parentPopover, "ionPopoverWillDismiss", () => {
+        this.dismiss(void 0, void 0, false);
+      });
+    }
+  }
+  /**
+   * When opening a popover from a trigger, we should not be
+   * modifying the `event` prop from inside the component.
+   * Additionally, when pressing the "Right" arrow key, we need
+   * to shift focus to the first descendant in the newly presented
+   * popover.
+   *
+   * @internal
+   */
+  async presentFromTrigger(event, focusDescendant = false) {
+    this.focusDescendantOnPresent = focusDescendant;
+    await this.present(event);
+    this.focusDescendantOnPresent = false;
+  }
+  /**
+   * Determines whether or not an overlay
+   * is being used inline or via a controller/JS
+   * and returns the correct delegate.
+   * By default, subsequent calls to getDelegate
+   * will use a cached version of the delegate.
+   * This is useful for calling dismiss after
+   * present so that the correct delegate is given.
+   */
+  getDelegate(force = false) {
+    if (this.workingDelegate && !force) {
+      return {
+        delegate: this.workingDelegate,
+        inline: this.inline
+      };
+    }
+    const parentEl = this.el.parentNode;
+    const inline = this.inline = parentEl !== null && !this.hasController;
+    const delegate = this.workingDelegate = inline ? this.delegate || this.coreDelegate : this.delegate;
+    return { inline, delegate };
+  }
+  /**
+   * Present the popover overlay after it has been created.
+   * Developers can pass a mouse, touch, or pointer event
+   * to position the popover relative to where that event
+   * was dispatched.
+   */
+  async present(event) {
+    if (this.presented) {
+      return;
+    }
+    if (this.currentTransition !== void 0) {
+      await this.currentTransition;
+    }
+    const { el } = this;
+    const { inline, delegate } = this.getDelegate(true);
+    this.usersElement = await attachComponent(delegate, el, this.component, ["popover-viewport"], this.componentProps, inline);
+    if (!this.keyboardEvents) {
+      this.configureKeyboardInteraction();
+    }
+    this.configureDismissInteraction();
+    this.ionMount.emit();
+    if (hasLazyBuild(el)) {
+      await deepReady(this.usersElement);
+    } else if (!this.keepContentsMounted) {
+      await waitForMount();
+    }
+    this.currentTransition = present(this, "popoverEnter", iosEnterAnimation$3, mdEnterAnimation$3, {
+      event: event || this.event,
+      size: this.size,
+      trigger: this.triggerEl,
+      reference: this.reference,
+      side: this.side,
+      align: this.alignment
+    });
+    await this.currentTransition;
+    this.currentTransition = void 0;
+    if (this.focusDescendantOnPresent) {
+      focusFirstDescendant(this.el, this.el);
+    }
+  }
+  /**
+   * Dismiss the popover overlay after it has been presented.
+   *
+   * @param data Any data to emit in the dismiss events.
+   * @param role The role of the element that is dismissing the popover. For example, 'cancel' or 'backdrop'.
+   * @param dismissParentPopover If `true`, dismissing this popover will also dismiss
+   * a parent popover if this popover is nested. Defaults to `true`.
+   */
+  async dismiss(data, role, dismissParentPopover = true) {
+    if (this.currentTransition !== void 0) {
+      await this.currentTransition;
+    }
+    const { destroyKeyboardInteraction, destroyDismissInteraction } = this;
+    if (dismissParentPopover && this.parentPopover) {
+      this.parentPopover.dismiss(data, role, dismissParentPopover);
+    }
+    this.currentTransition = dismiss(this, data, role, "popoverLeave", iosLeaveAnimation$3, mdLeaveAnimation$3, this.event);
+    const shouldDismiss = await this.currentTransition;
+    if (shouldDismiss) {
+      if (destroyKeyboardInteraction) {
+        destroyKeyboardInteraction();
+        this.destroyKeyboardInteraction = void 0;
+      }
+      if (destroyDismissInteraction) {
+        destroyDismissInteraction();
+        this.destroyDismissInteraction = void 0;
+      }
+      const { delegate } = this.getDelegate();
+      await detachComponent(delegate, this.usersElement);
+    }
+    this.currentTransition = void 0;
+    return shouldDismiss;
+  }
+  /**
+   * @internal
+   */
+  async getParentPopover() {
+    return this.parentPopover;
+  }
+  /**
+   * Returns a promise that resolves when the popover did dismiss.
+   */
+  onDidDismiss() {
+    return eventMethod(this.el, "ionPopoverDidDismiss");
+  }
+  /**
+   * Returns a promise that resolves when the popover will dismiss.
+   */
+  onWillDismiss() {
+    return eventMethod(this.el, "ionPopoverWillDismiss");
+  }
+  render() {
+    const mode = getIonMode$2(this);
+    const { onLifecycle, parentPopover, dismissOnSelect, side, arrow, htmlAttributes } = this;
+    const desktop = isPlatform("desktop");
+    const enableArrow = arrow && !parentPopover;
+    return h$1(Host$1, Object.assign({ "aria-modal": "true", "no-router": true, tabindex: "-1" }, htmlAttributes, { style: {
+      zIndex: `${2e4 + this.overlayIndex}`
+    }, class: Object.assign(Object.assign({}, getClassMap(this.cssClass)), { [mode]: true, "popover-translucent": this.translucent, "overlay-hidden": true, "popover-desktop": desktop, [`popover-side-${side}`]: true, "popover-nested": !!parentPopover }), onIonPopoverDidPresent: onLifecycle, onIonPopoverWillPresent: onLifecycle, onIonPopoverWillDismiss: onLifecycle, onIonPopoverDidDismiss: onLifecycle, onIonBackdropTap: this.onBackdropTap }), !parentPopover && h$1("ion-backdrop", { tappable: this.backdropDismiss, visible: this.showBackdrop, part: "backdrop" }), h$1("div", { class: "popover-wrapper ion-overlay-wrapper", onClick: dismissOnSelect ? () => this.dismiss() : void 0 }, enableArrow && h$1("div", { class: "popover-arrow", part: "arrow" }), h$1("div", { class: "popover-content", part: "content" }, h$1("slot", null))));
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "trigger": ["onTriggerChange"],
+      "triggerAction": ["onTriggerChange"],
+      "isOpen": ["onIsOpenChange"]
+    };
+  }
+  static get style() {
+    return {
+      ios: popoverIosCss,
+      md: popoverMdCss
+    };
+  }
+}, [33, "ion-popover", {
+  "hasController": [4, "has-controller"],
+  "delegate": [16],
+  "overlayIndex": [2, "overlay-index"],
+  "enterAnimation": [16],
+  "leaveAnimation": [16],
+  "component": [1],
+  "componentProps": [16],
+  "keyboardClose": [4, "keyboard-close"],
+  "cssClass": [1, "css-class"],
+  "backdropDismiss": [4, "backdrop-dismiss"],
+  "event": [8],
+  "showBackdrop": [4, "show-backdrop"],
+  "translucent": [4],
+  "animated": [4],
+  "htmlAttributes": [16],
+  "triggerAction": [1, "trigger-action"],
+  "trigger": [1],
+  "size": [1],
+  "dismissOnSelect": [4, "dismiss-on-select"],
+  "reference": [1],
+  "side": [1],
+  "alignment": [1025],
+  "arrow": [4],
+  "isOpen": [4, "is-open"],
+  "keyboardEvents": [4, "keyboard-events"],
+  "keepContentsMounted": [4, "keep-contents-mounted"],
+  "presented": [32],
+  "presentFromTrigger": [64],
+  "present": [64],
+  "dismiss": [64],
+  "getParentPopover": [64],
+  "onDidDismiss": [64],
+  "onWillDismiss": [64]
+}]);
+const LIFECYCLE_MAP$1 = {
+  ionPopoverDidPresent: "ionViewDidEnter",
+  ionPopoverWillPresent: "ionViewWillEnter",
+  ionPopoverWillDismiss: "ionViewWillLeave",
+  ionPopoverDidDismiss: "ionViewDidLeave"
+};
+function defineCustomElement$w() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-popover", "ion-backdrop"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-popover":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Popover);
+        }
+        break;
+      case "ion-backdrop":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$P();
+        }
+        break;
+    }
+  });
+}
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
 const ION_CONTENT_TAG_NAME = "ION-CONTENT";
 const ION_CONTENT_ELEMENT_SELECTOR = "ion-content";
 const ION_CONTENT_CLASS_SELECTOR = ".ion-content-scroll-host";
@@ -6848,7 +8203,7 @@ const Footer = /* @__PURE__ */ proxyCustomElement$1(class Footer2 extends H$1 {
   "translucent": [4],
   "keyboardVisible": [32]
 }]);
-function defineCustomElement$1$h() {
+function defineCustomElement$1$k() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6863,7 +8218,7 @@ function defineCustomElement$1$h() {
     }
   });
 }
-const defineCustomElement$m = defineCustomElement$1$h;
+const defineCustomElement$v = defineCustomElement$1$k;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -6888,7 +8243,7 @@ const Grid = /* @__PURE__ */ proxyCustomElement$1(class Grid2 extends H$1 {
 }, [1, "ion-grid", {
   "fixed": [4]
 }]);
-function defineCustomElement$1$g() {
+function defineCustomElement$1$j() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -6903,7 +8258,7 @@ function defineCustomElement$1$g() {
     }
   });
 }
-const defineCustomElement$l = defineCustomElement$1$g;
+const defineCustomElement$u = defineCustomElement$1$j;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -7174,7 +8529,7 @@ const Header = /* @__PURE__ */ proxyCustomElement$1(class Header2 extends H$1 {
   "collapse": [1],
   "translucent": [4]
 }]);
-function defineCustomElement$1$f() {
+function defineCustomElement$1$i() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -7189,7 +8544,103 @@ function defineCustomElement$1$f() {
     }
   });
 }
-const defineCustomElement$k = defineCustomElement$1$f;
+const defineCustomElement$t = defineCustomElement$1$i;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const sanitizeDOMString = (untrustedString) => {
+  try {
+    if (untrustedString instanceof IonicSafeString) {
+      return untrustedString.value;
+    }
+    if (!isSanitizerEnabled() || typeof untrustedString !== "string" || untrustedString === "") {
+      return untrustedString;
+    }
+    if (untrustedString.includes("onload=")) {
+      return "";
+    }
+    const documentFragment = document.createDocumentFragment();
+    const workingDiv = document.createElement("div");
+    documentFragment.appendChild(workingDiv);
+    workingDiv.innerHTML = untrustedString;
+    blockedTags.forEach((blockedTag) => {
+      const getElementsToRemove = documentFragment.querySelectorAll(blockedTag);
+      for (let elementIndex = getElementsToRemove.length - 1; elementIndex >= 0; elementIndex--) {
+        const element = getElementsToRemove[elementIndex];
+        if (element.parentNode) {
+          element.parentNode.removeChild(element);
+        } else {
+          documentFragment.removeChild(element);
+        }
+        const childElements = getElementChildren(element);
+        for (let childIndex = 0; childIndex < childElements.length; childIndex++) {
+          sanitizeElement(childElements[childIndex]);
+        }
+      }
+    });
+    const dfChildren = getElementChildren(documentFragment);
+    for (let childIndex = 0; childIndex < dfChildren.length; childIndex++) {
+      sanitizeElement(dfChildren[childIndex]);
+    }
+    const fragmentDiv = document.createElement("div");
+    fragmentDiv.appendChild(documentFragment);
+    const getInnerDiv = fragmentDiv.querySelector("div");
+    return getInnerDiv !== null ? getInnerDiv.innerHTML : fragmentDiv.innerHTML;
+  } catch (err) {
+    console.error(err);
+    return "";
+  }
+};
+const sanitizeElement = (element) => {
+  if (element.nodeType && element.nodeType !== 1) {
+    return;
+  }
+  if (typeof NamedNodeMap !== "undefined" && !(element.attributes instanceof NamedNodeMap)) {
+    element.remove();
+    return;
+  }
+  for (let i = element.attributes.length - 1; i >= 0; i--) {
+    const attribute = element.attributes.item(i);
+    const attributeName = attribute.name;
+    if (!allowedAttributes.includes(attributeName.toLowerCase())) {
+      element.removeAttribute(attributeName);
+      continue;
+    }
+    const attributeValue = attribute.value;
+    const propertyValue = element[attributeName];
+    if (attributeValue != null && attributeValue.toLowerCase().includes("javascript:") || propertyValue != null && propertyValue.toLowerCase().includes("javascript:")) {
+      element.removeAttribute(attributeName);
+    }
+  }
+  const childElements = getElementChildren(element);
+  for (let i = 0; i < childElements.length; i++) {
+    sanitizeElement(childElements[i]);
+  }
+};
+const getElementChildren = (el) => {
+  return el.children != null ? el.children : el.childNodes;
+};
+const isSanitizerEnabled = () => {
+  var _a;
+  const win2 = window;
+  const config2 = (_a = win2 === null || win2 === void 0 ? void 0 : win2.Ionic) === null || _a === void 0 ? void 0 : _a.config;
+  if (config2) {
+    if (config2.get) {
+      return config2.get("sanitizerEnabled", true);
+    } else {
+      return config2.sanitizerEnabled === true || config2.sanitizerEnabled === void 0;
+    }
+  }
+  return true;
+};
+const allowedAttributes = ["class", "id", "href", "src", "name", "slot"];
+const blockedTags = ["script", "style", "iframe", "meta", "link", "object", "embed"];
+class IonicSafeString {
+  constructor(value) {
+    this.value = value;
+  }
+}
+const ENABLE_HTML_CONTENT_DEFAULT = false;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -7598,7 +9049,7 @@ Developers can dismiss this warning by removing their usage of the "legacy" prop
   "getInputElement": [64]
 }]);
 let inputIds = 0;
-function defineCustomElement$1$e() {
+function defineCustomElement$1$h() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -7612,21 +9063,21 @@ function defineCustomElement$1$e() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$F();
+          defineCustomElement$R();
         }
         break;
     }
   });
 }
-const defineCustomElement$j = defineCustomElement$1$e;
+const defineCustomElement$s = defineCustomElement$1$h;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$i = defineCustomElement$o;
+const defineCustomElement$r = defineCustomElement$y;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$h = defineCustomElement$n;
+const defineCustomElement$q = defineCustomElement$x;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -7678,7 +9129,7 @@ const List = /* @__PURE__ */ proxyCustomElement$1(class List2 extends H$1 {
   "inset": [4],
   "closeSlidingItems": [64]
 }]);
-function defineCustomElement$g() {
+function defineCustomElement$p() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -7696,7 +9147,53 @@ function defineCustomElement$g() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$f = defineCustomElement$g;
+const defineCustomElement$o = defineCustomElement$p;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const listHeaderIosCss = ":host{--border-style:solid;--border-width:0;--inner-border-width:0;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:justify;justify-content:space-between;width:100%;min-height:40px;border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);color:var(--color);overflow:hidden}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}.list-header-inner{display:-ms-flexbox;display:flex;position:relative;-ms-flex:1;flex:1;-ms-flex-direction:inherit;flex-direction:inherit;-ms-flex-align:inherit;align-items:inherit;-ms-flex-item-align:stretch;align-self:stretch;min-height:inherit;border-width:var(--inner-border-width);border-style:var(--border-style);border-color:var(--border-color);overflow:inherit;-webkit-box-sizing:border-box;box-sizing:border-box}::slotted(ion-label){-ms-flex:1 1 auto;flex:1 1 auto}:host(.list-header-lines-inset),:host(.list-header-lines-none){--border-width:0}:host(.list-header-lines-full),:host(.list-header-lines-none){--inner-border-width:0}:host{--background:transparent;--color:var(--ion-color-step-850, #262626);--border-color:var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-250, #c8c7cc)));-webkit-padding-start:calc(var(--ion-safe-area-left, 0px) + 16px);padding-inline-start:calc(var(--ion-safe-area-left, 0px) + 16px);position:relative;-ms-flex-align:end;align-items:flex-end;font-size:22px;font-weight:700;letter-spacing:0}::slotted(ion-button),::slotted(ion-label){margin-top:29px;margin-bottom:6px}::slotted(ion-button){-webkit-margin-start:3px;margin-inline-start:3px;-webkit-margin-end:3px;margin-inline-end:3px;height:1.4em}:host(.list-header-lines-full){--border-width:0 0 0.55px 0}:host(.list-header-lines-inset){--inner-border-width:0 0 0.55px 0}";
+const listHeaderMdCss = ":host{--border-style:solid;--border-width:0;--inner-border-width:0;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:justify;justify-content:space-between;width:100%;min-height:40px;border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);color:var(--color);overflow:hidden}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}.list-header-inner{display:-ms-flexbox;display:flex;position:relative;-ms-flex:1;flex:1;-ms-flex-direction:inherit;flex-direction:inherit;-ms-flex-align:inherit;align-items:inherit;-ms-flex-item-align:stretch;align-self:stretch;min-height:inherit;border-width:var(--inner-border-width);border-style:var(--border-style);border-color:var(--border-color);overflow:inherit;-webkit-box-sizing:border-box;box-sizing:border-box}::slotted(ion-label){-ms-flex:1 1 auto;flex:1 1 auto}:host(.list-header-lines-inset),:host(.list-header-lines-none){--border-width:0}:host(.list-header-lines-full),:host(.list-header-lines-none){--inner-border-width:0}:host{--background:transparent;--color:var(--ion-text-color, #000);--border-color:var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))));-webkit-padding-start:calc(var(--ion-safe-area-left, 0) + 16px);padding-inline-start:calc(var(--ion-safe-area-left, 0) + 16px);min-height:45px;font-size:14px}:host(.list-header-lines-full){--border-width:0 0 1px 0}:host(.list-header-lines-inset){--inner-border-width:0 0 1px 0}";
+const ListHeader = /* @__PURE__ */ proxyCustomElement$1(class ListHeader2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.color = void 0;
+    this.lines = void 0;
+  }
+  render() {
+    const { lines } = this;
+    const mode = getIonMode$2(this);
+    return h$1(Host$1, { class: createColorClasses$1(this.color, {
+      [mode]: true,
+      [`list-header-lines-${lines}`]: lines !== void 0
+    }) }, h$1("div", { class: "list-header-inner" }, h$1("slot", null)));
+  }
+  static get style() {
+    return {
+      ios: listHeaderIosCss,
+      md: listHeaderMdCss
+    };
+  }
+}, [33, "ion-list-header", {
+  "color": [513],
+  "lines": [1]
+}]);
+function defineCustomElement$n() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-list-header"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-list-header":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, ListHeader);
+        }
+        break;
+    }
+  });
+}
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -7867,7 +9364,7 @@ const Nav = /* @__PURE__ */ proxyCustomElement$1(class Nav2 extends H$1 {
   }
   async componentDidLoad() {
     this.rootChanged();
-    this.gesture = (await import('./_nuxt/swipe-back-d4e8e1d5.mjs')).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
+    this.gesture = (await import('./_nuxt/swipe-back-58e84a46.mjs')).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
     this.swipeGestureChanged();
   }
   connectedCallback() {
@@ -8551,7 +10048,7 @@ const Nav = /* @__PURE__ */ proxyCustomElement$1(class Nav2 extends H$1 {
   "canGoBack": [64],
   "getPrevious": [64]
 }]);
-function defineCustomElement$1$d() {
+function defineCustomElement$1$g() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -8566,7 +10063,339 @@ function defineCustomElement$1$d() {
     }
   });
 }
-const defineCustomElement$e = defineCustomElement$1$d;
+const defineCustomElement$m = defineCustomElement$1$g;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const radioIosCss = ':host{--inner-border-radius:50%;display:inline-block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;max-width:100%;min-height:inherit;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(:not(.legacy-radio)){cursor:pointer}:host(.radio-disabled){pointer-events:none}.radio-icon{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;contain:layout size style}.radio-icon,.radio-inner{-webkit-box-sizing:border-box;box-sizing:border-box}:host(.legacy-radio) label{top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}@supports (inset-inline-start: 0){:host(.legacy-radio) label{inset-inline-start:0}}@supports not (inset-inline-start: 0){:host(.legacy-radio) label{left:0}:host-context([dir=rtl]):host(.legacy-radio) label,:host-context([dir=rtl]).legacy-radio label{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){:host(.legacy-radio) label:dir(rtl){left:unset;right:unset;right:0}}}:host(.legacy-radio) label::-moz-focus-inner{border:0}input{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;outline:0;clip:rect(0 0 0 0);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none}:host(:focus){outline:none}:host(.in-item:not(.legacy-radio)){width:100%;height:100%}:host([slot=start]:not(.legacy-radio)),:host([slot=end]:not(.legacy-radio)){width:auto}.radio-wrapper{display:-ms-flexbox;display:flex;position:relative;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;height:inherit;min-height:inherit;cursor:inherit}.label-text-wrapper{pointer-events:none;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.label-text-wrapper-hidden{display:none}.native-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}:host(.radio-justify-space-between) .radio-wrapper{-ms-flex-pack:justify;justify-content:space-between}:host(.radio-justify-start) .radio-wrapper{-ms-flex-pack:start;justify-content:start}:host(.radio-justify-end) .radio-wrapper{-ms-flex-pack:end;justify-content:end}:host(.radio-label-placement-start) .radio-wrapper{-ms-flex-direction:row;flex-direction:row}:host(.radio-label-placement-start) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.radio-label-placement-end) .radio-wrapper{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.radio-label-placement-end) .label-text-wrapper{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0}:host(.radio-label-placement-fixed) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.radio-label-placement-fixed) .label-text-wrapper{-ms-flex:0 0 100px;flex:0 0 100px;width:100px;min-width:100px}:host{--color-checked:var(--ion-color-primary, #3880ff)}:host(.legacy-radio){width:15px;height:24px}:host(.ion-color.radio-checked) .radio-inner{border-color:var(--ion-color-base)}.item-radio.item-ios ion-label{-webkit-margin-start:0;margin-inline-start:0}.radio-inner{width:33%;height:50%}:host(.radio-checked) .radio-inner{-webkit-transform:rotate(45deg);transform:rotate(45deg);border-width:2px;border-top-width:0;border-left-width:0;border-style:solid;border-color:var(--color-checked)}:host(.radio-disabled){opacity:0.3}:host(.ion-focused) .radio-icon::after{border-radius:var(--inner-border-radius);top:-8px;display:block;position:absolute;width:36px;height:36px;background:var(--ion-color-primary-tint, #4c8dff);content:"";opacity:0.2}@supports (inset-inline-start: 0){:host(.ion-focused) .radio-icon::after{inset-inline-start:-9px}}@supports not (inset-inline-start: 0){:host(.ion-focused) .radio-icon::after{left:-9px}:host-context([dir=rtl]):host(.ion-focused) .radio-icon::after,:host-context([dir=rtl]).ion-focused .radio-icon::after{left:unset;right:unset;right:-9px}@supports selector(:dir(rtl)){:host(.ion-focused) .radio-icon::after:dir(rtl){left:unset;right:unset;right:-9px}}}:host(.in-item.legacy-radio){-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:11px;margin-inline-end:11px;margin-top:8px;margin-bottom:8px;display:block;position:static}:host(.in-item.legacy-radio[slot=start]){-webkit-margin-start:3px;margin-inline-start:3px;-webkit-margin-end:21px;margin-inline-end:21px;margin-top:8px;margin-bottom:8px}.native-wrapper .radio-icon{width:15px;height:24px}';
+const radioMdCss = ':host{--inner-border-radius:50%;display:inline-block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;max-width:100%;min-height:inherit;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(:not(.legacy-radio)){cursor:pointer}:host(.radio-disabled){pointer-events:none}.radio-icon{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;contain:layout size style}.radio-icon,.radio-inner{-webkit-box-sizing:border-box;box-sizing:border-box}:host(.legacy-radio) label{top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}@supports (inset-inline-start: 0){:host(.legacy-radio) label{inset-inline-start:0}}@supports not (inset-inline-start: 0){:host(.legacy-radio) label{left:0}:host-context([dir=rtl]):host(.legacy-radio) label,:host-context([dir=rtl]).legacy-radio label{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){:host(.legacy-radio) label:dir(rtl){left:unset;right:unset;right:0}}}:host(.legacy-radio) label::-moz-focus-inner{border:0}input{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;outline:0;clip:rect(0 0 0 0);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none}:host(:focus){outline:none}:host(.in-item:not(.legacy-radio)){width:100%;height:100%}:host([slot=start]:not(.legacy-radio)),:host([slot=end]:not(.legacy-radio)){width:auto}.radio-wrapper{display:-ms-flexbox;display:flex;position:relative;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;height:inherit;min-height:inherit;cursor:inherit}.label-text-wrapper{pointer-events:none;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.label-text-wrapper-hidden{display:none}.native-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}:host(.radio-justify-space-between) .radio-wrapper{-ms-flex-pack:justify;justify-content:space-between}:host(.radio-justify-start) .radio-wrapper{-ms-flex-pack:start;justify-content:start}:host(.radio-justify-end) .radio-wrapper{-ms-flex-pack:end;justify-content:end}:host(.radio-label-placement-start) .radio-wrapper{-ms-flex-direction:row;flex-direction:row}:host(.radio-label-placement-start) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.radio-label-placement-end) .radio-wrapper{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.radio-label-placement-end) .label-text-wrapper{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0}:host(.radio-label-placement-fixed) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.radio-label-placement-fixed) .label-text-wrapper{-ms-flex:0 0 100px;flex:0 0 100px;width:100px;min-width:100px}:host{--color:rgb(var(--ion-text-color-rgb, 0, 0, 0), 0.6);--color-checked:var(--ion-color-primary, #3880ff);--border-width:2px;--border-style:solid;--border-radius:50%}:host(.legacy-radio){width:20px;height:20px}:host(.ion-color) .radio-inner{background:var(--ion-color-base)}:host(.ion-color.radio-checked) .radio-icon{border-color:var(--ion-color-base)}.radio-icon{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;border-radius:var(--border-radius);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--color)}.radio-inner{border-radius:var(--inner-border-radius);width:calc(50% + var(--border-width));height:calc(50% + var(--border-width));-webkit-transform:scale3d(0, 0, 0);transform:scale3d(0, 0, 0);-webkit-transition:-webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);transition:-webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);transition:transform 280ms cubic-bezier(0.4, 0, 0.2, 1);transition:transform 280ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);background:var(--color-checked)}:host(.radio-checked) .radio-icon{border-color:var(--color-checked)}:host(.radio-checked) .radio-inner{-webkit-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1)}:host(.legacy-radio.radio-disabled),:host(.radio-disabled) .label-text-wrapper{opacity:0.38}:host(.radio-disabled) .native-wrapper{opacity:0.63}:host(.ion-focused.legacy-radio) .radio-icon::after{top:-12px}@supports (inset-inline-start: 0){:host(.ion-focused.legacy-radio) .radio-icon::after{inset-inline-start:-12px}}@supports not (inset-inline-start: 0){:host(.ion-focused.legacy-radio) .radio-icon::after{left:-12px}:host-context([dir=rtl]):host(.ion-focused.legacy-radio) .radio-icon::after,:host-context([dir=rtl]).ion-focused.legacy-radio .radio-icon::after{left:unset;right:unset;right:-12px}@supports selector(:dir(rtl)){:host(.ion-focused.legacy-radio) .radio-icon::after:dir(rtl){left:unset;right:unset;right:-12px}}}:host(.ion-focused) .radio-icon::after{border-radius:var(--inner-border-radius);display:block;position:absolute;width:36px;height:36px;background:var(--ion-color-primary-tint, #4c8dff);content:"";opacity:0.2}:host(.in-item.legacy-radio){margin-left:0;margin-right:0;margin-top:9px;margin-bottom:9px;display:block;position:static}:host(.in-item.legacy-radio[slot=start]){-webkit-margin-start:4px;margin-inline-start:4px;-webkit-margin-end:36px;margin-inline-end:36px;margin-top:11px;margin-bottom:10px}.native-wrapper .radio-icon{width:20px;height:20px}';
+const Radio = /* @__PURE__ */ proxyCustomElement$1(class Radio2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.ionStyle = createEvent(this, "ionStyle", 7);
+    this.ionFocus = createEvent(this, "ionFocus", 7);
+    this.ionBlur = createEvent(this, "ionBlur", 7);
+    this.inputId = `ion-rb-${radioButtonIds++}`;
+    this.radioGroup = null;
+    this.inheritedAttributes = {};
+    this.hasLoggedDeprecationWarning = false;
+    this.updateState = () => {
+      if (this.radioGroup) {
+        this.checked = this.radioGroup.value === this.value;
+      }
+    };
+    this.onClick = () => {
+      this.checked = this.nativeInput.checked;
+    };
+    this.onFocus = () => {
+      this.ionFocus.emit();
+    };
+    this.onBlur = () => {
+      this.ionBlur.emit();
+    };
+    this.checked = false;
+    this.buttonTabindex = -1;
+    this.color = void 0;
+    this.name = this.inputId;
+    this.disabled = false;
+    this.value = void 0;
+    this.labelPlacement = "start";
+    this.legacy = void 0;
+    this.justify = "space-between";
+  }
+  valueChanged() {
+    this.updateState();
+  }
+  /** @internal */
+  async setFocus(ev) {
+    ev.stopPropagation();
+    ev.preventDefault();
+    this.el.focus();
+  }
+  /** @internal */
+  async setButtonTabindex(value) {
+    this.buttonTabindex = value;
+  }
+  connectedCallback() {
+    this.legacyFormController = createLegacyFormController(this.el);
+    if (this.value === void 0) {
+      this.value = this.inputId;
+    }
+    const radioGroup = this.radioGroup = this.el.closest("ion-radio-group");
+    if (radioGroup) {
+      this.updateState();
+      addEventListener$1(radioGroup, "ionValueChange", this.updateState);
+    }
+  }
+  disconnectedCallback() {
+    const radioGroup = this.radioGroup;
+    if (radioGroup) {
+      removeEventListener(radioGroup, "ionValueChange", this.updateState);
+      this.radioGroup = null;
+    }
+  }
+  componentWillLoad() {
+    this.emitStyle();
+    if (!this.legacyFormController.hasLegacyControl()) {
+      this.inheritedAttributes = Object.assign({}, inheritAriaAttributes(this.el));
+    }
+  }
+  styleChanged() {
+    this.emitStyle();
+  }
+  emitStyle() {
+    const style = {
+      "interactive-disabled": this.disabled
+    };
+    if (this.legacyFormController.hasLegacyControl()) {
+      style["radio-checked"] = this.checked;
+    }
+    this.ionStyle.emit(style);
+  }
+  get hasLabel() {
+    return this.el.textContent !== "";
+  }
+  renderRadioControl() {
+    return h$1("div", { class: "radio-icon", part: "container" }, h$1("div", { class: "radio-inner", part: "mark" }), h$1("div", { class: "radio-ripple" }));
+  }
+  render() {
+    const { legacyFormController } = this;
+    return legacyFormController.hasLegacyControl() ? this.renderLegacyRadio() : this.renderRadio();
+  }
+  renderRadio() {
+    const { checked, disabled, inputId, color, el, justify, labelPlacement, inheritedAttributes, hasLabel } = this;
+    const mode = getIonMode$2(this);
+    const inItem = hostContext("ion-item", el);
+    return h$1(Host$1, { onClick: this.onClick, class: createColorClasses$1(color, {
+      [mode]: true,
+      "in-item": inItem,
+      "radio-checked": checked,
+      "radio-disabled": disabled,
+      [`radio-justify-${justify}`]: true,
+      [`radio-label-placement-${labelPlacement}`]: true,
+      // Focus and active styling should not apply when the radio is in an item
+      "ion-activatable": !inItem,
+      "ion-focusable": !inItem
+    }) }, h$1("label", { class: "radio-wrapper" }, h$1("input", Object.assign({ type: "radio", checked, disabled, id: inputId, ref: (nativeEl) => this.nativeInput = nativeEl }, inheritedAttributes)), h$1("div", { class: {
+      "label-text-wrapper": true,
+      "label-text-wrapper-hidden": !hasLabel
+    } }, h$1("slot", null)), h$1("div", { class: "native-wrapper" }, this.renderRadioControl())));
+  }
+  renderLegacyRadio() {
+    if (!this.hasLoggedDeprecationWarning) {
+      printIonWarning(`ion-radio now requires providing a label with either the default slot or the "aria-label" attribute. To migrate, remove any usage of "ion-label" and pass the label text to either the component or the "aria-label" attribute.
+
+Example: <ion-radio>Option Label</ion-radio>
+Example with aria-label: <ion-radio aria-label="Option Label"></ion-radio>
+
+Developers can use the "legacy" property to continue using the legacy form markup. This property will be removed in an upcoming major release of Ionic where this form control will use the modern form markup.`, this.el);
+      if (this.legacy) {
+        printIonWarning(`ion-radio is being used with the "legacy" property enabled which will forcibly enable the legacy form markup. This property will be removed in an upcoming major release of Ionic where this form control will use the modern form markup.
+
+Developers can dismiss this warning by removing their usage of the "legacy" property and using the new radio syntax.`, this.el);
+      }
+      this.hasLoggedDeprecationWarning = true;
+    }
+    const { inputId, disabled, checked, color, el, buttonTabindex } = this;
+    const mode = getIonMode$2(this);
+    const { label, labelId, labelText } = getAriaLabel(el, inputId);
+    return h$1(Host$1, { "aria-checked": `${checked}`, "aria-hidden": disabled ? "true" : null, "aria-labelledby": label ? labelId : null, role: "radio", tabindex: buttonTabindex, onFocus: this.onFocus, onBlur: this.onBlur, onClick: this.onClick, class: createColorClasses$1(color, {
+      [mode]: true,
+      "in-item": hostContext("ion-item", el),
+      interactive: true,
+      "radio-checked": checked,
+      "radio-disabled": disabled,
+      "legacy-radio": true
+    }) }, this.renderRadioControl(), h$1("label", { htmlFor: inputId }, labelText), h$1("input", { type: "radio", checked, disabled, tabindex: "-1", id: inputId, ref: (nativeEl) => this.nativeInput = nativeEl }));
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "value": ["valueChanged"],
+      "checked": ["styleChanged"],
+      "color": ["styleChanged"],
+      "disabled": ["styleChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: radioIosCss,
+      md: radioMdCss
+    };
+  }
+}, [33, "ion-radio", {
+  "color": [513],
+  "name": [1],
+  "disabled": [4],
+  "value": [8],
+  "labelPlacement": [1, "label-placement"],
+  "legacy": [4],
+  "justify": [1],
+  "checked": [32],
+  "buttonTabindex": [32],
+  "setFocus": [64],
+  "setButtonTabindex": [64]
+}]);
+let radioButtonIds = 0;
+function defineCustomElement$l() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-radio"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-radio":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Radio);
+        }
+        break;
+    }
+  });
+}
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const RadioGroup = /* @__PURE__ */ proxyCustomElement$1(class RadioGroup2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.ionChange = createEvent(this, "ionChange", 7);
+    this.ionValueChange = createEvent(this, "ionValueChange", 7);
+    this.inputId = `ion-rg-${radioGroupIds++}`;
+    this.labelId = `${this.inputId}-lbl`;
+    this.setRadioTabindex = (value) => {
+      const radios = this.getRadios();
+      const first = radios.find((radio) => !radio.disabled);
+      const checked = radios.find((radio) => radio.value === value && !radio.disabled);
+      if (!first && !checked) {
+        return;
+      }
+      const focusable = checked || first;
+      for (const radio of radios) {
+        const tabindex = radio === focusable ? 0 : -1;
+        radio.setButtonTabindex(tabindex);
+      }
+    };
+    this.onClick = (ev) => {
+      ev.preventDefault();
+      const selectedRadio = ev.target && ev.target.closest("ion-radio");
+      if (selectedRadio) {
+        const currentValue = this.value;
+        const newValue = selectedRadio.value;
+        if (newValue !== currentValue) {
+          this.value = newValue;
+          this.emitValueChange(ev);
+        } else if (this.allowEmptySelection) {
+          this.value = void 0;
+          this.emitValueChange(ev);
+        }
+      }
+    };
+    this.allowEmptySelection = false;
+    this.name = this.inputId;
+    this.value = void 0;
+  }
+  valueChanged(value) {
+    this.setRadioTabindex(value);
+    this.ionValueChange.emit({ value });
+  }
+  componentDidLoad() {
+    this.setRadioTabindex(this.value);
+  }
+  async connectedCallback() {
+    const header = this.el.querySelector("ion-list-header") || this.el.querySelector("ion-item-divider");
+    if (header) {
+      const label = this.label = header.querySelector("ion-label");
+      if (label) {
+        this.labelId = label.id = this.name + "-lbl";
+      }
+    }
+  }
+  getRadios() {
+    return Array.from(this.el.querySelectorAll("ion-radio"));
+  }
+  /**
+   * Emits an `ionChange` event.
+   *
+   * This API should be called for user committed changes.
+   * This API should not be used for external value changes.
+   */
+  emitValueChange(event) {
+    const { value } = this;
+    this.ionChange.emit({ value, event });
+  }
+  onKeydown(ev) {
+    const inSelectPopover = !!this.el.closest("ion-select-popover");
+    if (ev.target && !this.el.contains(ev.target)) {
+      return;
+    }
+    const radios = this.getRadios().filter((radio) => !radio.disabled);
+    if (ev.target && radios.includes(ev.target)) {
+      const index = radios.findIndex((radio) => radio === ev.target);
+      const current = radios[index];
+      let next;
+      if (["ArrowDown", "ArrowRight"].includes(ev.key)) {
+        next = index === radios.length - 1 ? radios[0] : radios[index + 1];
+      }
+      if (["ArrowUp", "ArrowLeft"].includes(ev.key)) {
+        next = index === 0 ? radios[radios.length - 1] : radios[index - 1];
+      }
+      if (next && radios.includes(next)) {
+        next.setFocus(ev);
+        if (!inSelectPopover) {
+          this.value = next.value;
+          this.emitValueChange(ev);
+        }
+      }
+      if ([" "].includes(ev.key)) {
+        const previousValue = this.value;
+        this.value = this.allowEmptySelection && this.value !== void 0 ? void 0 : current.value;
+        if (previousValue !== this.value || this.allowEmptySelection) {
+          this.emitValueChange(ev);
+        }
+        ev.preventDefault();
+      }
+    }
+  }
+  render() {
+    const { label, labelId, el, name, value } = this;
+    const mode = getIonMode$2(this);
+    renderHiddenInput(true, el, name, value, false);
+    return h$1(Host$1, { role: "radiogroup", "aria-labelledby": label ? labelId : null, onClick: this.onClick, class: mode });
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "value": ["valueChanged"]
+    };
+  }
+}, [0, "ion-radio-group", {
+  "allowEmptySelection": [4, "allow-empty-selection"],
+  "name": [1],
+  "value": [1032]
+}, [[4, "keydown", "onKeydown"]]]);
+let radioGroupIds = 0;
+function defineCustomElement$k() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-radio-group"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-radio-group":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, RadioGroup);
+        }
+        break;
+    }
+  });
+}
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -8584,7 +10413,7 @@ const Row = /* @__PURE__ */ proxyCustomElement$1(class Row2 extends H$1 {
     return rowCss;
   }
 }, [1, "ion-row"]);
-function defineCustomElement$1$c() {
+function defineCustomElement$1$f() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -8599,7 +10428,371 @@ function defineCustomElement$1$c() {
     }
   });
 }
-const defineCustomElement$d = defineCustomElement$1$c;
+const defineCustomElement$j = defineCustomElement$1$f;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const searchbarIosCss = ".sc-ion-searchbar-ios-h{--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:0.6;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-align:center;align-items:center;width:100%;color:var(--color);font-family:var(--ion-font-family, inherit);-webkit-box-sizing:border-box;box-sizing:border-box}.ion-color.sc-ion-searchbar-ios-h{color:var(--ion-color-contrast)}.ion-color.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios{background:var(--ion-color-base)}.ion-color.sc-ion-searchbar-ios-h .searchbar-clear-button.sc-ion-searchbar-ios,.ion-color.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios,.ion-color.sc-ion-searchbar-ios-h .searchbar-search-icon.sc-ion-searchbar-ios{color:inherit}.searchbar-search-icon.sc-ion-searchbar-ios{color:var(--icon-color);pointer-events:none}.searchbar-input-container.sc-ion-searchbar-ios{display:block;position:relative;-ms-flex-negative:1;flex-shrink:1;width:100%}.searchbar-input.sc-ion-searchbar-ios{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;border-radius:var(--border-radius);display:block;width:100%;border:0;outline:none;background:var(--background);font-family:inherit;-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}.searchbar-input.sc-ion-searchbar-ios::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-ios::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-ios:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-ios::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-ios::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-ios::-webkit-search-cancel-button,.searchbar-input.sc-ion-searchbar-ios::-ms-clear{display:none}.searchbar-cancel-button.sc-ion-searchbar-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:none;height:100%;border:0;outline:none;color:var(--cancel-button-color);cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none}.searchbar-cancel-button.sc-ion-searchbar-ios>div.sc-ion-searchbar-ios{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%}.searchbar-clear-button.sc-ion-searchbar-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;display:none;min-height:0;outline:none;color:var(--clear-button-color);-webkit-appearance:none;-moz-appearance:none;appearance:none}.searchbar-clear-button.sc-ion-searchbar-ios:focus{opacity:0.5}.searchbar-has-value.searchbar-should-show-clear.sc-ion-searchbar-ios-h .searchbar-clear-button.sc-ion-searchbar-ios{display:block}.searchbar-disabled.sc-ion-searchbar-ios-h{cursor:default;opacity:0.4;pointer-events:none}.sc-ion-searchbar-ios-h{--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.07);--border-radius:10px;--box-shadow:none;--cancel-button-color:var(--ion-color-primary, #3880ff);--clear-button-color:var(--ion-color-step-600, #666666);--color:var(--ion-text-color, #000);--icon-color:var(--ion-color-step-600, #666666);-webkit-padding-start:12px;padding-inline-start:12px;-webkit-padding-end:12px;padding-inline-end:12px;padding-top:12px;padding-bottom:12px;height:60px;contain:strict}.searchbar-input-container.sc-ion-searchbar-ios{height:36px}.searchbar-search-icon.sc-ion-searchbar-ios{-webkit-margin-start:calc(50% - 60px);margin-inline-start:calc(50% - 60px);top:0;position:absolute;width:22px;height:100%;contain:strict}@supports (inset-inline-start: 0){.searchbar-search-icon.sc-ion-searchbar-ios{inset-inline-start:5px}}@supports not (inset-inline-start: 0){.searchbar-search-icon.sc-ion-searchbar-ios{left:5px}[dir=rtl].sc-ion-searchbar-ios-h .searchbar-search-icon.sc-ion-searchbar-ios,[dir=rtl] .sc-ion-searchbar-ios-h .searchbar-search-icon.sc-ion-searchbar-ios{left:unset;right:unset;right:5px}[dir=rtl].sc-ion-searchbar-ios .searchbar-search-icon.sc-ion-searchbar-ios{left:unset;right:unset;right:5px}@supports selector(:dir(rtl)){.searchbar-search-icon.sc-ion-searchbar-ios:dir(rtl){left:unset;right:unset;right:5px}}}.searchbar-input.sc-ion-searchbar-ios{-webkit-padding-start:28px;padding-inline-start:28px;-webkit-padding-end:28px;padding-inline-end:28px;padding-top:0;padding-bottom:0;height:100%;font-size:17px;font-weight:400;contain:strict}.searchbar-clear-button.sc-ion-searchbar-ios{top:0;background-position:center;position:absolute;width:30px;height:100%;border:0;background-color:transparent}@supports (inset-inline-start: 0){.searchbar-clear-button.sc-ion-searchbar-ios{inset-inline-end:0}}@supports not (inset-inline-start: 0){.searchbar-clear-button.sc-ion-searchbar-ios{right:0}[dir=rtl].sc-ion-searchbar-ios-h .searchbar-clear-button.sc-ion-searchbar-ios,[dir=rtl] .sc-ion-searchbar-ios-h .searchbar-clear-button.sc-ion-searchbar-ios{left:unset;right:unset;left:0}[dir=rtl].sc-ion-searchbar-ios .searchbar-clear-button.sc-ion-searchbar-ios{left:unset;right:unset;left:0}@supports selector(:dir(rtl)){.searchbar-clear-button.sc-ion-searchbar-ios:dir(rtl){left:unset;right:unset;left:0}}}.searchbar-clear-icon.sc-ion-searchbar-ios{width:18px;height:100%}.searchbar-cancel-button.sc-ion-searchbar-ios{-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:0;padding-inline-end:0;padding-top:0;padding-bottom:0;-ms-flex-negative:0;flex-shrink:0;background-color:transparent;font-size:16px}.searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-search-icon.sc-ion-searchbar-ios{-webkit-margin-start:0;margin-inline-start:0}.searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios{-webkit-padding-start:30px;padding-inline-start:30px}.searchbar-has-focus.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios,.searchbar-should-show-cancel.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios,.searchbar-animated.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios{display:block}.searchbar-animated.sc-ion-searchbar-ios-h .searchbar-search-icon.sc-ion-searchbar-ios,.searchbar-animated.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios{-webkit-transition:all 300ms ease;transition:all 300ms ease}.searchbar-animated.searchbar-has-focus.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios,.searchbar-animated.searchbar-should-show-cancel.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios{opacity:1;pointer-events:auto}.searchbar-animated.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios{-webkit-margin-end:-100%;margin-inline-end:-100%;-webkit-transform:translate3d(0,  0,  0);transform:translate3d(0,  0,  0);-webkit-transition:all 300ms ease;transition:all 300ms ease;opacity:0;pointer-events:none}.searchbar-no-animate.sc-ion-searchbar-ios-h .searchbar-search-icon.sc-ion-searchbar-ios,.searchbar-no-animate.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios,.searchbar-no-animate.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios{-webkit-transition-duration:0ms;transition-duration:0ms}.ion-color.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios{color:var(--ion-color-base)}@media (any-hover: hover){.ion-color.sc-ion-searchbar-ios-h .searchbar-cancel-button.sc-ion-searchbar-ios:hover{color:var(--ion-color-tint)}}ion-toolbar.sc-ion-searchbar-ios-h,ion-toolbar .sc-ion-searchbar-ios-h{padding-top:1px;padding-bottom:15px;height:52px}ion-toolbar.ion-color.sc-ion-searchbar-ios-h:not(.ion-color),ion-toolbar.ion-color .sc-ion-searchbar-ios-h:not(.ion-color){color:inherit}ion-toolbar.ion-color.sc-ion-searchbar-ios-h:not(.ion-color) .searchbar-cancel-button.sc-ion-searchbar-ios,ion-toolbar.ion-color .sc-ion-searchbar-ios-h:not(.ion-color) .searchbar-cancel-button.sc-ion-searchbar-ios{color:currentColor}ion-toolbar.ion-color.sc-ion-searchbar-ios-h .searchbar-search-icon.sc-ion-searchbar-ios,ion-toolbar.ion-color .sc-ion-searchbar-ios-h .searchbar-search-icon.sc-ion-searchbar-ios{color:currentColor;opacity:0.5}ion-toolbar.ion-color.sc-ion-searchbar-ios-h:not(.ion-color) .searchbar-input.sc-ion-searchbar-ios,ion-toolbar.ion-color .sc-ion-searchbar-ios-h:not(.ion-color) .searchbar-input.sc-ion-searchbar-ios{background:rgba(var(--ion-color-contrast-rgb), 0.07);color:currentColor}ion-toolbar.ion-color.sc-ion-searchbar-ios-h:not(.ion-color) .searchbar-clear-button.sc-ion-searchbar-ios,ion-toolbar.ion-color .sc-ion-searchbar-ios-h:not(.ion-color) .searchbar-clear-button.sc-ion-searchbar-ios{color:currentColor;opacity:0.5}";
+const searchbarMdCss = ".sc-ion-searchbar-md-h{--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:0.6;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-align:center;align-items:center;width:100%;color:var(--color);font-family:var(--ion-font-family, inherit);-webkit-box-sizing:border-box;box-sizing:border-box}.ion-color.sc-ion-searchbar-md-h{color:var(--ion-color-contrast)}.ion-color.sc-ion-searchbar-md-h .searchbar-input.sc-ion-searchbar-md{background:var(--ion-color-base)}.ion-color.sc-ion-searchbar-md-h .searchbar-clear-button.sc-ion-searchbar-md,.ion-color.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md,.ion-color.sc-ion-searchbar-md-h .searchbar-search-icon.sc-ion-searchbar-md{color:inherit}.searchbar-search-icon.sc-ion-searchbar-md{color:var(--icon-color);pointer-events:none}.searchbar-input-container.sc-ion-searchbar-md{display:block;position:relative;-ms-flex-negative:1;flex-shrink:1;width:100%}.searchbar-input.sc-ion-searchbar-md{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;border-radius:var(--border-radius);display:block;width:100%;border:0;outline:none;background:var(--background);font-family:inherit;-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}.searchbar-input.sc-ion-searchbar-md::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.searchbar-input.sc-ion-searchbar-md::-webkit-search-cancel-button,.searchbar-input.sc-ion-searchbar-md::-ms-clear{display:none}.searchbar-cancel-button.sc-ion-searchbar-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:none;height:100%;border:0;outline:none;color:var(--cancel-button-color);cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none}.searchbar-cancel-button.sc-ion-searchbar-md>div.sc-ion-searchbar-md{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%}.searchbar-clear-button.sc-ion-searchbar-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;display:none;min-height:0;outline:none;color:var(--clear-button-color);-webkit-appearance:none;-moz-appearance:none;appearance:none}.searchbar-clear-button.sc-ion-searchbar-md:focus{opacity:0.5}.searchbar-has-value.searchbar-should-show-clear.sc-ion-searchbar-md-h .searchbar-clear-button.sc-ion-searchbar-md{display:block}.searchbar-disabled.sc-ion-searchbar-md-h{cursor:default;opacity:0.4;pointer-events:none}.sc-ion-searchbar-md-h{--background:var(--ion-background-color, #fff);--border-radius:2px;--box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);--cancel-button-color:var(--ion-color-step-900, #1a1a1a);--clear-button-color:initial;--color:var(--ion-color-step-850, #262626);--icon-color:var(--ion-color-step-600, #666666);-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:8px;padding-inline-end:8px;padding-top:8px;padding-bottom:8px;background:inherit}.searchbar-search-icon.sc-ion-searchbar-md{top:11px;width:21px;height:21px}@supports (inset-inline-start: 0){.searchbar-search-icon.sc-ion-searchbar-md{inset-inline-start:16px}}@supports not (inset-inline-start: 0){.searchbar-search-icon.sc-ion-searchbar-md{left:16px}[dir=rtl].sc-ion-searchbar-md-h .searchbar-search-icon.sc-ion-searchbar-md,[dir=rtl] .sc-ion-searchbar-md-h .searchbar-search-icon.sc-ion-searchbar-md{left:unset;right:unset;right:16px}[dir=rtl].sc-ion-searchbar-md .searchbar-search-icon.sc-ion-searchbar-md{left:unset;right:unset;right:16px}@supports selector(:dir(rtl)){.searchbar-search-icon.sc-ion-searchbar-md:dir(rtl){left:unset;right:unset;right:16px}}}.searchbar-cancel-button.sc-ion-searchbar-md{top:0;background-color:transparent;font-size:1.6em}@supports (inset-inline-start: 0){.searchbar-cancel-button.sc-ion-searchbar-md{inset-inline-start:5px}}@supports not (inset-inline-start: 0){.searchbar-cancel-button.sc-ion-searchbar-md{left:5px}[dir=rtl].sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md,[dir=rtl] .sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md{left:unset;right:unset;right:5px}[dir=rtl].sc-ion-searchbar-md .searchbar-cancel-button.sc-ion-searchbar-md{left:unset;right:unset;right:5px}@supports selector(:dir(rtl)){.searchbar-cancel-button.sc-ion-searchbar-md:dir(rtl){left:unset;right:unset;right:5px}}}.searchbar-search-icon.sc-ion-searchbar-md,.searchbar-cancel-button.sc-ion-searchbar-md{position:absolute}.searchbar-search-icon.ion-activated.sc-ion-searchbar-md,.searchbar-cancel-button.ion-activated.sc-ion-searchbar-md{background-color:transparent}.searchbar-input.sc-ion-searchbar-md{-webkit-padding-start:55px;padding-inline-start:55px;-webkit-padding-end:55px;padding-inline-end:55px;padding-top:6px;padding-bottom:6px;background-position:left 8px center;height:auto;font-size:16px;font-weight:400;line-height:30px}[dir=rtl].sc-ion-searchbar-md-h .searchbar-input.sc-ion-searchbar-md,[dir=rtl] .sc-ion-searchbar-md-h .searchbar-input.sc-ion-searchbar-md{background-position:right 8px center}[dir=rtl].sc-ion-searchbar-md .searchbar-input.sc-ion-searchbar-md{background-position:right 8px center}@supports selector(:dir(rtl)){.searchbar-input.sc-ion-searchbar-md:dir(rtl){background-position:right 8px center}}.searchbar-clear-button.sc-ion-searchbar-md{top:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;position:absolute;height:100%;border:0;background-color:transparent}@supports (inset-inline-start: 0){.searchbar-clear-button.sc-ion-searchbar-md{inset-inline-end:13px}}@supports not (inset-inline-start: 0){.searchbar-clear-button.sc-ion-searchbar-md{right:13px}[dir=rtl].sc-ion-searchbar-md-h .searchbar-clear-button.sc-ion-searchbar-md,[dir=rtl] .sc-ion-searchbar-md-h .searchbar-clear-button.sc-ion-searchbar-md{left:unset;right:unset;left:13px}[dir=rtl].sc-ion-searchbar-md .searchbar-clear-button.sc-ion-searchbar-md{left:unset;right:unset;left:13px}@supports selector(:dir(rtl)){.searchbar-clear-button.sc-ion-searchbar-md:dir(rtl){left:unset;right:unset;left:13px}}}.searchbar-clear-button.ion-activated.sc-ion-searchbar-md{background-color:transparent}.searchbar-clear-icon.sc-ion-searchbar-md{width:22px;height:100%}.searchbar-has-focus.sc-ion-searchbar-md-h .searchbar-search-icon.sc-ion-searchbar-md{display:block}.searchbar-has-focus.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md,.searchbar-should-show-cancel.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md{display:block}.searchbar-has-focus.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md+.searchbar-search-icon.sc-ion-searchbar-md,.searchbar-should-show-cancel.sc-ion-searchbar-md-h .searchbar-cancel-button.sc-ion-searchbar-md+.searchbar-search-icon.sc-ion-searchbar-md{display:none}ion-toolbar.sc-ion-searchbar-md-h,ion-toolbar .sc-ion-searchbar-md-h{-webkit-padding-start:7px;padding-inline-start:7px;-webkit-padding-end:7px;padding-inline-end:7px;padding-top:3px;padding-bottom:3px}";
+const Searchbar = /* @__PURE__ */ proxyCustomElement$1(class Searchbar2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.ionInput = createEvent(this, "ionInput", 7);
+    this.ionChange = createEvent(this, "ionChange", 7);
+    this.ionCancel = createEvent(this, "ionCancel", 7);
+    this.ionClear = createEvent(this, "ionClear", 7);
+    this.ionBlur = createEvent(this, "ionBlur", 7);
+    this.ionFocus = createEvent(this, "ionFocus", 7);
+    this.ionStyle = createEvent(this, "ionStyle", 7);
+    this.isCancelVisible = false;
+    this.shouldAlignLeft = true;
+    this.onClearInput = async (shouldFocus) => {
+      this.ionClear.emit();
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const value = this.getValue();
+          if (value !== "") {
+            this.value = "";
+            this.emitInputChange();
+            if (shouldFocus && !this.focused) {
+              this.setFocus();
+              this.focusedValue = value;
+            }
+          }
+          resolve();
+        }, 16 * 4);
+      });
+    };
+    this.onCancelSearchbar = async (ev) => {
+      if (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+      this.ionCancel.emit();
+      const value = this.getValue();
+      const focused = this.focused;
+      await this.onClearInput();
+      if (value && !focused) {
+        this.emitValueChange(ev);
+      }
+      if (this.nativeInput) {
+        this.nativeInput.blur();
+      }
+    };
+    this.onInput = (ev) => {
+      const input = ev.target;
+      if (input) {
+        this.value = input.value;
+      }
+      this.emitInputChange(ev);
+    };
+    this.onChange = (ev) => {
+      this.emitValueChange(ev);
+    };
+    this.onBlur = (ev) => {
+      this.focused = false;
+      this.ionBlur.emit();
+      this.positionElements();
+      if (this.focusedValue !== this.value) {
+        this.emitValueChange(ev);
+      }
+      this.focusedValue = void 0;
+    };
+    this.onFocus = () => {
+      this.focused = true;
+      this.focusedValue = this.value;
+      this.ionFocus.emit();
+      this.positionElements();
+    };
+    this.focused = false;
+    this.noAnimate = true;
+    this.color = void 0;
+    this.animated = false;
+    this.autocomplete = "off";
+    this.autocorrect = "off";
+    this.cancelButtonIcon = config.get("backButtonIcon", arrowBackSharp);
+    this.cancelButtonText = "Cancel";
+    this.clearIcon = void 0;
+    this.debounce = void 0;
+    this.disabled = false;
+    this.inputmode = void 0;
+    this.enterkeyhint = void 0;
+    this.placeholder = "Search";
+    this.searchIcon = void 0;
+    this.showCancelButton = "never";
+    this.showClearButton = "always";
+    this.spellcheck = false;
+    this.type = "search";
+    this.value = "";
+  }
+  debounceChanged() {
+    const { ionInput, debounce: debounce2, originalIonInput } = this;
+    this.ionInput = debounce2 === void 0 ? originalIonInput !== null && originalIonInput !== void 0 ? originalIonInput : ionInput : debounceEvent(ionInput, debounce2);
+  }
+  valueChanged() {
+    const inputEl = this.nativeInput;
+    const value = this.getValue();
+    if (inputEl && inputEl.value !== value) {
+      inputEl.value = value;
+    }
+  }
+  showCancelButtonChanged() {
+    requestAnimationFrame(() => {
+      this.positionElements();
+      forceUpdate(this);
+    });
+  }
+  connectedCallback() {
+    this.emitStyle();
+  }
+  componentDidLoad() {
+    this.originalIonInput = this.ionInput;
+    this.positionElements();
+    this.debounceChanged();
+    setTimeout(() => {
+      this.noAnimate = false;
+    }, 300);
+  }
+  emitStyle() {
+    this.ionStyle.emit({
+      searchbar: true
+    });
+  }
+  /**
+   * Sets focus on the native `input` in `ion-searchbar`. Use this method instead of the global
+   * `input.focus()`.
+   *
+   * Developers who wish to focus an input when a page enters
+   * should call `setFocus()` in the `ionViewDidEnter()` lifecycle method.
+   *
+   * Developers who wish to focus an input when an overlay is presented
+   * should call `setFocus` after `didPresent` has resolved.
+   */
+  async setFocus() {
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  }
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  getInputElement() {
+    return Promise.resolve(this.nativeInput);
+  }
+  /**
+   * Emits an `ionChange` event.
+   *
+   * This API should be called for user committed changes.
+   * This API should not be used for external value changes.
+   */
+  emitValueChange(event) {
+    const { value } = this;
+    const newValue = value == null ? value : value.toString();
+    this.focusedValue = newValue;
+    this.ionChange.emit({ value: newValue, event });
+  }
+  /**
+   * Emits an `ionInput` event.
+   */
+  emitInputChange(event) {
+    const { value } = this;
+    this.ionInput.emit({ value, event });
+  }
+  /**
+   * Positions the input search icon, placeholder, and the cancel button
+   * based on the input value and if it is focused. (ios only)
+   */
+  positionElements() {
+    const value = this.getValue();
+    const prevAlignLeft = this.shouldAlignLeft;
+    const mode = getIonMode$2(this);
+    const shouldAlignLeft = !this.animated || value.trim() !== "" || !!this.focused;
+    this.shouldAlignLeft = shouldAlignLeft;
+    if (mode !== "ios") {
+      return;
+    }
+    if (prevAlignLeft !== shouldAlignLeft) {
+      this.positionPlaceholder();
+    }
+    if (this.animated) {
+      this.positionCancelButton();
+    }
+  }
+  /**
+   * Positions the input placeholder
+   */
+  positionPlaceholder() {
+    const inputEl = this.nativeInput;
+    if (!inputEl) {
+      return;
+    }
+    const rtl = isRTL$1(this.el);
+    const iconEl = (this.el.shadowRoot || this.el).querySelector(".searchbar-search-icon");
+    if (this.shouldAlignLeft) {
+      inputEl.removeAttribute("style");
+      iconEl.removeAttribute("style");
+    } else {
+      const doc2 = document;
+      const tempSpan = doc2.createElement("span");
+      tempSpan.innerText = this.placeholder || "";
+      doc2.body.appendChild(tempSpan);
+      raf(() => {
+        const textWidth = tempSpan.offsetWidth;
+        tempSpan.remove();
+        const inputLeft = "calc(50% - " + textWidth / 2 + "px)";
+        const iconLeft = "calc(50% - " + (textWidth / 2 + 30) + "px)";
+        if (rtl) {
+          inputEl.style.paddingRight = inputLeft;
+          iconEl.style.marginRight = iconLeft;
+        } else {
+          inputEl.style.paddingLeft = inputLeft;
+          iconEl.style.marginLeft = iconLeft;
+        }
+      });
+    }
+  }
+  /**
+   * Show the iOS Cancel button on focus, hide it offscreen otherwise
+   */
+  positionCancelButton() {
+    const rtl = isRTL$1(this.el);
+    const cancelButton = (this.el.shadowRoot || this.el).querySelector(".searchbar-cancel-button");
+    const shouldShowCancel = this.shouldShowCancelButton();
+    if (cancelButton !== null && shouldShowCancel !== this.isCancelVisible) {
+      const cancelStyle = cancelButton.style;
+      this.isCancelVisible = shouldShowCancel;
+      if (shouldShowCancel) {
+        if (rtl) {
+          cancelStyle.marginLeft = "0";
+        } else {
+          cancelStyle.marginRight = "0";
+        }
+      } else {
+        const offset = cancelButton.offsetWidth;
+        if (offset > 0) {
+          if (rtl) {
+            cancelStyle.marginLeft = -offset + "px";
+          } else {
+            cancelStyle.marginRight = -offset + "px";
+          }
+        }
+      }
+    }
+  }
+  getValue() {
+    return this.value || "";
+  }
+  hasValue() {
+    return this.getValue() !== "";
+  }
+  /**
+   * Determines whether or not the cancel button should be visible onscreen.
+   * Cancel button should be shown if one of two conditions applies:
+   * 1. `showCancelButton` is set to `always`.
+   * 2. `showCancelButton` is set to `focus`, and the searchbar has been focused.
+   */
+  shouldShowCancelButton() {
+    if (this.showCancelButton === "never" || this.showCancelButton === "focus" && !this.focused) {
+      return false;
+    }
+    return true;
+  }
+  /**
+   * Determines whether or not the clear button should be visible onscreen.
+   * Clear button should be shown if one of two conditions applies:
+   * 1. `showClearButton` is set to `always`.
+   * 2. `showClearButton` is set to `focus`, and the searchbar has been focused.
+   */
+  shouldShowClearButton() {
+    if (this.showClearButton === "never" || this.showClearButton === "focus" && !this.focused) {
+      return false;
+    }
+    return true;
+  }
+  render() {
+    const { cancelButtonText } = this;
+    const animated = this.animated && config.getBoolean("animated", true);
+    const mode = getIonMode$2(this);
+    const clearIcon = this.clearIcon || (mode === "ios" ? closeCircle : closeSharp);
+    const searchIcon = this.searchIcon || (mode === "ios" ? searchOutline : searchSharp);
+    const shouldShowCancelButton = this.shouldShowCancelButton();
+    const cancelButton = this.showCancelButton !== "never" && h$1("button", { "aria-label": cancelButtonText, "aria-hidden": shouldShowCancelButton ? void 0 : "true", type: "button", tabIndex: mode === "ios" && !shouldShowCancelButton ? -1 : void 0, onMouseDown: this.onCancelSearchbar, onTouchStart: this.onCancelSearchbar, class: "searchbar-cancel-button" }, h$1("div", { "aria-hidden": "true" }, mode === "md" ? h$1("ion-icon", { "aria-hidden": "true", mode, icon: this.cancelButtonIcon, lazy: false }) : cancelButtonText));
+    return h$1(Host$1, { role: "search", "aria-disabled": this.disabled ? "true" : null, class: createColorClasses$1(this.color, {
+      [mode]: true,
+      "searchbar-animated": animated,
+      "searchbar-disabled": this.disabled,
+      "searchbar-no-animate": animated && this.noAnimate,
+      "searchbar-has-value": this.hasValue(),
+      "searchbar-left-aligned": this.shouldAlignLeft,
+      "searchbar-has-focus": this.focused,
+      "searchbar-should-show-clear": this.shouldShowClearButton(),
+      "searchbar-should-show-cancel": this.shouldShowCancelButton()
+    }) }, h$1("div", { class: "searchbar-input-container" }, h$1("input", { "aria-label": "search text", disabled: this.disabled, ref: (el) => this.nativeInput = el, class: "searchbar-input", inputMode: this.inputmode, enterKeyHint: this.enterkeyhint, onInput: this.onInput, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus, placeholder: this.placeholder, type: this.type, value: this.getValue(), autoComplete: this.autocomplete, autoCorrect: this.autocorrect, spellcheck: this.spellcheck }), mode === "md" && cancelButton, h$1("ion-icon", { "aria-hidden": "true", mode, icon: searchIcon, lazy: false, class: "searchbar-search-icon" }), h$1("button", { "aria-label": "reset", type: "button", "no-blur": true, class: "searchbar-clear-button", onPointerDown: (ev) => {
+      ev.preventDefault();
+    }, onClick: () => this.onClearInput(true) }, h$1("ion-icon", { "aria-hidden": "true", mode, icon: clearIcon, lazy: false, class: "searchbar-clear-icon" }))), mode === "ios" && cancelButton);
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "debounce": ["debounceChanged"],
+      "value": ["valueChanged"],
+      "showCancelButton": ["showCancelButtonChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: searchbarIosCss,
+      md: searchbarMdCss
+    };
+  }
+}, [34, "ion-searchbar", {
+  "color": [513],
+  "animated": [4],
+  "autocomplete": [1],
+  "autocorrect": [1],
+  "cancelButtonIcon": [1, "cancel-button-icon"],
+  "cancelButtonText": [1, "cancel-button-text"],
+  "clearIcon": [1, "clear-icon"],
+  "debounce": [2],
+  "disabled": [4],
+  "inputmode": [1],
+  "enterkeyhint": [1],
+  "placeholder": [1],
+  "searchIcon": [1, "search-icon"],
+  "showCancelButton": [1, "show-cancel-button"],
+  "showClearButton": [1, "show-clear-button"],
+  "spellcheck": [4],
+  "type": [1],
+  "value": [1025],
+  "focused": [32],
+  "noAnimate": [32],
+  "setFocus": [64],
+  "getInputElement": [64]
+}]);
+function defineCustomElement$1$e() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-searchbar", "ion-icon"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-searchbar":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Searchbar);
+        }
+        break;
+      case "ion-icon":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$R();
+        }
+        break;
+    }
+  });
+}
+const defineCustomElement$i = defineCustomElement$1$e;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -8955,7 +11148,7 @@ const Segment = /* @__PURE__ */ proxyCustomElement$1(class Segment2 extends H$1 
   "selectOnFocus": [4, "select-on-focus"],
   "activated": [32]
 }, [[0, "keydown", "onKeyDown"]]]);
-function defineCustomElement$1$b() {
+function defineCustomElement$1$d() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -8970,7 +11163,7 @@ function defineCustomElement$1$b() {
     }
   });
 }
-const defineCustomElement$c = defineCustomElement$1$b;
+const defineCustomElement$h = defineCustomElement$1$d;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -9088,7 +11281,7 @@ const SegmentButton = /* @__PURE__ */ proxyCustomElement$1(class SegmentButton2 
   "checked": [32],
   "setFocus": [64]
 }]);
-function defineCustomElement$1$a() {
+function defineCustomElement$1$c() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -9102,13 +11295,13 @@ function defineCustomElement$1$a() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$C();
+          defineCustomElement$N();
         }
         break;
     }
   });
 }
-const defineCustomElement$b = defineCustomElement$1$a;
+const defineCustomElement$g = defineCustomElement$1$c;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -9513,6 +11706,1628 @@ const index2 = /* @__PURE__ */ Object.freeze({
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
+const createButtonActiveGesture = (el, isButton) => {
+  const activateButtonAtPoint = (x, y, hapticFeedbackFn) => {
+    {
+      return;
+    }
+  };
+  return createGesture({
+    el,
+    gestureName: "buttonActiveDrag",
+    threshold: 0,
+    onStart: (ev) => activateButtonAtPoint(ev.currentX, ev.currentY),
+    onMove: (ev) => activateButtonAtPoint(ev.currentX, ev.currentY),
+    onEnd: () => {
+      hapticSelectionEnd();
+    }
+  });
+};
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const iosEnterAnimation$2 = (baseEl) => {
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  backdropAnimation.addElement(baseEl.querySelector("ion-backdrop")).fromTo("opacity", 0.01, "var(--backdrop-opacity)").beforeStyles({
+    "pointer-events": "none"
+  }).afterClearStyles(["pointer-events"]);
+  wrapperAnimation.addElement(baseEl.querySelector(".action-sheet-wrapper")).fromTo("transform", "translateY(100%)", "translateY(0%)");
+  return baseAnimation.addElement(baseEl).easing("cubic-bezier(.36,.66,.04,1)").duration(400).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const iosLeaveAnimation$2 = (baseEl) => {
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  backdropAnimation.addElement(baseEl.querySelector("ion-backdrop")).fromTo("opacity", "var(--backdrop-opacity)", 0);
+  wrapperAnimation.addElement(baseEl.querySelector(".action-sheet-wrapper")).fromTo("transform", "translateY(0%)", "translateY(100%)");
+  return baseAnimation.addElement(baseEl).easing("cubic-bezier(.36,.66,.04,1)").duration(450).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const mdEnterAnimation$2 = (baseEl) => {
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  backdropAnimation.addElement(baseEl.querySelector("ion-backdrop")).fromTo("opacity", 0.01, "var(--backdrop-opacity)").beforeStyles({
+    "pointer-events": "none"
+  }).afterClearStyles(["pointer-events"]);
+  wrapperAnimation.addElement(baseEl.querySelector(".action-sheet-wrapper")).fromTo("transform", "translateY(100%)", "translateY(0%)");
+  return baseAnimation.addElement(baseEl).easing("cubic-bezier(.36,.66,.04,1)").duration(400).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const mdLeaveAnimation$2 = (baseEl) => {
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  backdropAnimation.addElement(baseEl.querySelector("ion-backdrop")).fromTo("opacity", "var(--backdrop-opacity)", 0);
+  wrapperAnimation.addElement(baseEl.querySelector(".action-sheet-wrapper")).fromTo("transform", "translateY(0%)", "translateY(100%)");
+  return baseAnimation.addElement(baseEl).easing("cubic-bezier(.36,.66,.04,1)").duration(450).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const actionSheetIosCss = '.sc-ion-action-sheet-ios-h{--color:initial;--button-color-activated:var(--button-color);--button-color-focused:var(--button-color);--button-color-hover:var(--button-color);--button-color-selected:var(--button-color);--min-width:auto;--width:100%;--max-width:500px;--min-height:auto;--height:auto;--max-height:calc(100% - (var(--ion-safe-area-top) + var(--ion-safe-area-bottom)));-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;right:0;top:0;bottom:0;display:block;position:fixed;outline:none;font-family:var(--ion-font-family, inherit);-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}.overlay-hidden.sc-ion-action-sheet-ios-h{display:none}.action-sheet-wrapper.sc-ion-action-sheet-ios{left:0;right:0;bottom:0;-webkit-transform:translate3d(0,  100%,  0);transform:translate3d(0,  100%,  0);display:block;position:absolute;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);z-index:10;pointer-events:none}.action-sheet-button.sc-ion-action-sheet-ios{display:block;position:relative;width:100%;border:0;outline:none;background:var(--button-background);color:var(--button-color);font-family:inherit;overflow:hidden}.action-sheet-button-inner.sc-ion-action-sheet-ios{display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;pointer-events:none;width:100%;height:100%;z-index:1}.action-sheet-container.sc-ion-action-sheet-ios{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;-ms-flex-pack:end;justify-content:flex-end;height:100%;max-height:100vh}.action-sheet-group.sc-ion-action-sheet-ios{-ms-flex-negative:2;flex-shrink:2;overscroll-behavior-y:contain;overflow-y:auto;-webkit-overflow-scrolling:touch;pointer-events:all;background:var(--background)}.action-sheet-group.sc-ion-action-sheet-ios::-webkit-scrollbar{display:none}.action-sheet-group-cancel.sc-ion-action-sheet-ios{-ms-flex-negative:0;flex-shrink:0;overflow:hidden}.action-sheet-button.sc-ion-action-sheet-ios::after{left:0;right:0;top:0;bottom:0;position:absolute;content:"";opacity:0}.action-sheet-selected.sc-ion-action-sheet-ios{color:var(--button-color-selected)}.action-sheet-selected.sc-ion-action-sheet-ios::after{background:var(--button-background-selected);opacity:var(--button-background-selected-opacity)}.action-sheet-button.ion-activated.sc-ion-action-sheet-ios{color:var(--button-color-activated)}.action-sheet-button.ion-activated.sc-ion-action-sheet-ios::after{background:var(--button-background-activated);opacity:var(--button-background-activated-opacity)}.action-sheet-button.ion-focused.sc-ion-action-sheet-ios{color:var(--button-color-focused)}.action-sheet-button.ion-focused.sc-ion-action-sheet-ios::after{background:var(--button-background-focused);opacity:var(--button-background-focused-opacity)}@media (any-hover: hover){.action-sheet-button.sc-ion-action-sheet-ios:hover{color:var(--button-color-hover)}.action-sheet-button.sc-ion-action-sheet-ios:hover::after{background:var(--button-background-hover);opacity:var(--button-background-hover-opacity)}}.sc-ion-action-sheet-ios-h{--background:var(--ion-overlay-background-color, var(--ion-color-step-100, #f9f9f9));--backdrop-opacity:var(--ion-backdrop-opacity, 0.4);--button-background:linear-gradient(0deg, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.08), rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.08) 50%, transparent 50%) bottom/100% 1px no-repeat transparent;--button-background-activated:var(--ion-text-color, #000);--button-background-activated-opacity:.08;--button-background-hover:currentColor;--button-background-hover-opacity:.04;--button-background-focused:currentColor;--button-background-focused-opacity:.12;--button-background-selected:var(--ion-color-step-150, var(--ion-background-color, #fff));--button-background-selected-opacity:1;--button-color:var(--ion-color-primary, #3880ff);--color:var(--ion-color-step-400, #999999);text-align:center}.action-sheet-wrapper.sc-ion-action-sheet-ios{-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto;margin-top:var(--ion-safe-area-top, 0);margin-bottom:var(--ion-safe-area-bottom, 0)}.action-sheet-container.sc-ion-action-sheet-ios{-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:8px;padding-inline-end:8px;padding-top:0;padding-bottom:0}.action-sheet-group.sc-ion-action-sheet-ios{border-radius:13px;margin-bottom:8px}.action-sheet-group.sc-ion-action-sheet-ios:first-child{margin-top:10px}.action-sheet-group.sc-ion-action-sheet-ios:last-child{margin-bottom:10px}@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))){.action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-group.sc-ion-action-sheet-ios{background-color:transparent;-webkit-backdrop-filter:saturate(280%) blur(20px);backdrop-filter:saturate(280%) blur(20px)}.action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-title.sc-ion-action-sheet-ios,.action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-button.sc-ion-action-sheet-ios{background-color:transparent;background-image:-webkit-gradient(linear, left bottom, left top, from(rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8)), to(rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8))), -webkit-gradient(linear, left bottom, left top, from(rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.4)), color-stop(50%, rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.4)), color-stop(50%, rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8)));background-image:linear-gradient(0deg, rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8), rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8) 100%), linear-gradient(0deg, rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.4), rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.4) 50%, rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8) 50%);background-repeat:no-repeat;background-position:top, bottom;background-size:100% calc(100% - 1px), 100% 1px;-webkit-backdrop-filter:saturate(120%);backdrop-filter:saturate(120%)}.action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-button.ion-activated.sc-ion-action-sheet-ios{background-color:rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.7);background-image:none}.action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-cancel.sc-ion-action-sheet-ios{background:var(--button-background-selected)}}.action-sheet-title.sc-ion-action-sheet-ios{background:-webkit-gradient(linear, left bottom, left top, from(rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.08)), color-stop(50%, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.08)), color-stop(50%, transparent)) bottom/100% 1px no-repeat transparent;background:linear-gradient(0deg, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.08), rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.08) 50%, transparent 50%) bottom/100% 1px no-repeat transparent}.action-sheet-title.sc-ion-action-sheet-ios{-webkit-padding-start:10px;padding-inline-start:10px;-webkit-padding-end:10px;padding-inline-end:10px;padding-top:14px;padding-bottom:13px;color:var(--color, var(--ion-color-step-400, #999999));font-size:13px;font-weight:400;text-align:center}.action-sheet-title.action-sheet-has-sub-title.sc-ion-action-sheet-ios{font-weight:600}.action-sheet-sub-title.sc-ion-action-sheet-ios{padding-left:0;padding-right:0;padding-top:6px;padding-bottom:0;font-size:13px;font-weight:400}.action-sheet-button.sc-ion-action-sheet-ios{-webkit-padding-start:18px;padding-inline-start:18px;-webkit-padding-end:18px;padding-inline-end:18px;padding-top:18px;padding-bottom:18px;height:56px;font-size:20px;contain:strict}.action-sheet-button.sc-ion-action-sheet-ios .action-sheet-icon.sc-ion-action-sheet-ios{-webkit-margin-end:0.3em;margin-inline-end:0.3em;font-size:28px;pointer-events:none}.action-sheet-button.sc-ion-action-sheet-ios:last-child{background-image:none}.action-sheet-selected.sc-ion-action-sheet-ios{font-weight:bold}.action-sheet-cancel.sc-ion-action-sheet-ios{font-weight:600}.action-sheet-cancel.sc-ion-action-sheet-ios::after{background:var(--button-background-selected);opacity:var(--button-background-selected-opacity)}.action-sheet-destructive.sc-ion-action-sheet-ios,.action-sheet-destructive.ion-activated.sc-ion-action-sheet-ios,.action-sheet-destructive.ion-focused.sc-ion-action-sheet-ios{color:var(--ion-color-danger, #eb445a)}@media (any-hover: hover){.action-sheet-destructive.sc-ion-action-sheet-ios:hover{color:var(--ion-color-danger, #eb445a)}}';
+const actionSheetMdCss = '.sc-ion-action-sheet-md-h{--color:initial;--button-color-activated:var(--button-color);--button-color-focused:var(--button-color);--button-color-hover:var(--button-color);--button-color-selected:var(--button-color);--min-width:auto;--width:100%;--max-width:500px;--min-height:auto;--height:auto;--max-height:calc(100% - (var(--ion-safe-area-top) + var(--ion-safe-area-bottom)));-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;right:0;top:0;bottom:0;display:block;position:fixed;outline:none;font-family:var(--ion-font-family, inherit);-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}.overlay-hidden.sc-ion-action-sheet-md-h{display:none}.action-sheet-wrapper.sc-ion-action-sheet-md{left:0;right:0;bottom:0;-webkit-transform:translate3d(0,  100%,  0);transform:translate3d(0,  100%,  0);display:block;position:absolute;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);z-index:10;pointer-events:none}.action-sheet-button.sc-ion-action-sheet-md{display:block;position:relative;width:100%;border:0;outline:none;background:var(--button-background);color:var(--button-color);font-family:inherit;overflow:hidden}.action-sheet-button-inner.sc-ion-action-sheet-md{display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;pointer-events:none;width:100%;height:100%;z-index:1}.action-sheet-container.sc-ion-action-sheet-md{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;-ms-flex-pack:end;justify-content:flex-end;height:100%;max-height:100vh}.action-sheet-group.sc-ion-action-sheet-md{-ms-flex-negative:2;flex-shrink:2;overscroll-behavior-y:contain;overflow-y:auto;-webkit-overflow-scrolling:touch;pointer-events:all;background:var(--background)}.action-sheet-group.sc-ion-action-sheet-md::-webkit-scrollbar{display:none}.action-sheet-group-cancel.sc-ion-action-sheet-md{-ms-flex-negative:0;flex-shrink:0;overflow:hidden}.action-sheet-button.sc-ion-action-sheet-md::after{left:0;right:0;top:0;bottom:0;position:absolute;content:"";opacity:0}.action-sheet-selected.sc-ion-action-sheet-md{color:var(--button-color-selected)}.action-sheet-selected.sc-ion-action-sheet-md::after{background:var(--button-background-selected);opacity:var(--button-background-selected-opacity)}.action-sheet-button.ion-activated.sc-ion-action-sheet-md{color:var(--button-color-activated)}.action-sheet-button.ion-activated.sc-ion-action-sheet-md::after{background:var(--button-background-activated);opacity:var(--button-background-activated-opacity)}.action-sheet-button.ion-focused.sc-ion-action-sheet-md{color:var(--button-color-focused)}.action-sheet-button.ion-focused.sc-ion-action-sheet-md::after{background:var(--button-background-focused);opacity:var(--button-background-focused-opacity)}@media (any-hover: hover){.action-sheet-button.sc-ion-action-sheet-md:hover{color:var(--button-color-hover)}.action-sheet-button.sc-ion-action-sheet-md:hover::after{background:var(--button-background-hover);opacity:var(--button-background-hover-opacity)}}.sc-ion-action-sheet-md-h{--background:var(--ion-overlay-background-color, var(--ion-background-color, #fff));--backdrop-opacity:var(--ion-backdrop-opacity, 0.32);--button-background:transparent;--button-background-selected:currentColor;--button-background-selected-opacity:0;--button-background-activated:transparent;--button-background-activated-opacity:0;--button-background-hover:currentColor;--button-background-hover-opacity:.04;--button-background-focused:currentColor;--button-background-focused-opacity:.12;--button-color:var(--ion-color-step-850, #262626);--color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.54)}.action-sheet-wrapper.sc-ion-action-sheet-md{-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto;margin-top:var(--ion-safe-area-top, 0);margin-bottom:0}.action-sheet-title.sc-ion-action-sheet-md{-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px;padding-top:20px;padding-bottom:17px;min-height:60px;color:var(--color, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.54));font-size:16px;text-align:start}.action-sheet-sub-title.sc-ion-action-sheet-md{padding-left:0;padding-right:0;padding-top:16px;padding-bottom:0;font-size:14px}.action-sheet-group.sc-ion-action-sheet-md:first-child{padding-top:0}.action-sheet-group.sc-ion-action-sheet-md:last-child{padding-bottom:var(--ion-safe-area-bottom)}.action-sheet-button.sc-ion-action-sheet-md{-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px;padding-top:0;padding-bottom:0;position:relative;height:52px;font-size:16px;text-align:start;contain:strict;overflow:hidden}.action-sheet-icon.sc-ion-action-sheet-md{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:32px;margin-inline-end:32px;margin-top:0;margin-bottom:0;color:var(--color);font-size:24px}.action-sheet-button-inner.sc-ion-action-sheet-md{-ms-flex-pack:start;justify-content:flex-start}.action-sheet-selected.sc-ion-action-sheet-md{font-weight:bold}';
+const ActionSheet = /* @__PURE__ */ proxyCustomElement$1(class ActionSheet2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.didPresent = createEvent(this, "ionActionSheetDidPresent", 7);
+    this.willPresent = createEvent(this, "ionActionSheetWillPresent", 7);
+    this.willDismiss = createEvent(this, "ionActionSheetWillDismiss", 7);
+    this.didDismiss = createEvent(this, "ionActionSheetDidDismiss", 7);
+    this.didPresentShorthand = createEvent(this, "didPresent", 7);
+    this.willPresentShorthand = createEvent(this, "willPresent", 7);
+    this.willDismissShorthand = createEvent(this, "willDismiss", 7);
+    this.didDismissShorthand = createEvent(this, "didDismiss", 7);
+    this.delegateController = createDelegateController(this);
+    this.triggerController = createTriggerController();
+    this.presented = false;
+    this.onBackdropTap = () => {
+      this.dismiss(void 0, BACKDROP);
+    };
+    this.dispatchCancelHandler = (ev) => {
+      const role = ev.detail.role;
+      if (isCancel(role)) {
+        const cancelButton = this.getButtons().find((b) => b.role === "cancel");
+        this.callButtonHandler(cancelButton);
+      }
+    };
+    this.overlayIndex = void 0;
+    this.delegate = void 0;
+    this.hasController = false;
+    this.keyboardClose = true;
+    this.enterAnimation = void 0;
+    this.leaveAnimation = void 0;
+    this.buttons = [];
+    this.cssClass = void 0;
+    this.backdropDismiss = true;
+    this.header = void 0;
+    this.subHeader = void 0;
+    this.translucent = false;
+    this.animated = true;
+    this.htmlAttributes = void 0;
+    this.isOpen = false;
+    this.trigger = void 0;
+  }
+  onIsOpenChange(newValue, oldValue) {
+    if (newValue === true && oldValue === false) {
+      this.present();
+    } else if (newValue === false && oldValue === true) {
+      this.dismiss();
+    }
+  }
+  triggerChanged() {
+    const { trigger, el, triggerController } = this;
+    if (trigger) {
+      triggerController.addClickListener(el, trigger);
+    }
+  }
+  /**
+   * Present the action sheet overlay after it has been created.
+   */
+  async present() {
+    if (this.currentTransition !== void 0) {
+      await this.currentTransition;
+    }
+    await this.delegateController.attachViewToDom();
+    this.currentTransition = present(this, "actionSheetEnter", iosEnterAnimation$2, mdEnterAnimation$2);
+    await this.currentTransition;
+    this.currentTransition = void 0;
+  }
+  /**
+   * Dismiss the action sheet overlay after it has been presented.
+   *
+   * @param data Any data to emit in the dismiss events.
+   * @param role The role of the element that is dismissing the action sheet.
+   * This can be useful in a button handler for determining which button was
+   * clicked to dismiss the action sheet.
+   * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
+   */
+  async dismiss(data, role) {
+    this.currentTransition = dismiss(this, data, role, "actionSheetLeave", iosLeaveAnimation$2, mdLeaveAnimation$2);
+    const dismissed = await this.currentTransition;
+    if (dismissed) {
+      this.delegateController.removeViewFromDom();
+    }
+    return dismissed;
+  }
+  /**
+   * Returns a promise that resolves when the action sheet did dismiss.
+   */
+  onDidDismiss() {
+    return eventMethod(this.el, "ionActionSheetDidDismiss");
+  }
+  /**
+   * Returns a promise that resolves when the action sheet will dismiss.
+   *
+   */
+  onWillDismiss() {
+    return eventMethod(this.el, "ionActionSheetWillDismiss");
+  }
+  async buttonClick(button) {
+    const role = button.role;
+    if (isCancel(role)) {
+      return this.dismiss(button.data, role);
+    }
+    const shouldDismiss = await this.callButtonHandler(button);
+    if (shouldDismiss) {
+      return this.dismiss(button.data, button.role);
+    }
+    return Promise.resolve();
+  }
+  async callButtonHandler(button) {
+    if (button) {
+      const rtn = await safeCall$1(button.handler);
+      if (rtn === false) {
+        return false;
+      }
+    }
+    return true;
+  }
+  getButtons() {
+    return this.buttons.map((b) => {
+      return typeof b === "string" ? { text: b } : b;
+    });
+  }
+  connectedCallback() {
+    prepareOverlay(this.el);
+    this.triggerChanged();
+  }
+  disconnectedCallback() {
+    if (this.gesture) {
+      this.gesture.destroy();
+      this.gesture = void 0;
+    }
+    this.triggerController.removeClickListener();
+  }
+  componentWillLoad() {
+    setOverlayId(this.el);
+  }
+  componentDidLoad() {
+    const { groupEl, wrapperEl } = this;
+    if (this.gesture || getIonMode$2(this) === "md" || !wrapperEl || !groupEl) {
+      return;
+    }
+    readTask(() => {
+      const isScrollable = groupEl.scrollHeight > groupEl.clientHeight;
+      if (!isScrollable) {
+        this.gesture = createButtonActiveGesture(wrapperEl);
+        this.gesture.enable(true);
+      }
+    });
+  }
+  render() {
+    const { header, htmlAttributes, overlayIndex } = this;
+    const mode = getIonMode$2(this);
+    const allButtons = this.getButtons();
+    const cancelButton = allButtons.find((b) => b.role === "cancel");
+    const buttons = allButtons.filter((b) => b.role !== "cancel");
+    const headerID = `action-sheet-${overlayIndex}-header`;
+    return h$1(Host$1, Object.assign({ role: "dialog", "aria-modal": "true", "aria-labelledby": header !== void 0 ? headerID : null, tabindex: "-1" }, htmlAttributes, { style: {
+      zIndex: `${2e4 + this.overlayIndex}`
+    }, class: Object.assign(Object.assign({ [mode]: true }, getClassMap(this.cssClass)), { "overlay-hidden": true, "action-sheet-translucent": this.translucent }), onIonActionSheetWillDismiss: this.dispatchCancelHandler, onIonBackdropTap: this.onBackdropTap }), h$1("ion-backdrop", { tappable: this.backdropDismiss }), h$1("div", { tabindex: "0" }), h$1("div", { class: "action-sheet-wrapper ion-overlay-wrapper", ref: (el) => this.wrapperEl = el }, h$1("div", { class: "action-sheet-container" }, h$1("div", { class: "action-sheet-group", ref: (el) => this.groupEl = el }, header !== void 0 && h$1("div", { id: headerID, class: {
+      "action-sheet-title": true,
+      "action-sheet-has-sub-title": this.subHeader !== void 0
+    } }, header, this.subHeader && h$1("div", { class: "action-sheet-sub-title" }, this.subHeader)), buttons.map((b) => h$1("button", { type: "button", id: b.id, class: buttonClass$1(b), onClick: () => this.buttonClick(b) }, h$1("span", { class: "action-sheet-button-inner" }, b.icon && h$1("ion-icon", { icon: b.icon, "aria-hidden": "true", lazy: false, class: "action-sheet-icon" }), b.text), mode === "md" && h$1("ion-ripple-effect", null)))), cancelButton && h$1("div", { class: "action-sheet-group action-sheet-group-cancel" }, h$1("button", { type: "button", class: buttonClass$1(cancelButton), onClick: () => this.buttonClick(cancelButton) }, h$1("span", { class: "action-sheet-button-inner" }, cancelButton.icon && h$1("ion-icon", { icon: cancelButton.icon, "aria-hidden": "true", lazy: false, class: "action-sheet-icon" }), cancelButton.text), mode === "md" && h$1("ion-ripple-effect", null))))), h$1("div", { tabindex: "0" }));
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "isOpen": ["onIsOpenChange"],
+      "trigger": ["triggerChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: actionSheetIosCss,
+      md: actionSheetMdCss
+    };
+  }
+}, [34, "ion-action-sheet", {
+  "overlayIndex": [2, "overlay-index"],
+  "delegate": [16],
+  "hasController": [4, "has-controller"],
+  "keyboardClose": [4, "keyboard-close"],
+  "enterAnimation": [16],
+  "leaveAnimation": [16],
+  "buttons": [16],
+  "cssClass": [1, "css-class"],
+  "backdropDismiss": [4, "backdrop-dismiss"],
+  "header": [1],
+  "subHeader": [1, "sub-header"],
+  "translucent": [4],
+  "animated": [4],
+  "htmlAttributes": [16],
+  "isOpen": [4, "is-open"],
+  "trigger": [1],
+  "present": [64],
+  "dismiss": [64],
+  "onDidDismiss": [64],
+  "onWillDismiss": [64]
+}]);
+const buttonClass$1 = (button) => {
+  return Object.assign({ "action-sheet-button": true, "ion-activatable": true, "ion-focusable": true, [`action-sheet-${button.role}`]: button.role !== void 0 }, getClassMap(button.cssClass));
+};
+function defineCustomElement$f() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-action-sheet", "ion-backdrop", "ion-icon", "ion-ripple-effect"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-action-sheet":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, ActionSheet);
+        }
+        break;
+      case "ion-backdrop":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$P();
+        }
+        break;
+      case "ion-icon":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$R();
+        }
+        break;
+      case "ion-ripple-effect":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$N();
+        }
+        break;
+    }
+  });
+}
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const iosEnterAnimation$1 = (baseEl) => {
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  backdropAnimation.addElement(baseEl.querySelector("ion-backdrop")).fromTo("opacity", 0.01, "var(--backdrop-opacity)").beforeStyles({
+    "pointer-events": "none"
+  }).afterClearStyles(["pointer-events"]);
+  wrapperAnimation.addElement(baseEl.querySelector(".alert-wrapper")).keyframes([
+    { offset: 0, opacity: "0.01", transform: "scale(1.1)" },
+    { offset: 1, opacity: "1", transform: "scale(1)" }
+  ]);
+  return baseAnimation.addElement(baseEl).easing("ease-in-out").duration(200).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const iosLeaveAnimation$1 = (baseEl) => {
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  backdropAnimation.addElement(baseEl.querySelector("ion-backdrop")).fromTo("opacity", "var(--backdrop-opacity)", 0);
+  wrapperAnimation.addElement(baseEl.querySelector(".alert-wrapper")).keyframes([
+    { offset: 0, opacity: 0.99, transform: "scale(1)" },
+    { offset: 1, opacity: 0, transform: "scale(0.9)" }
+  ]);
+  return baseAnimation.addElement(baseEl).easing("ease-in-out").duration(200).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const mdEnterAnimation$1 = (baseEl) => {
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  backdropAnimation.addElement(baseEl.querySelector("ion-backdrop")).fromTo("opacity", 0.01, "var(--backdrop-opacity)").beforeStyles({
+    "pointer-events": "none"
+  }).afterClearStyles(["pointer-events"]);
+  wrapperAnimation.addElement(baseEl.querySelector(".alert-wrapper")).keyframes([
+    { offset: 0, opacity: "0.01", transform: "scale(0.9)" },
+    { offset: 1, opacity: "1", transform: "scale(1)" }
+  ]);
+  return baseAnimation.addElement(baseEl).easing("ease-in-out").duration(150).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const mdLeaveAnimation$1 = (baseEl) => {
+  const baseAnimation = createAnimation();
+  const backdropAnimation = createAnimation();
+  const wrapperAnimation = createAnimation();
+  backdropAnimation.addElement(baseEl.querySelector("ion-backdrop")).fromTo("opacity", "var(--backdrop-opacity)", 0);
+  wrapperAnimation.addElement(baseEl.querySelector(".alert-wrapper")).fromTo("opacity", 0.99, 0);
+  return baseAnimation.addElement(baseEl).easing("ease-in-out").duration(150).addAnimation([backdropAnimation, wrapperAnimation]);
+};
+const alertIosCss = ".sc-ion-alert-ios-h{--min-width:250px;--width:auto;--min-height:auto;--height:auto;--max-height:90%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;outline:none;font-family:var(--ion-font-family, inherit);contain:strict;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}.overlay-hidden.sc-ion-alert-ios-h{display:none}.alert-top.sc-ion-alert-ios-h{padding-top:50px;-ms-flex-align:start;align-items:flex-start}.alert-wrapper.sc-ion-alert-ios{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:content;opacity:0;z-index:10}.alert-title.sc-ion-alert-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0}.alert-sub-title.sc-ion-alert-ios{margin-left:0;margin-right:0;margin-top:5px;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-weight:normal}.alert-message.sc-ion-alert-ios{-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-overflow-scrolling:touch;overflow-y:auto;overscroll-behavior-y:contain}.alert-checkbox-group.sc-ion-alert-ios::-webkit-scrollbar,.alert-radio-group.sc-ion-alert-ios::-webkit-scrollbar,.alert-message.sc-ion-alert-ios::-webkit-scrollbar{display:none}.alert-input.sc-ion-alert-ios{padding-left:0;padding-right:0;padding-top:10px;padding-bottom:10px;width:100%;border:0;background:inherit;font:inherit;-webkit-box-sizing:border-box;box-sizing:border-box}.alert-button-group.sc-ion-alert-ios{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;width:100%}.alert-button-group-vertical.sc-ion-alert-ios{-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap}.alert-button.sc-ion-alert-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:block;border:0;font-size:14px;line-height:20px;z-index:0}.alert-button.ion-focused.sc-ion-alert-ios,.alert-tappable.ion-focused.sc-ion-alert-ios{background:var(--ion-color-step-100, #e6e6e6)}.alert-button-inner.sc-ion-alert-ios{display:-ms-flexbox;display:flex;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%}.alert-input-disabled.sc-ion-alert-ios,.alert-checkbox-button-disabled.sc-ion-alert-ios .alert-button-inner.sc-ion-alert-ios,.alert-radio-button-disabled.sc-ion-alert-ios .alert-button-inner.sc-ion-alert-ios{cursor:default;opacity:0.5;pointer-events:none}.alert-tappable.sc-ion-alert-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;display:-ms-flexbox;display:flex;width:100%;border:0;background:transparent;font-size:inherit;line-height:initial;text-align:start;-webkit-appearance:none;-moz-appearance:none;appearance:none;contain:strict}.alert-button.sc-ion-alert-ios,.alert-checkbox.sc-ion-alert-ios,.alert-input.sc-ion-alert-ios,.alert-radio.sc-ion-alert-ios{outline:none}.alert-radio-icon.sc-ion-alert-ios,.alert-checkbox-icon.sc-ion-alert-ios,.alert-checkbox-inner.sc-ion-alert-ios{-webkit-box-sizing:border-box;box-sizing:border-box}textarea.alert-input.sc-ion-alert-ios{min-height:37px;resize:none}.sc-ion-alert-ios-h{--background:var(--ion-overlay-background-color, var(--ion-color-step-100, #f9f9f9));--max-width:270px;--backdrop-opacity:var(--ion-backdrop-opacity, 0.3);font-size:14px}.alert-wrapper.sc-ion-alert-ios{border-radius:13px;-webkit-box-shadow:none;box-shadow:none;overflow:hidden}.alert-button.sc-ion-alert-ios .alert-button-inner.sc-ion-alert-ios{pointer-events:none}@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))){.alert-translucent.sc-ion-alert-ios-h .alert-wrapper.sc-ion-alert-ios{background:rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.9);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}}.alert-head.sc-ion-alert-ios{-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px;padding-top:12px;padding-bottom:7px;text-align:center}.alert-title.sc-ion-alert-ios{margin-top:8px;color:var(--ion-text-color, #000);font-size:17px;font-weight:600}.alert-sub-title.sc-ion-alert-ios{color:var(--ion-color-step-600, #666666);font-size:14px}.alert-message.sc-ion-alert-ios,.alert-input-group.sc-ion-alert-ios{-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px;padding-top:0;padding-bottom:21px;color:var(--ion-text-color, #000);font-size:13px;text-align:center}.alert-message.sc-ion-alert-ios{max-height:240px}.alert-message.sc-ion-alert-ios:empty{padding-left:0;padding-right:0;padding-top:0;padding-bottom:12px}.alert-input.sc-ion-alert-ios{border-radius:4px;margin-top:10px;-webkit-padding-start:6px;padding-inline-start:6px;-webkit-padding-end:6px;padding-inline-end:6px;padding-top:6px;padding-bottom:6px;border:0.55px solid var(--ion-color-step-250, #bfbfbf);background-color:var(--ion-background-color, #fff);-webkit-appearance:none;-moz-appearance:none;appearance:none}.alert-input.sc-ion-alert-ios::-webkit-input-placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-ios::-moz-placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-ios:-ms-input-placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-ios::-ms-input-placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-ios::placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-ios::-ms-clear{display:none}.alert-radio-group.sc-ion-alert-ios,.alert-checkbox-group.sc-ion-alert-ios{-ms-scroll-chaining:none;overscroll-behavior:contain;max-height:240px;border-top:0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2);overflow-y:auto;-webkit-overflow-scrolling:touch}.alert-tappable.sc-ion-alert-ios{height:44px}.alert-radio-label.sc-ion-alert-ios{-webkit-padding-start:13px;padding-inline-start:13px;-webkit-padding-end:13px;padding-inline-end:13px;padding-top:13px;padding-bottom:13px;-ms-flex:1;flex:1;-ms-flex-order:0;order:0;color:var(--ion-text-color, #000);text-overflow:ellipsis;white-space:nowrap;overflow:hidden}[aria-checked=true].sc-ion-alert-ios .alert-radio-label.sc-ion-alert-ios{color:var(--ion-color-primary, #3880ff)}.alert-radio-icon.sc-ion-alert-ios{position:relative;-ms-flex-order:1;order:1;min-width:30px}[aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios{top:-7px;position:absolute;width:6px;height:12px;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-width:2px;border-top-width:0;border-left-width:0;border-style:solid;border-color:var(--ion-color-primary, #3880ff)}@supports (inset-inline-start: 0){[aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios{inset-inline-start:7px}}@supports not (inset-inline-start: 0){[aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios{left:7px}[dir=rtl].sc-ion-alert-ios-h [aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios,[dir=rtl] .sc-ion-alert-ios-h [aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios{left:unset;right:unset;right:7px}[dir=rtl].sc-ion-alert-ios [aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios{left:unset;right:unset;right:7px}@supports selector(:dir(rtl)){[aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios:dir(rtl){left:unset;right:unset;right:7px}}}.alert-checkbox-label.sc-ion-alert-ios{-webkit-padding-start:13px;padding-inline-start:13px;-webkit-padding-end:13px;padding-inline-end:13px;padding-top:13px;padding-bottom:13px;-ms-flex:1;flex:1;color:var(--ion-text-color, #000);text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.alert-checkbox-icon.sc-ion-alert-ios{border-radius:50%;-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:6px;margin-inline-end:6px;margin-top:10px;margin-bottom:10px;position:relative;width:24px;height:24px;border-width:1px;border-style:solid;border-color:var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-250, #c8c7cc)));background-color:var(--ion-item-background, var(--ion-background-color, #fff));contain:strict}[aria-checked=true].sc-ion-alert-ios .alert-checkbox-icon.sc-ion-alert-ios{border-color:var(--ion-color-primary, #3880ff);background-color:var(--ion-color-primary, #3880ff)}[aria-checked=true].sc-ion-alert-ios .alert-checkbox-inner.sc-ion-alert-ios{top:4px;position:absolute;width:5px;height:12px;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-width:1px;border-top-width:0;border-left-width:0;border-style:solid;border-color:var(--ion-background-color, #fff)}@supports (inset-inline-start: 0){[aria-checked=true].sc-ion-alert-ios .alert-checkbox-inner.sc-ion-alert-ios{inset-inline-start:9px}}@supports not (inset-inline-start: 0){[aria-checked=true].sc-ion-alert-ios .alert-checkbox-inner.sc-ion-alert-ios{left:9px}[dir=rtl].sc-ion-alert-ios-h [aria-checked=true].sc-ion-alert-ios .alert-checkbox-inner.sc-ion-alert-ios,[dir=rtl] .sc-ion-alert-ios-h [aria-checked=true].sc-ion-alert-ios .alert-checkbox-inner.sc-ion-alert-ios{left:unset;right:unset;right:9px}[dir=rtl].sc-ion-alert-ios [aria-checked=true].sc-ion-alert-ios .alert-checkbox-inner.sc-ion-alert-ios{left:unset;right:unset;right:9px}@supports selector(:dir(rtl)){[aria-checked=true].sc-ion-alert-ios .alert-checkbox-inner.sc-ion-alert-ios:dir(rtl){left:unset;right:unset;right:9px}}}.alert-button-group.sc-ion-alert-ios{-webkit-margin-end:-0.55px;margin-inline-end:-0.55px;-ms-flex-wrap:wrap;flex-wrap:wrap}.alert-button.sc-ion-alert-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;border-radius:0;-ms-flex:1 1 auto;flex:1 1 auto;min-width:50%;height:44px;border-top:0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2);border-right:0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2);background-color:transparent;color:var(--ion-color-primary, #3880ff);font-size:17px;overflow:hidden}[dir=rtl].sc-ion-alert-ios-h .alert-button.sc-ion-alert-ios:first-child,[dir=rtl] .sc-ion-alert-ios-h .alert-button.sc-ion-alert-ios:first-child{border-right:0}[dir=rtl].sc-ion-alert-ios .alert-button.sc-ion-alert-ios:first-child{border-right:0}@supports selector(:dir(rtl)){.alert-button.sc-ion-alert-ios:first-child:dir(rtl){border-right:0}}.alert-button.sc-ion-alert-ios:last-child{border-right:0;font-weight:bold}[dir=rtl].sc-ion-alert-ios-h .alert-button.sc-ion-alert-ios:last-child,[dir=rtl] .sc-ion-alert-ios-h .alert-button.sc-ion-alert-ios:last-child{border-right:0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2)}[dir=rtl].sc-ion-alert-ios .alert-button.sc-ion-alert-ios:last-child{border-right:0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2)}@supports selector(:dir(rtl)){.alert-button.sc-ion-alert-ios:last-child:dir(rtl){border-right:0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2)}}.alert-button.ion-activated.sc-ion-alert-ios{background-color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1)}.alert-button-role-destructive.sc-ion-alert-ios,.alert-button-role-destructive.ion-activated.sc-ion-alert-ios,.alert-button-role-destructive.ion-focused.sc-ion-alert-ios{color:var(--ion-color-danger, #eb445a)}";
+const alertMdCss = ".sc-ion-alert-md-h{--min-width:250px;--width:auto;--min-height:auto;--height:auto;--max-height:90%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;outline:none;font-family:var(--ion-font-family, inherit);contain:strict;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}.overlay-hidden.sc-ion-alert-md-h{display:none}.alert-top.sc-ion-alert-md-h{padding-top:50px;-ms-flex-align:start;align-items:flex-start}.alert-wrapper.sc-ion-alert-md{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:content;opacity:0;z-index:10}.alert-title.sc-ion-alert-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0}.alert-sub-title.sc-ion-alert-md{margin-left:0;margin-right:0;margin-top:5px;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-weight:normal}.alert-message.sc-ion-alert-md{-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-overflow-scrolling:touch;overflow-y:auto;overscroll-behavior-y:contain}.alert-checkbox-group.sc-ion-alert-md::-webkit-scrollbar,.alert-radio-group.sc-ion-alert-md::-webkit-scrollbar,.alert-message.sc-ion-alert-md::-webkit-scrollbar{display:none}.alert-input.sc-ion-alert-md{padding-left:0;padding-right:0;padding-top:10px;padding-bottom:10px;width:100%;border:0;background:inherit;font:inherit;-webkit-box-sizing:border-box;box-sizing:border-box}.alert-button-group.sc-ion-alert-md{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;width:100%}.alert-button-group-vertical.sc-ion-alert-md{-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap}.alert-button.sc-ion-alert-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:block;border:0;font-size:14px;line-height:20px;z-index:0}.alert-button.ion-focused.sc-ion-alert-md,.alert-tappable.ion-focused.sc-ion-alert-md{background:var(--ion-color-step-100, #e6e6e6)}.alert-button-inner.sc-ion-alert-md{display:-ms-flexbox;display:flex;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%}.alert-input-disabled.sc-ion-alert-md,.alert-checkbox-button-disabled.sc-ion-alert-md .alert-button-inner.sc-ion-alert-md,.alert-radio-button-disabled.sc-ion-alert-md .alert-button-inner.sc-ion-alert-md{cursor:default;opacity:0.5;pointer-events:none}.alert-tappable.sc-ion-alert-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;display:-ms-flexbox;display:flex;width:100%;border:0;background:transparent;font-size:inherit;line-height:initial;text-align:start;-webkit-appearance:none;-moz-appearance:none;appearance:none;contain:strict}.alert-button.sc-ion-alert-md,.alert-checkbox.sc-ion-alert-md,.alert-input.sc-ion-alert-md,.alert-radio.sc-ion-alert-md{outline:none}.alert-radio-icon.sc-ion-alert-md,.alert-checkbox-icon.sc-ion-alert-md,.alert-checkbox-inner.sc-ion-alert-md{-webkit-box-sizing:border-box;box-sizing:border-box}textarea.alert-input.sc-ion-alert-md{min-height:37px;resize:none}.sc-ion-alert-md-h{--background:var(--ion-overlay-background-color, var(--ion-background-color, #fff));--max-width:280px;--backdrop-opacity:var(--ion-backdrop-opacity, 0.32);font-size:14px}.alert-wrapper.sc-ion-alert-md{border-radius:4px;-webkit-box-shadow:0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);box-shadow:0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12)}.alert-head.sc-ion-alert-md{-webkit-padding-start:23px;padding-inline-start:23px;-webkit-padding-end:23px;padding-inline-end:23px;padding-top:20px;padding-bottom:15px;text-align:start}.alert-title.sc-ion-alert-md{color:var(--ion-text-color, #000);font-size:20px;font-weight:500}.alert-sub-title.sc-ion-alert-md{color:var(--ion-text-color, #000);font-size:16px}.alert-message.sc-ion-alert-md,.alert-input-group.sc-ion-alert-md{-webkit-padding-start:24px;padding-inline-start:24px;-webkit-padding-end:24px;padding-inline-end:24px;padding-top:20px;padding-bottom:20px;color:var(--ion-color-step-550, #737373)}.alert-message.sc-ion-alert-md{max-height:266px;font-size:16px}.alert-message.sc-ion-alert-md:empty{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0}.alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md{padding-top:0}.alert-input.sc-ion-alert-md{margin-left:0;margin-right:0;margin-top:5px;margin-bottom:5px;border-bottom:1px solid var(--ion-color-step-150, #d9d9d9);color:var(--ion-text-color, #000)}.alert-input.sc-ion-alert-md::-webkit-input-placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md::-moz-placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md:-ms-input-placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md::-ms-input-placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md::placeholder{color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md::-ms-clear{display:none}.alert-input.sc-ion-alert-md:focus{margin-bottom:4px;border-bottom:2px solid var(--ion-color-primary, #3880ff)}.alert-radio-group.sc-ion-alert-md,.alert-checkbox-group.sc-ion-alert-md{position:relative;max-height:266px;border-top:1px solid var(--ion-color-step-150, #d9d9d9);border-bottom:1px solid var(--ion-color-step-150, #d9d9d9);overflow:auto}.alert-tappable.sc-ion-alert-md{position:relative;height:48px;overflow:hidden}.alert-radio-label.sc-ion-alert-md{-webkit-padding-start:52px;padding-inline-start:52px;-webkit-padding-end:26px;padding-inline-end:26px;padding-top:13px;padding-bottom:13px;-ms-flex:1;flex:1;color:var(--ion-color-step-850, #262626);font-size:16px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.alert-radio-icon.sc-ion-alert-md{top:0;border-radius:50%;display:block;position:relative;width:20px;height:20px;border-width:2px;border-style:solid;border-color:var(--ion-color-step-550, #737373)}@supports (inset-inline-start: 0){.alert-radio-icon.sc-ion-alert-md{inset-inline-start:26px}}@supports not (inset-inline-start: 0){.alert-radio-icon.sc-ion-alert-md{left:26px}[dir=rtl].sc-ion-alert-md-h .alert-radio-icon.sc-ion-alert-md,[dir=rtl] .sc-ion-alert-md-h .alert-radio-icon.sc-ion-alert-md{left:unset;right:unset;right:26px}[dir=rtl].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md{left:unset;right:unset;right:26px}@supports selector(:dir(rtl)){.alert-radio-icon.sc-ion-alert-md:dir(rtl){left:unset;right:unset;right:26px}}}.alert-radio-inner.sc-ion-alert-md{top:3px;border-radius:50%;position:absolute;width:10px;height:10px;-webkit-transform:scale3d(0, 0, 0);transform:scale3d(0, 0, 0);-webkit-transition:-webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);transition:-webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);transition:transform 280ms cubic-bezier(0.4, 0, 0.2, 1);transition:transform 280ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);background-color:var(--ion-color-primary, #3880ff)}@supports (inset-inline-start: 0){.alert-radio-inner.sc-ion-alert-md{inset-inline-start:3px}}@supports not (inset-inline-start: 0){.alert-radio-inner.sc-ion-alert-md{left:3px}[dir=rtl].sc-ion-alert-md-h .alert-radio-inner.sc-ion-alert-md,[dir=rtl] .sc-ion-alert-md-h .alert-radio-inner.sc-ion-alert-md{left:unset;right:unset;right:3px}[dir=rtl].sc-ion-alert-md .alert-radio-inner.sc-ion-alert-md{left:unset;right:unset;right:3px}@supports selector(:dir(rtl)){.alert-radio-inner.sc-ion-alert-md:dir(rtl){left:unset;right:unset;right:3px}}}[aria-checked=true].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md{color:var(--ion-color-step-850, #262626)}[aria-checked=true].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md{border-color:var(--ion-color-primary, #3880ff)}[aria-checked=true].sc-ion-alert-md .alert-radio-inner.sc-ion-alert-md{-webkit-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1)}.alert-checkbox-label.sc-ion-alert-md{-webkit-padding-start:53px;padding-inline-start:53px;-webkit-padding-end:26px;padding-inline-end:26px;padding-top:13px;padding-bottom:13px;-ms-flex:1;flex:1;color:var(--ion-color-step-850, #262626);font-size:16px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.alert-checkbox-icon.sc-ion-alert-md{top:0;border-radius:2px;position:relative;width:16px;height:16px;border-width:2px;border-style:solid;border-color:var(--ion-color-step-550, #737373);contain:strict}@supports (inset-inline-start: 0){.alert-checkbox-icon.sc-ion-alert-md{inset-inline-start:26px}}@supports not (inset-inline-start: 0){.alert-checkbox-icon.sc-ion-alert-md{left:26px}[dir=rtl].sc-ion-alert-md-h .alert-checkbox-icon.sc-ion-alert-md,[dir=rtl] .sc-ion-alert-md-h .alert-checkbox-icon.sc-ion-alert-md{left:unset;right:unset;right:26px}[dir=rtl].sc-ion-alert-md .alert-checkbox-icon.sc-ion-alert-md{left:unset;right:unset;right:26px}@supports selector(:dir(rtl)){.alert-checkbox-icon.sc-ion-alert-md:dir(rtl){left:unset;right:unset;right:26px}}}[aria-checked=true].sc-ion-alert-md .alert-checkbox-icon.sc-ion-alert-md{border-color:var(--ion-color-primary, #3880ff);background-color:var(--ion-color-primary, #3880ff)}[aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md{top:0;position:absolute;width:6px;height:10px;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-width:2px;border-top-width:0;border-left-width:0;border-style:solid;border-color:var(--ion-color-primary-contrast, #fff)}@supports (inset-inline-start: 0){[aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md{inset-inline-start:3px}}@supports not (inset-inline-start: 0){[aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md{left:3px}[dir=rtl].sc-ion-alert-md-h [aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md,[dir=rtl] .sc-ion-alert-md-h [aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md{left:unset;right:unset;right:3px}[dir=rtl].sc-ion-alert-md [aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md{left:unset;right:unset;right:3px}@supports selector(:dir(rtl)){[aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md:dir(rtl){left:unset;right:unset;right:3px}}}.alert-button-group.sc-ion-alert-md{-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:8px;padding-inline-end:8px;padding-top:8px;padding-bottom:8px;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-wrap:wrap-reverse;flex-wrap:wrap-reverse;-ms-flex-pack:end;justify-content:flex-end}.alert-button.sc-ion-alert-md{border-radius:2px;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:8px;margin-inline-end:8px;margin-top:0;margin-bottom:0;-webkit-padding-start:10px;padding-inline-start:10px;-webkit-padding-end:10px;padding-inline-end:10px;padding-top:10px;padding-bottom:10px;position:relative;background-color:transparent;color:var(--ion-color-primary, #3880ff);font-weight:500;text-align:end;text-transform:uppercase;overflow:hidden}.alert-button-inner.sc-ion-alert-md{-ms-flex-pack:end;justify-content:flex-end}";
+const Alert = /* @__PURE__ */ proxyCustomElement$1(class Alert2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.didPresent = createEvent(this, "ionAlertDidPresent", 7);
+    this.willPresent = createEvent(this, "ionAlertWillPresent", 7);
+    this.willDismiss = createEvent(this, "ionAlertWillDismiss", 7);
+    this.didDismiss = createEvent(this, "ionAlertDidDismiss", 7);
+    this.didPresentShorthand = createEvent(this, "didPresent", 7);
+    this.willPresentShorthand = createEvent(this, "willPresent", 7);
+    this.willDismissShorthand = createEvent(this, "willDismiss", 7);
+    this.didDismissShorthand = createEvent(this, "didDismiss", 7);
+    this.delegateController = createDelegateController(this);
+    this.triggerController = createTriggerController();
+    this.customHTMLEnabled = config.get("innerHTMLTemplatesEnabled", ENABLE_HTML_CONTENT_DEFAULT);
+    this.processedInputs = [];
+    this.processedButtons = [];
+    this.presented = false;
+    this.onBackdropTap = () => {
+      this.dismiss(void 0, BACKDROP);
+    };
+    this.dispatchCancelHandler = (ev) => {
+      const role = ev.detail.role;
+      if (isCancel(role)) {
+        const cancelButton = this.processedButtons.find((b) => b.role === "cancel");
+        this.callButtonHandler(cancelButton);
+      }
+    };
+    this.overlayIndex = void 0;
+    this.delegate = void 0;
+    this.hasController = false;
+    this.keyboardClose = true;
+    this.enterAnimation = void 0;
+    this.leaveAnimation = void 0;
+    this.cssClass = void 0;
+    this.header = void 0;
+    this.subHeader = void 0;
+    this.message = void 0;
+    this.buttons = [];
+    this.inputs = [];
+    this.backdropDismiss = true;
+    this.translucent = false;
+    this.animated = true;
+    this.htmlAttributes = void 0;
+    this.isOpen = false;
+    this.trigger = void 0;
+  }
+  onIsOpenChange(newValue, oldValue) {
+    if (newValue === true && oldValue === false) {
+      this.present();
+    } else if (newValue === false && oldValue === true) {
+      this.dismiss();
+    }
+  }
+  triggerChanged() {
+    const { trigger, el, triggerController } = this;
+    if (trigger) {
+      triggerController.addClickListener(el, trigger);
+    }
+  }
+  onKeydown(ev) {
+    const inputTypes = new Set(this.processedInputs.map((i) => i.type));
+    if (!inputTypes.has("radio") || ev.target && !this.el.contains(ev.target) || ev.target.classList.contains("alert-button")) {
+      return;
+    }
+    const query = this.el.querySelectorAll(".alert-radio");
+    const radios = Array.from(query).filter((radio) => !radio.disabled);
+    const index = radios.findIndex((radio) => radio.id === ev.target.id);
+    let nextEl;
+    if (["ArrowDown", "ArrowRight"].includes(ev.key)) {
+      nextEl = index === radios.length - 1 ? radios[0] : radios[index + 1];
+    }
+    if (["ArrowUp", "ArrowLeft"].includes(ev.key)) {
+      nextEl = index === 0 ? radios[radios.length - 1] : radios[index - 1];
+    }
+    if (nextEl && radios.includes(nextEl)) {
+      const nextProcessed = this.processedInputs.find((input) => input.id === (nextEl === null || nextEl === void 0 ? void 0 : nextEl.id));
+      if (nextProcessed) {
+        this.rbClick(nextProcessed);
+        nextEl.focus();
+      }
+    }
+  }
+  buttonsChanged() {
+    const buttons = this.buttons;
+    this.processedButtons = buttons.map((btn) => {
+      return typeof btn === "string" ? { text: btn, role: btn.toLowerCase() === "cancel" ? "cancel" : void 0 } : btn;
+    });
+  }
+  inputsChanged() {
+    const inputs = this.inputs;
+    const first = inputs.find((input) => !input.disabled);
+    const checked = inputs.find((input) => input.checked && !input.disabled);
+    const focusable = checked || first;
+    const inputTypes = new Set(inputs.map((i) => i.type));
+    if (inputTypes.has("checkbox") && inputTypes.has("radio")) {
+      console.warn(`Alert cannot mix input types: ${Array.from(inputTypes.values()).join("/")}. Please see alert docs for more info.`);
+    }
+    this.inputType = inputTypes.values().next().value;
+    this.processedInputs = inputs.map((i, index) => {
+      var _a;
+      return {
+        type: i.type || "text",
+        name: i.name || `${index}`,
+        placeholder: i.placeholder || "",
+        value: i.value,
+        label: i.label,
+        checked: !!i.checked,
+        disabled: !!i.disabled,
+        id: i.id || `alert-input-${this.overlayIndex}-${index}`,
+        handler: i.handler,
+        min: i.min,
+        max: i.max,
+        cssClass: (_a = i.cssClass) !== null && _a !== void 0 ? _a : "",
+        attributes: i.attributes || {},
+        tabindex: i.type === "radio" && i !== focusable ? -1 : 0
+      };
+    });
+  }
+  connectedCallback() {
+    prepareOverlay(this.el);
+    this.triggerChanged();
+  }
+  componentWillLoad() {
+    setOverlayId(this.el);
+    this.inputsChanged();
+    this.buttonsChanged();
+  }
+  disconnectedCallback() {
+    this.triggerController.removeClickListener();
+    if (this.gesture) {
+      this.gesture.destroy();
+      this.gesture = void 0;
+    }
+  }
+  componentDidLoad() {
+    if (this.gesture || getIonMode$2(this) === "md" || !this.wrapperEl) {
+      return;
+    }
+    this.gesture = createButtonActiveGesture(this.wrapperEl);
+    this.gesture.enable(true);
+  }
+  /**
+   * Present the alert overlay after it has been created.
+   */
+  async present() {
+    if (this.currentTransition !== void 0) {
+      await this.currentTransition;
+    }
+    await this.delegateController.attachViewToDom();
+    this.currentTransition = present(this, "alertEnter", iosEnterAnimation$1, mdEnterAnimation$1);
+    await this.currentTransition;
+    this.currentTransition = void 0;
+  }
+  /**
+   * Dismiss the alert overlay after it has been presented.
+   *
+   * @param data Any data to emit in the dismiss events.
+   * @param role The role of the element that is dismissing the alert.
+   * This can be useful in a button handler for determining which button was
+   * clicked to dismiss the alert.
+   * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
+   */
+  async dismiss(data, role) {
+    this.currentTransition = dismiss(this, data, role, "alertLeave", iosLeaveAnimation$1, mdLeaveAnimation$1);
+    const dismissed = await this.currentTransition;
+    if (dismissed) {
+      this.delegateController.removeViewFromDom();
+    }
+    return dismissed;
+  }
+  /**
+   * Returns a promise that resolves when the alert did dismiss.
+   */
+  onDidDismiss() {
+    return eventMethod(this.el, "ionAlertDidDismiss");
+  }
+  /**
+   * Returns a promise that resolves when the alert will dismiss.
+   */
+  onWillDismiss() {
+    return eventMethod(this.el, "ionAlertWillDismiss");
+  }
+  rbClick(selectedInput) {
+    for (const input of this.processedInputs) {
+      input.checked = input === selectedInput;
+      input.tabindex = input === selectedInput ? 0 : -1;
+    }
+    this.activeId = selectedInput.id;
+    safeCall$1(selectedInput.handler, selectedInput);
+    forceUpdate(this);
+  }
+  cbClick(selectedInput) {
+    selectedInput.checked = !selectedInput.checked;
+    safeCall$1(selectedInput.handler, selectedInput);
+    forceUpdate(this);
+  }
+  async buttonClick(button) {
+    const role = button.role;
+    const values = this.getValues();
+    if (isCancel(role)) {
+      return this.dismiss({ values }, role);
+    }
+    const returnData = await this.callButtonHandler(button, values);
+    if (returnData !== false) {
+      return this.dismiss(Object.assign({ values }, returnData), button.role);
+    }
+    return false;
+  }
+  async callButtonHandler(button, data) {
+    if (button === null || button === void 0 ? void 0 : button.handler) {
+      const returnData = await safeCall$1(button.handler, data);
+      if (returnData === false) {
+        return false;
+      }
+      if (typeof returnData === "object") {
+        return returnData;
+      }
+    }
+    return {};
+  }
+  getValues() {
+    if (this.processedInputs.length === 0) {
+      return void 0;
+    }
+    if (this.inputType === "radio") {
+      const checkedInput = this.processedInputs.find((i) => !!i.checked);
+      return checkedInput ? checkedInput.value : void 0;
+    }
+    if (this.inputType === "checkbox") {
+      return this.processedInputs.filter((i) => i.checked).map((i) => i.value);
+    }
+    const values = {};
+    this.processedInputs.forEach((i) => {
+      values[i.name] = i.value || "";
+    });
+    return values;
+  }
+  renderAlertInputs() {
+    switch (this.inputType) {
+      case "checkbox":
+        return this.renderCheckbox();
+      case "radio":
+        return this.renderRadio();
+      default:
+        return this.renderInput();
+    }
+  }
+  renderCheckbox() {
+    const inputs = this.processedInputs;
+    const mode = getIonMode$2(this);
+    if (inputs.length === 0) {
+      return null;
+    }
+    return h$1("div", { class: "alert-checkbox-group" }, inputs.map((i) => h$1("button", { type: "button", onClick: () => this.cbClick(i), "aria-checked": `${i.checked}`, id: i.id, disabled: i.disabled, tabIndex: i.tabindex, role: "checkbox", class: Object.assign(Object.assign({}, getClassMap(i.cssClass)), { "alert-tappable": true, "alert-checkbox": true, "alert-checkbox-button": true, "ion-focusable": true, "alert-checkbox-button-disabled": i.disabled || false }) }, h$1("div", { class: "alert-button-inner" }, h$1("div", { class: "alert-checkbox-icon" }, h$1("div", { class: "alert-checkbox-inner" })), h$1("div", { class: "alert-checkbox-label" }, i.label)), mode === "md" && h$1("ion-ripple-effect", null))));
+  }
+  renderRadio() {
+    const inputs = this.processedInputs;
+    if (inputs.length === 0) {
+      return null;
+    }
+    return h$1("div", { class: "alert-radio-group", role: "radiogroup", "aria-activedescendant": this.activeId }, inputs.map((i) => h$1("button", { type: "button", onClick: () => this.rbClick(i), "aria-checked": `${i.checked}`, disabled: i.disabled, id: i.id, tabIndex: i.tabindex, class: Object.assign(Object.assign({}, getClassMap(i.cssClass)), { "alert-radio-button": true, "alert-tappable": true, "alert-radio": true, "ion-focusable": true, "alert-radio-button-disabled": i.disabled || false }), role: "radio" }, h$1("div", { class: "alert-button-inner" }, h$1("div", { class: "alert-radio-icon" }, h$1("div", { class: "alert-radio-inner" })), h$1("div", { class: "alert-radio-label" }, i.label)))));
+  }
+  renderInput() {
+    const inputs = this.processedInputs;
+    if (inputs.length === 0) {
+      return null;
+    }
+    return h$1("div", { class: "alert-input-group" }, inputs.map((i) => {
+      var _a, _b, _c, _d;
+      if (i.type === "textarea") {
+        return h$1("div", { class: "alert-input-wrapper" }, h$1("textarea", Object.assign({ placeholder: i.placeholder, value: i.value, id: i.id, tabIndex: i.tabindex }, i.attributes, { disabled: (_b = (_a = i.attributes) === null || _a === void 0 ? void 0 : _a.disabled) !== null && _b !== void 0 ? _b : i.disabled, class: inputClass(i), onInput: (e) => {
+          var _a2;
+          i.value = e.target.value;
+          if ((_a2 = i.attributes) === null || _a2 === void 0 ? void 0 : _a2.onInput) {
+            i.attributes.onInput(e);
+          }
+        } })));
+      } else {
+        return h$1("div", { class: "alert-input-wrapper" }, h$1("input", Object.assign({ placeholder: i.placeholder, type: i.type, min: i.min, max: i.max, value: i.value, id: i.id, tabIndex: i.tabindex }, i.attributes, { disabled: (_d = (_c = i.attributes) === null || _c === void 0 ? void 0 : _c.disabled) !== null && _d !== void 0 ? _d : i.disabled, class: inputClass(i), onInput: (e) => {
+          var _a2;
+          i.value = e.target.value;
+          if ((_a2 = i.attributes) === null || _a2 === void 0 ? void 0 : _a2.onInput) {
+            i.attributes.onInput(e);
+          }
+        } })));
+      }
+    }));
+  }
+  renderAlertButtons() {
+    const buttons = this.processedButtons;
+    const mode = getIonMode$2(this);
+    const alertButtonGroupClass = {
+      "alert-button-group": true,
+      "alert-button-group-vertical": buttons.length > 2
+    };
+    return h$1("div", { class: alertButtonGroupClass }, buttons.map((button) => h$1("button", { type: "button", id: button.id, class: buttonClass(button), tabIndex: 0, onClick: () => this.buttonClick(button) }, h$1("span", { class: "alert-button-inner" }, button.text), mode === "md" && h$1("ion-ripple-effect", null))));
+  }
+  renderAlertMessage(msgId) {
+    const { customHTMLEnabled, message } = this;
+    if (customHTMLEnabled) {
+      return h$1("div", { id: msgId, class: "alert-message", innerHTML: sanitizeDOMString(message) });
+    }
+    return h$1("div", { id: msgId, class: "alert-message" }, message);
+  }
+  render() {
+    const { overlayIndex, header, subHeader, message, htmlAttributes } = this;
+    const mode = getIonMode$2(this);
+    const hdrId = `alert-${overlayIndex}-hdr`;
+    const subHdrId = `alert-${overlayIndex}-sub-hdr`;
+    const msgId = `alert-${overlayIndex}-msg`;
+    const role = this.inputs.length > 0 || this.buttons.length > 0 ? "alertdialog" : "alert";
+    const ariaLabelledBy = header ? hdrId : subHeader ? subHdrId : null;
+    return h$1(Host$1, Object.assign({ role, "aria-modal": "true", "aria-labelledby": ariaLabelledBy, "aria-describedby": message !== void 0 ? msgId : null, tabindex: "-1" }, htmlAttributes, { style: {
+      zIndex: `${2e4 + overlayIndex}`
+    }, class: Object.assign(Object.assign({}, getClassMap(this.cssClass)), { [mode]: true, "overlay-hidden": true, "alert-translucent": this.translucent }), onIonAlertWillDismiss: this.dispatchCancelHandler, onIonBackdropTap: this.onBackdropTap }), h$1("ion-backdrop", { tappable: this.backdropDismiss }), h$1("div", { tabindex: "0" }), h$1("div", { class: "alert-wrapper ion-overlay-wrapper", ref: (el) => this.wrapperEl = el }, h$1("div", { class: "alert-head" }, header && h$1("h2", { id: hdrId, class: "alert-title" }, header), subHeader && h$1("h2", { id: subHdrId, class: "alert-sub-title" }, subHeader)), this.renderAlertMessage(msgId), this.renderAlertInputs(), this.renderAlertButtons()), h$1("div", { tabindex: "0" }));
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "isOpen": ["onIsOpenChange"],
+      "trigger": ["triggerChanged"],
+      "buttons": ["buttonsChanged"],
+      "inputs": ["inputsChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: alertIosCss,
+      md: alertMdCss
+    };
+  }
+}, [34, "ion-alert", {
+  "overlayIndex": [2, "overlay-index"],
+  "delegate": [16],
+  "hasController": [4, "has-controller"],
+  "keyboardClose": [4, "keyboard-close"],
+  "enterAnimation": [16],
+  "leaveAnimation": [16],
+  "cssClass": [1, "css-class"],
+  "header": [1],
+  "subHeader": [1, "sub-header"],
+  "message": [1],
+  "buttons": [16],
+  "inputs": [1040],
+  "backdropDismiss": [4, "backdrop-dismiss"],
+  "translucent": [4],
+  "animated": [4],
+  "htmlAttributes": [16],
+  "isOpen": [4, "is-open"],
+  "trigger": [1],
+  "present": [64],
+  "dismiss": [64],
+  "onDidDismiss": [64],
+  "onWillDismiss": [64]
+}, [[4, "keydown", "onKeydown"]]]);
+const inputClass = (input) => {
+  var _a, _b, _c;
+  return Object.assign(Object.assign({ "alert-input": true, "alert-input-disabled": ((_b = (_a = input.attributes) === null || _a === void 0 ? void 0 : _a.disabled) !== null && _b !== void 0 ? _b : input.disabled) || false }, getClassMap(input.cssClass)), getClassMap(input.attributes ? (_c = input.attributes.class) === null || _c === void 0 ? void 0 : _c.toString() : ""));
+};
+const buttonClass = (button) => {
+  return Object.assign({ "alert-button": true, "ion-focusable": true, "ion-activatable": true, [`alert-button-role-${button.role}`]: button.role !== void 0 }, getClassMap(button.cssClass));
+};
+function defineCustomElement$e() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-alert", "ion-backdrop", "ion-ripple-effect"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-alert":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Alert);
+        }
+        break;
+      case "ion-backdrop":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$P();
+        }
+        break;
+      case "ion-ripple-effect":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$N();
+        }
+        break;
+    }
+  });
+}
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const selectPopoverIosCss = ".sc-ion-select-popover-ios-h ion-list.sc-ion-select-popover-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0}ion-list-header.sc-ion-select-popover-ios,ion-label.sc-ion-select-popover-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0}";
+const selectPopoverMdCss = ".sc-ion-select-popover-md-h ion-list.sc-ion-select-popover-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0}ion-list-header.sc-ion-select-popover-md,ion-label.sc-ion-select-popover-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0}ion-list.sc-ion-select-popover-md ion-radio.sc-ion-select-popover-md{opacity:0}ion-item.sc-ion-select-popover-md{--inner-border-width:0}.item-radio-checked.sc-ion-select-popover-md{--background:rgba(var(--ion-color-primary-rgb, 56, 128, 255), 0.08);--background-focused:var(--ion-color-primary, #3880ff);--background-focused-opacity:0.2;--background-hover:var(--ion-color-primary, #3880ff);--background-hover-opacity:0.12}.item-checkbox-checked.sc-ion-select-popover-md{--background-activated:var(--ion-item-color, var(--ion-text-color, #000));--background-focused:var(--ion-item-color, var(--ion-text-color, #000));--background-hover:var(--ion-item-color, var(--ion-text-color, #000));--color:var(--ion-color-primary, #3880ff)}";
+const SelectPopover = /* @__PURE__ */ proxyCustomElement$1(class SelectPopover2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.header = void 0;
+    this.subHeader = void 0;
+    this.message = void 0;
+    this.multiple = void 0;
+    this.options = [];
+  }
+  findOptionFromEvent(ev) {
+    const { options } = this;
+    return options.find((o) => o.value === ev.target.value);
+  }
+  /**
+   * When an option is selected we need to get the value(s)
+   * of the selected option(s) and return it in the option
+   * handler
+   */
+  callOptionHandler(ev) {
+    const option = this.findOptionFromEvent(ev);
+    const values = this.getValues(ev);
+    if (option === null || option === void 0 ? void 0 : option.handler) {
+      safeCall$1(option.handler, values);
+    }
+  }
+  /**
+   * Dismisses the host popover that the `ion-select-popover`
+   * is rendered within.
+   */
+  dismissParentPopover() {
+    const popover = this.el.closest("ion-popover");
+    if (popover) {
+      popover.dismiss();
+    }
+  }
+  setChecked(ev) {
+    const { multiple } = this;
+    const option = this.findOptionFromEvent(ev);
+    if (multiple && option) {
+      option.checked = ev.detail.checked;
+    }
+  }
+  getValues(ev) {
+    const { multiple, options } = this;
+    if (multiple) {
+      return options.filter((o) => o.checked).map((o) => o.value);
+    }
+    const option = this.findOptionFromEvent(ev);
+    return option ? option.value : void 0;
+  }
+  renderOptions(options) {
+    const { multiple } = this;
+    switch (multiple) {
+      case true:
+        return this.renderCheckboxOptions(options);
+      default:
+        return this.renderRadioOptions(options);
+    }
+  }
+  renderCheckboxOptions(options) {
+    return options.map((option) => h$1("ion-item", { class: getClassMap(option.cssClass) }, h$1("ion-checkbox", { slot: "start", value: option.value, disabled: option.disabled, checked: option.checked, legacy: true, onIonChange: (ev) => {
+      this.setChecked(ev);
+      this.callOptionHandler(ev);
+    } }), h$1("ion-label", null, option.text)));
+  }
+  renderRadioOptions(options) {
+    const checked = options.filter((o) => o.checked).map((o) => o.value)[0];
+    return h$1("ion-radio-group", { value: checked, onIonChange: (ev) => this.callOptionHandler(ev) }, options.map((option) => h$1("ion-item", { class: getClassMap(option.cssClass) }, h$1("ion-label", null, option.text), h$1("ion-radio", { value: option.value, disabled: option.disabled, legacy: true, onClick: () => this.dismissParentPopover(), onKeyUp: (ev) => {
+      if (ev.key === " ") {
+        this.dismissParentPopover();
+      }
+    } }))));
+  }
+  render() {
+    const { header, message, options, subHeader } = this;
+    const hasSubHeaderOrMessage = subHeader !== void 0 || message !== void 0;
+    return h$1(Host$1, { class: getIonMode$2(this) }, h$1("ion-list", null, header !== void 0 && h$1("ion-list-header", null, header), hasSubHeaderOrMessage && h$1("ion-item", null, h$1("ion-label", { class: "ion-text-wrap" }, subHeader !== void 0 && h$1("h3", null, subHeader), message !== void 0 && h$1("p", null, message))), this.renderOptions(options)));
+  }
+  get el() {
+    return this;
+  }
+  static get style() {
+    return {
+      ios: selectPopoverIosCss,
+      md: selectPopoverMdCss
+    };
+  }
+}, [34, "ion-select-popover", {
+  "header": [1],
+  "subHeader": [1, "sub-header"],
+  "message": [1],
+  "multiple": [4],
+  "options": [16]
+}]);
+function defineCustomElement$d() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-select-popover", "ion-checkbox", "ion-icon", "ion-item", "ion-label", "ion-list", "ion-list-header", "ion-note", "ion-radio", "ion-radio-group", "ion-ripple-effect"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-select-popover":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, SelectPopover);
+        }
+        break;
+      case "ion-checkbox":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$D();
+        }
+        break;
+      case "ion-icon":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$R();
+        }
+        break;
+      case "ion-item":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$y();
+        }
+        break;
+      case "ion-label":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$x();
+        }
+        break;
+      case "ion-list":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$p();
+        }
+        break;
+      case "ion-list-header":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$n();
+        }
+        break;
+      case "ion-note":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$z();
+        }
+        break;
+      case "ion-radio":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$l();
+        }
+        break;
+      case "ion-radio-group":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$k();
+        }
+        break;
+      case "ion-ripple-effect":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$N();
+        }
+        break;
+    }
+  });
+}
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const watchForOptions = (containerEl, tagName, onChange) => {
+  if (typeof MutationObserver === "undefined") {
+    return;
+  }
+  const mutation = new MutationObserver((mutationList) => {
+    onChange(getSelectedOption(mutationList, tagName));
+  });
+  mutation.observe(containerEl, {
+    childList: true,
+    subtree: true
+  });
+  return mutation;
+};
+const getSelectedOption = (mutationList, tagName) => {
+  let newOption;
+  mutationList.forEach((mut) => {
+    for (let i = 0; i < mut.addedNodes.length; i++) {
+      newOption = findCheckedOption(mut.addedNodes[i], tagName) || newOption;
+    }
+  });
+  return newOption;
+};
+const findCheckedOption = (el, tagName) => {
+  if (el.nodeType !== 1) {
+    return void 0;
+  }
+  const options = el.tagName === tagName.toUpperCase() ? [el] : Array.from(el.querySelectorAll(tagName));
+  return options.find((o) => o.value === el.value);
+};
+const selectIosCss = ":host{--padding-top:0px;--padding-end:0px;--padding-bottom:0px;--padding-start:0px;--placeholder-color:currentColor;--placeholder-opacity:0.6;--background:transparent;--border-style:solid;--highlight-color-focused:var(--ion-color-primary, #3880ff);--highlight-color-valid:var(--ion-color-success, #2dd36f);--highlight-color-invalid:var(--ion-color-danger, #eb445a);--highlight-color:var(--highlight-color-focused);display:block;position:relative;font-family:var(--ion-font-family, inherit);white-space:nowrap;cursor:pointer;z-index:2}:host(:not(.legacy-select)){width:100%}:host(.ion-color){--highlight-color-focused:var(--ion-color-base)}:host(.legacy-select){-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;overflow:hidden}:host(.in-item.legacy-select){position:static;max-width:45%}:host(.select-disabled){pointer-events:none}:host(.ion-focused) button{border:2px solid #5e9ed6}:host([slot=start]:not(.legacy-select)),:host([slot=end]:not(.legacy-select)){width:auto}.select-placeholder{color:var(--placeholder-color);opacity:var(--placeholder-opacity)}:host(.legacy-select) label{top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}@supports (inset-inline-start: 0){:host(.legacy-select) label{inset-inline-start:0}}@supports not (inset-inline-start: 0){:host(.legacy-select) label{left:0}:host-context([dir=rtl]):host(.legacy-select) label,:host-context([dir=rtl]).legacy-select label{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){:host(.legacy-select) label:dir(rtl){left:unset;right:unset;right:0}}}:host(.legacy-select) label::-moz-focus-inner{border:0}button{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;outline:0;clip:rect(0 0 0 0);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none}.select-icon{-webkit-margin-start:4px;margin-inline-start:4px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0;position:relative}:host(.in-item-color) .select-icon{color:inherit}:host(.select-label-placement-stacked) .select-icon,:host(.select-label-placement-floating) .select-icon{position:absolute;height:100%}:host(.select-ltr.select-label-placement-stacked) .select-icon,:host(.select-ltr.select-label-placement-floating) .select-icon{right:var(--padding-end, 0)}:host(.select-rtl.select-label-placement-stacked) .select-icon,:host(.select-rtl.select-label-placement-floating) .select-icon{left:var(--padding-start, 0)}.select-text{-ms-flex:1;flex:1;min-width:16px;font-size:inherit;text-overflow:ellipsis;white-space:inherit;overflow:hidden}.select-wrapper{-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);border-radius:var(--border-radius);display:-ms-flexbox;display:flex;position:relative;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;height:inherit;min-height:inherit;-webkit-transition:background-color 15ms linear;transition:background-color 15ms linear;background:var(--background);line-height:normal;cursor:inherit;-webkit-box-sizing:border-box;box-sizing:border-box}.select-wrapper .select-placeholder{-webkit-transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1)}:host(.ion-touched.ion-invalid){--highlight-color:var(--highlight-color-invalid)}:host(.ion-valid){--highlight-color:var(--highlight-color-valid)}.label-text-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;max-width:200px;-webkit-transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);pointer-events:none}.label-text{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.native-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-webkit-transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);overflow:hidden}:host(.select-justify-space-between) .select-wrapper{-ms-flex-pack:justify;justify-content:space-between}:host(.select-justify-start) .select-wrapper{-ms-flex-pack:start;justify-content:start}:host(.select-justify-end) .select-wrapper{-ms-flex-pack:end;justify-content:end}:host(.select-label-placement-start) .select-wrapper{-ms-flex-direction:row;flex-direction:row}:host(.select-label-placement-start) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.select-label-placement-end) .select-wrapper{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.select-label-placement-end) .label-text-wrapper{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0}:host(.select-label-placement-fixed) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.select-label-placement-fixed) .label-text-wrapper{-ms-flex:0 0 100px;flex:0 0 100px;width:100px;min-width:100px;max-width:200px}:host(.select-label-placement-stacked) .select-wrapper,:host(.select-label-placement-floating) .select-wrapper{-ms-flex-direction:column;flex-direction:column;-ms-flex-align:start;align-items:start}:host(.select-label-placement-stacked) .label-text-wrapper,:host(.select-label-placement-floating) .label-text-wrapper{max-width:100%}:host(.select-ltr.select-label-placement-stacked) .label-text-wrapper,:host(.select-ltr.select-label-placement-floating) .label-text-wrapper{-webkit-transform-origin:left top;transform-origin:left top}:host(.select-rtl.select-label-placement-stacked) .label-text-wrapper,:host(.select-rtl.select-label-placement-floating) .label-text-wrapper{-webkit-transform-origin:right top;transform-origin:right top}:host(.select-label-placement-stacked) .native-wrapper,:host(.select-label-placement-floating) .native-wrapper{margin-left:0;margin-right:0;margin-top:1px;margin-bottom:0;-ms-flex-positive:1;flex-grow:1;width:100%}:host(.select-label-placement-floating) .label-text-wrapper{-webkit-transform:translateY(100%) scale(1);transform:translateY(100%) scale(1)}:host(.select-label-placement-floating) .native-wrapper .select-placeholder{opacity:0}:host(.select-expanded.select-label-placement-floating) .native-wrapper .select-placeholder,:host(.ion-focused.select-label-placement-floating) .native-wrapper .select-placeholder,:host(.has-value.select-label-placement-floating) .native-wrapper .select-placeholder{opacity:1}:host(.select-label-placement-stacked) .label-text-wrapper,:host(.select-expanded.select-label-placement-floating) .label-text-wrapper,:host(.ion-focused.select-label-placement-floating) .label-text-wrapper,:host(.has-value.select-label-placement-floating) .label-text-wrapper{-webkit-transform:translateY(50%) scale(0.75);transform:translateY(50%) scale(0.75);max-width:calc(100% / 0.75)}:host(.legacy-select){--padding-top:10px;--padding-end:8px;--padding-bottom:10px;--padding-start:16px}:host(:not(.legacy-select)){min-height:44px}:host(.select-label-placement-floating),:host(.select-label-placement-stacked){min-height:56px}.select-icon{width:18px;height:18px;color:var(--ion-color-step-650, #595959)}:host(.select-label-placement-stacked) .native-wrapper,:host(.select-label-placement-floating) .native-wrapper{width:calc(100% - 18px - 4px)}:host(.select-disabled){opacity:0.3}";
+const selectMdCss = ":host{--padding-top:0px;--padding-end:0px;--padding-bottom:0px;--padding-start:0px;--placeholder-color:currentColor;--placeholder-opacity:0.6;--background:transparent;--border-style:solid;--highlight-color-focused:var(--ion-color-primary, #3880ff);--highlight-color-valid:var(--ion-color-success, #2dd36f);--highlight-color-invalid:var(--ion-color-danger, #eb445a);--highlight-color:var(--highlight-color-focused);display:block;position:relative;font-family:var(--ion-font-family, inherit);white-space:nowrap;cursor:pointer;z-index:2}:host(:not(.legacy-select)){width:100%}:host(.ion-color){--highlight-color-focused:var(--ion-color-base)}:host(.legacy-select){-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;overflow:hidden}:host(.in-item.legacy-select){position:static;max-width:45%}:host(.select-disabled){pointer-events:none}:host(.ion-focused) button{border:2px solid #5e9ed6}:host([slot=start]:not(.legacy-select)),:host([slot=end]:not(.legacy-select)){width:auto}.select-placeholder{color:var(--placeholder-color);opacity:var(--placeholder-opacity)}:host(.legacy-select) label{top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;opacity:0}@supports (inset-inline-start: 0){:host(.legacy-select) label{inset-inline-start:0}}@supports not (inset-inline-start: 0){:host(.legacy-select) label{left:0}:host-context([dir=rtl]):host(.legacy-select) label,:host-context([dir=rtl]).legacy-select label{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){:host(.legacy-select) label:dir(rtl){left:unset;right:unset;right:0}}}:host(.legacy-select) label::-moz-focus-inner{border:0}button{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;border:0;outline:0;clip:rect(0 0 0 0);opacity:0;overflow:hidden;-webkit-appearance:none;-moz-appearance:none}.select-icon{-webkit-margin-start:4px;margin-inline-start:4px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0;position:relative}:host(.in-item-color) .select-icon{color:inherit}:host(.select-label-placement-stacked) .select-icon,:host(.select-label-placement-floating) .select-icon{position:absolute;height:100%}:host(.select-ltr.select-label-placement-stacked) .select-icon,:host(.select-ltr.select-label-placement-floating) .select-icon{right:var(--padding-end, 0)}:host(.select-rtl.select-label-placement-stacked) .select-icon,:host(.select-rtl.select-label-placement-floating) .select-icon{left:var(--padding-start, 0)}.select-text{-ms-flex:1;flex:1;min-width:16px;font-size:inherit;text-overflow:ellipsis;white-space:inherit;overflow:hidden}.select-wrapper{-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);border-radius:var(--border-radius);display:-ms-flexbox;display:flex;position:relative;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;height:inherit;min-height:inherit;-webkit-transition:background-color 15ms linear;transition:background-color 15ms linear;background:var(--background);line-height:normal;cursor:inherit;-webkit-box-sizing:border-box;box-sizing:border-box}.select-wrapper .select-placeholder{-webkit-transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1)}:host(.ion-touched.ion-invalid){--highlight-color:var(--highlight-color-invalid)}:host(.ion-valid){--highlight-color:var(--highlight-color-valid)}.label-text-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;max-width:200px;-webkit-transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:color 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);pointer-events:none}.label-text{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.native-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-webkit-transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);overflow:hidden}:host(.select-justify-space-between) .select-wrapper{-ms-flex-pack:justify;justify-content:space-between}:host(.select-justify-start) .select-wrapper{-ms-flex-pack:start;justify-content:start}:host(.select-justify-end) .select-wrapper{-ms-flex-pack:end;justify-content:end}:host(.select-label-placement-start) .select-wrapper{-ms-flex-direction:row;flex-direction:row}:host(.select-label-placement-start) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.select-label-placement-end) .select-wrapper{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.select-label-placement-end) .label-text-wrapper{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:0;margin-inline-end:0;margin-top:0;margin-bottom:0}:host(.select-label-placement-fixed) .label-text-wrapper{-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:0;margin-bottom:0}:host(.select-label-placement-fixed) .label-text-wrapper{-ms-flex:0 0 100px;flex:0 0 100px;width:100px;min-width:100px;max-width:200px}:host(.select-label-placement-stacked) .select-wrapper,:host(.select-label-placement-floating) .select-wrapper{-ms-flex-direction:column;flex-direction:column;-ms-flex-align:start;align-items:start}:host(.select-label-placement-stacked) .label-text-wrapper,:host(.select-label-placement-floating) .label-text-wrapper{max-width:100%}:host(.select-ltr.select-label-placement-stacked) .label-text-wrapper,:host(.select-ltr.select-label-placement-floating) .label-text-wrapper{-webkit-transform-origin:left top;transform-origin:left top}:host(.select-rtl.select-label-placement-stacked) .label-text-wrapper,:host(.select-rtl.select-label-placement-floating) .label-text-wrapper{-webkit-transform-origin:right top;transform-origin:right top}:host(.select-label-placement-stacked) .native-wrapper,:host(.select-label-placement-floating) .native-wrapper{margin-left:0;margin-right:0;margin-top:1px;margin-bottom:0;-ms-flex-positive:1;flex-grow:1;width:100%}:host(.select-label-placement-floating) .label-text-wrapper{-webkit-transform:translateY(100%) scale(1);transform:translateY(100%) scale(1)}:host(.select-label-placement-floating) .native-wrapper .select-placeholder{opacity:0}:host(.select-expanded.select-label-placement-floating) .native-wrapper .select-placeholder,:host(.ion-focused.select-label-placement-floating) .native-wrapper .select-placeholder,:host(.has-value.select-label-placement-floating) .native-wrapper .select-placeholder{opacity:1}:host(.select-label-placement-stacked) .label-text-wrapper,:host(.select-expanded.select-label-placement-floating) .label-text-wrapper,:host(.ion-focused.select-label-placement-floating) .label-text-wrapper,:host(.has-value.select-label-placement-floating) .label-text-wrapper{-webkit-transform:translateY(50%) scale(0.75);transform:translateY(50%) scale(0.75);max-width:calc(100% / 0.75)}:host(.select-fill-solid){--background:var(--ion-color-step-50, #f2f2f2);--border-color:var(--ion-color-step-500, gray);--border-radius:4px;--padding-start:16px;--padding-end:16px}:host(.select-fill-solid) .select-wrapper{border-bottom:var(--border-width) var(--border-style) var(--border-color)}:host(.has-focus.select-fill-solid.ion-valid),:host(.select-fill-solid.ion-touched.ion-invalid){--border-color:var(--highlight-color)}:host(.select-fill-solid) .select-bottom{border-top:none}@media (any-hover: hover){:host(.select-fill-solid:hover){--background:var(--ion-color-step-100, #e6e6e6);--border-color:var(--ion-color-step-750, #404040)}}:host(.select-fill-solid.select-expanded),:host(.select-fill-solid.ion-focused){--background:var(--ion-color-step-150, #d9d9d9);--border-color:var(--ion-color-step-750, #404040)}:host(.select-fill-solid) .select-wrapper{border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0px;border-bottom-left-radius:0px}:host-context([dir=rtl]):host(.select-fill-solid) .select-wrapper,:host-context([dir=rtl]).select-fill-solid .select-wrapper{border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0px;border-bottom-left-radius:0px}@supports selector(:dir(rtl)){:host(.select-fill-solid) .select-wrapper:dir(rtl){border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom-right-radius:0px;border-bottom-left-radius:0px}}:host(.select-fill-solid.select-label-placement-stacked) .label-text-wrapper,:host(.select-expanded.select-fill-solid.select-label-placement-floating) .label-text-wrapper,:host(.ion-focused.select-fill-solid.select-label-placement-floating) .label-text-wrapper,:host(.has-value.select-fill-solid.select-label-placement-floating) .label-text-wrapper{max-width:calc(100% / 0.75)}:host(.select-fill-outline){--border-color:var(--ion-color-step-300, #b3b3b3);--border-radius:4px;--padding-start:16px;--padding-end:16px}:host(.select-fill-outline.select-shape-round){--border-radius:28px;--padding-start:32px;--padding-end:32px}:host(.has-focus.select-fill-outline.ion-valid),:host(.select-fill-outline.ion-touched.ion-invalid){--border-color:var(--highlight-color)}@media (any-hover: hover){:host(.select-fill-outline:hover){--border-color:var(--ion-color-step-750, #404040)}}:host(.select-fill-outline.select-expanded),:host(.select-fill-outline.ion-focused){--border-width:2px;--border-color:var(--highlight-color)}:host(.select-fill-outline) .select-bottom{border-top:none}:host(.select-fill-outline) .select-wrapper{border-bottom:none}:host(.select-ltr.select-fill-outline.select-label-placement-stacked) .label-text-wrapper,:host(.select-ltr.select-fill-outline.select-label-placement-floating) .label-text-wrapper{-webkit-transform-origin:left top;transform-origin:left top}:host(.select-rtl.select-fill-outline.select-label-placement-stacked) .label-text-wrapper,:host(.select-rtl.select-fill-outline.select-label-placement-floating) .label-text-wrapper{-webkit-transform-origin:right top;transform-origin:right top}:host(.select-fill-outline.select-label-placement-stacked) .label-text-wrapper,:host(.select-fill-outline.select-label-placement-floating) .label-text-wrapper{position:absolute;max-width:calc(100% - var(--padding-start) - var(--padding-end))}:host(.select-fill-outline) .label-text-wrapper{position:relative;z-index:1}:host(.select-expanded.select-fill-outline.select-label-placement-floating) .label-text-wrapper,:host(.ion-focused.select-fill-outline.select-label-placement-floating) .label-text-wrapper,:host(.has-value.select-fill-outline.select-label-placement-floating) .label-text-wrapper,:host(.select-fill-outline.select-label-placement-stacked) .label-text-wrapper{-webkit-transform:translateY(-32%) scale(0.75);transform:translateY(-32%) scale(0.75);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;max-width:calc((100% - var(--padding-start) - var(--padding-end) - 8px) / 0.75)}:host(.select-fill-outline.select-label-placement-stacked) select,:host(.select-fill-outline.select-label-placement-floating) select{margin-left:0;margin-right:0;margin-top:6px;margin-bottom:6px}:host(.select-fill-outline) .select-outline-container{left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;width:100%;height:100%}:host(.select-fill-outline) .select-outline-start,:host(.select-fill-outline) .select-outline-end{pointer-events:none}:host(.select-fill-outline) .select-outline-start,:host(.select-fill-outline) .select-outline-notch,:host(.select-fill-outline) .select-outline-end{border-top:var(--border-width) var(--border-style) var(--border-color);border-bottom:var(--border-width) var(--border-style) var(--border-color);-webkit-box-sizing:border-box;box-sizing:border-box}:host(.select-fill-outline) .select-outline-notch{max-width:calc(100% - var(--padding-start) - var(--padding-end))}:host(.select-fill-outline) .notch-spacer{-webkit-padding-end:8px;padding-inline-end:8px;font-size:calc(1em * 0.75);opacity:0;pointer-events:none}:host(.select-ltr.select-fill-outline) .select-outline-start{border-left:var(--border-width) var(--border-style) var(--border-color);border-radius:var(--border-radius) 0px 0px var(--border-radius)}:host(.select-rtl.select-fill-outline) .select-outline-start{border-right:var(--border-width) var(--border-style) var(--border-color);border-radius:0px var(--border-radius) var(--border-radius) 0px}:host(.select-fill-outline) .select-outline-start{width:calc(var(--padding-start) - 4px)}:host(.select-ltr.select-fill-outline) .select-outline-end{border-right:var(--border-width) var(--border-style) var(--border-color);border-radius:0px var(--border-radius) var(--border-radius) 0px}:host(.select-rtl.select-fill-outline) .select-outline-end{border-left:var(--border-width) var(--border-style) var(--border-color);border-radius:var(--border-radius) 0px 0px var(--border-radius)}:host(.select-fill-outline) .select-outline-end{-ms-flex-positive:1;flex-grow:1}:host(.select-expanded.select-fill-outline.select-label-placement-floating) .select-outline-notch,:host(.ion-focused.select-fill-outline.select-label-placement-floating) .select-outline-notch,:host(.has-value.select-fill-outline.select-label-placement-floating) .select-outline-notch,:host(.select-fill-outline.select-label-placement-stacked) .select-outline-notch{border-top:none}:host{--border-width:1px;--border-color:var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))))}:host(.legacy-select){--padding-top:10px;--padding-end:0;--padding-bottom:10px;--padding-start:16px}:host(:not(.legacy-select)){min-height:56px}.select-icon{width:13px;-webkit-transition:-webkit-transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);transition:-webkit-transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);transition:transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);transition:transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);color:var(--ion-color-step-500, gray)}:host(.select-label-placement-floating.select-expanded) .label-text-wrapper,:host(.select-label-placement-floating.ion-focused) .label-text-wrapper,:host(.select-label-placement-stacked.select-expanded) .label-text-wrapper,:host(.select-label-placement-stacked.ion-focused) .label-text-wrapper{color:var(--highlight-color)}:host(.has-focus.select-label-placement-floating.ion-valid) .label-text-wrapper,:host(.select-label-placement-floating.ion-touched.ion-invalid) .label-text-wrapper,:host(.has-focus.select-label-placement-stacked.ion-valid) .label-text-wrapper,:host(.select-label-placement-stacked.ion-touched.ion-invalid) .label-text-wrapper{color:var(--highlight-color)}.select-highlight{bottom:-1px;position:absolute;width:100%;height:2px;-webkit-transform:scale(0);transform:scale(0);-webkit-transition:-webkit-transform 200ms;transition:-webkit-transform 200ms;transition:transform 200ms;transition:transform 200ms, -webkit-transform 200ms;background:var(--highlight-color)}@supports (inset-inline-start: 0){.select-highlight{inset-inline-start:0}}@supports not (inset-inline-start: 0){.select-highlight{left:0}:host-context([dir=rtl]) .select-highlight{left:unset;right:unset;right:0}[dir=rtl] .select-highlight{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){.select-highlight:dir(rtl){left:unset;right:unset;right:0}}}:host(.select-expanded) .select-highlight,:host(.ion-focused) .select-highlight{-webkit-transform:scale(1);transform:scale(1)}:host(.in-item) .select-highlight{bottom:0}@supports (inset-inline-start: 0){:host(.in-item) .select-highlight{inset-inline-start:0}}@supports not (inset-inline-start: 0){:host(.in-item) .select-highlight{left:0}:host-context([dir=rtl]):host(.in-item) .select-highlight,:host-context([dir=rtl]).in-item .select-highlight{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){:host(.in-item) .select-highlight:dir(rtl){left:unset;right:unset;right:0}}}:host(.select-expanded:not(.legacy-select)) .select-icon{-webkit-transform:rotate(180deg);transform:rotate(180deg)}:host(.select-expanded) .select-wrapper .select-icon,:host(.has-focus.ion-valid) .select-wrapper .select-icon,:host(.ion-touched.ion-invalid) .select-wrapper .select-icon,:host(.ion-focused) .select-wrapper .select-icon{color:var(--highlight-color)}:host-context(.item-label-stacked) .select-icon,:host-context(.item-label-floating:not(.item-fill-outline)) .select-icon,:host-context(.item-label-floating.item-fill-outline){-webkit-transform:translate3d(0,  -9px,  0);transform:translate3d(0,  -9px,  0)}:host-context(.item-has-focus) .select-icon{-webkit-transform:rotate(180deg);transform:rotate(180deg)}:host-context(.item-has-focus.item-label-stacked) .select-icon,:host-context(.item-has-focus.item-label-floating:not(.item-fill-outline)) .select-icon{-webkit-transform:translate3d(0,  -9px,  0) rotate(180deg);transform:translate3d(0,  -9px,  0) rotate(180deg)}:host(.select-shape-round){--border-radius:16px}:host(.select-label-placement-stacked) .native-wrapper,:host(.select-label-placement-floating) .native-wrapper{width:calc(100% - 13px - 4px)}:host(.select-disabled){opacity:0.38}";
+const Select = /* @__PURE__ */ proxyCustomElement$1(class Select2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.ionChange = createEvent(this, "ionChange", 7);
+    this.ionCancel = createEvent(this, "ionCancel", 7);
+    this.ionDismiss = createEvent(this, "ionDismiss", 7);
+    this.ionFocus = createEvent(this, "ionFocus", 7);
+    this.ionBlur = createEvent(this, "ionBlur", 7);
+    this.ionStyle = createEvent(this, "ionStyle", 7);
+    this.inputId = `ion-sel-${selectIds++}`;
+    this.inheritedAttributes = {};
+    this.hasLoggedDeprecationWarning = false;
+    this.onClick = (ev) => {
+      this.setFocus();
+      this.open(ev);
+    };
+    this.onFocus = () => {
+      this.ionFocus.emit();
+    };
+    this.onBlur = () => {
+      this.ionBlur.emit();
+    };
+    this.isExpanded = false;
+    this.cancelText = "Cancel";
+    this.color = void 0;
+    this.compareWith = void 0;
+    this.disabled = false;
+    this.fill = void 0;
+    this.interface = "alert";
+    this.interfaceOptions = {};
+    this.justify = "space-between";
+    this.label = void 0;
+    this.labelPlacement = "start";
+    this.legacy = void 0;
+    this.multiple = false;
+    this.name = this.inputId;
+    this.okText = "OK";
+    this.placeholder = void 0;
+    this.selectedText = void 0;
+    this.shape = void 0;
+    this.value = void 0;
+  }
+  styleChanged() {
+    this.emitStyle();
+  }
+  setValue(value) {
+    this.value = value;
+    this.ionChange.emit({ value });
+  }
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes$2(this.el, ["aria-label"]);
+  }
+  async connectedCallback() {
+    const { el } = this;
+    this.legacyFormController = createLegacyFormController(el);
+    this.updateOverlayOptions();
+    this.emitStyle();
+    this.mutationO = watchForOptions(this.el, "ion-select-option", async () => {
+      this.updateOverlayOptions();
+      forceUpdate(this);
+    });
+  }
+  disconnectedCallback() {
+    if (this.mutationO) {
+      this.mutationO.disconnect();
+      this.mutationO = void 0;
+    }
+  }
+  /**
+   * Open the select overlay. The overlay is either an alert, action sheet, or popover,
+   * depending on the `interface` property on the `ion-select`.
+   *
+   * @param event The user interface event that called the open.
+   */
+  async open(event) {
+    if (this.disabled || this.isExpanded) {
+      return void 0;
+    }
+    this.isExpanded = true;
+    const overlay = this.overlay = await this.createOverlay(event);
+    overlay.onDidDismiss().then(() => {
+      this.overlay = void 0;
+      this.isExpanded = false;
+      this.ionDismiss.emit();
+      this.setFocus();
+    });
+    await overlay.present();
+    if (this.interface === "popover") {
+      let indexOfSelected = this.childOpts.map((o) => o.value).indexOf(this.value);
+      indexOfSelected = indexOfSelected > -1 ? indexOfSelected : 0;
+      const selectedItem = overlay.querySelector(`.select-interface-option:nth-child(${indexOfSelected + 1})`);
+      if (selectedItem) {
+        focusElement(selectedItem);
+        const interactiveEl = selectedItem.querySelector("ion-radio, ion-checkbox");
+        if (interactiveEl) {
+          interactiveEl.focus();
+        }
+      }
+    }
+    return overlay;
+  }
+  createOverlay(ev) {
+    let selectInterface = this.interface;
+    if (selectInterface === "action-sheet" && this.multiple) {
+      console.warn(`Select interface cannot be "${selectInterface}" with a multi-value select. Using the "alert" interface instead.`);
+      selectInterface = "alert";
+    }
+    if (selectInterface === "popover" && !ev) {
+      console.warn(`Select interface cannot be a "${selectInterface}" without passing an event. Using the "alert" interface instead.`);
+      selectInterface = "alert";
+    }
+    if (selectInterface === "action-sheet") {
+      return this.openActionSheet();
+    }
+    if (selectInterface === "popover") {
+      return this.openPopover(ev);
+    }
+    return this.openAlert();
+  }
+  updateOverlayOptions() {
+    const overlay = this.overlay;
+    if (!overlay) {
+      return;
+    }
+    const childOpts = this.childOpts;
+    const value = this.value;
+    switch (this.interface) {
+      case "action-sheet":
+        overlay.buttons = this.createActionSheetButtons(childOpts, value);
+        break;
+      case "popover":
+        const popover = overlay.querySelector("ion-select-popover");
+        if (popover) {
+          popover.options = this.createPopoverOptions(childOpts, value);
+        }
+        break;
+      case "alert":
+        const inputType = this.multiple ? "checkbox" : "radio";
+        overlay.inputs = this.createAlertInputs(childOpts, inputType, value);
+        break;
+    }
+  }
+  createActionSheetButtons(data, selectValue) {
+    const actionSheetButtons = data.map((option) => {
+      const value = getOptionValue(option);
+      const copyClasses = Array.from(option.classList).filter((cls) => cls !== "hydrated").join(" ");
+      const optClass = `${OPTION_CLASS} ${copyClasses}`;
+      return {
+        role: isOptionSelected(selectValue, value, this.compareWith) ? "selected" : "",
+        text: option.textContent,
+        cssClass: optClass,
+        handler: () => {
+          this.setValue(value);
+        }
+      };
+    });
+    actionSheetButtons.push({
+      text: this.cancelText,
+      role: "cancel",
+      handler: () => {
+        this.ionCancel.emit();
+      }
+    });
+    return actionSheetButtons;
+  }
+  createAlertInputs(data, inputType, selectValue) {
+    const alertInputs = data.map((option) => {
+      const value = getOptionValue(option);
+      const copyClasses = Array.from(option.classList).filter((cls) => cls !== "hydrated").join(" ");
+      const optClass = `${OPTION_CLASS} ${copyClasses}`;
+      return {
+        type: inputType,
+        cssClass: optClass,
+        label: option.textContent || "",
+        value,
+        checked: isOptionSelected(selectValue, value, this.compareWith),
+        disabled: option.disabled
+      };
+    });
+    return alertInputs;
+  }
+  createPopoverOptions(data, selectValue) {
+    const popoverOptions = data.map((option) => {
+      const value = getOptionValue(option);
+      const copyClasses = Array.from(option.classList).filter((cls) => cls !== "hydrated").join(" ");
+      const optClass = `${OPTION_CLASS} ${copyClasses}`;
+      return {
+        text: option.textContent || "",
+        cssClass: optClass,
+        value,
+        checked: isOptionSelected(selectValue, value, this.compareWith),
+        disabled: option.disabled,
+        handler: (selected) => {
+          this.setValue(selected);
+          if (!this.multiple) {
+            this.close();
+          }
+        }
+      };
+    });
+    return popoverOptions;
+  }
+  async openPopover(ev) {
+    const { fill, labelPlacement } = this;
+    const interfaceOptions = this.interfaceOptions;
+    const mode = getIonMode$2(this);
+    const showBackdrop = mode === "md" ? false : true;
+    const multiple = this.multiple;
+    const value = this.value;
+    let event = ev;
+    let size = "auto";
+    if (this.legacyFormController.hasLegacyControl()) {
+      const item = this.el.closest("ion-item");
+      if (item && (item.classList.contains("item-label-floating") || item.classList.contains("item-label-stacked"))) {
+        event = Object.assign(Object.assign({}, ev), { detail: {
+          ionShadowTarget: item
+        } });
+        size = "cover";
+      }
+    } else {
+      const hasFloatingOrStackedLabel = labelPlacement === "floating" || labelPlacement === "stacked";
+      if (hasFloatingOrStackedLabel || mode === "md" && fill !== void 0) {
+        size = "cover";
+      } else {
+        event = Object.assign(Object.assign({}, ev), { detail: {
+          ionShadowTarget: this.nativeWrapperEl
+        } });
+      }
+    }
+    const popoverOpts = Object.assign(Object.assign({
+      mode,
+      event,
+      alignment: "center",
+      size,
+      showBackdrop
+    }, interfaceOptions), { component: "ion-select-popover", cssClass: ["select-popover", interfaceOptions.cssClass], componentProps: {
+      header: interfaceOptions.header,
+      subHeader: interfaceOptions.subHeader,
+      message: interfaceOptions.message,
+      multiple,
+      value,
+      options: this.createPopoverOptions(this.childOpts, value)
+    } });
+    return popoverController.create(popoverOpts);
+  }
+  async openActionSheet() {
+    const mode = getIonMode$2(this);
+    const interfaceOptions = this.interfaceOptions;
+    const actionSheetOpts = Object.assign(Object.assign({ mode }, interfaceOptions), { buttons: this.createActionSheetButtons(this.childOpts, this.value), cssClass: ["select-action-sheet", interfaceOptions.cssClass] });
+    return actionSheetController.create(actionSheetOpts);
+  }
+  async openAlert() {
+    let label;
+    let labelText;
+    if (this.legacyFormController.hasLegacyControl()) {
+      label = this.getLabel();
+      labelText = label ? label.textContent : null;
+    } else {
+      labelText = this.label;
+    }
+    const interfaceOptions = this.interfaceOptions;
+    const inputType = this.multiple ? "checkbox" : "radio";
+    const mode = getIonMode$2(this);
+    const alertOpts = Object.assign(Object.assign({ mode }, interfaceOptions), { header: interfaceOptions.header ? interfaceOptions.header : labelText, inputs: this.createAlertInputs(this.childOpts, inputType, this.value), buttons: [
+      {
+        text: this.cancelText,
+        role: "cancel",
+        handler: () => {
+          this.ionCancel.emit();
+        }
+      },
+      {
+        text: this.okText,
+        handler: (selectedValues) => {
+          this.setValue(selectedValues);
+        }
+      }
+    ], cssClass: [
+      "select-alert",
+      interfaceOptions.cssClass,
+      this.multiple ? "multiple-select-alert" : "single-select-alert"
+    ] });
+    return alertController.create(alertOpts);
+  }
+  /**
+   * Close the select interface.
+   */
+  close() {
+    if (!this.overlay) {
+      return Promise.resolve(false);
+    }
+    return this.overlay.dismiss();
+  }
+  // TODO FW-3194 Remove this
+  getLabel() {
+    return findItemLabel(this.el);
+  }
+  hasValue() {
+    return this.getText() !== "";
+  }
+  get childOpts() {
+    return Array.from(this.el.querySelectorAll("ion-select-option"));
+  }
+  getText() {
+    const selectedText = this.selectedText;
+    if (selectedText != null && selectedText !== "") {
+      return selectedText;
+    }
+    return generateText(this.childOpts, this.value, this.compareWith);
+  }
+  setFocus() {
+    if (this.focusEl) {
+      this.focusEl.focus();
+    }
+  }
+  emitStyle() {
+    const { disabled } = this;
+    const style = {
+      "interactive-disabled": disabled
+    };
+    if (this.legacyFormController.hasLegacyControl()) {
+      style["interactive"] = true;
+      style["select"] = true;
+      style["select-disabled"] = disabled;
+      style["has-placeholder"] = this.placeholder !== void 0;
+      style["has-value"] = this.hasValue();
+      style["has-focus"] = this.isExpanded;
+    }
+    this.ionStyle.emit(style);
+  }
+  renderLabel() {
+    const { label } = this;
+    if (label === void 0) {
+      return;
+    }
+    return h$1("div", { class: "label-text-wrapper" }, h$1("div", { class: "label-text" }, this.label));
+  }
+  /**
+   * Renders the border container
+   * when fill="outline".
+   */
+  renderLabelContainer() {
+    const mode = getIonMode$2(this);
+    const hasOutlineFill = mode === "md" && this.fill === "outline";
+    if (hasOutlineFill) {
+      return [
+        h$1("div", { class: "select-outline-container" }, h$1("div", { class: "select-outline-start" }), h$1("div", { class: "select-outline-notch" }, h$1("div", { class: "notch-spacer", "aria-hidden": "true" }, this.label)), h$1("div", { class: "select-outline-end" })),
+        this.renderLabel()
+      ];
+    }
+    return this.renderLabel();
+  }
+  renderSelect() {
+    const { disabled, el, isExpanded, labelPlacement, justify, placeholder, fill, shape, name, value } = this;
+    const mode = getIonMode$2(this);
+    const hasFloatingOrStackedLabel = labelPlacement === "floating" || labelPlacement === "stacked";
+    const justifyEnabled = !hasFloatingOrStackedLabel;
+    const rtl = isRTL$1(el) ? "rtl" : "ltr";
+    const inItem = hostContext("ion-item", this.el);
+    const shouldRenderHighlight = mode === "md" && fill !== "outline" && !inItem;
+    renderHiddenInput(true, el, name, parseValue(value), disabled);
+    return h$1(Host$1, { onClick: this.onClick, class: createColorClasses$1(this.color, {
+      [mode]: true,
+      "in-item": inItem,
+      "in-item-color": hostContext("ion-item.ion-color", el),
+      "select-disabled": disabled,
+      "select-expanded": isExpanded,
+      "has-value": this.hasValue(),
+      "has-placeholder": placeholder !== void 0,
+      "ion-focusable": true,
+      [`select-${rtl}`]: true,
+      [`select-fill-${fill}`]: fill !== void 0,
+      [`select-justify-${justify}`]: justifyEnabled,
+      [`select-shape-${shape}`]: shape !== void 0,
+      [`select-label-placement-${labelPlacement}`]: true
+    }) }, h$1("label", { class: "select-wrapper", id: "select-label" }, this.renderLabelContainer(), h$1("div", { class: "native-wrapper", ref: (el2) => this.nativeWrapperEl = el2 }, this.renderSelectText(), !hasFloatingOrStackedLabel && this.renderSelectIcon(), this.renderListbox()), hasFloatingOrStackedLabel && this.renderSelectIcon(), shouldRenderHighlight && h$1("div", { class: "select-highlight" })));
+  }
+  // TODO FW-3194 - Remove this
+  renderLegacySelect() {
+    if (!this.hasLoggedDeprecationWarning) {
+      printIonWarning(`ion-select now requires providing a label with either the "label" property or the "aria-label" attribute. To migrate, remove any usage of "ion-label" and pass the label text to either the "label" property or the "aria-label" attribute.
+
+Example: <ion-select label="Favorite Color">...</ion-select>
+Example with aria-label: <ion-select aria-label="Favorite Color">...</ion-select>
+
+Developers can use the "legacy" property to continue using the legacy form markup. This property will be removed in an upcoming major release of Ionic where this form control will use the modern form markup.`, this.el);
+      if (this.legacy) {
+        printIonWarning(`ion-select is being used with the "legacy" property enabled which will forcibly enable the legacy form markup. This property will be removed in an upcoming major release of Ionic where this form control will use the modern form markup.
+    Developers can dismiss this warning by removing their usage of the "legacy" property and using the new select syntax.`, this.el);
+      }
+      this.hasLoggedDeprecationWarning = true;
+    }
+    const { disabled, el, inputId, isExpanded, name, placeholder, value } = this;
+    const mode = getIonMode$2(this);
+    const { labelText, labelId } = getAriaLabel(el, inputId);
+    renderHiddenInput(true, el, name, parseValue(value), disabled);
+    const displayValue = this.getText();
+    let selectText = displayValue;
+    if (selectText === "" && placeholder !== void 0) {
+      selectText = placeholder;
+    }
+    const displayLabel = labelText !== void 0 ? selectText !== "" ? `${selectText}, ${labelText}` : labelText : selectText;
+    return h$1(Host$1, { onClick: this.onClick, role: "button", "aria-haspopup": "listbox", "aria-disabled": disabled ? "true" : null, "aria-label": displayLabel, class: {
+      [mode]: true,
+      "in-item": hostContext("ion-item", el),
+      "in-item-color": hostContext("ion-item.ion-color", el),
+      "select-disabled": disabled,
+      "select-expanded": isExpanded,
+      "legacy-select": true
+    } }, this.renderSelectText(), this.renderSelectIcon(), h$1("label", { id: labelId }, displayLabel), this.renderListbox());
+  }
+  /**
+   * Renders either the placeholder
+   * or the selected values based on
+   * the state of the select.
+   */
+  renderSelectText() {
+    const { placeholder } = this;
+    const displayValue = this.getText();
+    let addPlaceholderClass = false;
+    let selectText = displayValue;
+    if (selectText === "" && placeholder !== void 0) {
+      selectText = placeholder;
+      addPlaceholderClass = true;
+    }
+    const selectTextClasses = {
+      "select-text": true,
+      "select-placeholder": addPlaceholderClass
+    };
+    const textPart = addPlaceholderClass ? "placeholder" : "text";
+    return h$1("div", { "aria-hidden": "true", class: selectTextClasses, part: textPart }, selectText);
+  }
+  /**
+   * Renders the chevron icon
+   * next to the select text.
+   */
+  renderSelectIcon() {
+    const mode = getIonMode$2(this);
+    const icon = mode === "ios" ? chevronExpand : caretDownSharp;
+    return h$1("ion-icon", { class: "select-icon", part: "icon", "aria-hidden": "true", icon });
+  }
+  get ariaLabel() {
+    var _a;
+    const { placeholder, label, el, inputId, inheritedAttributes } = this;
+    const displayValue = this.getText();
+    const { labelText } = getAriaLabel(el, inputId);
+    const definedLabel = (_a = label !== null && label !== void 0 ? label : inheritedAttributes["aria-label"]) !== null && _a !== void 0 ? _a : labelText;
+    let renderedLabel = displayValue;
+    if (renderedLabel === "" && placeholder !== void 0) {
+      renderedLabel = placeholder;
+    }
+    if (definedLabel !== void 0) {
+      renderedLabel = renderedLabel === "" ? definedLabel : `${definedLabel}, ${renderedLabel}`;
+    }
+    return renderedLabel;
+  }
+  renderListbox() {
+    const { disabled, inputId, isExpanded } = this;
+    return h$1("button", { disabled, id: inputId, "aria-label": this.ariaLabel, "aria-haspopup": "listbox", "aria-expanded": `${isExpanded}`, onFocus: this.onFocus, onBlur: this.onBlur, ref: (focusEl) => this.focusEl = focusEl });
+  }
+  render() {
+    const { legacyFormController } = this;
+    return legacyFormController.hasLegacyControl() ? this.renderLegacySelect() : this.renderSelect();
+  }
+  get el() {
+    return this;
+  }
+  static get watchers() {
+    return {
+      "disabled": ["styleChanged"],
+      "isExpanded": ["styleChanged"],
+      "placeholder": ["styleChanged"],
+      "value": ["styleChanged"]
+    };
+  }
+  static get style() {
+    return {
+      ios: selectIosCss,
+      md: selectMdCss
+    };
+  }
+}, [33, "ion-select", {
+  "cancelText": [1, "cancel-text"],
+  "color": [513],
+  "compareWith": [1, "compare-with"],
+  "disabled": [4],
+  "fill": [1],
+  "interface": [1],
+  "interfaceOptions": [8, "interface-options"],
+  "justify": [1],
+  "label": [1],
+  "labelPlacement": [1, "label-placement"],
+  "legacy": [4],
+  "multiple": [4],
+  "name": [1],
+  "okText": [1, "ok-text"],
+  "placeholder": [1],
+  "selectedText": [1, "selected-text"],
+  "shape": [1],
+  "value": [1032],
+  "isExpanded": [32],
+  "open": [64]
+}]);
+const isOptionSelected = (currentValue, compareValue, compareWith) => {
+  if (currentValue === void 0) {
+    return false;
+  }
+  if (Array.isArray(currentValue)) {
+    return currentValue.some((val) => compareOptions(val, compareValue, compareWith));
+  } else {
+    return compareOptions(currentValue, compareValue, compareWith);
+  }
+};
+const getOptionValue = (el) => {
+  const value = el.value;
+  return value === void 0 ? el.textContent || "" : value;
+};
+const parseValue = (value) => {
+  if (value == null) {
+    return void 0;
+  }
+  if (Array.isArray(value)) {
+    return value.join(",");
+  }
+  return value.toString();
+};
+const compareOptions = (currentValue, compareValue, compareWith) => {
+  if (typeof compareWith === "function") {
+    return compareWith(currentValue, compareValue);
+  } else if (typeof compareWith === "string") {
+    return currentValue[compareWith] === compareValue[compareWith];
+  } else {
+    return Array.isArray(compareValue) ? compareValue.includes(currentValue) : currentValue === compareValue;
+  }
+};
+const generateText = (opts, value, compareWith) => {
+  if (value === void 0) {
+    return "";
+  }
+  if (Array.isArray(value)) {
+    return value.map((v) => textForValue(opts, v, compareWith)).filter((opt) => opt !== null).join(", ");
+  } else {
+    return textForValue(opts, value, compareWith) || "";
+  }
+};
+const textForValue = (opts, value, compareWith) => {
+  const selectOpt = opts.find((opt) => {
+    return compareOptions(value, getOptionValue(opt), compareWith);
+  });
+  return selectOpt ? selectOpt.textContent : null;
+};
+let selectIds = 0;
+const OPTION_CLASS = "select-interface-option";
+function defineCustomElement$1$b() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-select", "ion-action-sheet", "ion-alert", "ion-backdrop", "ion-checkbox", "ion-icon", "ion-item", "ion-label", "ion-list", "ion-list-header", "ion-note", "ion-popover", "ion-radio", "ion-radio-group", "ion-ripple-effect", "ion-select-popover"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-select":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Select);
+        }
+        break;
+      case "ion-action-sheet":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$f();
+        }
+        break;
+      case "ion-alert":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$e();
+        }
+        break;
+      case "ion-backdrop":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$P();
+        }
+        break;
+      case "ion-checkbox":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$D();
+        }
+        break;
+      case "ion-icon":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$R();
+        }
+        break;
+      case "ion-item":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$y();
+        }
+        break;
+      case "ion-label":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$x();
+        }
+        break;
+      case "ion-list":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$p();
+        }
+        break;
+      case "ion-list-header":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$n();
+        }
+        break;
+      case "ion-note":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$z();
+        }
+        break;
+      case "ion-popover":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$w();
+        }
+        break;
+      case "ion-radio":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$l();
+        }
+        break;
+      case "ion-radio-group":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$k();
+        }
+        break;
+      case "ion-ripple-effect":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$N();
+        }
+        break;
+      case "ion-select-popover":
+        if (!customElements.get(tagName)) {
+          defineCustomElement$d();
+        }
+        break;
+    }
+  });
+}
+const defineCustomElement$c = defineCustomElement$1$b;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const selectOptionCss = ":host{display:none}";
+const SelectOption = /* @__PURE__ */ proxyCustomElement$1(class SelectOption2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.inputId = `ion-selopt-${selectOptionIds++}`;
+    this.disabled = false;
+    this.value = void 0;
+  }
+  render() {
+    return h$1(Host$1, { role: "option", id: this.inputId, class: getIonMode$2(this) });
+  }
+  get el() {
+    return this;
+  }
+  static get style() {
+    return selectOptionCss;
+  }
+}, [1, "ion-select-option", {
+  "disabled": [4],
+  "value": [8]
+}]);
+let selectOptionIds = 0;
+function defineCustomElement$1$a() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-select-option"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-select-option":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, SelectOption);
+        }
+        break;
+    }
+  });
+}
+const defineCustomElement$b = defineCustomElement$1$a;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
 const titleIosCss = ":host{--color:initial;display:-ms-flexbox;display:flex;-ms-flex:1;flex:1;-ms-flex-align:center;align-items:center;-webkit-transform:translateZ(0);transform:translateZ(0);color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}.toolbar-title{display:block;width:100%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;pointer-events:auto}:host(.title-small) .toolbar-title{white-space:normal}:host{top:0;-webkit-padding-start:90px;padding-inline-start:90px;-webkit-padding-end:90px;padding-inline-end:90px;padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);position:absolute;width:100%;height:100%;-webkit-transform:translateZ(0);transform:translateZ(0);font-size:17px;font-weight:600;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;pointer-events:none}@supports (inset-inline-start: 0){:host{inset-inline-start:0}}@supports not (inset-inline-start: 0){:host{left:0}:host-context([dir=rtl]){left:unset;right:unset;right:0}@supports selector(:dir(rtl)){:host:dir(rtl){left:unset;right:unset;right:0}}}:host(.title-small){-webkit-padding-start:9px;padding-inline-start:9px;-webkit-padding-end:9px;padding-inline-end:9px;padding-top:6px;padding-bottom:16px;position:relative;font-size:13px;font-weight:normal}:host(.title-large){-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px;padding-top:0;padding-bottom:0;-webkit-transform-origin:left center;transform-origin:left center;bottom:0;-ms-flex-align:end;align-items:flex-end;min-width:100%;padding-bottom:6px;font-size:34px;font-weight:700;text-align:start}:host(.title-large.title-rtl){-webkit-transform-origin:right center;transform-origin:right center}:host(.title-large.ion-cloned-element){--color:var(--ion-text-color, #000)}:host(.title-large) .toolbar-title{-webkit-transform-origin:inherit;transform-origin:inherit}:host-context([dir=rtl]):host(.title-large) .toolbar-title,:host-context([dir=rtl]).title-large .toolbar-title{-webkit-transform-origin:calc(100% - inherit);transform-origin:calc(100% - inherit)}@supports selector(:dir(rtl)){:host(.title-large) .toolbar-title:dir(rtl){-webkit-transform-origin:calc(100% - inherit);transform-origin:calc(100% - inherit)}}";
 const titleMdCss = ":host{--color:initial;display:-ms-flexbox;display:flex;-ms-flex:1;flex:1;-ms-flex-align:center;align-items:center;-webkit-transform:translateZ(0);transform:translateZ(0);color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}.toolbar-title{display:block;width:100%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;pointer-events:auto}:host(.title-small) .toolbar-title{white-space:normal}:host{-webkit-padding-start:20px;padding-inline-start:20px;-webkit-padding-end:20px;padding-inline-end:20px;padding-top:0;padding-bottom:0;font-size:20px;font-weight:500;letter-spacing:0.0125em}:host(.title-small){width:100%;height:100%;font-size:15px;font-weight:normal}";
 const ToolbarTitle = /* @__PURE__ */ proxyCustomElement$1(class ToolbarTitle2 extends H$1 {
@@ -9835,7 +13650,7 @@ function defineCustomElement$1$8() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$F();
+          defineCustomElement$R();
         }
         break;
     }
@@ -10035,12 +13850,12 @@ function defineCustomElement$1$6() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$F();
+          defineCustomElement$R();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$C();
+          defineCustomElement$N();
         }
         break;
     }
@@ -10078,7 +13893,7 @@ const RouterOutlet = /* @__PURE__ */ proxyCustomElement$1(class RouterOutlet2 ex
         this.swipeHandler.onStart();
       }
     };
-    this.gesture = (await import('./_nuxt/swipe-back-d4e8e1d5.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
+    this.gesture = (await import('./_nuxt/swipe-back-58e84a46.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
       var _a;
       return (_a = this.ani) === null || _a === void 0 ? void 0 : _a.progressStep(step);
     }, (shouldComplete, step, dur) => {
@@ -10361,7 +14176,7 @@ function defineCustomElement$1$4() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$C();
+          defineCustomElement$N();
         }
         break;
     }
@@ -10463,14 +14278,14 @@ const App = /* @__PURE__ */ proxyCustomElement$1(class App2 extends H$1 {
       rIC(async () => {
         const isHybrid2 = isPlatform(window, "hybrid");
         if (!config.getBoolean("_testing")) {
-          import('./_nuxt/index9-32440a1c.mjs').then((module) => module.startTapClick(config));
+          import('./_nuxt/index9-6f05b81a.mjs').then((module) => module.startTapClick(config));
         }
         if (config.getBoolean("statusTap", isHybrid2)) {
-          import('./_nuxt/status-tap-b80c5a06.mjs').then((module) => module.startStatusTap());
+          import('./_nuxt/status-tap-e5668092.mjs').then((module) => module.startStatusTap());
         }
         if (config.getBoolean("inputShims", needInputShims())) {
           const platform = isPlatform(window, "ios") ? "ios" : "android";
-          import('./_nuxt/input-shims-6691001b.mjs').then((module) => module.startInputShims(config, platform));
+          import('./_nuxt/input-shims-2873019f.mjs').then((module) => module.startInputShims(config, platform));
         }
         const hardwareBackButtonModule = await import('./_nuxt/hardware-back-button-b290b24e.mjs');
         if (config.getBoolean("hardwareBackButton", isHybrid2)) {
@@ -13122,7 +16937,7 @@ function defineCustomElement$1() {
         break;
       case "ion-backdrop":
         if (!customElements.get(tagName)) {
-          defineCustomElement$D();
+          defineCustomElement$P();
         }
         break;
     }
@@ -13238,8 +17053,11 @@ const defineContainer = (name, defineCustomElement2, componentProps = [], modelP
   }
   return Container;
 };
-const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$E);
-const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$A, [
+const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$Q);
+const IonBadge = /* @__PURE__ */ defineContainer("ion-badge", defineCustomElement$O, [
+  "color"
+]);
+const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$L, [
   "color",
   "buttonType",
   "disabled",
@@ -13259,10 +17077,10 @@ const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElem
   "ionFocus",
   "ionBlur"
 ]);
-const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$y, [
+const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$J, [
   "collapse"
 ]);
-const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$x, [
+const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$I, [
   "color",
   "button",
   "type",
@@ -13274,23 +17092,23 @@ const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$
   "routerAnimation",
   "target"
 ]);
-const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$w);
-const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$v, [
+const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$H);
+const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$G, [
   "color",
   "translucent"
 ]);
-const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$u, [
+const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$F, [
   "color"
 ]);
-const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$t, [
+const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$E, [
   "color"
 ]);
-const IonChip = /* @__PURE__ */ defineContainer("ion-chip", defineCustomElement$s, [
+const IonChip = /* @__PURE__ */ defineContainer("ion-chip", defineCustomElement$C, [
   "color",
   "outline",
   "disabled"
 ]);
-const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$r, [
+const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$B, [
   "offset",
   "offsetXs",
   "offsetSm",
@@ -13316,7 +17134,7 @@ const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$r,
   "sizeLg",
   "sizeXl"
 ]);
-const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomElement$q, [
+const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomElement$A, [
   "color",
   "fullscreen",
   "forceOverscroll",
@@ -13327,18 +17145,18 @@ const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomEl
   "ionScroll",
   "ionScrollEnd"
 ]);
-const IonFooter = /* @__PURE__ */ defineContainer("ion-footer", defineCustomElement$m, [
+const IonFooter = /* @__PURE__ */ defineContainer("ion-footer", defineCustomElement$v, [
   "collapse",
   "translucent"
 ]);
-const IonGrid = /* @__PURE__ */ defineContainer("ion-grid", defineCustomElement$l, [
+const IonGrid = /* @__PURE__ */ defineContainer("ion-grid", defineCustomElement$u, [
   "fixed"
 ]);
-const IonHeader = /* @__PURE__ */ defineContainer("ion-header", defineCustomElement$k, [
+const IonHeader = /* @__PURE__ */ defineContainer("ion-header", defineCustomElement$t, [
   "collapse",
   "translucent"
 ]);
-const IonInput = /* @__PURE__ */ defineContainer("ion-input", defineCustomElement$j, [
+const IonInput = /* @__PURE__ */ defineContainer("ion-input", defineCustomElement$s, [
   "color",
   "accept",
   "autocapitalize",
@@ -13381,7 +17199,7 @@ const IonInput = /* @__PURE__ */ defineContainer("ion-input", defineCustomElemen
   "ionFocus",
   "ionStyle"
 ], "value", "v-ion-input", "ionInput");
-const IonItem = /* @__PURE__ */ defineContainer("ion-item", defineCustomElement$i, [
+const IonItem = /* @__PURE__ */ defineContainer("ion-item", defineCustomElement$r, [
   "color",
   "button",
   "detail",
@@ -13400,18 +17218,45 @@ const IonItem = /* @__PURE__ */ defineContainer("ion-item", defineCustomElement$
   "type",
   "counterFormatter"
 ]);
-const IonLabel = /* @__PURE__ */ defineContainer("ion-label", defineCustomElement$h, [
+const IonLabel = /* @__PURE__ */ defineContainer("ion-label", defineCustomElement$q, [
   "color",
   "position",
   "ionColor",
   "ionStyle"
 ]);
-const IonList = /* @__PURE__ */ defineContainer("ion-list", defineCustomElement$f, [
+const IonList = /* @__PURE__ */ defineContainer("ion-list", defineCustomElement$o, [
   "lines",
   "inset"
 ]);
-const IonRow = /* @__PURE__ */ defineContainer("ion-row", defineCustomElement$d);
-const IonSegment = /* @__PURE__ */ defineContainer("ion-segment", defineCustomElement$c, [
+const IonRow = /* @__PURE__ */ defineContainer("ion-row", defineCustomElement$j);
+const IonSearchbar = /* @__PURE__ */ defineContainer("ion-searchbar", defineCustomElement$i, [
+  "color",
+  "animated",
+  "autocomplete",
+  "autocorrect",
+  "cancelButtonIcon",
+  "cancelButtonText",
+  "clearIcon",
+  "debounce",
+  "disabled",
+  "inputmode",
+  "enterkeyhint",
+  "placeholder",
+  "searchIcon",
+  "showCancelButton",
+  "showClearButton",
+  "spellcheck",
+  "type",
+  "value",
+  "ionInput",
+  "ionChange",
+  "ionCancel",
+  "ionClear",
+  "ionBlur",
+  "ionFocus",
+  "ionStyle"
+], "value", "v-ion-input", "ionInput");
+const IonSegment = /* @__PURE__ */ defineContainer("ion-segment", defineCustomElement$h, [
   "color",
   "disabled",
   "scrollable",
@@ -13422,12 +17267,42 @@ const IonSegment = /* @__PURE__ */ defineContainer("ion-segment", defineCustomEl
   "ionSelect",
   "ionStyle"
 ], "value", "v-ion-change", "ionChange");
-const IonSegmentButton = /* @__PURE__ */ defineContainer("ion-segment-button", defineCustomElement$b, [
+const IonSegmentButton = /* @__PURE__ */ defineContainer("ion-segment-button", defineCustomElement$g, [
   "disabled",
   "layout",
   "type",
   "value"
 ], "value", "v-ion-change", "ionChange");
+const IonSelect = /* @__PURE__ */ defineContainer("ion-select", defineCustomElement$c, [
+  "cancelText",
+  "color",
+  "compareWith",
+  "disabled",
+  "fill",
+  "interface",
+  "interfaceOptions",
+  "justify",
+  "label",
+  "labelPlacement",
+  "legacy",
+  "multiple",
+  "name",
+  "okText",
+  "placeholder",
+  "selectedText",
+  "shape",
+  "value",
+  "ionChange",
+  "ionCancel",
+  "ionDismiss",
+  "ionFocus",
+  "ionBlur",
+  "ionStyle"
+], "value", "v-ion-change", "ionChange");
+const IonSelectOption = /* @__PURE__ */ defineContainer("ion-select-option", defineCustomElement$b, [
+  "disabled",
+  "value"
+]);
 const IonTitle = /* @__PURE__ */ defineContainer("ion-title", defineCustomElement$a, [
   "color",
   "size",
@@ -14066,7 +17941,7 @@ const VueDelegate = (addFn = addTeleportedUserComponent, removeFn = removeTelepo
   return { attachViewToDom, removeViewFromDom };
 };
 const IonNav = /* @__PURE__ */ defineComponent(() => {
-  defineCustomElement$e();
+  defineCustomElement$m();
   const views = shallowRef([]);
   const addView = (component) => views.value = [...views.value, component];
   const removeView = (component) => views.value = views.value.filter((cmp) => cmp !== component);
@@ -14277,7 +18152,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-ae89b43c.mjs').then((r) => r.default || r));
+    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-681b2f28.mjs').then((r) => r.default || r));
     const IslandRenderer = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/island-renderer-8b0a9e87.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
@@ -14343,5 +18218,5 @@ const plugins = normalizePlugins(_plugins);
 }
 const entry$1 = (ctx) => entry(ctx);
 
-export { useHead as $, IonChip as A, useIonRouter as B, IonItem as C, IonTitle as D, IonToggle as E, IonInput as F, isRTL$1 as G, createGesture as H, IonToolbar as I, clamp as J, createAnimation as K, getIonPageElement as L, now$1 as M, pointerCoord as N, readTask as O, findClosestIonContent as P, componentOnReady as Q, writeTask$1 as R, scrollToTop as S, Keyboard as T, addEventListener$1 as U, removeEventListener as V, KeyboardResize as W, raf as X, useRouter as Y, navigateTo as Z, _export_sfc as _, IonTabs as a, IonRouterOutlet as b, createError as c, IonTabBar as d, entry$1 as default, IonTabButton as e, IonIcon as f, IonLabel as g, IonPage as h, IonHeader as i, IonButtons as j, IonButton as k, IonCard as l, IonCardHeader as m, IonCardSubtitle as n, IonCardTitle as o, IonCol as p, IonGrid as q, IonRow as r, IonSegment as s, IonSegmentButton as t, IonList as u, IonAvatar as v, IonModal as w, IonFooter as x, IonCardContent as y, IonContent as z };
+export { removeEventListener as $, IonSelectOption as A, IonButtons as B, IonCol as C, IonGrid as D, IonRow as E, IonSegment as F, IonSegmentButton as G, IonCardContent as H, IonPage as I, useIonRouter as J, IonTitle as K, IonToggle as L, isRTL$1 as M, createGesture as N, clamp as O, createAnimation as P, getIonPageElement as Q, now$1 as R, pointerCoord as S, readTask as T, findClosestIonContent as U, componentOnReady as V, writeTask$1 as W, scrollToTop as X, Keyboard as Y, addEventListener$1 as Z, _export_sfc as _, IonHeader as a, KeyboardResize as a0, raf as a1, useRouter as a2, navigateTo as a3, useHead as a4, IonToolbar as b, createError as c, IonCard as d, entry$1 as default, IonCardHeader as e, IonCardTitle as f, IonIcon as g, IonSearchbar as h, IonContent as i, IonList as j, IonFooter as k, IonButton as l, IonBadge as m, IonChip as n, IonAvatar as o, IonTabs as p, IonRouterOutlet as q, IonTabBar as r, IonTabButton as s, IonLabel as t, useRoute as u, IonCardSubtitle as v, IonModal as w, IonInput as x, IonItem as y, IonSelect as z };
 //# sourceMappingURL=server.mjs.map

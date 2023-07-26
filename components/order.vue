@@ -1,9 +1,9 @@
 <template>
     <ion-card class="asset" style="">
 
-        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;margin:3%">
+        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;margin:0px;background:none;">
             <div style="display: flex;flex-direction: column;justify-content: space-between;align-items: flex-start;max-width:30%;height:100%">
-                <ion-card-title class="title" style="font-size:150%;">{{props.orderType}}</ion-card-title>
+                <ion-card-title class="title" style="font-size:130%;">{{props.orderType}}</ion-card-title>
                 <ion-card-subtitle class="title" style="font-size: 80%; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ props.base }}/{{ props.quote }}</ion-card-subtitle> 
             </div>
             
@@ -19,8 +19,8 @@
             
         </ion-card>
 
-        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;margin: 3%;">
-            <ion-card-title class="title" style="font-size:150%;">{{props.quantity}} {{props.quote}}</ion-card-title>
+        <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;margin: 0px;background: none;margin-top:1%;">
+            <ion-card-title class="title" style="font-size:120%;">{{props.quantity}} <span style="font-size:70%;">{{props.quote}}</span></ion-card-title>
             <ion-card-subtitle style="font-size: 120%;color: green;">{{props.processPercentage}}%</ion-card-subtitle>
         </ion-card>
 
@@ -45,13 +45,17 @@ const props = defineProps<{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background: none;
     width: 100%;
     /* min-height:10%; */
     border-radius: 18px;
-    border:0.5px solid #1B1D30;
-    margin-bottom: 0px;
-
+    /* border:0.5px solid #1B1D30; */
+    background:rgba(0, 0, 0, 0.105);
+    padding: 2%;
     margin-left: 0px;
+    box-shadow: none;
+    margin: 0px;
+    margin-bottom: 5%;
  }
  .asset:hover{
     background: #1b1d30;

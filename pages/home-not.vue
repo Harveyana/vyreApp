@@ -80,7 +80,7 @@
 
     <AddAsset :is-crypto="switchAssets" :ismodal-open="ismodalOpen" @closeModal="setOpen(false)" />
 
-    <tabs/>
+    <!-- <tabs/> -->
     </ion-page>
 </template>
 <script setup lang="ts">
