@@ -1,7 +1,7 @@
 <template>
     <ion-page style="">
 
-    <ion-header class="ion-no-border" style="max-height: 60%;min-height: 60%;">
+    <ion-header class="ion-no-border" style="max-height: 33%;min-height: 30%;">
         
         
         <ion-toolbar style="min-height: 100%;max-height: 100%;">
@@ -23,8 +23,8 @@
 
                    
             <!-- header actions -->
-                <ion-card style="display: flex;flex-direction: row;align-items: center;justify-content: space-around;width: 100%;height: 5%;margin: 0px;background:none;box-shadow: none;">
-                    <ion-card class="footerActions" :button="true" style="background: goldenrod;">
+                <ion-card style="display: flex;flex-direction: row;align-items: center;justify-content: space-around;width: 100%;height: 5%;margin: 0px;background:none;box-shadow: none;z-index: 999;">
+                    <ion-card class="footerActions" :button="true" style="background: goldenrod;z-index: 999;">
                                         <ion-card-header>
                                             <div class="figureCard" style="">
                                             <ion-card-title color="primary" style="font-size: 120%;">Recent</ion-card-title>
@@ -32,7 +32,7 @@
                                             </div>
                                         </ion-card-header>
                     </ion-card>
-                    <ion-card class="footerActions" :button="true" style="background: #1d3160;border: 3px solid #1d3160;">
+                    <ion-card class="footerActions" :button="true" style="background: #1d3160;border: 3px solid #1d3160;z-index: 999;">
                                         <ion-card-header>
                                             <div class="figureCard" style="">
                                             <ion-card-title color="secondary" style="font-size: 120%;">Assets</ion-card-title>
@@ -43,16 +43,34 @@
                 </ion-card>
                 
                 
-                <ion-card style="margin: 0px;height: 8%;width: 100%;background: none;">
-                        <ion-card style="background: none;border: 1px solid;">
-                            <img alt="Silhouette of mountains" src="/illustration(2).svg" style="max-height:150px;"/>
-                        </ion-card>
-                </ion-card>
+                
 
         </ion-toolbar>
+        
     </ion-header>
+    <!-- <div style="display: flex;flex-direction: row;align-items: center;justify-content: center;border: 1px solid black;">
+        <ion-card style="height:80%;width:70%;margin:0px;display: flex;flex-direction: row;align-items: center;justify-content: center;">
+            <img alt="Silhouette of mountains" src="/rocket.png" style="width: 70%;height: 100%;"/>
+        </ion-card>
+    </div> -->
+    
 
-    <ion-content>
+    <!-- <div class="" style="width: 100%;background: none;box-shadow: none;margin: 0px;height: 10%;">
+                                <ion-card-header>
+                                    <div style="display: flex;flex-direction: row;align-items: center;justify-content: space-between;">
+                                        <ion-label color="primary" style="font-size: 150%;font-weight: bold;">Recents</ion-label>
+                                        <ion-button style="height: 40px;--background:primary;--color:secondary;">See All</ion-button>
+                                    </div>
+                                    
+                                </ion-card-header>
+                            </div> -->
+
+    <ion-content style="">
+        <div style="display: flex;flex-direction: row;align-items: center;justify-content: center;border: 1px solid black;">
+        <ion-card style="height:80%;width:70%;margin:0px;display: flex;flex-direction: row;align-items: center;justify-content: center;">
+            <img alt="advert" src="/rocket.png" style="width: 70%;height: 100%;"/>
+        </ion-card>
+    </div>
                             <ion-card class="" style="width: 100%;background: none;box-shadow: none;margin: 0px;margin-bottom: -4%;margin-top: -4%;">
                                 <ion-card-header>
                                     <div style="display: flex;flex-direction: row;align-items: center;justify-content: space-between;">
@@ -65,9 +83,9 @@
                             
                             <ion-card class="actions" style="" >
                                 
-                                <ion-chip class="action" :id="action.id" v-for="action in actions" key="action.name" style="box-shadow:10px whitesmoke;border-radius: 12px;height: 15%;padding: 8%;">
+                                <ion-chip class="action" :id="action.id" v-for="action in actions" key="action.name" style="box-shadow:10px whitesmoke;border-radius: 12px;padding: 8%;background: white;">
                                     <ion-avatar style="--border-radius: 8px;min-width: 10%;">
-                                    <img alt="Silhouette of a person's head" :src="action.img" style="scale: 1.4;"/>
+                                    <img alt="coin" :src="action.img" style="scale: 1.4;"/>
                                     </ion-avatar>
                                     <div style="display: flex;flex-direction: column;align-items: start;flex-wrap:nowrap;justify-content: center;width: 100%;position: relative;left: 2%;">
                                         <ion-label color="primary" style="font-size: 90%;margin-bottom: 7px;font-weight: bold;">{{action.name}} </ion-label>
@@ -257,7 +275,7 @@ const fiats:{name:string,symbol:string,price:number,amount:number,img:string}[] 
 .actions{
     width: 100%;
     margin: 0px;
-    height:80%;
+    /* height:80%; */
     display: flex;
     flex-direction: column;
     justify-content: center;

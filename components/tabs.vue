@@ -2,25 +2,25 @@
     <ion-toolbar >
     <ion-tabs style="" @ion-tabs-will-change="selected = 'home2'">
       <ion-router-outlet></ion-router-outlet>
-      <ion-tab-bar slot="bottom" style="padding: 1%;--background:#1d3160;">
+      <ion-tab-bar slot="bottom" style="padding: 1% 1% 1% 1%;--background:#1d3160;">
         <ion-tab-button class="notSelected" tab="home2" href="/home2" @click="$router.push('/home2')" router-direction="back" style="">
-          <ion-icon :icon="ioniconsPrismSharp" style="font-size: 250%;"/>
-          <ion-label>home</ion-label>
+          <ion-icon :icon="ioniconsPrismSharp" style="font-size: 300%;"/>
+          <!-- <ion-label>home</ion-label> -->
         </ion-tab-button>
 
         <ion-tab-button class="notSelected" tab="p2p" href="/p2p" @click="$router.push('/p2p')" router-direction="forward">
-          <ion-icon :icon="ioniconsCubeSharp" style="font-size: 300%;"/>
-          <ion-label>p2p</ion-label>
+          <ion-icon :icon="ioniconsCubeSharp" style="font-size: 350%;"/>
+          <!-- <ion-label>p2p</ion-label> -->
         </ion-tab-button>
 
         <ion-tab-button class="notSelected" tab="assets" href="/assets">
-          <ion-icon :icon="ioniconsDiamondSharp" style="font-size: 250%;"/>
-          <ion-label>Assets</ion-label>
+          <ion-icon :icon="ioniconsDiamondSharp" style="font-size: 300%;"/>
+          <!-- <ion-label>Assets</ion-label> -->
         </ion-tab-button>
 
         <ion-tab-button class="notSelected" tab="search" href="/intro">
-          <ion-icon :icon="ioniconsSettingsOutline" style="font-size: 250%;"/>
-          <ion-label>Settings</ion-label>
+          <ion-icon :icon="ioniconsSettingsOutline" style="font-size: 300%;"/>
+          <!-- <ion-label>Settings</ion-label> -->
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>

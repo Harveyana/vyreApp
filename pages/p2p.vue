@@ -35,7 +35,7 @@
 
     <AddAsset :is-crypto="switchTab" :ismodal-open="ismodalOpen" @closeModal="setOpen(false)" />
 
-    <ion-content style="background: red;">
+    <ion-content style="">
 
         <ion-card style="max-height:100%;min-height:100%;overflow-y: scroll;scroll-behavior: smooth;box-shadow: none;background: none;margin-top: 0px;">
             <ion-list v-for="(order, index) in orders" :key="index"  >

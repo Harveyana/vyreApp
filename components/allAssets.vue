@@ -57,23 +57,37 @@ const switchAssets = ref<string>('fiat')
 
 const cryptos:{name:string,symbol:string,price:number,amount:number,img:string}[] = [
     {
+        name:'Bitcoin',
+        img:'/BTC.svg',
+        symbol:'btc',
+        price: 0.42,
+        amount:367
+    },
+    {
+        name:'Ethereum',
+        img:'/ETH.svg',
+        symbol:'eth',
+        price: 0.42,
+        amount:367
+    },
+    {
         name:'Ripple',
         img:'/ripple.svg',
-        symbol:'XRP',
+        symbol:'xrp',
         price: 0.42,
         amount:367
     },
     {
         name:'Solana',
         img:'/solana.svg',
-        symbol:'Solana',
+        symbol:'sol',
         price: 138,
         amount:567
     },
     {
         name:'Tether',
         img:'/tether.svg',
-        symbol:'USDT',
+        symbol:'usdt',
         price: 1,
         amount:670
     },
@@ -87,7 +101,7 @@ const cryptos:{name:string,symbol:string,price:number,amount:number,img:string}[
     {
         name:'Solana',
         img:'/solana.svg',
-        symbol:'Solana',
+        symbol:'sol',
         price: 138,
         amount:567
     },
@@ -101,28 +115,28 @@ const cryptos:{name:string,symbol:string,price:number,amount:number,img:string}[
     {
         name:'Tron',
         img:'/tron.svg',
-        symbol:'TRON',
+        symbol:'trx',
         price: 0.08,
         amount:8367
     },
     {
         name:'Solana',
         img:'/solana.svg',
-        symbol:'Solana',
+        symbol:'sol',
         price: 138,
         amount:567
     },
     {
         name:'Tether',
         img:'/tether.svg',
-        symbol:'USDT',
+        symbol:'usdt',
         price: 1,
         amount:670
     },
     {
         name:'Tron',
         img:'/tron.svg',
-        symbol:'TRON',
+        symbol:'trx',
         price: 0.08,
         amount:8367
     }

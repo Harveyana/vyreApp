@@ -13,14 +13,14 @@
 
       <ion-content class="ion-padding content" style="">
         <!-- Title -->
-        <div style="height:8%;width:100%;display: flex;flex-direction: row;align-items: start;justify-content: start;margin-top: 7%;padding: 0 5% 0 5%;">
+        <div style="max-height:8%;min-height:8%;width:100%;display: flex;flex-direction: row;align-items: start;justify-content: start;margin-top: 7%;padding: 0 5% 0 5%;">
             <ion-label style="font-size: 190%;color: black;font-weight: bold;">New Order</ion-label>
             <ion-icon :icon="ioniconsInformationCircle" style="font-size: 200%;position: relative;left:45%;" @click=""/>
         </div>
         <!-- Title -->
 
         <!-- Options -->
-        <div style="height:8%;width:100%;display: flex;flex-direction: row;align-items: start;justify-content: start;padding: 0 5% 0 5%;">
+        <div style="max-height:8%;min-height:8%;width:100%;display: flex;flex-direction: row;align-items: start;justify-content: start;padding: 0 5% 0 5%;">
             <ion-list>
                 <ion-item>
                 <ion-select aria-label="Fruit" interface="action-sheet" placeholder="Select Pair" style="font-size: 120%;" @ion-change="setOrder($event.detail.value)">
@@ -50,7 +50,7 @@
                 </ion-card-subtitle>
             </ion-card>
             
-            <div style="max-width: 100%;height: 100%;display: flex;flex-direction: row;justify-content: center;align-items: center;">
+            <div style="max-width: 100%;max-height:100%;min-height: 100%;display: flex;flex-direction: row;justify-content: center;align-items: center;">
                 <!-- <ion-icon class="arrow" color="primary" :icon="ioniconsArrowUpCircleSharp" style="font-size: 250%;transform: rotate(45deg);"/> -->
                 <ion-avatar slot="start" style="scale:1.3;border: 3px solid #1B1D30;">
                   <img alt="asset img" :src="baseImgUrl" v-if="baseImgUrl"/>
@@ -63,7 +63,7 @@
         </div>
 
         <!-- Quote Price -->
-        <div style="display:flex;flex-direction: row;align-items: center;justify-content: space-around;height: 9%;width: 100%;border:1px solid black ;border-radius: 25px;padding:4%;border: 1px solid white;margin-top: 7%;">
+        <div style="display:flex;flex-direction: row;align-items: center;justify-content: space-around;max-height:9%;min-height: 9%;width: 100%;border:1px solid black ;border-radius: 25px;padding:4%;border: 1px solid white;margin-top: 7%;">
                 <ion-label style="font-size: 120%;color: black;">Quote Price</ion-label>
                 <ion-input label="" type="number" placeholder="000" style="width: 50%;background: #43455838;font-size: 150%;border-radius: 12px;color: black;border: 1px solid whitesmoke;"></ion-input>
                 <ion-label style="font-size: 100%;color: black;">{{ quote }}</ion-label>
@@ -72,8 +72,8 @@
 
 
         <!-- card -->
-        <ion-card style="margin: 0px;display: flex;flex-direction: column;align-items: center;justify-content: center;height: 30%;margin-top: 2%;background:#1d3160;box-shadow: none;padding-top: 3%;padding-bottom: 3%;">
-            <div style="display:flex;flex-direction: row;align-items: center;justify-content: space-around;height: 30%;width: 90%;border:1px solid black ;border-radius: 25px;padding:4%;background: #1d3160;border: 1px solid white;">
+        <ion-card style="margin: 0px;display: flex;flex-direction: column;align-items: center;justify-content: center;max-height:30%;min-height: 30%;margin-top: 2%;background:#1d3160;box-shadow: none;padding-top: 3%;padding-bottom: 3%;">
+            <div style="display:flex;flex-direction: row;align-items: center;justify-content: space-around;max-height:30%;min-height: 30%;width: 90%;border:1px solid black ;border-radius: 25px;padding:4%;background: #1d3160;border: 1px solid white;">
                 <ion-label style="font-size: 150%;color: whitesmoke;">You Send</ion-label>
                 <ion-input label="" type="number" placeholder="000" style="width: 50%;background: #43455838;font-size: 150%;border-radius: 12px;color: whitesmoke;border: 1px solid whitesmoke;"></ion-input>
                 <ion-label style="font-size: 120%;color: whitesmoke;">{{ orderType == 'Buy' ? quote : base }}</ion-label>
@@ -83,7 +83,7 @@
                 <ion-icon color="secondary" :icon="ioniconsSwapVerticalSharp" style="font-size: 300%;border-radius: 25px;z-index: 99;padding: 3%;margin-left: 15%;"/>
                 <ion-label style="font-size: 100%;color: whitesmoke;position: relative;left: 10%;">fee : 0.5%</ion-label>
             </div>
-            <div style="display:flex;flex-direction: row;align-items: center;justify-content: space-around;height: 30%;width: 90%;border:1px solid black ;border-radius: 25px;padding:4%;background:goldenrod;border: 1px solid goldenrod;">
+            <div style="display:flex;flex-direction: row;align-items: center;justify-content: space-around;max-height:30%;min-height: 30%;width: 90%;border:1px solid black ;border-radius: 25px;padding:4%;background:goldenrod;border: 1px solid goldenrod;">
                 <ion-label style="font-size: 150%;color: black;">You Get</ion-label>
                 <ion-input label="" :readonly="true" type="number" placeholder="00" style="width: 50%;background: #43455838;font-size: 150%;border-radius: 12px;color: black;border: 1px solid whitesmoke;"></ion-input>
                 <ion-label style="font-size: 120%;color: black;">{{ orderType == 'Buy' ? base : quote }}</ion-label>

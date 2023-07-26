@@ -130,6 +130,21 @@ const actions:{name:string,default:boolean,icon:string,link:string}[]=[
 
 
 const cryptos:{name:string,symbol:string,price:number,amount:number,img:string}[] = [
+
+    {
+        name:'Bitcoin',
+        img:'/BTC.svg',
+        symbol:'BTC',
+        price: 0.42,
+        amount:367
+    },
+    {
+        name:'Ethereum',
+        img:'/ETH.svg',
+        symbol:'ETH',
+        price: 0.42,
+        amount:367
+    },
     {
         name:'Ripple',
         img:'/ripple.svg',

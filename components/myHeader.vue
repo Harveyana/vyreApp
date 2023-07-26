@@ -2,20 +2,20 @@
     <ion-card class="headingCard" style="">
 
 
-        <ion-button fill="clear" style="border-radius: 50px;height: 40px;background: #1d3160;" @click="isDarkMode = !isDarkMode">
-            <ion-icon color="secondary" slot="end" :icon="ioniconsMoon"></ion-icon>
+        <ion-button fill="clear" style="border-radius: 10px;height: 30px;background: #1d3160;" @click="isDarkMode = !isDarkMode">
+            <ion-icon color="secondary" slot="end" :icon="ioniconsMoon" style="font-size: 100%;"></ion-icon>
         </ion-button>
 
         <div style="display: flex;justify-content: center;align-items: center;width: 50%;">
 
             <ion-button fill="clear" style="border-radius: 12px;height: 40px;" @click="isDarkMode = !isDarkMode">
-                <ion-icon color="secondary" slot="end" :icon="ioniconsNotificationsCircle" style="font-size: 260%;background: #1d3160;border-radius: 50px;"></ion-icon>
+                <ion-icon color="secondary" slot="end" :icon="ioniconsNotificationsCircle" style="font-size: 200%;background: #1d3160;border-radius: 50px;"></ion-icon>
                 <ion-badge slot="end" color="primary">1</ion-badge>
             </ion-button>
 
             <ion-chip class="ionchip" color="" style="height: 50px;width:30%;padding:5%;margin-left:5%;background: none;">
                 <ion-avatar >
-                <img  alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg"  style="scale: 1.6;"/>
+                <img  alt="profilePic" src="/harveyana.png"  style="scale: 1.6;"/>
                 </ion-avatar>
                 <!-- <ion-label color="secondary" >Harvey Ana</ion-label> -->
             </ion-chip>
