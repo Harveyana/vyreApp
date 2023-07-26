@@ -8,7 +8,7 @@ export default {
   "pages/index.vue": () => import('./_nuxt/index-styles.092b4ebc.mjs').then(interopDefault),
   "pages/newhome.vue": () => import('./_nuxt/newhome-styles.e6051f39.mjs').then(interopDefault),
   "pages/p2p.vue": () => import('./_nuxt/p2p-styles.ace2c10d.mjs').then(interopDefault),
-  "pages/signUp.vue": () => import('./_nuxt/signUp-styles.3be1b47f.mjs').then(interopDefault),
+  "pages/signUp.vue": () => import('./_nuxt/signUp-styles.f7870e8c.mjs').then(interopDefault),
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": () => import('./_nuxt/error-404-styles.a5c3f351.mjs').then(interopDefault),
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": () => import('./_nuxt/error-500-styles.6b5b5ff2.mjs').then(interopDefault),
   "components/order.vue": () => import('./_nuxt/order-styles.244b9814.mjs').then(interopDefault)

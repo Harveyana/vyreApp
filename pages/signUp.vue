@@ -79,7 +79,7 @@ const ionRouter = useIonRouter();
       
     // }
 
-    ionRouter.push('/home')
+    ionRouter.push('/home2')
   }
 </script>
 <style scoped>

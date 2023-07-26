@@ -1193,7 +1193,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import("./_nuxt/signUp-8726a0d8.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/signUp-e86e564e.js").then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
