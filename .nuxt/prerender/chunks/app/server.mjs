@@ -1,4 +1,4 @@
-import { version, hasInjectionContext, inject, defineComponent, h as h$2, computed, provide, ref, shallowRef, watch, onUnmounted, getCurrentInstance, watchEffect, useSSRContext, createApp, reactive, unref, onErrorCaptured, onServerPrefetch, createVNode, resolveDynamicComponent, toRef, isReadonly, Teleport, defineAsyncComponent, isRef, isShallow, isReactive, toRaw, withCtx, nextTick as nextTick$2 } from 'file:///Users/mac/vyreApp/node_modules/vue/index.mjs';
+import { version, hasInjectionContext, inject, defineComponent, h as h$2, computed, provide, ref, shallowRef, watch, onUnmounted, getCurrentInstance, useSSRContext, watchEffect, mergeProps, withCtx, createTextVNode, unref, toDisplayString, openBlock, createBlock, Fragment, renderList, createVNode, createCommentVNode, createApp, reactive, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, isReadonly, Teleport, defineAsyncComponent, isRef, isShallow, isReactive, toRaw, nextTick as nextTick$2 } from 'file:///Users/mac/vyreApp/node_modules/vue/index.mjs';
 import { $fetch } from 'file:///Users/mac/vyreApp/node_modules/ofetch/dist/node.mjs';
 import { createHooks } from 'file:///Users/mac/vyreApp/node_modules/hookable/dist/index.mjs';
 import { getContext, executeAsync } from 'file:///Users/mac/vyreApp/node_modules/unctx/dist/index.mjs';
@@ -8,7 +8,9 @@ import { getActiveHead, createServerHead as createServerHead$1 } from 'file:///U
 import { defineHeadPlugin } from 'file:///Users/mac/vyreApp/node_modules/@unhead/shared/dist/index.mjs';
 import { routeLocationKey, useRoute as useRoute$1, matchedRouteKey, createRouter as createRouter$1, createMemoryHistory as createMemoryHistory$1, parseQuery } from 'file:///Users/mac/vyreApp/node_modules/vue-router/dist/vue-router.node.mjs';
 import { hasProtocol, parseURL, joinURL, isEqual } from 'file:///Users/mac/vyreApp/node_modules/ufo/dist/index.mjs';
-import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode } from 'file:///Users/mac/vyreApp/node_modules/vue/server-renderer/index.mjs';
+import { ssrRenderComponent, ssrRenderStyle, ssrRenderList, ssrInterpolate, ssrRenderAttr, ssrRenderSuspense, ssrRenderVNode } from 'file:///Users/mac/vyreApp/node_modules/vue/server-renderer/index.mjs';
+import * as Realm from 'file:///Users/mac/vyreApp/node_modules/realm-web/dist/bundle.cjs.js';
+import { App as App$1 } from 'file:///Users/mac/vyreApp/node_modules/@capacitor/app/dist/plugin.cjs.js';
 import { a as useRuntimeConfig$1 } from '../nitro/nitro-prerenderer.mjs';
 import 'file:///Users/mac/vyreApp/node_modules/node-fetch-native/dist/polyfill.mjs';
 import 'file:///Users/mac/vyreApp/node_modules/destr/dist/index.mjs';
@@ -1127,12 +1129,20 @@ const routerOptions = {
 };
 const _routes = [
   {
+    name: "assetPage-assetId",
+    path: "/assetPage/:assetId()",
+    meta: {},
+    alias: [],
+    redirect: void 0,
+    component: () => import('./_nuxt/_assetId_-40baff9f.mjs').then((m) => m.default || m)
+  },
+  {
     name: "assets",
     path: "/assets",
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/assets-2d23e829.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/assets-1d88032c.mjs').then((m) => m.default || m)
   },
   {
     name: "home-not",
@@ -1140,7 +1150,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-not-66bb059f.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-not-ec455886.mjs').then((m) => m.default || m)
   },
   {
     name: "home",
@@ -1148,7 +1158,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-44e26f86.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-79e79bae.mjs').then((m) => m.default || m)
   },
   {
     name: "home2",
@@ -1156,7 +1166,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home2-5c4cfab8.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home2-291d64d0.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1164,7 +1174,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/index-a765c050.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-5515584b.mjs').then((m) => m.default || m)
   },
   {
     name: "newhome",
@@ -1172,7 +1182,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/newhome-25e39d7e.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/newhome-7416ded9.mjs').then((m) => m.default || m)
   },
   {
     name: "notindex",
@@ -1180,7 +1190,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/notindex-97389ce1.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/notindex-ad521aa3.mjs').then((m) => m.default || m)
   },
   {
     name: "p2p",
@@ -1188,7 +1198,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/p2p-fadc0285.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/p2p-4b0f4792.mjs').then((m) => m.default || m)
   },
   {
     name: "signUp",
@@ -1196,7 +1206,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/signUp-680bbd97.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/signUp-963180ba.mjs').then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -3306,7 +3316,7 @@ const createColorClasses$2 = (color) => {
     [`ion-color-${color}`]: true
   } : null;
 };
-function defineCustomElement$R() {
+function defineCustomElement$T() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3369,7 +3379,7 @@ function defineCustomElement$1$u() {
     }
   });
 }
-const defineCustomElement$Q = defineCustomElement$1$u;
+const defineCustomElement$S = defineCustomElement$1$u;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3619,7 +3629,7 @@ const Backdrop = /* @__PURE__ */ proxyCustomElement$1(class Backdrop2 extends H$
   "tappable": [4],
   "stopPropagation": [4, "stop-propagation"]
 }, [[2, "click", "onMouseDown"]]]);
-function defineCustomElement$P() {
+function defineCustomElement$R() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3710,7 +3720,7 @@ function defineCustomElement$1$t() {
     }
   });
 }
-const defineCustomElement$O = defineCustomElement$1$t;
+const defineCustomElement$Q = defineCustomElement$1$t;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -3797,7 +3807,7 @@ const removeRipple = (ripple) => {
 };
 const PADDING = 10;
 const INITIAL_ORIGIN_SCALE = 0.5;
-function defineCustomElement$N() {
+function defineCustomElement$P() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3972,7 +3982,7 @@ const Button = /* @__PURE__ */ proxyCustomElement$1(class Button2 extends H$1 {
   "type": [1],
   "form": [1]
 }]);
-function defineCustomElement$M() {
+function defineCustomElement$O() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -3986,7 +3996,7 @@ function defineCustomElement$M() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
@@ -3995,7 +4005,7 @@ function defineCustomElement$M() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$L = defineCustomElement$M;
+const defineCustomElement$N = defineCustomElement$O;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4023,7 +4033,7 @@ const Buttons = /* @__PURE__ */ proxyCustomElement$1(class Buttons2 extends H$1 
 }, [34, "ion-buttons", {
   "collapse": [4]
 }]);
-function defineCustomElement$K() {
+function defineCustomElement$M() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4041,7 +4051,7 @@ function defineCustomElement$K() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$J = defineCustomElement$K;
+const defineCustomElement$L = defineCustomElement$M;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4128,13 +4138,13 @@ function defineCustomElement$1$s() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
   });
 }
-const defineCustomElement$I = defineCustomElement$1$s;
+const defineCustomElement$K = defineCustomElement$1$s;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4175,7 +4185,7 @@ function defineCustomElement$1$r() {
     }
   });
 }
-const defineCustomElement$H = defineCustomElement$1$r;
+const defineCustomElement$J = defineCustomElement$1$r;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4222,7 +4232,7 @@ function defineCustomElement$1$q() {
     }
   });
 }
-const defineCustomElement$G = defineCustomElement$1$q;
+const defineCustomElement$I = defineCustomElement$1$q;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4266,7 +4276,7 @@ function defineCustomElement$1$p() {
     }
   });
 }
-const defineCustomElement$F = defineCustomElement$1$p;
+const defineCustomElement$H = defineCustomElement$1$p;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4310,7 +4320,7 @@ function defineCustomElement$1$o() {
     }
   });
 }
-const defineCustomElement$E = defineCustomElement$1$o;
+const defineCustomElement$G = defineCustomElement$1$o;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4505,7 +4515,7 @@ Developers can dismiss this warning by removing their usage of the "legacy" prop
   "legacy": [4]
 }]);
 let checkboxIds = 0;
-function defineCustomElement$D() {
+function defineCustomElement$F() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -4564,13 +4574,13 @@ function defineCustomElement$1$n() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
   });
 }
-const defineCustomElement$C = defineCustomElement$1$n;
+const defineCustomElement$E = defineCustomElement$1$n;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -4731,7 +4741,7 @@ function defineCustomElement$1$m() {
     }
   });
 }
-const defineCustomElement$B = defineCustomElement$1$m;
+const defineCustomElement$D = defineCustomElement$1$m;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -5097,7 +5107,7 @@ function defineCustomElement$1$l() {
     }
   });
 }
-const defineCustomElement$A = defineCustomElement$1$l;
+const defineCustomElement$C = defineCustomElement$1$l;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -5125,7 +5135,7 @@ const Note = /* @__PURE__ */ proxyCustomElement$1(class Note2 extends H$1 {
 }, [33, "ion-note", {
   "color": [513]
 }]);
-function defineCustomElement$z() {
+function defineCustomElement$B() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5386,7 +5396,7 @@ const Item = /* @__PURE__ */ proxyCustomElement$1(class Item2 extends H$1 {
   "focusable": [32],
   "counterString": [32]
 }, [[0, "ionInput", "handleIonInput"], [0, "ionColor", "labelColorChanged"], [0, "ionStyle", "itemStyle"]]]);
-function defineCustomElement$y() {
+function defineCustomElement$A() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5400,17 +5410,17 @@ function defineCustomElement$y() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$R();
+          defineCustomElement$T();
         }
         break;
       case "ion-note":
         if (!customElements.get(tagName)) {
-          defineCustomElement$z();
+          defineCustomElement$B();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
@@ -5498,7 +5508,7 @@ const Label = /* @__PURE__ */ proxyCustomElement$1(class Label2 extends H$1 {
   "position": [1],
   "noAnimate": [32]
 }]);
-function defineCustomElement$x() {
+function defineCustomElement$z() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -5950,8 +5960,8 @@ const LIFECYCLE_DID_ENTER = "ionViewDidEnter";
 const LIFECYCLE_WILL_LEAVE = "ionViewWillLeave";
 const LIFECYCLE_DID_LEAVE = "ionViewDidLeave";
 const LIFECYCLE_WILL_UNLOAD = "ionViewWillUnload";
-const iosTransitionAnimation = () => import('./_nuxt/ios.transition-f7cb9539.mjs');
-const mdTransitionAnimation = () => import('./_nuxt/md.transition-43ccf0dd.mjs');
+const iosTransitionAnimation = () => import('./_nuxt/ios.transition-8b851412.mjs');
+const mdTransitionAnimation = () => import('./_nuxt/md.transition-11ba698d.mjs');
 const transition = (opts) => {
   return new Promise((resolve, reject) => {
     writeTask$1(() => {
@@ -7981,7 +7991,7 @@ const LIFECYCLE_MAP$1 = {
   ionPopoverWillDismiss: "ionViewWillLeave",
   ionPopoverDidDismiss: "ionViewDidLeave"
 };
-function defineCustomElement$w() {
+function defineCustomElement$y() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -7995,7 +8005,7 @@ function defineCustomElement$w() {
         break;
       case "ion-backdrop":
         if (!customElements.get(tagName)) {
-          defineCustomElement$P();
+          defineCustomElement$R();
         }
         break;
     }
@@ -8218,7 +8228,7 @@ function defineCustomElement$1$k() {
     }
   });
 }
-const defineCustomElement$v = defineCustomElement$1$k;
+const defineCustomElement$x = defineCustomElement$1$k;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -8258,7 +8268,7 @@ function defineCustomElement$1$j() {
     }
   });
 }
-const defineCustomElement$u = defineCustomElement$1$j;
+const defineCustomElement$w = defineCustomElement$1$j;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -8544,7 +8554,7 @@ function defineCustomElement$1$i() {
     }
   });
 }
-const defineCustomElement$t = defineCustomElement$1$i;
+const defineCustomElement$v = defineCustomElement$1$i;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -8641,6 +8651,225 @@ class IonicSafeString {
   }
 }
 const ENABLE_HTML_CONTENT_DEFAULT = false;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const spinners = {
+  bubbles: {
+    dur: 1e3,
+    circles: 9,
+    fn: (dur, index, total) => {
+      const animationDelay = `${dur * index / total - dur}ms`;
+      const angle = 2 * Math.PI * index / total;
+      return {
+        r: 5,
+        style: {
+          top: `${32 * Math.sin(angle)}%`,
+          left: `${32 * Math.cos(angle)}%`,
+          "animation-delay": animationDelay
+        }
+      };
+    }
+  },
+  circles: {
+    dur: 1e3,
+    circles: 8,
+    fn: (dur, index, total) => {
+      const step = index / total;
+      const animationDelay = `${dur * step - dur}ms`;
+      const angle = 2 * Math.PI * step;
+      return {
+        r: 5,
+        style: {
+          top: `${32 * Math.sin(angle)}%`,
+          left: `${32 * Math.cos(angle)}%`,
+          "animation-delay": animationDelay
+        }
+      };
+    }
+  },
+  circular: {
+    dur: 1400,
+    elmDuration: true,
+    circles: 1,
+    fn: () => {
+      return {
+        r: 20,
+        cx: 48,
+        cy: 48,
+        fill: "none",
+        viewBox: "24 24 48 48",
+        transform: "translate(0,0)",
+        style: {}
+      };
+    }
+  },
+  crescent: {
+    dur: 750,
+    circles: 1,
+    fn: () => {
+      return {
+        r: 26,
+        style: {}
+      };
+    }
+  },
+  dots: {
+    dur: 750,
+    circles: 3,
+    fn: (_, index) => {
+      const animationDelay = -(110 * index) + "ms";
+      return {
+        r: 6,
+        style: {
+          left: `${32 - 32 * index}%`,
+          "animation-delay": animationDelay
+        }
+      };
+    }
+  },
+  lines: {
+    dur: 1e3,
+    lines: 8,
+    fn: (dur, index, total) => {
+      const transform = `rotate(${360 / total * index + (index < total / 2 ? 180 : -180)}deg)`;
+      const animationDelay = `${dur * index / total - dur}ms`;
+      return {
+        y1: 14,
+        y2: 26,
+        style: {
+          transform,
+          "animation-delay": animationDelay
+        }
+      };
+    }
+  },
+  "lines-small": {
+    dur: 1e3,
+    lines: 8,
+    fn: (dur, index, total) => {
+      const transform = `rotate(${360 / total * index + (index < total / 2 ? 180 : -180)}deg)`;
+      const animationDelay = `${dur * index / total - dur}ms`;
+      return {
+        y1: 12,
+        y2: 20,
+        style: {
+          transform,
+          "animation-delay": animationDelay
+        }
+      };
+    }
+  },
+  "lines-sharp": {
+    dur: 1e3,
+    lines: 12,
+    fn: (dur, index, total) => {
+      const transform = `rotate(${30 * index + (index < 6 ? 180 : -180)}deg)`;
+      const animationDelay = `${dur * index / total - dur}ms`;
+      return {
+        y1: 17,
+        y2: 29,
+        style: {
+          transform,
+          "animation-delay": animationDelay
+        }
+      };
+    }
+  },
+  "lines-sharp-small": {
+    dur: 1e3,
+    lines: 12,
+    fn: (dur, index, total) => {
+      const transform = `rotate(${30 * index + (index < 6 ? 180 : -180)}deg)`;
+      const animationDelay = `${dur * index / total - dur}ms`;
+      return {
+        y1: 12,
+        y2: 20,
+        style: {
+          transform,
+          "animation-delay": animationDelay
+        }
+      };
+    }
+  }
+};
+const SPINNERS = spinners;
+const spinnerCss = ":host{display:inline-block;position:relative;width:28px;height:28px;color:var(--color);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}:host(.ion-color){color:var(--ion-color-base)}svg{-webkit-transform-origin:center;transform-origin:center;position:absolute;top:0;left:0;width:100%;height:100%;-webkit-transform:translateZ(0);transform:translateZ(0)}:host-context([dir=rtl]) svg{-webkit-transform-origin:calc(100% - center);transform-origin:calc(100% - center)}[dir=rtl] svg{-webkit-transform-origin:calc(100% - center);transform-origin:calc(100% - center)}@supports selector(:dir(rtl)){svg:dir(rtl){-webkit-transform-origin:calc(100% - center);transform-origin:calc(100% - center)}}:host(.spinner-lines) line,:host(.spinner-lines-small) line{stroke-width:7px}:host(.spinner-lines-sharp) line,:host(.spinner-lines-sharp-small) line{stroke-width:4px}:host(.spinner-lines) line,:host(.spinner-lines-small) line,:host(.spinner-lines-sharp) line,:host(.spinner-lines-sharp-small) line{stroke-linecap:round;stroke:currentColor}:host(.spinner-lines) svg,:host(.spinner-lines-small) svg,:host(.spinner-lines-sharp) svg,:host(.spinner-lines-sharp-small) svg{-webkit-animation:spinner-fade-out 1s linear infinite;animation:spinner-fade-out 1s linear infinite}:host(.spinner-bubbles) svg{-webkit-animation:spinner-scale-out 1s linear infinite;animation:spinner-scale-out 1s linear infinite;fill:currentColor}:host(.spinner-circles) svg{-webkit-animation:spinner-fade-out 1s linear infinite;animation:spinner-fade-out 1s linear infinite;fill:currentColor}:host(.spinner-crescent) circle{fill:transparent;stroke-width:4px;stroke-dasharray:128px;stroke-dashoffset:82px;stroke:currentColor}:host(.spinner-crescent) svg{-webkit-animation:spinner-rotate 1s linear infinite;animation:spinner-rotate 1s linear infinite}:host(.spinner-dots) circle{stroke-width:0;fill:currentColor}:host(.spinner-dots) svg{-webkit-animation:spinner-dots 1s linear infinite;animation:spinner-dots 1s linear infinite}:host(.spinner-circular) svg{-webkit-animation:spinner-circular linear infinite;animation:spinner-circular linear infinite}:host(.spinner-circular) circle{-webkit-animation:spinner-circular-inner ease-in-out infinite;animation:spinner-circular-inner ease-in-out infinite;stroke:currentColor;stroke-dasharray:80px, 200px;stroke-dashoffset:0px;stroke-width:5.6;fill:none}:host(.spinner-paused),:host(.spinner-paused) svg,:host(.spinner-paused) circle{-webkit-animation-play-state:paused;animation-play-state:paused}@-webkit-keyframes spinner-fade-out{0%{opacity:1}100%{opacity:0}}@keyframes spinner-fade-out{0%{opacity:1}100%{opacity:0}}@-webkit-keyframes spinner-scale-out{0%{-webkit-transform:scale(1, 1);transform:scale(1, 1)}100%{-webkit-transform:scale(0, 0);transform:scale(0, 0)}}@keyframes spinner-scale-out{0%{-webkit-transform:scale(1, 1);transform:scale(1, 1)}100%{-webkit-transform:scale(0, 0);transform:scale(0, 0)}}@-webkit-keyframes spinner-rotate{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes spinner-rotate{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes spinner-dots{0%{-webkit-transform:scale(1, 1);transform:scale(1, 1);opacity:0.9}50%{-webkit-transform:scale(0.4, 0.4);transform:scale(0.4, 0.4);opacity:0.3}100%{-webkit-transform:scale(1, 1);transform:scale(1, 1);opacity:0.9}}@keyframes spinner-dots{0%{-webkit-transform:scale(1, 1);transform:scale(1, 1);opacity:0.9}50%{-webkit-transform:scale(0.4, 0.4);transform:scale(0.4, 0.4);opacity:0.3}100%{-webkit-transform:scale(1, 1);transform:scale(1, 1);opacity:0.9}}@-webkit-keyframes spinner-circular{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes spinner-circular{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes spinner-circular-inner{0%{stroke-dasharray:1px, 200px;stroke-dashoffset:0px}50%{stroke-dasharray:100px, 200px;stroke-dashoffset:-15px}100%{stroke-dasharray:100px, 200px;stroke-dashoffset:-125px}}@keyframes spinner-circular-inner{0%{stroke-dasharray:1px, 200px;stroke-dashoffset:0px}50%{stroke-dasharray:100px, 200px;stroke-dashoffset:-15px}100%{stroke-dasharray:100px, 200px;stroke-dashoffset:-125px}}";
+const Spinner = /* @__PURE__ */ proxyCustomElement$1(class Spinner2 extends H$1 {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.__attachShadow();
+    this.color = void 0;
+    this.duration = void 0;
+    this.name = void 0;
+    this.paused = false;
+  }
+  getName() {
+    const spinnerName = this.name || config.get("spinner");
+    const mode = getIonMode$2(this);
+    if (spinnerName) {
+      return spinnerName;
+    }
+    return mode === "ios" ? "lines" : "circular";
+  }
+  render() {
+    var _a;
+    const self = this;
+    const mode = getIonMode$2(self);
+    const spinnerName = self.getName();
+    const spinner = (_a = SPINNERS[spinnerName]) !== null && _a !== void 0 ? _a : SPINNERS["lines"];
+    const duration = typeof self.duration === "number" && self.duration > 10 ? self.duration : spinner.dur;
+    const svgs = [];
+    if (spinner.circles !== void 0) {
+      for (let i = 0; i < spinner.circles; i++) {
+        svgs.push(buildCircle(spinner, duration, i, spinner.circles));
+      }
+    } else if (spinner.lines !== void 0) {
+      for (let i = 0; i < spinner.lines; i++) {
+        svgs.push(buildLine(spinner, duration, i, spinner.lines));
+      }
+    }
+    return h$1(Host$1, { class: createColorClasses$1(self.color, {
+      [mode]: true,
+      [`spinner-${spinnerName}`]: true,
+      "spinner-paused": self.paused || config.getBoolean("_testing")
+    }), role: "progressbar", style: spinner.elmDuration ? { animationDuration: duration + "ms" } : {} }, svgs);
+  }
+  static get style() {
+    return spinnerCss;
+  }
+}, [1, "ion-spinner", {
+  "color": [513],
+  "duration": [2],
+  "name": [1],
+  "paused": [4]
+}]);
+const buildCircle = (spinner, duration, index, total) => {
+  const data = spinner.fn(duration, index, total);
+  data.style["animation-duration"] = duration + "ms";
+  return h$1("svg", { viewBox: data.viewBox || "0 0 64 64", style: data.style }, h$1("circle", { transform: data.transform || "translate(32,32)", cx: data.cx, cy: data.cy, r: data.r, style: spinner.elmDuration ? { animationDuration: duration + "ms" } : {} }));
+};
+const buildLine = (spinner, duration, index, total) => {
+  const data = spinner.fn(duration, index, total);
+  data.style["animation-duration"] = duration + "ms";
+  return h$1("svg", { viewBox: data.viewBox || "0 0 64 64", style: data.style }, h$1("line", { transform: "translate(32,32)", y1: data.y1, y2: data.y2 }));
+};
+function defineCustomElement$u() {
+  if (typeof customElements === "undefined") {
+    return;
+  }
+  const components = ["ion-spinner"];
+  components.forEach((tagName) => {
+    switch (tagName) {
+      case "ion-spinner":
+        if (!customElements.get(tagName)) {
+          customElements.define(tagName, Spinner);
+        }
+        break;
+    }
+  });
+}
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -9063,21 +9292,21 @@ function defineCustomElement$1$h() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$R();
+          defineCustomElement$T();
         }
         break;
     }
   });
 }
-const defineCustomElement$s = defineCustomElement$1$h;
+const defineCustomElement$t = defineCustomElement$1$h;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$r = defineCustomElement$y;
+const defineCustomElement$s = defineCustomElement$A;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$q = defineCustomElement$x;
+const defineCustomElement$r = defineCustomElement$z;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -9129,7 +9358,7 @@ const List = /* @__PURE__ */ proxyCustomElement$1(class List2 extends H$1 {
   "inset": [4],
   "closeSlidingItems": [64]
 }]);
-function defineCustomElement$p() {
+function defineCustomElement$q() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -9147,7 +9376,7 @@ function defineCustomElement$p() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$o = defineCustomElement$p;
+const defineCustomElement$p = defineCustomElement$q;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -9179,7 +9408,7 @@ const ListHeader = /* @__PURE__ */ proxyCustomElement$1(class ListHeader2 extend
   "color": [513],
   "lines": [1]
 }]);
-function defineCustomElement$n() {
+function defineCustomElement$o() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -9364,7 +9593,7 @@ const Nav = /* @__PURE__ */ proxyCustomElement$1(class Nav2 extends H$1 {
   }
   async componentDidLoad() {
     this.rootChanged();
-    this.gesture = (await import('./_nuxt/swipe-back-58e84a46.mjs')).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
+    this.gesture = (await import('./_nuxt/swipe-back-d47e8129.mjs')).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
     this.swipeGestureChanged();
   }
   connectedCallback() {
@@ -10063,7 +10292,7 @@ function defineCustomElement$1$g() {
     }
   });
 }
-const defineCustomElement$m = defineCustomElement$1$g;
+const defineCustomElement$n = defineCustomElement$1$g;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -10241,7 +10470,7 @@ Developers can dismiss this warning by removing their usage of the "legacy" prop
   "setButtonTabindex": [64]
 }]);
 let radioButtonIds = 0;
-function defineCustomElement$l() {
+function defineCustomElement$m() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -10381,7 +10610,7 @@ const RadioGroup = /* @__PURE__ */ proxyCustomElement$1(class RadioGroup2 extend
   "value": [1032]
 }, [[4, "keydown", "onKeydown"]]]);
 let radioGroupIds = 0;
-function defineCustomElement$k() {
+function defineCustomElement$l() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -10428,7 +10657,7 @@ function defineCustomElement$1$f() {
     }
   });
 }
-const defineCustomElement$j = defineCustomElement$1$f;
+const defineCustomElement$k = defineCustomElement$1$f;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -10786,13 +11015,13 @@ function defineCustomElement$1$e() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$R();
+          defineCustomElement$T();
         }
         break;
     }
   });
 }
-const defineCustomElement$i = defineCustomElement$1$e;
+const defineCustomElement$j = defineCustomElement$1$e;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -11163,7 +11392,7 @@ function defineCustomElement$1$d() {
     }
   });
 }
-const defineCustomElement$h = defineCustomElement$1$d;
+const defineCustomElement$i = defineCustomElement$1$d;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -11295,13 +11524,13 @@ function defineCustomElement$1$c() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
   });
 }
-const defineCustomElement$g = defineCustomElement$1$c;
+const defineCustomElement$h = defineCustomElement$1$c;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -11967,7 +12196,7 @@ const ActionSheet = /* @__PURE__ */ proxyCustomElement$1(class ActionSheet2 exte
 const buttonClass$1 = (button) => {
   return Object.assign({ "action-sheet-button": true, "ion-activatable": true, "ion-focusable": true, [`action-sheet-${button.role}`]: button.role !== void 0 }, getClassMap(button.cssClass));
 };
-function defineCustomElement$f() {
+function defineCustomElement$g() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -11981,17 +12210,17 @@ function defineCustomElement$f() {
         break;
       case "ion-backdrop":
         if (!customElements.get(tagName)) {
-          defineCustomElement$P();
+          defineCustomElement$R();
         }
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$R();
+          defineCustomElement$T();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
@@ -12412,7 +12641,7 @@ const inputClass = (input) => {
 const buttonClass = (button) => {
   return Object.assign({ "alert-button": true, "ion-focusable": true, "ion-activatable": true, [`alert-button-role-${button.role}`]: button.role !== void 0 }, getClassMap(button.cssClass));
 };
-function defineCustomElement$e() {
+function defineCustomElement$f() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -12426,12 +12655,12 @@ function defineCustomElement$e() {
         break;
       case "ion-backdrop":
         if (!customElements.get(tagName)) {
-          defineCustomElement$P();
+          defineCustomElement$R();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
@@ -12537,7 +12766,7 @@ const SelectPopover = /* @__PURE__ */ proxyCustomElement$1(class SelectPopover2 
   "multiple": [4],
   "options": [16]
 }]);
-function defineCustomElement$d() {
+function defineCustomElement$e() {
   if (typeof customElements === "undefined") {
     return;
   }
@@ -12551,52 +12780,52 @@ function defineCustomElement$d() {
         break;
       case "ion-checkbox":
         if (!customElements.get(tagName)) {
-          defineCustomElement$D();
+          defineCustomElement$F();
         }
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$R();
+          defineCustomElement$T();
         }
         break;
       case "ion-item":
         if (!customElements.get(tagName)) {
-          defineCustomElement$y();
+          defineCustomElement$A();
         }
         break;
       case "ion-label":
         if (!customElements.get(tagName)) {
-          defineCustomElement$x();
+          defineCustomElement$z();
         }
         break;
       case "ion-list":
         if (!customElements.get(tagName)) {
-          defineCustomElement$p();
+          defineCustomElement$q();
         }
         break;
       case "ion-list-header":
         if (!customElements.get(tagName)) {
-          defineCustomElement$n();
+          defineCustomElement$o();
         }
         break;
       case "ion-note":
         if (!customElements.get(tagName)) {
-          defineCustomElement$z();
+          defineCustomElement$B();
         }
         break;
       case "ion-radio":
         if (!customElements.get(tagName)) {
-          defineCustomElement$l();
+          defineCustomElement$m();
         }
         break;
       case "ion-radio-group":
         if (!customElements.get(tagName)) {
-          defineCustomElement$k();
+          defineCustomElement$l();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
@@ -13205,83 +13434,83 @@ function defineCustomElement$1$b() {
         break;
       case "ion-action-sheet":
         if (!customElements.get(tagName)) {
-          defineCustomElement$f();
+          defineCustomElement$g();
         }
         break;
       case "ion-alert":
         if (!customElements.get(tagName)) {
-          defineCustomElement$e();
+          defineCustomElement$f();
         }
         break;
       case "ion-backdrop":
         if (!customElements.get(tagName)) {
-          defineCustomElement$P();
+          defineCustomElement$R();
         }
         break;
       case "ion-checkbox":
         if (!customElements.get(tagName)) {
-          defineCustomElement$D();
+          defineCustomElement$F();
         }
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$R();
+          defineCustomElement$T();
         }
         break;
       case "ion-item":
         if (!customElements.get(tagName)) {
-          defineCustomElement$y();
+          defineCustomElement$A();
         }
         break;
       case "ion-label":
         if (!customElements.get(tagName)) {
-          defineCustomElement$x();
+          defineCustomElement$z();
         }
         break;
       case "ion-list":
         if (!customElements.get(tagName)) {
-          defineCustomElement$p();
+          defineCustomElement$q();
         }
         break;
       case "ion-list-header":
         if (!customElements.get(tagName)) {
-          defineCustomElement$n();
+          defineCustomElement$o();
         }
         break;
       case "ion-note":
         if (!customElements.get(tagName)) {
-          defineCustomElement$z();
+          defineCustomElement$B();
         }
         break;
       case "ion-popover":
         if (!customElements.get(tagName)) {
-          defineCustomElement$w();
+          defineCustomElement$y();
         }
         break;
       case "ion-radio":
         if (!customElements.get(tagName)) {
-          defineCustomElement$l();
+          defineCustomElement$m();
         }
         break;
       case "ion-radio-group":
         if (!customElements.get(tagName)) {
-          defineCustomElement$k();
+          defineCustomElement$l();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
       case "ion-select-popover":
         if (!customElements.get(tagName)) {
-          defineCustomElement$d();
+          defineCustomElement$e();
         }
         break;
     }
   });
 }
-const defineCustomElement$c = defineCustomElement$1$b;
+const defineCustomElement$d = defineCustomElement$1$b;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -13324,7 +13553,11 @@ function defineCustomElement$1$a() {
     }
   });
 }
-const defineCustomElement$b = defineCustomElement$1$a;
+const defineCustomElement$c = defineCustomElement$1$a;
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const defineCustomElement$b = defineCustomElement$u;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -13650,7 +13883,7 @@ function defineCustomElement$1$8() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$R();
+          defineCustomElement$T();
         }
         break;
     }
@@ -13850,12 +14083,12 @@ function defineCustomElement$1$6() {
         break;
       case "ion-icon":
         if (!customElements.get(tagName)) {
-          defineCustomElement$R();
+          defineCustomElement$T();
         }
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
@@ -13893,7 +14126,7 @@ const RouterOutlet = /* @__PURE__ */ proxyCustomElement$1(class RouterOutlet2 ex
         this.swipeHandler.onStart();
       }
     };
-    this.gesture = (await import('./_nuxt/swipe-back-58e84a46.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
+    this.gesture = (await import('./_nuxt/swipe-back-d47e8129.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
       var _a;
       return (_a = this.ani) === null || _a === void 0 ? void 0 : _a.progressStep(step);
     }, (shouldComplete, step, dur) => {
@@ -14176,7 +14409,7 @@ function defineCustomElement$1$4() {
         break;
       case "ion-ripple-effect":
         if (!customElements.get(tagName)) {
-          defineCustomElement$N();
+          defineCustomElement$P();
         }
         break;
     }
@@ -14278,14 +14511,14 @@ const App = /* @__PURE__ */ proxyCustomElement$1(class App2 extends H$1 {
       rIC(async () => {
         const isHybrid2 = isPlatform(window, "hybrid");
         if (!config.getBoolean("_testing")) {
-          import('./_nuxt/index9-6f05b81a.mjs').then((module) => module.startTapClick(config));
+          import('./_nuxt/index9-47a9a105.mjs').then((module) => module.startTapClick(config));
         }
         if (config.getBoolean("statusTap", isHybrid2)) {
-          import('./_nuxt/status-tap-e5668092.mjs').then((module) => module.startStatusTap());
+          import('./_nuxt/status-tap-eef75aae.mjs').then((module) => module.startStatusTap());
         }
         if (config.getBoolean("inputShims", needInputShims())) {
           const platform = isPlatform(window, "ios") ? "ios" : "android";
-          import('./_nuxt/input-shims-2873019f.mjs').then((module) => module.startInputShims(config, platform));
+          import('./_nuxt/input-shims-39ecab35.mjs').then((module) => module.startInputShims(config, platform));
         }
         const hardwareBackButtonModule = await import('./_nuxt/hardware-back-button-b290b24e.mjs');
         if (config.getBoolean("hardwareBackButton", isHybrid2)) {
@@ -16937,7 +17170,7 @@ function defineCustomElement$1() {
         break;
       case "ion-backdrop":
         if (!customElements.get(tagName)) {
-          defineCustomElement$P();
+          defineCustomElement$R();
         }
         break;
     }
@@ -17053,11 +17286,11 @@ const defineContainer = (name, defineCustomElement2, componentProps = [], modelP
   }
   return Container;
 };
-const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$Q);
-const IonBadge = /* @__PURE__ */ defineContainer("ion-badge", defineCustomElement$O, [
+const IonAvatar = /* @__PURE__ */ defineContainer("ion-avatar", defineCustomElement$S);
+const IonBadge = /* @__PURE__ */ defineContainer("ion-badge", defineCustomElement$Q, [
   "color"
 ]);
-const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$L, [
+const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElement$N, [
   "color",
   "buttonType",
   "disabled",
@@ -17077,10 +17310,10 @@ const IonButton = /* @__PURE__ */ defineContainer("ion-button", defineCustomElem
   "ionFocus",
   "ionBlur"
 ]);
-const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$J, [
+const IonButtons = /* @__PURE__ */ defineContainer("ion-buttons", defineCustomElement$L, [
   "collapse"
 ]);
-const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$I, [
+const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$K, [
   "color",
   "button",
   "type",
@@ -17092,23 +17325,23 @@ const IonCard = /* @__PURE__ */ defineContainer("ion-card", defineCustomElement$
   "routerAnimation",
   "target"
 ]);
-const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$H);
-const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$G, [
+const IonCardContent = /* @__PURE__ */ defineContainer("ion-card-content", defineCustomElement$J);
+const IonCardHeader = /* @__PURE__ */ defineContainer("ion-card-header", defineCustomElement$I, [
   "color",
   "translucent"
 ]);
-const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$F, [
+const IonCardSubtitle = /* @__PURE__ */ defineContainer("ion-card-subtitle", defineCustomElement$H, [
   "color"
 ]);
-const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$E, [
+const IonCardTitle = /* @__PURE__ */ defineContainer("ion-card-title", defineCustomElement$G, [
   "color"
 ]);
-const IonChip = /* @__PURE__ */ defineContainer("ion-chip", defineCustomElement$C, [
+const IonChip = /* @__PURE__ */ defineContainer("ion-chip", defineCustomElement$E, [
   "color",
   "outline",
   "disabled"
 ]);
-const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$B, [
+const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$D, [
   "offset",
   "offsetXs",
   "offsetSm",
@@ -17134,7 +17367,7 @@ const IonCol = /* @__PURE__ */ defineContainer("ion-col", defineCustomElement$B,
   "sizeLg",
   "sizeXl"
 ]);
-const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomElement$A, [
+const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomElement$C, [
   "color",
   "fullscreen",
   "forceOverscroll",
@@ -17145,18 +17378,18 @@ const IonContent = /* @__PURE__ */ defineContainer("ion-content", defineCustomEl
   "ionScroll",
   "ionScrollEnd"
 ]);
-const IonFooter = /* @__PURE__ */ defineContainer("ion-footer", defineCustomElement$v, [
+const IonFooter = /* @__PURE__ */ defineContainer("ion-footer", defineCustomElement$x, [
   "collapse",
   "translucent"
 ]);
-const IonGrid = /* @__PURE__ */ defineContainer("ion-grid", defineCustomElement$u, [
+const IonGrid = /* @__PURE__ */ defineContainer("ion-grid", defineCustomElement$w, [
   "fixed"
 ]);
-const IonHeader = /* @__PURE__ */ defineContainer("ion-header", defineCustomElement$t, [
+const IonHeader = /* @__PURE__ */ defineContainer("ion-header", defineCustomElement$v, [
   "collapse",
   "translucent"
 ]);
-const IonInput = /* @__PURE__ */ defineContainer("ion-input", defineCustomElement$s, [
+const IonInput = /* @__PURE__ */ defineContainer("ion-input", defineCustomElement$t, [
   "color",
   "accept",
   "autocapitalize",
@@ -17199,7 +17432,7 @@ const IonInput = /* @__PURE__ */ defineContainer("ion-input", defineCustomElemen
   "ionFocus",
   "ionStyle"
 ], "value", "v-ion-input", "ionInput");
-const IonItem = /* @__PURE__ */ defineContainer("ion-item", defineCustomElement$r, [
+const IonItem = /* @__PURE__ */ defineContainer("ion-item", defineCustomElement$s, [
   "color",
   "button",
   "detail",
@@ -17218,18 +17451,18 @@ const IonItem = /* @__PURE__ */ defineContainer("ion-item", defineCustomElement$
   "type",
   "counterFormatter"
 ]);
-const IonLabel = /* @__PURE__ */ defineContainer("ion-label", defineCustomElement$q, [
+const IonLabel = /* @__PURE__ */ defineContainer("ion-label", defineCustomElement$r, [
   "color",
   "position",
   "ionColor",
   "ionStyle"
 ]);
-const IonList = /* @__PURE__ */ defineContainer("ion-list", defineCustomElement$o, [
+const IonList = /* @__PURE__ */ defineContainer("ion-list", defineCustomElement$p, [
   "lines",
   "inset"
 ]);
-const IonRow = /* @__PURE__ */ defineContainer("ion-row", defineCustomElement$j);
-const IonSearchbar = /* @__PURE__ */ defineContainer("ion-searchbar", defineCustomElement$i, [
+const IonRow = /* @__PURE__ */ defineContainer("ion-row", defineCustomElement$k);
+const IonSearchbar = /* @__PURE__ */ defineContainer("ion-searchbar", defineCustomElement$j, [
   "color",
   "animated",
   "autocomplete",
@@ -17256,7 +17489,7 @@ const IonSearchbar = /* @__PURE__ */ defineContainer("ion-searchbar", defineCust
   "ionFocus",
   "ionStyle"
 ], "value", "v-ion-input", "ionInput");
-const IonSegment = /* @__PURE__ */ defineContainer("ion-segment", defineCustomElement$h, [
+const IonSegment = /* @__PURE__ */ defineContainer("ion-segment", defineCustomElement$i, [
   "color",
   "disabled",
   "scrollable",
@@ -17267,13 +17500,13 @@ const IonSegment = /* @__PURE__ */ defineContainer("ion-segment", defineCustomEl
   "ionSelect",
   "ionStyle"
 ], "value", "v-ion-change", "ionChange");
-const IonSegmentButton = /* @__PURE__ */ defineContainer("ion-segment-button", defineCustomElement$g, [
+const IonSegmentButton = /* @__PURE__ */ defineContainer("ion-segment-button", defineCustomElement$h, [
   "disabled",
   "layout",
   "type",
   "value"
 ], "value", "v-ion-change", "ionChange");
-const IonSelect = /* @__PURE__ */ defineContainer("ion-select", defineCustomElement$c, [
+const IonSelect = /* @__PURE__ */ defineContainer("ion-select", defineCustomElement$d, [
   "cancelText",
   "color",
   "compareWith",
@@ -17299,9 +17532,15 @@ const IonSelect = /* @__PURE__ */ defineContainer("ion-select", defineCustomElem
   "ionBlur",
   "ionStyle"
 ], "value", "v-ion-change", "ionChange");
-const IonSelectOption = /* @__PURE__ */ defineContainer("ion-select-option", defineCustomElement$b, [
+const IonSelectOption = /* @__PURE__ */ defineContainer("ion-select-option", defineCustomElement$c, [
   "disabled",
   "value"
+]);
+const IonSpinner = /* @__PURE__ */ defineContainer("ion-spinner", defineCustomElement$b, [
+  "color",
+  "duration",
+  "name",
+  "paused"
 ]);
 const IonTitle = /* @__PURE__ */ defineContainer("ion-title", defineCustomElement$a, [
   "color",
@@ -17941,7 +18180,7 @@ const VueDelegate = (addFn = addTeleportedUserComponent, removeFn = removeTelepo
   return { attachViewToDom, removeViewFromDom };
 };
 const IonNav = /* @__PURE__ */ defineComponent(() => {
-  defineCustomElement$m();
+  defineCustomElement$n();
   const views = shallowRef([]);
   const addView = (component) => views.value = [...views.value, component];
   const removeView = (component) => views.value = views.value.filter((cmp) => cmp !== component);
@@ -18117,6 +18356,1149 @@ const _plugins = [
   router_h7T2ZmMnVl,
   ionic_JZxaXwxCQa
 ];
+const addCircle = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm80 224h-64v64a16 16 0 01-32 0v-64h-64a16 16 0 010-32h64v-64a16 16 0 0132 0v64h64a16 16 0 010 32z'/></svg>";
+const addCircleOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z' stroke-miterlimit='10' class='ionicon-fill-none ionicon-stroke-width'/><path stroke-linecap='round' stroke-linejoin='round' d='M256 176v160M336 256H176' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
+const addOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' d='M256 112v288M400 256H112' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
+const arrowDownCircleSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 464c114.87 0 208-93.13 208-208S370.87 48 256 48 48 141.13 48 256s93.13 208 208 208zm-80.09-224L240 303.58V154h32v149.58L336.09 240l22.54 22.71L256 364.54 153.37 262.7z'/></svg>";
+const arrowForwardCircle = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M464 256c0-114.87-93.13-208-208-208S48 141.13 48 256s93.13 208 208 208 208-93.13 208-208zm-212.65 91.36a16 16 0 01-.09-22.63L303.58 272H170a16 16 0 010-32h133.58l-52.32-52.73A16 16 0 11274 164.73l79.39 80a16 16 0 010 22.54l-79.39 80a16 16 0 01-22.65.09z'/></svg>";
+const arrowUpCircleSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm80.09 224L272 208.42V358h-32V208.42L175.91 272l-22.54-22.7L256 147.46 358.63 249.3z'/></svg>";
+const cash = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M448 400H64a16 16 0 010-32h384a16 16 0 010 32zM416 448H96a16 16 0 010-32h320a16 16 0 010 32zM32 272H16v48a32 32 0 0032 32h48v-16a64.07 64.07 0 00-64-64z'/><path d='M480 240h16v-64h-16a96.11 96.11 0 01-96-96V64H128v16a96.11 96.11 0 01-96 96H16v64h16a96.11 96.11 0 0196 96v16h256v-16a96.11 96.11 0 0196-96zm-224 64a96 96 0 1196-96 96.11 96.11 0 01-96 96z'/><circle cx='256' cy='208' r='64'/><path d='M416 336v16h48a32 32 0 0032-32v-48h-16a64.07 64.07 0 00-64 64zM480 144h16V96a32 32 0 00-32-32h-48v16a64.07 64.07 0 0064 64zM96 80V64H48a32 32 0 00-32 32v48h16a64.07 64.07 0 0064-64z'/></svg>";
+const cashSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M48 368h416v32H48zM80 416h352v32H80zM480 176a96.11 96.11 0 01-96-96V64H128v16a96.11 96.11 0 01-96 96H16v64h16a96.11 96.11 0 0196 96v16h256v-16a96.11 96.11 0 0196-96h16v-64zM256 304a96 96 0 1196-96 96.11 96.11 0 01-96 96z'/><path d='M96 80V64H16v80h16a64.07 64.07 0 0064-64zM32 272H16v80h80v-16a64.07 64.07 0 00-64-64zM480 144h16V64h-80v16a64.07 64.07 0 0064 64zM416 336v16h80v-80h-16a64.07 64.07 0 00-64 64z'/><circle cx='256' cy='208' r='64'/></svg>";
+const chevronUpOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M112 328l144-144 144 144' class='ionicon-fill-none'/></svg>";
+const closeCircleOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z' stroke-miterlimit='10' class='ionicon-fill-none ionicon-stroke-width'/><path stroke-linecap='round' stroke-linejoin='round' d='M320 320L192 192M192 320l128-128' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
+const cubeSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M48 170v196.92L240 480V284L48 170zM272 480l192-113.08V170L272 284zm176-122.36zM448 144L256 32 64 144l192 112 192-112z'/></svg>";
+const diamondSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M396.31 32H264l84.19 112.26L396.31 32zM115.69 32l48.12 112.26L248 32H115.69zM256 74.67L192 160h128l-64-85.33zM422.95 51.06L376.26 160H488L422.95 51.06zM89.05 51.06L23 160h112.74L89.05 51.06zM146.68 192H24l222.8 288h.53L146.68 192zM365.32 192L264.67 480h.53L488 192H365.32zM329.39 192H182.61L256 400l73.39-208z'/></svg>";
+const duplicate = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M408 112H184a72 72 0 00-72 72v224a72 72 0 0072 72h224a72 72 0 0072-72V184a72 72 0 00-72-72zm-32.45 200H312v63.55c0 8.61-6.62 16-15.23 16.43A16 16 0 01280 376v-64h-63.55c-8.61 0-16-6.62-16.43-15.23A16 16 0 01216 280h64v-63.55c0-8.61 6.62-16 15.23-16.43A16 16 0 01312 216v64h64a16 16 0 0116 16.77c-.42 8.61-7.84 15.23-16.45 15.23z'/><path d='M395.88 80A72.12 72.12 0 00328 32H104a72 72 0 00-72 72v224a72.12 72.12 0 0048 67.88V160a80 80 0 0180-80z'/></svg>";
+const eyeOffSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M63.998 86.004l21.998-21.998L448 426.01l-21.998 21.998zM259.34 192.09l60.57 60.57a64.07 64.07 0 00-60.57-60.57zM252.66 319.91l-60.57-60.57a64.07 64.07 0 0060.57 60.57z'/><path d='M256 352a96 96 0 01-92.6-121.34l-69.07-69.08C66.12 187.42 39.24 221.14 16 256c26.42 44 62.56 89.24 100.2 115.18C159.38 400.92 206.33 416 255.76 416A233.47 233.47 0 00335 402.2l-53.61-53.6A95.84 95.84 0 01256 352zM256 160a96 96 0 0192.6 121.34L419.26 352c29.15-26.25 56.07-61.56 76.74-96-26.38-43.43-62.9-88.56-101.18-114.82C351.1 111.2 304.31 96 255.76 96a222.92 222.92 0 00-78.21 14.29l53.11 53.11A95.84 95.84 0 01256 160z'/></svg>";
+const filterCircle = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm32 304h-64a16 16 0 010-32h64a16 16 0 010 32zm48-64H176a16 16 0 010-32h160a16 16 0 010 32zm32-64H144a16 16 0 010-32h224a16 16 0 010 32z'/></svg>";
+const happy = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M414.39 97.61A224 224 0 1097.61 414.39 224 224 0 10414.39 97.61zM184 208a24 24 0 11-24 24 23.94 23.94 0 0124-24zm167.67 106.17c-12 40.3-50.2 69.83-95.62 69.83s-83.62-29.53-95.72-69.83a8 8 0 017.83-10.17h175.69a8 8 0 017.82 10.17zM328 256a24 24 0 1124-24 23.94 23.94 0 01-24 24z'/></svg>";
+const informationCircle = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 56C145.72 56 56 145.72 56 256s89.72 200 200 200 200-89.72 200-200S366.28 56 256 56zm0 82a26 26 0 11-26 26 26 26 0 0126-26zm48 226h-88a16 16 0 010-32h28v-88h-16a16 16 0 010-32h32a16 16 0 0116 16v104h28a16 16 0 010 32z'/></svg>";
+const logoBitcoin = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M410.47 279.2c-5-11.5-12.7-21.6-28.1-30.1a98.15 98.15 0 00-25.4-10 62.22 62.22 0 0016.3-11 56.37 56.37 0 0015.6-23.3 77.11 77.11 0 003.5-28.2c-1.1-16.8-4.4-33.1-13.2-44.8s-21.2-20.7-37.6-27c-12.6-4.8-25.5-7.8-45.5-8.9V32h-40v64h-32V32h-41v64H96v48h27.87c8.7 0 14.6.8 17.6 2.3a13.22 13.22 0 016.5 6c1.3 2.5 1.9 8.4 1.9 17.5V343c0 9-.6 14.8-1.9 17.4s-2 4.9-5.1 6.3-3.2 1.3-11.8 1.3h-26.4L96 416h87v64h41v-64h32v64h40v-64.4c26-1.3 44.5-4.7 59.4-10.3 19.3-7.2 34.1-17.7 44.7-31.5s14-34.9 14.93-51.2c.67-14.5-.03-33.2-4.56-43.4zM224 150h32v74h-32zm0 212v-90h32v90zm72-208.1c6 2.5 9.9 7.5 13.8 12.7 4.3 5.7 6.5 13.3 6.5 21.4 0 7.8-2.9 14.5-7.5 20.5-3.8 4.9-6.8 8.3-12.8 11.1zm28.8 186.7c-7.8 6.9-12.3 10.1-22.1 13.8a56.06 56.06 0 01-6.7 1.9v-82.8a40.74 40.74 0 0111.3 3.4c7.8 3.3 15.2 6.9 19.8 13.2a43.82 43.82 0 018 24.7c-.03 10.9-2.83 19.2-10.33 25.8z'/></svg>";
+const logoUsd = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M240 480v-36.42C160.53 439 112.25 398.06 112 336h72c1.77 26.34 23.86 46.45 56 50v-98l-26.77-7c-61-14.18-93.64-49.39-93.64-102.08C119.59 116.81 164.08 76.08 240 70V32h32v38c77.39 6.3 119 47.74 120 106h-72c-.76-24.06-15.83-43.39-48-46v92l30.82 7.28C367.61 243.46 400 277 400 332c0 64.34-43.74 105.88-128 111.32V480zm0-264v-86c-27.59 1.52-47.27 18.47-47.27 42.53 0 22.3 16.39 36.88 47.27 43.47zm32 78v92c38.15-1.54 56.38-18.92 56.38-45.77 0-24.58-18.23-41.13-56.38-46.23z'/></svg>";
+const mail = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M424 80H88a56.06 56.06 0 00-56 56v240a56.06 56.06 0 0056 56h336a56.06 56.06 0 0056-56V136a56.06 56.06 0 00-56-56zm-14.18 92.63l-144 112a16 16 0 01-19.64 0l-144-112a16 16 0 1119.64-25.26L256 251.73l134.18-104.36a16 16 0 0119.64 25.26z'/></svg>";
+const moon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M264 480A232 232 0 0132 248c0-94 54-178.28 137.61-214.67a16 16 0 0121.06 21.06C181.07 76.43 176 104.66 176 136c0 110.28 89.72 200 200 200 31.34 0 59.57-5.07 81.61-14.67a16 16 0 0121.06 21.06C442.28 426 358 480 264 480z'/></svg>";
+const notifications = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M440.08 341.31c-1.66-2-3.29-4-4.89-5.93-22-26.61-35.31-42.67-35.31-118 0-39-9.33-71-27.72-95-13.56-17.73-31.89-31.18-56.05-41.12a3 3 0 01-.82-.67C306.6 51.49 282.82 32 256 32s-50.59 19.49-59.28 48.56a3.13 3.13 0 01-.81.65c-56.38 23.21-83.78 67.74-83.78 136.14 0 75.36-13.29 91.42-35.31 118-1.6 1.93-3.23 3.89-4.89 5.93a35.16 35.16 0 00-4.65 37.62c6.17 13 19.32 21.07 34.33 21.07H410.5c14.94 0 28-8.06 34.19-21a35.17 35.17 0 00-4.61-37.66zM256 480a80.06 80.06 0 0070.44-42.13 4 4 0 00-3.54-5.87H189.12a4 4 0 00-3.55 5.87A80.06 80.06 0 00256 480z'/></svg>";
+const notificationsCircle = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm0 336c-20.9 0-37.52-8.86-39.75-27.58a4 4 0 014-4.42h71.45a4 4 0 014 4.48C293.15 374.85 276.68 384 256 384zm98-48H158c-11.84 0-18-15-11.19-23 16.33-19.34 27.87-27.47 27.87-80.8 0-48.87 25.74-66.21 47-74.67a11.35 11.35 0 006.33-6.68C231.7 138.6 242.14 128 256 128s24.28 10.6 28 22.86a11.39 11.39 0 006.34 6.68c21.21 8.44 47 25.81 47 74.67 0 53.33 11.53 61.46 27.86 80.8 6.74 7.99.57 22.99-11.2 22.99z'/></svg>";
+const open = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M224 304a16 16 0 01-11.31-27.31l157.94-157.94A55.7 55.7 0 00344 112H104a56.06 56.06 0 00-56 56v240a56.06 56.06 0 0056 56h240a56.06 56.06 0 0056-56V168a55.7 55.7 0 00-6.75-26.63L235.31 299.31A15.92 15.92 0 01224 304z'/><path d='M448 48H336a16 16 0 000 32h73.37l-38.74 38.75a56.35 56.35 0 0122.62 22.62L432 102.63V176a16 16 0 0032 0V64a16 16 0 00-16-16z'/></svg>";
+const peopleCircleOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 464c-114.69 0-208-93.31-208-208S141.31 48 256 48s208 93.31 208 208-93.31 208-208 208zm0-384c-97 0-176 79-176 176s79 176 176 176 176-78.95 176-176S353.05 80 256 80z'/><path d='M323.67 292c-17.4 0-34.21-7.72-47.34-21.73a83.76 83.76 0 01-22-51.32c-1.47-20.7 4.88-39.75 17.88-53.62S303.38 144 323.67 144c20.14 0 38.37 7.62 51.33 21.46s19.47 33 18 53.51a84 84 0 01-22 51.3C357.86 284.28 341.06 292 323.67 292zm55.81-74zM163.82 295.36c-29.76 0-55.93-27.51-58.33-61.33-1.23-17.32 4.15-33.33 15.17-45.08s26.22-18 43.15-18 32.12 6.44 43.07 18.14 16.5 27.82 15.25 45c-2.44 33.77-28.6 61.27-58.31 61.27zM420.37 355.28c-1.59-4.7-5.46-9.71-13.22-14.46-23.46-14.33-52.32-21.91-83.48-21.91-30.57 0-60.23 7.9-83.53 22.25-26.25 16.17-43.89 39.75-51 68.18-1.68 6.69-4.13 19.14-1.51 26.11a192.18 192.18 0 00232.75-80.17zM163.63 401.37c7.07-28.21 22.12-51.73 45.47-70.75a8 8 0 00-2.59-13.77c-12-3.83-25.7-5.88-42.69-5.88-23.82 0-49.11 6.45-68.14 18.17-5.4 3.33-10.7 4.61-14.78 5.75a192.84 192.84 0 0077.78 86.64l1.79-.14a102.82 102.82 0 013.16-20.02z'/></svg>";
+const prismSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 16L16 352l240 144 240-144zm-20 96.82v324.53L73.73 340z'/></svg>";
+const returnUpBack = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='round' stroke-linejoin='round' d='M112 160l-64 64 64 64' class='ionicon-fill-none ionicon-stroke-width'/><path d='M64 224h294c58.76 0 106 49.33 106 108v20' stroke-linecap='round' stroke-linejoin='round' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
+const searchCircle = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M256 64C150.13 64 64 150.13 64 256s86.13 192 192 192 192-86.13 192-192S361.87 64 256 64zm91.31 283.31a16 16 0 01-22.62 0l-42.84-42.83a88.08 88.08 0 1122.63-22.63l42.83 42.84a16 16 0 010 22.62z'/><circle cx='232' cy='232' r='56'/></svg>";
+const settings = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><circle cx='256' cy='256' r='48'/><path d='M470.39 300l-.47-.38-31.56-24.75a16.11 16.11 0 01-6.1-13.33v-11.56a16 16 0 016.11-13.22L469.92 212l.47-.38a26.68 26.68 0 005.9-34.06l-42.71-73.9a1.59 1.59 0 01-.13-.22A26.86 26.86 0 00401 92.14l-.35.13-37.1 14.93a15.94 15.94 0 01-14.47-1.29q-4.92-3.1-10-5.86a15.94 15.94 0 01-8.19-11.82l-5.59-39.59-.12-.72A27.22 27.22 0 00298.76 26h-85.52a26.92 26.92 0 00-26.45 22.39l-.09.56-5.57 39.67a16 16 0 01-8.13 11.82 175.21 175.21 0 00-10 5.82 15.92 15.92 0 01-14.43 1.27l-37.13-15-.35-.14a26.87 26.87 0 00-32.48 11.34l-.13.22-42.77 73.95a26.71 26.71 0 005.9 34.1l.47.38 31.56 24.75a16.11 16.11 0 016.1 13.33v11.56a16 16 0 01-6.11 13.22L42.08 300l-.47.38a26.68 26.68 0 00-5.9 34.06l42.71 73.9a1.59 1.59 0 01.13.22 26.86 26.86 0 0032.45 11.3l.35-.13 37.07-14.93a15.94 15.94 0 0114.47 1.29q4.92 3.11 10 5.86a15.94 15.94 0 018.19 11.82l5.56 39.59.12.72A27.22 27.22 0 00213.24 486h85.52a26.92 26.92 0 0026.45-22.39l.09-.56 5.57-39.67a16 16 0 018.18-11.82c3.42-1.84 6.76-3.79 10-5.82a15.92 15.92 0 0114.43-1.27l37.13 14.95.35.14a26.85 26.85 0 0032.48-11.34 2.53 2.53 0 01.13-.22l42.71-73.89a26.7 26.7 0 00-5.89-34.11zm-134.48-40.24a80 80 0 11-83.66-83.67 80.21 80.21 0 0183.66 83.67z'/></svg>";
+const settingsOutline = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M262.29 192.31a64 64 0 1057.4 57.4 64.13 64.13 0 00-57.4-57.4zM416.39 256a154.34 154.34 0 01-1.53 20.79l45.21 35.46a10.81 10.81 0 012.45 13.75l-42.77 74a10.81 10.81 0 01-13.14 4.59l-44.9-18.08a16.11 16.11 0 00-15.17 1.75A164.48 164.48 0 01325 400.8a15.94 15.94 0 00-8.82 12.14l-6.73 47.89a11.08 11.08 0 01-10.68 9.17h-85.54a11.11 11.11 0 01-10.69-8.87l-6.72-47.82a16.07 16.07 0 00-9-12.22 155.3 155.3 0 01-21.46-12.57 16 16 0 00-15.11-1.71l-44.89 18.07a10.81 10.81 0 01-13.14-4.58l-42.77-74a10.8 10.8 0 012.45-13.75l38.21-30a16.05 16.05 0 006-14.08c-.36-4.17-.58-8.33-.58-12.5s.21-8.27.58-12.35a16 16 0 00-6.07-13.94l-38.19-30A10.81 10.81 0 0149.48 186l42.77-74a10.81 10.81 0 0113.14-4.59l44.9 18.08a16.11 16.11 0 0015.17-1.75A164.48 164.48 0 01187 111.2a15.94 15.94 0 008.82-12.14l6.73-47.89A11.08 11.08 0 01213.23 42h85.54a11.11 11.11 0 0110.69 8.87l6.72 47.82a16.07 16.07 0 009 12.22 155.3 155.3 0 0121.46 12.57 16 16 0 0015.11 1.71l44.89-18.07a10.81 10.81 0 0113.14 4.58l42.77 74a10.8 10.8 0 01-2.45 13.75l-38.21 30a16.05 16.05 0 00-6.05 14.08c.33 4.14.55 8.3.55 12.47z' stroke-linecap='round' stroke-linejoin='round' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
+const swapVerticalSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path stroke-linecap='square' stroke-miterlimit='10' d='M464 208L352 96 240 208M352 113.13V416M48 304l112 112 112-112M160 398V96' class='ionicon-fill-none ionicon-stroke-width'/></svg>";
+const thumbsUp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M472.06 334l-144.16-6.13c-4.61-.36-23.9-1.21-23.9-25.87 0-23.81 19.16-25.33 24.14-25.88L472.06 270c12.67.13 23.94 14.43 23.94 32s-11.27 31.87-23.94 32zM330.61 202.33L437.35 194C450 194 464 210.68 464 227.88v.33c0 16.32-11.14 29.62-24.88 29.79l-108.45-1.73C304 253 304 236.83 304 229.88c0-22.88 21.8-27.15 26.61-27.55zM421.85 480l-89.37-8.93C308 470.14 304 453.82 304 443.59c0-18.38 13.41-24.6 26.67-24.6l91-3c14.54.23 26.32 14.5 26.32 32s-11.67 31.67-26.14 32.01zm34.36-71.5l-126.4-6.21c-9.39-.63-25.81-3-25.81-26.37 0-12 4.35-25.61 25-27.53l127.19-3.88c13.16.14 23.81 13.49 23.81 31.4s-10.65 32.43-23.79 32.58z'/><path d='M133.55 238.06A15.85 15.85 0 01126 240a15.82 15.82 0 007.51-1.92zM174.14 168.78l.13-.23-.13.23c-20.5 35.51-30.36 54.95-33.82 62 3.47-7.07 13.34-26.51 33.82-62z' class='ionicon-fill-none'/><path d='M139.34 232.84l1-2a16.27 16.27 0 01-6.77 7.25 16.35 16.35 0 005.77-5.25z'/><path d='M316.06 52.62C306.63 39.32 291 32 272 32a16 16 0 00-14.31 8.84c-3 6.07-15.25 24-28.19 42.91-18 26.33-40.35 59.07-55.23 84.8l-.13.23c-20.48 35.49-30.35 54.93-33.82 62l-1 2a16.35 16.35 0 01-5.79 5.22 15.82 15.82 0 01-7.53 2h-25.31A84.69 84.69 0 0016 324.69v38.61a84.69 84.69 0 0084.69 84.7h48.79a17.55 17.55 0 019.58 2.89C182 465.87 225.34 480 272 480c7.45 0 14.19-.14 20.27-.38a8 8 0 006.2-12.68l-.1-.14C289.8 454.41 288 441 288 432a61.2 61.2 0 015.19-24.77 17.36 17.36 0 000-14.05 63.81 63.81 0 010-50.39 17.32 17.32 0 000-14 62.15 62.15 0 010-49.59 18.13 18.13 0 000-14.68A60.33 60.33 0 01288 239c0-8.2 2-21.3 8-31.19a15.63 15.63 0 001.14-13.64c-.38-1-.76-2.07-1.13-3.17a24.84 24.84 0 01-.86-11.58c3-19.34 9.67-36.29 16.74-54.16 3.08-7.78 6.27-15.82 9.22-24.26 6.14-17.57 4.3-35.2-5.05-48.38z'/></svg>";
+const wallet = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M95.5 104h320a87.73 87.73 0 0111.18.71 66 66 0 00-77.51-55.56L86 94.08h-.3a66 66 0 00-41.07 26.13A87.57 87.57 0 0195.5 104zM415.5 128h-320a64.07 64.07 0 00-64 64v192a64.07 64.07 0 0064 64h320a64.07 64.07 0 0064-64V192a64.07 64.07 0 00-64-64zM368 320a32 32 0 1132-32 32 32 0 01-32 32z'/><path d='M32 259.5V160c0-21.67 12-58 53.65-65.87C121 87.5 156 87.5 156 87.5s23 16 4 16-18.5 24.5 0 24.5 0 23.5 0 23.5L85.5 236z'/></svg>";
+const walletSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M47.5 104H432V51.52a16 16 0 00-19.14-15.69l-368 60.48a16 16 0 00-12 10.47A39.69 39.69 0 0147.5 104zM463.5 128h-416a16 16 0 00-16 16v288a16 16 0 0016 16h416a16 16 0 0016-16V144a16 16 0 00-16-16zM368 320a32 32 0 1132-32 32 32 0 01-32 32z'/><path d='M31.33 259.5V116c0-12.33 5.72-18.48 15.42-20 35.2-5.53 108.58-8.5 108.58-8.5s-8.33 16-27.33 16V128c18.5 0 31.33 23.5 31.33 23.5L84.83 236z'/></svg>";
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+  __name: "accoutCreatedModal",
+  __ssrInlineRender: true,
+  props: {
+    isAccCreatedModalOpen: { type: Boolean }
+  },
+  setup(__props) {
+    const props = __props;
+    const baseImgUrl = ref("");
+    const quoteImgUrl = ref("");
+    const base = ref("");
+    const quote = ref("");
+    const pair = ref("");
+    const orderType = ref("Buy");
+    const setOrder = (newOrder) => {
+      baseImgUrl.value = newOrder.baseImgUrl;
+      quoteImgUrl.value = newOrder.quoteImgUrl;
+      base.value = newOrder.base;
+      quote.value = newOrder.quote;
+      pair.value = newOrder.name;
+    };
+    const setOrderType = (type) => {
+      orderType.value = type;
+    };
+    const pairs = [
+      {
+        name: "Bitcoin/Naira",
+        base: "BTC",
+        quote: "NGN",
+        baseImgUrl: "/BTC.svg",
+        quoteImgUrl: "/nigeria.svg"
+      },
+      {
+        name: "Bitcoin/Cedis",
+        base: "BTC",
+        quote: "GHS",
+        baseImgUrl: "/BTC.svg",
+        quoteImgUrl: "/ghana.svg"
+      },
+      {
+        name: "Etheruem/Naira",
+        base: "ETH",
+        quote: "NGN",
+        baseImgUrl: "/ETH.svg",
+        quoteImgUrl: "/nigeria.svg"
+      },
+      {
+        name: "Etheruem/Cedis",
+        base: "ETH",
+        quote: "GHS",
+        baseImgUrl: "/ETH.svg",
+        quoteImgUrl: "/ghana.svg"
+      }
+    ];
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_ion_modal = IonModal;
+      const _component_ion_content = IonContent;
+      const _component_ion_label = IonLabel;
+      const _component_ion_icon = IonIcon;
+      const _component_ion_list = IonList;
+      const _component_ion_item = IonItem;
+      const _component_ion_select = IonSelect;
+      const _component_ion_select_option = IonSelectOption;
+      const _component_ion_card = IonCard;
+      const _component_ion_card_title = IonCardTitle;
+      const _component_ion_card_subtitle = IonCardSubtitle;
+      const _component_ion_avatar = IonAvatar;
+      const _component_ion_input = IonInput;
+      const _component_ion_button = IonButton;
+      _push(ssrRenderComponent(_component_ion_modal, mergeProps({
+        "is-open": props.isAccCreatedModalOpen,
+        "initial-breakpoint": 0.85,
+        breakpoints: [0, 0.4, 0.5, 0.65, 0.75, 0.85],
+        "backdrop-dismiss": false,
+        "backdrop-breakpoint": 0,
+        style: { "--border-radius": "32px" },
+        onDidDismiss: ($event) => _ctx.$emit("closeModal")
+      }, _attrs), {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(ssrRenderComponent(_component_ion_content, {
+              class: "ion-padding content",
+              style: {}
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`<div style="${ssrRenderStyle({ "max-height": "8%", "min-height": "8%", "width": "100%", "display": "flex", "flex-direction": "row", "align-items": "start", "justify-content": "start", "margin-top": "7%", "padding": "0 5% 0 5%" })}" data-v-46c69287${_scopeId2}>`);
+                  _push3(ssrRenderComponent(_component_ion_label, { style: { "font-size": "190%", "color": "black", "font-weight": "bold" } }, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        _push4(`New Order`);
+                      } else {
+                        return [
+                          createTextVNode("New Order")
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(ssrRenderComponent(_component_ion_icon, {
+                    icon: "ioniconsInformationCircle" in _ctx ? _ctx.ioniconsInformationCircle : unref(informationCircle),
+                    style: { "font-size": "200%", "position": "relative", "left": "45%" },
+                    onClick: () => {
+                    }
+                  }, null, _parent3, _scopeId2));
+                  _push3(`</div><div style="${ssrRenderStyle({ "max-height": "8%", "min-height": "8%", "width": "100%", "display": "flex", "flex-direction": "row", "align-items": "start", "justify-content": "start", "padding": "0 5% 0 5%" })}" data-v-46c69287${_scopeId2}>`);
+                  _push3(ssrRenderComponent(_component_ion_list, null, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        _push4(ssrRenderComponent(_component_ion_item, null, {
+                          default: withCtx((_4, _push5, _parent5, _scopeId4) => {
+                            if (_push5) {
+                              _push5(ssrRenderComponent(_component_ion_select, {
+                                "aria-label": "Fruit",
+                                interface: "action-sheet",
+                                placeholder: "Select Pair",
+                                style: { "font-size": "120%" },
+                                onIonChange: ($event) => setOrder($event.detail.value)
+                              }, {
+                                default: withCtx((_5, _push6, _parent6, _scopeId5) => {
+                                  if (_push6) {
+                                    _push6(`<!--[-->`);
+                                    ssrRenderList(pairs, (pair2, index) => {
+                                      _push6(ssrRenderComponent(_component_ion_select_option, {
+                                        value: pair2,
+                                        key: index
+                                      }, {
+                                        default: withCtx((_6, _push7, _parent7, _scopeId6) => {
+                                          if (_push7) {
+                                            _push7(`${ssrInterpolate(pair2.base)}/${ssrInterpolate(pair2.quote)}`);
+                                          } else {
+                                            return [
+                                              createTextVNode(toDisplayString(pair2.base) + "/" + toDisplayString(pair2.quote), 1)
+                                            ];
+                                          }
+                                        }),
+                                        _: 2
+                                      }, _parent6, _scopeId5));
+                                    });
+                                    _push6(`<!--]-->`);
+                                  } else {
+                                    return [
+                                      (openBlock(), createBlock(Fragment, null, renderList(pairs, (pair2, index) => {
+                                        return createVNode(_component_ion_select_option, {
+                                          value: pair2,
+                                          key: index
+                                        }, {
+                                          default: withCtx(() => [
+                                            createTextVNode(toDisplayString(pair2.base) + "/" + toDisplayString(pair2.quote), 1)
+                                          ]),
+                                          _: 2
+                                        }, 1032, ["value"]);
+                                      }), 64))
+                                    ];
+                                  }
+                                }),
+                                _: 1
+                              }, _parent5, _scopeId4));
+                            } else {
+                              return [
+                                createVNode(_component_ion_select, {
+                                  "aria-label": "Fruit",
+                                  interface: "action-sheet",
+                                  placeholder: "Select Pair",
+                                  style: { "font-size": "120%" },
+                                  onIonChange: ($event) => setOrder($event.detail.value)
+                                }, {
+                                  default: withCtx(() => [
+                                    (openBlock(), createBlock(Fragment, null, renderList(pairs, (pair2, index) => {
+                                      return createVNode(_component_ion_select_option, {
+                                        value: pair2,
+                                        key: index
+                                      }, {
+                                        default: withCtx(() => [
+                                          createTextVNode(toDisplayString(pair2.base) + "/" + toDisplayString(pair2.quote), 1)
+                                        ]),
+                                        _: 2
+                                      }, 1032, ["value"]);
+                                    }), 64))
+                                  ]),
+                                  _: 1
+                                }, 8, ["onIonChange"])
+                              ];
+                            }
+                          }),
+                          _: 1
+                        }, _parent4, _scopeId3));
+                      } else {
+                        return [
+                          createVNode(_component_ion_item, null, {
+                            default: withCtx(() => [
+                              createVNode(_component_ion_select, {
+                                "aria-label": "Fruit",
+                                interface: "action-sheet",
+                                placeholder: "Select Pair",
+                                style: { "font-size": "120%" },
+                                onIonChange: ($event) => setOrder($event.detail.value)
+                              }, {
+                                default: withCtx(() => [
+                                  (openBlock(), createBlock(Fragment, null, renderList(pairs, (pair2, index) => {
+                                    return createVNode(_component_ion_select_option, {
+                                      value: pair2,
+                                      key: index
+                                    }, {
+                                      default: withCtx(() => [
+                                        createTextVNode(toDisplayString(pair2.base) + "/" + toDisplayString(pair2.quote), 1)
+                                      ]),
+                                      _: 2
+                                    }, 1032, ["value"]);
+                                  }), 64))
+                                ]),
+                                _: 1
+                              }, 8, ["onIonChange"])
+                            ]),
+                            _: 1
+                          })
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(ssrRenderComponent(_component_ion_list, null, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        _push4(ssrRenderComponent(_component_ion_item, null, {
+                          default: withCtx((_4, _push5, _parent5, _scopeId4) => {
+                            if (_push5) {
+                              _push5(ssrRenderComponent(_component_ion_select, {
+                                "aria-label": "Fruit",
+                                interface: "popover",
+                                placeholder: "Order type",
+                                style: { "font-size": "120%" },
+                                onIonChange: ($event) => setOrderType($event.detail.value)
+                              }, {
+                                default: withCtx((_5, _push6, _parent6, _scopeId5) => {
+                                  if (_push6) {
+                                    _push6(ssrRenderComponent(_component_ion_select_option, { value: "Buy" }, {
+                                      default: withCtx((_6, _push7, _parent7, _scopeId6) => {
+                                        if (_push7) {
+                                          _push7(`BUY`);
+                                        } else {
+                                          return [
+                                            createTextVNode("BUY")
+                                          ];
+                                        }
+                                      }),
+                                      _: 1
+                                    }, _parent6, _scopeId5));
+                                    _push6(ssrRenderComponent(_component_ion_select_option, { value: "Sell" }, {
+                                      default: withCtx((_6, _push7, _parent7, _scopeId6) => {
+                                        if (_push7) {
+                                          _push7(`SELL`);
+                                        } else {
+                                          return [
+                                            createTextVNode("SELL")
+                                          ];
+                                        }
+                                      }),
+                                      _: 1
+                                    }, _parent6, _scopeId5));
+                                  } else {
+                                    return [
+                                      createVNode(_component_ion_select_option, { value: "Buy" }, {
+                                        default: withCtx(() => [
+                                          createTextVNode("BUY")
+                                        ]),
+                                        _: 1
+                                      }),
+                                      createVNode(_component_ion_select_option, { value: "Sell" }, {
+                                        default: withCtx(() => [
+                                          createTextVNode("SELL")
+                                        ]),
+                                        _: 1
+                                      })
+                                    ];
+                                  }
+                                }),
+                                _: 1
+                              }, _parent5, _scopeId4));
+                            } else {
+                              return [
+                                createVNode(_component_ion_select, {
+                                  "aria-label": "Fruit",
+                                  interface: "popover",
+                                  placeholder: "Order type",
+                                  style: { "font-size": "120%" },
+                                  onIonChange: ($event) => setOrderType($event.detail.value)
+                                }, {
+                                  default: withCtx(() => [
+                                    createVNode(_component_ion_select_option, { value: "Buy" }, {
+                                      default: withCtx(() => [
+                                        createTextVNode("BUY")
+                                      ]),
+                                      _: 1
+                                    }),
+                                    createVNode(_component_ion_select_option, { value: "Sell" }, {
+                                      default: withCtx(() => [
+                                        createTextVNode("SELL")
+                                      ]),
+                                      _: 1
+                                    })
+                                  ]),
+                                  _: 1
+                                }, 8, ["onIonChange"])
+                              ];
+                            }
+                          }),
+                          _: 1
+                        }, _parent4, _scopeId3));
+                      } else {
+                        return [
+                          createVNode(_component_ion_item, null, {
+                            default: withCtx(() => [
+                              createVNode(_component_ion_select, {
+                                "aria-label": "Fruit",
+                                interface: "popover",
+                                placeholder: "Order type",
+                                style: { "font-size": "120%" },
+                                onIonChange: ($event) => setOrderType($event.detail.value)
+                              }, {
+                                default: withCtx(() => [
+                                  createVNode(_component_ion_select_option, { value: "Buy" }, {
+                                    default: withCtx(() => [
+                                      createTextVNode("BUY")
+                                    ]),
+                                    _: 1
+                                  }),
+                                  createVNode(_component_ion_select_option, { value: "Sell" }, {
+                                    default: withCtx(() => [
+                                      createTextVNode("SELL")
+                                    ]),
+                                    _: 1
+                                  })
+                                ]),
+                                _: 1
+                              }, 8, ["onIonChange"])
+                            ]),
+                            _: 1
+                          })
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(`</div><div style="${ssrRenderStyle({ "margin": "0px", "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "background": "none" })}" data-v-46c69287${_scopeId2}>`);
+                  _push3(ssrRenderComponent(_component_ion_card, { style: { "box-shadow": "none", "background": "none", "z-index": "888", "margin": "0px", "width": "40%", "position": "relative", "bottom": "8%" } }, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        _push4(ssrRenderComponent(_component_ion_card_title, {
+                          color: "primary",
+                          style: { "font-size": "200%", "font-weight": "bold", "text-transform": "uppercase" }
+                        }, {
+                          default: withCtx((_4, _push5, _parent5, _scopeId4) => {
+                            if (_push5) {
+                              _push5(`${ssrInterpolate(unref(orderType))}`);
+                            } else {
+                              return [
+                                createTextVNode(toDisplayString(unref(orderType)), 1)
+                              ];
+                            }
+                          }),
+                          _: 1
+                        }, _parent4, _scopeId3));
+                        _push4(ssrRenderComponent(_component_ion_card_subtitle, { style: { "margin-top": "1%", "margin-left": "2%", "font-size": "100%" } }, {
+                          default: withCtx((_4, _push5, _parent5, _scopeId4) => {
+                            if (_push5) {
+                              _push5(`${ssrInterpolate(unref(pair))}`);
+                            } else {
+                              return [
+                                createTextVNode(toDisplayString(unref(pair)), 1)
+                              ];
+                            }
+                          }),
+                          _: 1
+                        }, _parent4, _scopeId3));
+                      } else {
+                        return [
+                          createVNode(_component_ion_card_title, {
+                            color: "primary",
+                            style: { "font-size": "200%", "font-weight": "bold", "text-transform": "uppercase" }
+                          }, {
+                            default: withCtx(() => [
+                              createTextVNode(toDisplayString(unref(orderType)), 1)
+                            ]),
+                            _: 1
+                          }),
+                          createVNode(_component_ion_card_subtitle, { style: { "margin-top": "1%", "margin-left": "2%", "font-size": "100%" } }, {
+                            default: withCtx(() => [
+                              createTextVNode(toDisplayString(unref(pair)), 1)
+                            ]),
+                            _: 1
+                          })
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(`<div style="${ssrRenderStyle({ "max-width": "100%", "max-height": "100%", "min-height": "100%", "display": "flex", "flex-direction": "row", "justify-content": "center", "align-items": "center" })}" data-v-46c69287${_scopeId2}>`);
+                  _push3(ssrRenderComponent(_component_ion_avatar, {
+                    slot: "start",
+                    style: { "scale": "1.3", "border": "3px solid #1B1D30" }
+                  }, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        if (unref(baseImgUrl)) {
+                          _push4(`<img alt="asset img"${ssrRenderAttr("src", unref(baseImgUrl))} data-v-46c69287${_scopeId3}>`);
+                        } else {
+                          _push4(`<!---->`);
+                        }
+                      } else {
+                        return [
+                          unref(baseImgUrl) ? (openBlock(), createBlock("img", {
+                            key: 0,
+                            alt: "asset img",
+                            src: unref(baseImgUrl)
+                          }, null, 8, ["src"])) : createCommentVNode("", true)
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(ssrRenderComponent(_component_ion_avatar, {
+                    slot: "start",
+                    style: { "scale": "1.3", "position": "relative", "right": "5%", "border": "3px solid #1B1D30" }
+                  }, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        if (unref(quoteImgUrl)) {
+                          _push4(`<img alt="asset img"${ssrRenderAttr("src", unref(quoteImgUrl))} data-v-46c69287${_scopeId3}>`);
+                        } else {
+                          _push4(`<!---->`);
+                        }
+                      } else {
+                        return [
+                          unref(quoteImgUrl) ? (openBlock(), createBlock("img", {
+                            key: 0,
+                            alt: "asset img",
+                            src: unref(quoteImgUrl)
+                          }, null, 8, ["src"])) : createCommentVNode("", true)
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(`</div></div><div style="${ssrRenderStyle({ "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "9%", "min-height": "9%", "width": "100%", "border": "1px solid white", "border-radius": "25px", "padding": "4%", "margin-top": "7%" })}" data-v-46c69287${_scopeId2}>`);
+                  _push3(ssrRenderComponent(_component_ion_label, { style: { "font-size": "120%", "color": "black" } }, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        _push4(`Quote Price`);
+                      } else {
+                        return [
+                          createTextVNode("Quote Price")
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(ssrRenderComponent(_component_ion_input, {
+                    label: "",
+                    type: "number",
+                    placeholder: "000",
+                    style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "black", "border": "1px solid whitesmoke" }
+                  }, null, _parent3, _scopeId2));
+                  _push3(ssrRenderComponent(_component_ion_label, { style: { "font-size": "100%", "color": "black" } }, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        _push4(`${ssrInterpolate(unref(quote))}`);
+                      } else {
+                        return [
+                          createTextVNode(toDisplayString(unref(quote)), 1)
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(`</div>`);
+                  _push3(ssrRenderComponent(_component_ion_card, { style: { "margin": "0px", "display": "flex", "flex-direction": "column", "align-items": "center", "justify-content": "center", "max-height": "30%", "min-height": "30%", "margin-top": "2%", "background": "#1d3160", "box-shadow": "none", "padding-top": "3%", "padding-bottom": "3%" } }, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        _push4(`<div style="${ssrRenderStyle({ "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "30%", "min-height": "30%", "width": "90%", "border": "1px solid white", "border-radius": "25px", "padding": "4%", "background": "#1d3160" })}" data-v-46c69287${_scopeId3}>`);
+                        _push4(ssrRenderComponent(_component_ion_label, { style: { "font-size": "150%", "color": "whitesmoke" } }, {
+                          default: withCtx((_4, _push5, _parent5, _scopeId4) => {
+                            if (_push5) {
+                              _push5(`You Send`);
+                            } else {
+                              return [
+                                createTextVNode("You Send")
+                              ];
+                            }
+                          }),
+                          _: 1
+                        }, _parent4, _scopeId3));
+                        _push4(ssrRenderComponent(_component_ion_input, {
+                          label: "",
+                          type: "number",
+                          placeholder: "000",
+                          style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "whitesmoke", "border": "1px solid whitesmoke" }
+                        }, null, _parent4, _scopeId3));
+                        _push4(ssrRenderComponent(_component_ion_label, { style: { "font-size": "120%", "color": "whitesmoke" } }, {
+                          default: withCtx((_4, _push5, _parent5, _scopeId4) => {
+                            if (_push5) {
+                              _push5(`${ssrInterpolate(unref(orderType) == "Buy" ? unref(quote) : unref(base))}`);
+                            } else {
+                              return [
+                                createTextVNode(toDisplayString(unref(orderType) == "Buy" ? unref(quote) : unref(base)), 1)
+                              ];
+                            }
+                          }),
+                          _: 1
+                        }, _parent4, _scopeId3));
+                        _push4(`</div><div style="${ssrRenderStyle({ "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "center", "width": "90%" })}" data-v-46c69287${_scopeId3}>`);
+                        _push4(ssrRenderComponent(_component_ion_icon, {
+                          color: "secondary",
+                          icon: "ioniconsSwapVerticalSharp" in _ctx ? _ctx.ioniconsSwapVerticalSharp : unref(swapVerticalSharp),
+                          style: { "font-size": "300%", "border-radius": "25px", "z-index": "99", "padding": "3%", "margin-left": "15%" }
+                        }, null, _parent4, _scopeId3));
+                        _push4(ssrRenderComponent(_component_ion_label, { style: { "font-size": "100%", "color": "whitesmoke", "position": "relative", "left": "10%" } }, {
+                          default: withCtx((_4, _push5, _parent5, _scopeId4) => {
+                            if (_push5) {
+                              _push5(`fee : 0.5%`);
+                            } else {
+                              return [
+                                createTextVNode("fee : 0.5%")
+                              ];
+                            }
+                          }),
+                          _: 1
+                        }, _parent4, _scopeId3));
+                        _push4(`</div><div style="${ssrRenderStyle({ "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "30%", "min-height": "30%", "width": "90%", "border": "1px solid goldenrod", "border-radius": "25px", "padding": "4%", "background": "goldenrod" })}" data-v-46c69287${_scopeId3}>`);
+                        _push4(ssrRenderComponent(_component_ion_label, { style: { "font-size": "150%", "color": "black" } }, {
+                          default: withCtx((_4, _push5, _parent5, _scopeId4) => {
+                            if (_push5) {
+                              _push5(`You Get`);
+                            } else {
+                              return [
+                                createTextVNode("You Get")
+                              ];
+                            }
+                          }),
+                          _: 1
+                        }, _parent4, _scopeId3));
+                        _push4(ssrRenderComponent(_component_ion_input, {
+                          label: "",
+                          readonly: true,
+                          type: "number",
+                          placeholder: "00",
+                          style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "black", "border": "1px solid whitesmoke" }
+                        }, null, _parent4, _scopeId3));
+                        _push4(ssrRenderComponent(_component_ion_label, { style: { "font-size": "120%", "color": "black" } }, {
+                          default: withCtx((_4, _push5, _parent5, _scopeId4) => {
+                            if (_push5) {
+                              _push5(`${ssrInterpolate(unref(orderType) == "Buy" ? unref(base) : unref(quote))}`);
+                            } else {
+                              return [
+                                createTextVNode(toDisplayString(unref(orderType) == "Buy" ? unref(base) : unref(quote)), 1)
+                              ];
+                            }
+                          }),
+                          _: 1
+                        }, _parent4, _scopeId3));
+                        _push4(`</div>`);
+                      } else {
+                        return [
+                          createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "30%", "min-height": "30%", "width": "90%", "border": "1px solid white", "border-radius": "25px", "padding": "4%", "background": "#1d3160" } }, [
+                            createVNode(_component_ion_label, { style: { "font-size": "150%", "color": "whitesmoke" } }, {
+                              default: withCtx(() => [
+                                createTextVNode("You Send")
+                              ]),
+                              _: 1
+                            }),
+                            createVNode(_component_ion_input, {
+                              label: "",
+                              type: "number",
+                              placeholder: "000",
+                              style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "whitesmoke", "border": "1px solid whitesmoke" }
+                            }),
+                            createVNode(_component_ion_label, { style: { "font-size": "120%", "color": "whitesmoke" } }, {
+                              default: withCtx(() => [
+                                createTextVNode(toDisplayString(unref(orderType) == "Buy" ? unref(quote) : unref(base)), 1)
+                              ]),
+                              _: 1
+                            })
+                          ]),
+                          createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "center", "width": "90%" } }, [
+                            createVNode(_component_ion_icon, {
+                              color: "secondary",
+                              icon: "ioniconsSwapVerticalSharp" in _ctx ? _ctx.ioniconsSwapVerticalSharp : unref(swapVerticalSharp),
+                              style: { "font-size": "300%", "border-radius": "25px", "z-index": "99", "padding": "3%", "margin-left": "15%" }
+                            }, null, 8, ["icon"]),
+                            createVNode(_component_ion_label, { style: { "font-size": "100%", "color": "whitesmoke", "position": "relative", "left": "10%" } }, {
+                              default: withCtx(() => [
+                                createTextVNode("fee : 0.5%")
+                              ]),
+                              _: 1
+                            })
+                          ]),
+                          createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "30%", "min-height": "30%", "width": "90%", "border": "1px solid goldenrod", "border-radius": "25px", "padding": "4%", "background": "goldenrod" } }, [
+                            createVNode(_component_ion_label, { style: { "font-size": "150%", "color": "black" } }, {
+                              default: withCtx(() => [
+                                createTextVNode("You Get")
+                              ]),
+                              _: 1
+                            }),
+                            createVNode(_component_ion_input, {
+                              label: "",
+                              readonly: true,
+                              type: "number",
+                              placeholder: "00",
+                              style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "black", "border": "1px solid whitesmoke" }
+                            }),
+                            createVNode(_component_ion_label, { style: { "font-size": "120%", "color": "black" } }, {
+                              default: withCtx(() => [
+                                createTextVNode(toDisplayString(unref(orderType) == "Buy" ? unref(base) : unref(quote)), 1)
+                              ]),
+                              _: 1
+                            })
+                          ])
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(`<div style="${ssrRenderStyle({ "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "center", "margin-top": "8%" })}" data-v-46c69287${_scopeId2}>`);
+                  _push3(ssrRenderComponent(_component_ion_button, {
+                    fill: "outline",
+                    style: { "width": "80%", "height": "50px", "font-size": "130%" },
+                    onClick: ($event) => _ctx.$emit("closeModal")
+                  }, {
+                    default: withCtx((_3, _push4, _parent4, _scopeId3) => {
+                      if (_push4) {
+                        _push4(`Confirm`);
+                      } else {
+                        return [
+                          createTextVNode("Confirm")
+                        ];
+                      }
+                    }),
+                    _: 1
+                  }, _parent3, _scopeId2));
+                  _push3(`</div>`);
+                } else {
+                  return [
+                    createVNode("div", { style: { "max-height": "8%", "min-height": "8%", "width": "100%", "display": "flex", "flex-direction": "row", "align-items": "start", "justify-content": "start", "margin-top": "7%", "padding": "0 5% 0 5%" } }, [
+                      createVNode(_component_ion_label, { style: { "font-size": "190%", "color": "black", "font-weight": "bold" } }, {
+                        default: withCtx(() => [
+                          createTextVNode("New Order")
+                        ]),
+                        _: 1
+                      }),
+                      createVNode(_component_ion_icon, {
+                        icon: "ioniconsInformationCircle" in _ctx ? _ctx.ioniconsInformationCircle : unref(informationCircle),
+                        style: { "font-size": "200%", "position": "relative", "left": "45%" },
+                        onClick: () => {
+                        }
+                      }, null, 8, ["icon", "onClick"])
+                    ]),
+                    createVNode("div", { style: { "max-height": "8%", "min-height": "8%", "width": "100%", "display": "flex", "flex-direction": "row", "align-items": "start", "justify-content": "start", "padding": "0 5% 0 5%" } }, [
+                      createVNode(_component_ion_list, null, {
+                        default: withCtx(() => [
+                          createVNode(_component_ion_item, null, {
+                            default: withCtx(() => [
+                              createVNode(_component_ion_select, {
+                                "aria-label": "Fruit",
+                                interface: "action-sheet",
+                                placeholder: "Select Pair",
+                                style: { "font-size": "120%" },
+                                onIonChange: ($event) => setOrder($event.detail.value)
+                              }, {
+                                default: withCtx(() => [
+                                  (openBlock(), createBlock(Fragment, null, renderList(pairs, (pair2, index) => {
+                                    return createVNode(_component_ion_select_option, {
+                                      value: pair2,
+                                      key: index
+                                    }, {
+                                      default: withCtx(() => [
+                                        createTextVNode(toDisplayString(pair2.base) + "/" + toDisplayString(pair2.quote), 1)
+                                      ]),
+                                      _: 2
+                                    }, 1032, ["value"]);
+                                  }), 64))
+                                ]),
+                                _: 1
+                              }, 8, ["onIonChange"])
+                            ]),
+                            _: 1
+                          })
+                        ]),
+                        _: 1
+                      }),
+                      createVNode(_component_ion_list, null, {
+                        default: withCtx(() => [
+                          createVNode(_component_ion_item, null, {
+                            default: withCtx(() => [
+                              createVNode(_component_ion_select, {
+                                "aria-label": "Fruit",
+                                interface: "popover",
+                                placeholder: "Order type",
+                                style: { "font-size": "120%" },
+                                onIonChange: ($event) => setOrderType($event.detail.value)
+                              }, {
+                                default: withCtx(() => [
+                                  createVNode(_component_ion_select_option, { value: "Buy" }, {
+                                    default: withCtx(() => [
+                                      createTextVNode("BUY")
+                                    ]),
+                                    _: 1
+                                  }),
+                                  createVNode(_component_ion_select_option, { value: "Sell" }, {
+                                    default: withCtx(() => [
+                                      createTextVNode("SELL")
+                                    ]),
+                                    _: 1
+                                  })
+                                ]),
+                                _: 1
+                              }, 8, ["onIonChange"])
+                            ]),
+                            _: 1
+                          })
+                        ]),
+                        _: 1
+                      })
+                    ]),
+                    createVNode("div", { style: { "margin": "0px", "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "background": "none" } }, [
+                      createVNode(_component_ion_card, { style: { "box-shadow": "none", "background": "none", "z-index": "888", "margin": "0px", "width": "40%", "position": "relative", "bottom": "8%" } }, {
+                        default: withCtx(() => [
+                          createVNode(_component_ion_card_title, {
+                            color: "primary",
+                            style: { "font-size": "200%", "font-weight": "bold", "text-transform": "uppercase" }
+                          }, {
+                            default: withCtx(() => [
+                              createTextVNode(toDisplayString(unref(orderType)), 1)
+                            ]),
+                            _: 1
+                          }),
+                          createVNode(_component_ion_card_subtitle, { style: { "margin-top": "1%", "margin-left": "2%", "font-size": "100%" } }, {
+                            default: withCtx(() => [
+                              createTextVNode(toDisplayString(unref(pair)), 1)
+                            ]),
+                            _: 1
+                          })
+                        ]),
+                        _: 1
+                      }),
+                      createVNode("div", { style: { "max-width": "100%", "max-height": "100%", "min-height": "100%", "display": "flex", "flex-direction": "row", "justify-content": "center", "align-items": "center" } }, [
+                        createVNode(_component_ion_avatar, {
+                          slot: "start",
+                          style: { "scale": "1.3", "border": "3px solid #1B1D30" }
+                        }, {
+                          default: withCtx(() => [
+                            unref(baseImgUrl) ? (openBlock(), createBlock("img", {
+                              key: 0,
+                              alt: "asset img",
+                              src: unref(baseImgUrl)
+                            }, null, 8, ["src"])) : createCommentVNode("", true)
+                          ]),
+                          _: 1
+                        }),
+                        createVNode(_component_ion_avatar, {
+                          slot: "start",
+                          style: { "scale": "1.3", "position": "relative", "right": "5%", "border": "3px solid #1B1D30" }
+                        }, {
+                          default: withCtx(() => [
+                            unref(quoteImgUrl) ? (openBlock(), createBlock("img", {
+                              key: 0,
+                              alt: "asset img",
+                              src: unref(quoteImgUrl)
+                            }, null, 8, ["src"])) : createCommentVNode("", true)
+                          ]),
+                          _: 1
+                        })
+                      ])
+                    ]),
+                    createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "9%", "min-height": "9%", "width": "100%", "border": "1px solid white", "border-radius": "25px", "padding": "4%", "margin-top": "7%" } }, [
+                      createVNode(_component_ion_label, { style: { "font-size": "120%", "color": "black" } }, {
+                        default: withCtx(() => [
+                          createTextVNode("Quote Price")
+                        ]),
+                        _: 1
+                      }),
+                      createVNode(_component_ion_input, {
+                        label: "",
+                        type: "number",
+                        placeholder: "000",
+                        style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "black", "border": "1px solid whitesmoke" }
+                      }),
+                      createVNode(_component_ion_label, { style: { "font-size": "100%", "color": "black" } }, {
+                        default: withCtx(() => [
+                          createTextVNode(toDisplayString(unref(quote)), 1)
+                        ]),
+                        _: 1
+                      })
+                    ]),
+                    createVNode(_component_ion_card, { style: { "margin": "0px", "display": "flex", "flex-direction": "column", "align-items": "center", "justify-content": "center", "max-height": "30%", "min-height": "30%", "margin-top": "2%", "background": "#1d3160", "box-shadow": "none", "padding-top": "3%", "padding-bottom": "3%" } }, {
+                      default: withCtx(() => [
+                        createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "30%", "min-height": "30%", "width": "90%", "border": "1px solid white", "border-radius": "25px", "padding": "4%", "background": "#1d3160" } }, [
+                          createVNode(_component_ion_label, { style: { "font-size": "150%", "color": "whitesmoke" } }, {
+                            default: withCtx(() => [
+                              createTextVNode("You Send")
+                            ]),
+                            _: 1
+                          }),
+                          createVNode(_component_ion_input, {
+                            label: "",
+                            type: "number",
+                            placeholder: "000",
+                            style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "whitesmoke", "border": "1px solid whitesmoke" }
+                          }),
+                          createVNode(_component_ion_label, { style: { "font-size": "120%", "color": "whitesmoke" } }, {
+                            default: withCtx(() => [
+                              createTextVNode(toDisplayString(unref(orderType) == "Buy" ? unref(quote) : unref(base)), 1)
+                            ]),
+                            _: 1
+                          })
+                        ]),
+                        createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "center", "width": "90%" } }, [
+                          createVNode(_component_ion_icon, {
+                            color: "secondary",
+                            icon: "ioniconsSwapVerticalSharp" in _ctx ? _ctx.ioniconsSwapVerticalSharp : unref(swapVerticalSharp),
+                            style: { "font-size": "300%", "border-radius": "25px", "z-index": "99", "padding": "3%", "margin-left": "15%" }
+                          }, null, 8, ["icon"]),
+                          createVNode(_component_ion_label, { style: { "font-size": "100%", "color": "whitesmoke", "position": "relative", "left": "10%" } }, {
+                            default: withCtx(() => [
+                              createTextVNode("fee : 0.5%")
+                            ]),
+                            _: 1
+                          })
+                        ]),
+                        createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "30%", "min-height": "30%", "width": "90%", "border": "1px solid goldenrod", "border-radius": "25px", "padding": "4%", "background": "goldenrod" } }, [
+                          createVNode(_component_ion_label, { style: { "font-size": "150%", "color": "black" } }, {
+                            default: withCtx(() => [
+                              createTextVNode("You Get")
+                            ]),
+                            _: 1
+                          }),
+                          createVNode(_component_ion_input, {
+                            label: "",
+                            readonly: true,
+                            type: "number",
+                            placeholder: "00",
+                            style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "black", "border": "1px solid whitesmoke" }
+                          }),
+                          createVNode(_component_ion_label, { style: { "font-size": "120%", "color": "black" } }, {
+                            default: withCtx(() => [
+                              createTextVNode(toDisplayString(unref(orderType) == "Buy" ? unref(base) : unref(quote)), 1)
+                            ]),
+                            _: 1
+                          })
+                        ])
+                      ]),
+                      _: 1
+                    }),
+                    createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "center", "margin-top": "8%" } }, [
+                      createVNode(_component_ion_button, {
+                        fill: "outline",
+                        style: { "width": "80%", "height": "50px", "font-size": "130%" },
+                        onClick: ($event) => _ctx.$emit("closeModal")
+                      }, {
+                        default: withCtx(() => [
+                          createTextVNode("Confirm")
+                        ]),
+                        _: 1
+                      }, 8, ["onClick"])
+                    ])
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+          } else {
+            return [
+              createVNode(_component_ion_content, {
+                class: "ion-padding content",
+                style: {}
+              }, {
+                default: withCtx(() => [
+                  createVNode("div", { style: { "max-height": "8%", "min-height": "8%", "width": "100%", "display": "flex", "flex-direction": "row", "align-items": "start", "justify-content": "start", "margin-top": "7%", "padding": "0 5% 0 5%" } }, [
+                    createVNode(_component_ion_label, { style: { "font-size": "190%", "color": "black", "font-weight": "bold" } }, {
+                      default: withCtx(() => [
+                        createTextVNode("New Order")
+                      ]),
+                      _: 1
+                    }),
+                    createVNode(_component_ion_icon, {
+                      icon: "ioniconsInformationCircle" in _ctx ? _ctx.ioniconsInformationCircle : unref(informationCircle),
+                      style: { "font-size": "200%", "position": "relative", "left": "45%" },
+                      onClick: () => {
+                      }
+                    }, null, 8, ["icon", "onClick"])
+                  ]),
+                  createVNode("div", { style: { "max-height": "8%", "min-height": "8%", "width": "100%", "display": "flex", "flex-direction": "row", "align-items": "start", "justify-content": "start", "padding": "0 5% 0 5%" } }, [
+                    createVNode(_component_ion_list, null, {
+                      default: withCtx(() => [
+                        createVNode(_component_ion_item, null, {
+                          default: withCtx(() => [
+                            createVNode(_component_ion_select, {
+                              "aria-label": "Fruit",
+                              interface: "action-sheet",
+                              placeholder: "Select Pair",
+                              style: { "font-size": "120%" },
+                              onIonChange: ($event) => setOrder($event.detail.value)
+                            }, {
+                              default: withCtx(() => [
+                                (openBlock(), createBlock(Fragment, null, renderList(pairs, (pair2, index) => {
+                                  return createVNode(_component_ion_select_option, {
+                                    value: pair2,
+                                    key: index
+                                  }, {
+                                    default: withCtx(() => [
+                                      createTextVNode(toDisplayString(pair2.base) + "/" + toDisplayString(pair2.quote), 1)
+                                    ]),
+                                    _: 2
+                                  }, 1032, ["value"]);
+                                }), 64))
+                              ]),
+                              _: 1
+                            }, 8, ["onIonChange"])
+                          ]),
+                          _: 1
+                        })
+                      ]),
+                      _: 1
+                    }),
+                    createVNode(_component_ion_list, null, {
+                      default: withCtx(() => [
+                        createVNode(_component_ion_item, null, {
+                          default: withCtx(() => [
+                            createVNode(_component_ion_select, {
+                              "aria-label": "Fruit",
+                              interface: "popover",
+                              placeholder: "Order type",
+                              style: { "font-size": "120%" },
+                              onIonChange: ($event) => setOrderType($event.detail.value)
+                            }, {
+                              default: withCtx(() => [
+                                createVNode(_component_ion_select_option, { value: "Buy" }, {
+                                  default: withCtx(() => [
+                                    createTextVNode("BUY")
+                                  ]),
+                                  _: 1
+                                }),
+                                createVNode(_component_ion_select_option, { value: "Sell" }, {
+                                  default: withCtx(() => [
+                                    createTextVNode("SELL")
+                                  ]),
+                                  _: 1
+                                })
+                              ]),
+                              _: 1
+                            }, 8, ["onIonChange"])
+                          ]),
+                          _: 1
+                        })
+                      ]),
+                      _: 1
+                    })
+                  ]),
+                  createVNode("div", { style: { "margin": "0px", "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "background": "none" } }, [
+                    createVNode(_component_ion_card, { style: { "box-shadow": "none", "background": "none", "z-index": "888", "margin": "0px", "width": "40%", "position": "relative", "bottom": "8%" } }, {
+                      default: withCtx(() => [
+                        createVNode(_component_ion_card_title, {
+                          color: "primary",
+                          style: { "font-size": "200%", "font-weight": "bold", "text-transform": "uppercase" }
+                        }, {
+                          default: withCtx(() => [
+                            createTextVNode(toDisplayString(unref(orderType)), 1)
+                          ]),
+                          _: 1
+                        }),
+                        createVNode(_component_ion_card_subtitle, { style: { "margin-top": "1%", "margin-left": "2%", "font-size": "100%" } }, {
+                          default: withCtx(() => [
+                            createTextVNode(toDisplayString(unref(pair)), 1)
+                          ]),
+                          _: 1
+                        })
+                      ]),
+                      _: 1
+                    }),
+                    createVNode("div", { style: { "max-width": "100%", "max-height": "100%", "min-height": "100%", "display": "flex", "flex-direction": "row", "justify-content": "center", "align-items": "center" } }, [
+                      createVNode(_component_ion_avatar, {
+                        slot: "start",
+                        style: { "scale": "1.3", "border": "3px solid #1B1D30" }
+                      }, {
+                        default: withCtx(() => [
+                          unref(baseImgUrl) ? (openBlock(), createBlock("img", {
+                            key: 0,
+                            alt: "asset img",
+                            src: unref(baseImgUrl)
+                          }, null, 8, ["src"])) : createCommentVNode("", true)
+                        ]),
+                        _: 1
+                      }),
+                      createVNode(_component_ion_avatar, {
+                        slot: "start",
+                        style: { "scale": "1.3", "position": "relative", "right": "5%", "border": "3px solid #1B1D30" }
+                      }, {
+                        default: withCtx(() => [
+                          unref(quoteImgUrl) ? (openBlock(), createBlock("img", {
+                            key: 0,
+                            alt: "asset img",
+                            src: unref(quoteImgUrl)
+                          }, null, 8, ["src"])) : createCommentVNode("", true)
+                        ]),
+                        _: 1
+                      })
+                    ])
+                  ]),
+                  createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "9%", "min-height": "9%", "width": "100%", "border": "1px solid white", "border-radius": "25px", "padding": "4%", "margin-top": "7%" } }, [
+                    createVNode(_component_ion_label, { style: { "font-size": "120%", "color": "black" } }, {
+                      default: withCtx(() => [
+                        createTextVNode("Quote Price")
+                      ]),
+                      _: 1
+                    }),
+                    createVNode(_component_ion_input, {
+                      label: "",
+                      type: "number",
+                      placeholder: "000",
+                      style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "black", "border": "1px solid whitesmoke" }
+                    }),
+                    createVNode(_component_ion_label, { style: { "font-size": "100%", "color": "black" } }, {
+                      default: withCtx(() => [
+                        createTextVNode(toDisplayString(unref(quote)), 1)
+                      ]),
+                      _: 1
+                    })
+                  ]),
+                  createVNode(_component_ion_card, { style: { "margin": "0px", "display": "flex", "flex-direction": "column", "align-items": "center", "justify-content": "center", "max-height": "30%", "min-height": "30%", "margin-top": "2%", "background": "#1d3160", "box-shadow": "none", "padding-top": "3%", "padding-bottom": "3%" } }, {
+                    default: withCtx(() => [
+                      createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "30%", "min-height": "30%", "width": "90%", "border": "1px solid white", "border-radius": "25px", "padding": "4%", "background": "#1d3160" } }, [
+                        createVNode(_component_ion_label, { style: { "font-size": "150%", "color": "whitesmoke" } }, {
+                          default: withCtx(() => [
+                            createTextVNode("You Send")
+                          ]),
+                          _: 1
+                        }),
+                        createVNode(_component_ion_input, {
+                          label: "",
+                          type: "number",
+                          placeholder: "000",
+                          style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "whitesmoke", "border": "1px solid whitesmoke" }
+                        }),
+                        createVNode(_component_ion_label, { style: { "font-size": "120%", "color": "whitesmoke" } }, {
+                          default: withCtx(() => [
+                            createTextVNode(toDisplayString(unref(orderType) == "Buy" ? unref(quote) : unref(base)), 1)
+                          ]),
+                          _: 1
+                        })
+                      ]),
+                      createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "center", "width": "90%" } }, [
+                        createVNode(_component_ion_icon, {
+                          color: "secondary",
+                          icon: "ioniconsSwapVerticalSharp" in _ctx ? _ctx.ioniconsSwapVerticalSharp : unref(swapVerticalSharp),
+                          style: { "font-size": "300%", "border-radius": "25px", "z-index": "99", "padding": "3%", "margin-left": "15%" }
+                        }, null, 8, ["icon"]),
+                        createVNode(_component_ion_label, { style: { "font-size": "100%", "color": "whitesmoke", "position": "relative", "left": "10%" } }, {
+                          default: withCtx(() => [
+                            createTextVNode("fee : 0.5%")
+                          ]),
+                          _: 1
+                        })
+                      ]),
+                      createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "space-around", "max-height": "30%", "min-height": "30%", "width": "90%", "border": "1px solid goldenrod", "border-radius": "25px", "padding": "4%", "background": "goldenrod" } }, [
+                        createVNode(_component_ion_label, { style: { "font-size": "150%", "color": "black" } }, {
+                          default: withCtx(() => [
+                            createTextVNode("You Get")
+                          ]),
+                          _: 1
+                        }),
+                        createVNode(_component_ion_input, {
+                          label: "",
+                          readonly: true,
+                          type: "number",
+                          placeholder: "00",
+                          style: { "width": "50%", "background": "#43455838", "font-size": "150%", "border-radius": "12px", "color": "black", "border": "1px solid whitesmoke" }
+                        }),
+                        createVNode(_component_ion_label, { style: { "font-size": "120%", "color": "black" } }, {
+                          default: withCtx(() => [
+                            createTextVNode(toDisplayString(unref(orderType) == "Buy" ? unref(base) : unref(quote)), 1)
+                          ]),
+                          _: 1
+                        })
+                      ])
+                    ]),
+                    _: 1
+                  }),
+                  createVNode("div", { style: { "display": "flex", "flex-direction": "row", "align-items": "center", "justify-content": "center", "margin-top": "8%" } }, [
+                    createVNode(_component_ion_button, {
+                      fill: "outline",
+                      style: { "width": "80%", "height": "50px", "font-size": "130%" },
+                      onClick: ($event) => _ctx.$emit("closeModal")
+                    }, {
+                      default: withCtx(() => [
+                        createTextVNode("Confirm")
+                      ]),
+                      _: 1
+                    }, 8, ["onClick"])
+                  ])
+                ]),
+                _: 1
+              })
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
+  }
+});
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -18124,36 +19506,84 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$1 = {};
-function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
-  const _component_ion_app = IonApp;
-  const _component_ion_router_outlet = IonRouterOutlet;
-  _push(ssrRenderComponent(_component_ion_app, _attrs, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(ssrRenderComponent(_component_ion_router_outlet, null, null, _parent2, _scopeId));
-      } else {
-        return [
-          createVNode(_component_ion_router_outlet)
-        ];
+const _sfc_setup$2 = _sfc_main$2.setup;
+_sfc_main$2.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/accoutCreatedModal.vue");
+  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+};
+const __nuxt_component_2 = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-46c69287"]]);
+const useRealmAuth = () => {
+  const app = new Realm.App({ id: "vyre-ixkvi" });
+  const register = async (email, password) => {
+    await app.emailPasswordAuth.registerUser({ email, password });
+  };
+  const confirmUser = async (token, tokenId) => {
+    await app.emailPasswordAuth.confirmUser({ token, tokenId });
+  };
+  return {
+    register,
+    confirmUser
+  };
+};
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "app",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const { confirmUser } = useRealmAuth();
+    const isAccCreatedModalOpen = ref(false);
+    const setAccCreatedModal = (isOpen) => {
+      isAccCreatedModalOpen.value = isOpen;
+    };
+    App$1.addListener("appUrlOpen", async (event) => {
+      const urlObj = new URL(event.url);
+      const queryParams = new URLSearchParams(urlObj.search);
+      const token = queryParams.get("token");
+      const tokenId = queryParams.get("tokenId");
+      if (token !== null && tokenId !== null) {
+        await confirmUser(token, tokenId);
+        setAccCreatedModal(true);
       }
-    }),
-    _: 1
-  }, _parent));
-}
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_ion_app = IonApp;
+      const _component_ion_router_outlet = IonRouterOutlet;
+      const _component_accout_created_modal = __nuxt_component_2;
+      _push(ssrRenderComponent(_component_ion_app, _attrs, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(ssrRenderComponent(_component_ion_router_outlet, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_component_accout_created_modal, {
+              "is-acc-created-modal-open": unref(isAccCreatedModalOpen),
+              onCloseModal: ($event) => setAccCreatedModal(false)
+            }, null, _parent2, _scopeId));
+          } else {
+            return [
+              createVNode(_component_ion_router_outlet),
+              createVNode(_component_accout_created_modal, {
+                "is-acc-created-modal-open": unref(isAccCreatedModalOpen),
+                onCloseModal: ($event) => setAccCreatedModal(false)
+              }, null, 8, ["is-acc-created-modal-open", "onCloseModal"])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
+  }
+});
 const _sfc_setup$1 = _sfc_main$1.setup;
 _sfc_main$1.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("app.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const AppComponent = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", _sfc_ssrRender]]);
 const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-681b2f28.mjs').then((r) => r.default || r));
-    const IslandRenderer = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/island-renderer-8b0a9e87.mjs').then((r) => r.default || r));
+    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-a20a4e56.mjs').then((r) => r.default || r));
+    const IslandRenderer = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/island-renderer-aad2f4cf.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -18180,7 +19610,7 @@ const _sfc_main = {
           } else if (unref(SingleRenderer)) {
             ssrRenderVNode(_push, createVNode(resolveDynamicComponent(unref(SingleRenderer)), null, null), _parent);
           } else {
-            _push(ssrRenderComponent(unref(AppComponent), null, null, _parent));
+            _push(ssrRenderComponent(unref(_sfc_main$1), null, null, _parent));
           }
         },
         _: 1
@@ -18218,5 +19648,5 @@ const plugins = normalizePlugins(_plugins);
 }
 const entry$1 = (ctx) => entry(ctx);
 
-export { removeEventListener as $, IonSelectOption as A, IonButtons as B, IonCol as C, IonGrid as D, IonRow as E, IonSegment as F, IonSegmentButton as G, IonCardContent as H, IonPage as I, useIonRouter as J, IonTitle as K, IonToggle as L, isRTL$1 as M, createGesture as N, clamp as O, createAnimation as P, getIonPageElement as Q, now$1 as R, pointerCoord as S, readTask as T, findClosestIonContent as U, componentOnReady as V, writeTask$1 as W, scrollToTop as X, Keyboard as Y, addEventListener$1 as Z, _export_sfc as _, IonHeader as a, KeyboardResize as a0, raf as a1, useRouter as a2, navigateTo as a3, useHead as a4, IonToolbar as b, createError as c, IonCard as d, entry$1 as default, IonCardHeader as e, IonCardTitle as f, IonIcon as g, IonSearchbar as h, IonContent as i, IonList as j, IonFooter as k, IonButton as l, IonBadge as m, IonChip as n, IonAvatar as o, IonTabs as p, IonRouterOutlet as q, IonTabBar as r, IonTabButton as s, IonCardSubtitle as t, useRoute as u, IonModal as v, IonLabel as w, IonInput as x, IonItem as y, IonSelect as z };
+export { logoUsd as $, IonPage as A, IonHeader as B, IonToolbar as C, IonCardHeader as D, IonFooter as E, returnUpBack as F, moon as G, notificationsCircle as H, IonModal as I, IonBadge as J, prismSharp as K, cubeSharp as L, diamondSharp as M, settingsOutline as N, IonTabs as O, IonRouterOutlet as P, IonTabBar as Q, IonTabButton as R, searchCircle as S, addCircleOutline as T, cashSharp as U, IonSearchbar as V, arrowForwardCircle as W, arrowUpCircleSharp as X, arrowDownCircleSharp as Y, walletSharp as Z, _export_sfc as _, cash as a, duplicate as a0, IonButtons as a1, IonCol as a2, IonGrid as a3, IonRow as a4, IonSegment as a5, IonSegmentButton as a6, addCircle as a7, IonCardContent as a8, thumbsUp as a9, KeyboardResize as aA, raf as aB, useRouter as aC, navigateTo as aD, useHead as aE, notifications as aa, peopleCircleOutline as ab, open as ac, chevronUpOutline as ad, settings as ae, IonTitle as af, IonToggle as ag, closeCircleOutline as ah, filterCircle as ai, useRealmAuth as aj, IonSpinner as ak, isRTL$1 as al, createGesture as am, clamp as an, createAnimation as ao, getIonPageElement as ap, now$1 as aq, pointerCoord as ar, readTask as as, findClosestIonContent as at, componentOnReady as au, writeTask$1 as av, scrollToTop as aw, Keyboard as ax, addEventListener$1 as ay, removeEventListener as az, IonContent as b, createError as c, IonCard as d, entry$1 as default, IonCardTitle as e, IonCardSubtitle as f, IonChip as g, IonIcon as h, IonLabel as i, informationCircle as j, IonList as k, logoBitcoin as l, mail as m, IonItem as n, IonSelect as o, IonSelectOption as p, IonAvatar as q, IonInput as r, swapVerticalSharp as s, IonButton as t, useIonRouter as u, useRoute as v, wallet as w, eyeOffSharp as x, happy as y, addOutline as z };
 //# sourceMappingURL=server.mjs.map

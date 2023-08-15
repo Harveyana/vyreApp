@@ -1,33 +1,31 @@
 <template>
-    <!-- <ion-modal :is-open="props.isAllAssetmodalOpen"> -->
     <ion-page>
 
     <ion-header class="ion-no-border" >
         <ion-toolbar >
             <MyHeader/>
+        </ion-toolbar>
+        <ion-toolbar style="">
 
-            </ion-toolbar>
-            <ion-toolbar style="">
-
-                <ion-card class="actions" >
+            <ion-card class="actions" >
                     
-                    <ion-card :button="true" :class="{'actionSelected': switchSelect === action.name || action.default ,'action':switchSelect !== action.name||!action.default}" v-for="action in actions" key="action.name" @click="switchPage(action.name)">
-                        <ion-card-header style="">
-                            <div style="display:flex;flex-direction: row;justify-content: center;align-items: center;width: 100%;">
+                <ion-card :button="true" :class="{'actionSelected': switchSelect === action.name || action.default ,'action':switchSelect !== action.name||!action.default}" v-for="action in actions" key="action.name" @click="switchPage(action.name)">
+                    <ion-card-header style="">
+                        <div style="display:flex;flex-direction: row;justify-content: center;align-items: center;width: 100%;">
                             <ion-card-title :color=" switchSelect === action.name || action.default ? 'primary':'secondary'"><bold  style="font-size: 60%;">{{ action.name }}</bold></ion-card-title>
-                            </div>
-                            <ion-icon :color="switchSelect === action.name || action.default ? 'primary':'secondary'" size="large" :icon="action.icon" style=""></ion-icon>
-                        </ion-card-header>
-                    </ion-card>
-                    
+                        </div>
+                        <ion-icon :color="switchSelect === action.name || action.default ? 'primary':'secondary'" size="large" :icon="action.icon" style=""></ion-icon>
+                    </ion-card-header>
                 </ion-card>
-            </ion-toolbar>
-            <ion-card style="box-shadow: none;background: none;display: flex;flex-direction: row;justify-content:center;align-items: center;min-height:16%;max-height:16%;width:100%;margin:0px;">
-    
-                <ion-searchbar :search-icon="ioniconsSearchCircle" placeholder="search" style="--icon-colour:#1d3160;margin: 0px;width: 80%;"></ion-searchbar>
-                <ion-icon :icon="ioniconsFilterCircle" style="font-size: 250%;color: #1d3160;" @click=""></ion-icon>
-
+                    
             </ion-card>
+        </ion-toolbar>
+        <ion-card class="flex-row-center-center searchbox" style="">
+    
+            <ion-searchbar :search-icon="ioniconsSearchCircle" placeholder="search" style="--icon-colour:#1d3160;margin: 0px;width: 80%;"></ion-searchbar>
+            <ion-icon :icon="ioniconsFilterCircle" style="font-size: 250%;color: #1d3160;" @click=""></ion-icon>
+
+        </ion-card>
     </ion-header>
     
 
@@ -37,7 +35,7 @@
 
     <ion-content style="">
 
-        <ion-card style="max-height:100%;min-height:100%;overflow-y: scroll;scroll-behavior: smooth;box-shadow: none;background: none;margin-top: 0px;">
+        <ion-card class="orderList" style="">
             <ion-list v-for="(order, index) in orders" :key="index"  >
             <order :base="order.base" :baseImgUrl="order.baseImgUrl" :quote="order.quote" :quote-img-url="order.quoteImgUrl" :order-type="order.orderType" :process-percentage="order.processPercentage" :quantity="order.quantity" @click="setOpenOrderDetails(true)"/>
             </ion-list>
@@ -46,14 +44,12 @@
     </ion-content>
 
     <!-- <tabs/> -->
-    <ion-footer class="ion-no-border" style="display: flex;flex-direction: column;align-items: center;margin-bottom: 5%;">
-      
+    <ion-footer class="ion-no-border flex-column-center-center" style="margin-bottom: 5%;">
+      <Tabs style="width: 90%;border-radius: 20px;"/>
+    </ion-footer>
 
-    <Tabs style="width: 90%;border-radius: 20px;"/>
-  </ion-footer>
-
-  <OrderDetails :isOrderDetailsModalOpen="isOrderDetailsModalOpen"  @closeModal="setOpenOrderDetails(false)"/>
-  <NewOrder :isNewOrderModalOpen="isNewOrderModalOpen"  @closeModal="setOpenNewOrder(false)"/>
+    <OrderDetails :isOrderDetailsModalOpen="isOrderDetailsModalOpen"  @closeModal="setOpenOrderDetails(false)"/>
+    <NewOrder :isNewOrderModalOpen="isNewOrderModalOpen"  @closeModal="setOpenNewOrder(false)"/>
     </ion-page>
 </template>
 <script setup lang="ts">
@@ -74,37 +70,11 @@ const setOpenNewOrder = (isOpen:boolean)=> {
 const route = useRoute()
 
 
-// const rerun = ()=>{
-// //   key1.value++
-// //   key2.value++
-//   console.log('rerunned')
-//   switch (route.name) {
-//   case 'home2':
-//     return ishome.value = true;
-//     break;
-//   case 'p2p':
-//     return isP2p.value = true;
-//     // break;
-// //   case 'settings':
-// //      settings.value = true;
-// //     break;
-// //   case 'assets':
-// //     assets.value = true;
-// }
-// }
-
-
-// const props = defineProps<{
-//     isAllAssetmodalOpen:boolean
-// }>()
-
 const isDarkMode = ref<boolean>(false)
 const darkMode = useDarkMode()
 const switchTab = ref<string>('Orders')
 
 const switchSelect = ref<string>('home')
-//     const orderSelected = ref<boolean>(false)
-//         const addSelected = ref<boolean>(false)
 
 const ismodalOpen = ref<boolean>(false)
 
@@ -122,12 +92,7 @@ const switchPage = (tab:string)=>{
         break;
     case 'add':
       setOpenNewOrder(true)
-        // break;
-    //   case 'settings':
-    //      settings.value = true;
-    //     break;
-    //   case 'assets':
-    //     assets.value = true;
+        
     }
 }
 // watch(isDarkMode,(newValue, oldValue) => {
@@ -306,6 +271,36 @@ const orders:{base:string,quote:string,processPercentage:number,orderType:string
 ]
 </script>
 <style scoped>
+.orderList{
+    max-height:100%;
+    min-height:100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    box-shadow: none;
+    background: none;
+    margin-top: 0px;
+}
+.searchbox{
+    box-shadow: none;
+    background: none;
+    min-height:16%;
+    max-height:16%;
+    width:100%;
+    margin:0px;
+}
+.flex-row-center-center{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column-center-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .actions{
     display: flex;
@@ -345,7 +340,7 @@ const orders:{base:string,quote:string,processPercentage:number,orderType:string
     border-radius: 24px;
     border-bottom-left-radius: 60px;
     margin: 0px;
-    background: goldenrod;
+    background: #daa520;
     color: black;
     border: 1px solid black;
     transition: all ease-in-out 0.8s;

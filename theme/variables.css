@@ -3,9 +3,20 @@
 	src: url('~/assets/NunitoSans_10pt-Light.ttf')  format('truetype'),
 }
 
-body {
-    font-family: 'Nunito', Fallback, sans-serif;
-    }
+@font-face {
+	font-family: 'Bluto';
+	src: url('~/assets/Bluto-Font/BlutoBold.otf')  format('opentype'),
+}
+
+@font-face {
+	font-family: 'Calibre';
+	src: url('~/assets/calibre/CalibreRegular.otf')  format('opentype'),
+}
+
+/* body {
+    font-family: 'Nunito' !important;
+	font-family: 'Bluto' !important;
+    } */
 	
  ion-toolbar{
 	/* --background: url('~/assets/bg1.jpg') no-repeat fixed center; */
@@ -15,11 +26,11 @@ body {
 
 
 :root {
+	
 	--ion-background-color: #E5E5E5;
 	--ion-background-color-rgb: 229,229,229;
     --ion-card-background: linear-gradient(90deg, rgb(162, 161, 161), #f6f6f6);
-	--ion-font-family: 'Nunito', Fallback, sans-serif;
-
+	--ion-font-family: Geneva,Tahoma, sans-serif;
 	--ion-text-color: #1B1D30;
    --ion-text-color-rgb: 27,29,48;
 

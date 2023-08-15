@@ -9,10 +9,10 @@
             
             <div style="max-width: 100%;height: 100%;display: flex;flex-direction: row;justify-content: center;align-items: center;">
                 <!-- <ion-icon class="arrow" color="primary" :icon="ioniconsArrowUpCircleSharp" style="font-size: 250%;transform: rotate(45deg);"/> -->
-                <ion-avatar slot="start" style="scale:0.7;border: 3px solid #1B1D30;">
+                <ion-avatar slot="start" style="scale:0.55;border: 3px solid #1B1D30;">
                   <img alt="asset img" :src="props.baseImgUrl"/>
                 </ion-avatar>
-                <ion-avatar slot="start" style="scale:0.7;position: relative;right:18%;border: 3px solid #1B1D30;">
+                <ion-avatar slot="start" style="scale:0.55;position: relative;right:27%;border: 3px solid #1B1D30;">
                   <img alt="asset img" :src="props.quoteImgUrl"/>
                 </ion-avatar>
             </div>
@@ -49,9 +49,9 @@ const props = defineProps<{
     width: 100%;
     /* min-height:10%; */
     border-radius: 18px;
-    /* border:0.5px solid #1B1D30; */
-    /* background:rgba(0, 0, 0, 0.105); */
-    background: white;
+    /* border:0.1px solid #1B1D30; */
+    background:rgba(0, 0, 0, 0.039);
+    /* background: none; */
     padding: 2%;
     margin-left: 0px;
     box-shadow: none;

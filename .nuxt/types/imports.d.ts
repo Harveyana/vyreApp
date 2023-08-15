@@ -1479,6 +1479,7 @@ declare global {
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app')['useNuxtApp']
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app')['useNuxtData']
   const usePWAIcon: typeof import('../../node_modules/@kevinmarrec/nuxt-pwa/dist/runtime/composables/usePWAIcon')['usePWAIcon']
+  const useRealmAuth: typeof import('../../composables/useRealmAuth')['useRealmAuth']
   const useRequestEvent: typeof import('../../node_modules/nuxt/dist/app')['useRequestEvent']
   const useRequestFetch: typeof import('../../node_modules/nuxt/dist/app')['useRequestFetch']
   const useRequestHeaders: typeof import('../../node_modules/nuxt/dist/app')['useRequestHeaders']
@@ -2993,6 +2994,7 @@ declare module 'vue' {
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useNuxtData']>
     readonly usePWAIcon: UnwrapRef<typeof import('../../node_modules/@kevinmarrec/nuxt-pwa/dist/runtime/composables/usePWAIcon')['usePWAIcon']>
+    readonly useRealmAuth: UnwrapRef<typeof import('../../composables/useRealmAuth')['useRealmAuth']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useRequestEvent']>
     readonly useRequestFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useRequestFetch']>
     readonly useRequestHeaders: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useRequestHeaders']>
@@ -4501,6 +4503,7 @@ declare module '@vue/runtime-core' {
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useNuxtData']>
     readonly usePWAIcon: UnwrapRef<typeof import('../../node_modules/@kevinmarrec/nuxt-pwa/dist/runtime/composables/usePWAIcon')['usePWAIcon']>
+    readonly useRealmAuth: UnwrapRef<typeof import('../../composables/useRealmAuth')['useRealmAuth']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useRequestEvent']>
     readonly useRequestFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useRequestFetch']>
     readonly useRequestHeaders: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useRequestHeaders']>

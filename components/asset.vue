@@ -1,5 +1,5 @@
 <template>
-    <ion-card class="asset" style="">
+    <ion-card class="asset" style="" @click="ionRouter.push(`/assetpage/${props.name}`)">
 
         <ion-card class="subAsset" style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;width:100%;border-radius: 12px;padding-left: 5%;padding-right: 5%;box-shadow: none;margin:0px;background:none;">
             <div style="max-width: 100%;height: 100%;display: flex;flex-direction: row;justify-content: center;align-items: center;z-index: 99;">
@@ -30,6 +30,8 @@
 
 </template>
 <script setup lang="ts">
+
+const ionRouter = useIonRouter()
 const props = defineProps<{
     name:string
     symbol:string

@@ -39,7 +39,7 @@
 
         <ion-card style="max-height:100%;min-height:100%;overflow-y: scroll;scroll-behavior: smooth;box-shadow: none;background: none;margin-top: 0px;">
             <ion-list v-for="(crypto, index) in cryptos" :key="index"  >
-            <Asset :name="crypto.name" :symbol="crypto.symbol" :img="crypto.img" :amount="crypto.amount" :price="crypto.price"  @click="setOpenOrderDetails(true)"/>
+            <Asset :name="crypto.name" :symbol="crypto.symbol" :img="crypto.img" :amount="crypto.amount" :price="crypto.price" />
             </ion-list>
         </ion-card>
 
@@ -52,26 +52,15 @@
     <Tabs style="width: 90%;border-radius: 20px;"/>
   </ion-footer>
 
-  <OrderDetails :isOrderDetailsModalOpen="isOrderDetailsModalOpen"  @closeModal="setOpenOrderDetails(false)"/>
-  <NewOrder :isNewOrderModalOpen="isNewOrderModalOpen"  @closeModal="setOpenNewOrder(false)"/>
+  
     </ion-page>
 </template>
 <script setup lang="ts">
 
 
-const isOrderDetailsModalOpen = ref<boolean>(false)
-
-const isNewOrderModalOpen = ref<boolean>(false)
-
-const setOpenOrderDetails = (isOpen:boolean)=> {
-    isOrderDetailsModalOpen.value = isOpen;
-}
-const setOpenNewOrder = (isOpen:boolean)=> {
-    isNewOrderModalOpen.value = isOpen;
-}
 
 
-const route = useRoute()
+
 
 const isDarkMode = ref<boolean>(false)
 const darkMode = useDarkMode()
@@ -87,21 +76,6 @@ const setOpen = (isOpen:boolean)=> {
 const switchPage = (tab:string)=>{
     console.log(tab)
     switchSelect.value = tab
-
-    switch (tab) {
-    case 'orders':
-      setOpenNewOrder(false)
-      setOpenOrderDetails(false)
-        break;
-    case 'add':
-      setOpenNewOrder(true)
-        // break;
-    //   case 'settings':
-    //      settings.value = true;
-    //     break;
-    //   case 'assets':
-    //     assets.value = true;
-    }
 }
 // watch(isDarkMode,(newValue, oldValue) => {
 //     console.log(newValue)

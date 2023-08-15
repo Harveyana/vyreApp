@@ -2,7 +2,11 @@
     <ion-card class="headingCard" style="">
 
 
-        <ion-button fill="clear" style="border-radius: 10px;height: 30px;background: #1d3160;" @click="isDarkMode = !isDarkMode">
+        <ion-button fill="clear" style="border-radius: 10px;height: 30px;background: none;" v-if="props.showBackButton" @click="ionRouter.back()">
+            <ion-icon color="primary" slot="end" :icon="ioniconsReturnUpBack" style="font-size: 250%;"></ion-icon>
+        </ion-button>
+
+        <ion-button fill="clear" style="border-radius: 10px;height: 30px;background: #1d3160;" @click="isDarkMode = !isDarkMode" v-else>
             <ion-icon color="secondary" slot="end" :icon="ioniconsMoon" style="font-size: 100%;"></ion-icon>
         </ion-button>
 
@@ -25,8 +29,14 @@
     </ion-card>
 </template>
 <script setup lang="ts">
+
+const props = defineProps<{
+    showBackButton?:boolean
+}>()
+
 const isDarkMode = ref<boolean>(false)
 const darkMode = useDarkMode()
+const ionRouter = useIonRouter()
 
 watch(isDarkMode,(newValue, oldValue) => {
     console.log(newValue)
