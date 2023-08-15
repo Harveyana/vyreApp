@@ -1,4 +1,4 @@
-import { version, hasInjectionContext, inject, defineComponent, h as h$2, computed, provide, ref, shallowRef, watch, onUnmounted, getCurrentInstance, watchEffect, useSSRContext, createApp, reactive, unref, onErrorCaptured, onServerPrefetch, createVNode, resolveDynamicComponent, toRef, isReadonly, Teleport, defineAsyncComponent, isRef, isShallow, isReactive, toRaw, withCtx, nextTick as nextTick$2 } from 'file:///Users/mac/vyreApp/node_modules/vue/index.mjs';
+import { version, hasInjectionContext, inject, defineComponent, h as h$2, computed, provide, ref, shallowRef, watch, onUnmounted, getCurrentInstance, useSSRContext, watchEffect, withCtx, createVNode, createApp, reactive, unref, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, isReadonly, Teleport, defineAsyncComponent, isRef, isShallow, isReactive, toRaw, nextTick as nextTick$2 } from 'file:///Users/mac/vyreApp/node_modules/vue/index.mjs';
 import { $fetch } from 'file:///Users/mac/vyreApp/node_modules/ofetch/dist/node.mjs';
 import { createHooks } from 'file:///Users/mac/vyreApp/node_modules/hookable/dist/index.mjs';
 import { getContext, executeAsync } from 'file:///Users/mac/vyreApp/node_modules/unctx/dist/index.mjs';
@@ -8,7 +8,9 @@ import { getActiveHead, createServerHead as createServerHead$1 } from 'file:///U
 import { defineHeadPlugin } from 'file:///Users/mac/vyreApp/node_modules/@unhead/shared/dist/index.mjs';
 import { routeLocationKey, useRoute as useRoute$1, matchedRouteKey, createRouter as createRouter$1, createMemoryHistory as createMemoryHistory$1, parseQuery } from 'file:///Users/mac/vyreApp/node_modules/vue-router/dist/vue-router.node.mjs';
 import { hasProtocol, parseURL, joinURL, isEqual } from 'file:///Users/mac/vyreApp/node_modules/ufo/dist/index.mjs';
-import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode } from 'file:///Users/mac/vyreApp/node_modules/vue/server-renderer/index.mjs';
+import { ssrRenderComponent, ssrRenderSuspense, ssrRenderVNode } from 'file:///Users/mac/vyreApp/node_modules/vue/server-renderer/index.mjs';
+import * as Realm from 'file:///Users/mac/vyreApp/node_modules/realm-web/dist/bundle.cjs.js';
+import { App as App$1 } from 'file:///Users/mac/vyreApp/node_modules/@capacitor/app/dist/plugin.cjs.js';
 import { a as useRuntimeConfig$1 } from '../nitro/nitro-prerenderer.mjs';
 import 'file:///Users/mac/vyreApp/node_modules/node-fetch-native/dist/polyfill.mjs';
 import 'file:///Users/mac/vyreApp/node_modules/destr/dist/index.mjs';
@@ -1132,7 +1134,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/_assetId_-c65d76c9.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_assetId_-6a75dc0b.mjs').then((m) => m.default || m)
   },
   {
     name: "assets",
@@ -1140,7 +1142,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/assets-88936da7.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/assets-35679911.mjs').then((m) => m.default || m)
   },
   {
     name: "home-not",
@@ -1148,7 +1150,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-not-877153a7.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-not-78479ce9.mjs').then((m) => m.default || m)
   },
   {
     name: "home",
@@ -1156,7 +1158,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home-e226b3bf.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home-84a7259f.mjs').then((m) => m.default || m)
   },
   {
     name: "home2",
@@ -1164,7 +1166,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/home2-b4fd90f6.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/home2-88dab655.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1172,7 +1174,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/index-9b72f847.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-b2b71993.mjs').then((m) => m.default || m)
   },
   {
     name: "newhome",
@@ -1180,7 +1182,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/newhome-4e322b53.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/newhome-157efedc.mjs').then((m) => m.default || m)
   },
   {
     name: "notindex",
@@ -1188,7 +1190,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/notindex-6b8f611d.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/notindex-bb0debf2.mjs').then((m) => m.default || m)
   },
   {
     name: "p2p",
@@ -1196,7 +1198,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/p2p-22533b7b.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/p2p-b6af6a71.mjs').then((m) => m.default || m)
   },
   {
     name: "signUp",
@@ -1204,7 +1206,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/signUp-9c91456d.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/signUp-ec479fb4.mjs').then((m) => m.default || m)
   }
 ];
 const router_h7T2ZmMnVl = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
@@ -5958,8 +5960,8 @@ const LIFECYCLE_DID_ENTER = "ionViewDidEnter";
 const LIFECYCLE_WILL_LEAVE = "ionViewWillLeave";
 const LIFECYCLE_DID_LEAVE = "ionViewDidLeave";
 const LIFECYCLE_WILL_UNLOAD = "ionViewWillUnload";
-const iosTransitionAnimation = () => import('./_nuxt/ios.transition-c292b84c.mjs');
-const mdTransitionAnimation = () => import('./_nuxt/md.transition-fc0ef35d.mjs');
+const iosTransitionAnimation = () => import('./_nuxt/ios.transition-0309634c.mjs');
+const mdTransitionAnimation = () => import('./_nuxt/md.transition-e9993650.mjs');
 const transition = (opts) => {
   return new Promise((resolve, reject) => {
     writeTask$1(() => {
@@ -9591,7 +9593,7 @@ const Nav = /* @__PURE__ */ proxyCustomElement$1(class Nav2 extends H$1 {
   }
   async componentDidLoad() {
     this.rootChanged();
-    this.gesture = (await import('./_nuxt/swipe-back-0069284d.mjs')).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
+    this.gesture = (await import('./_nuxt/swipe-back-93b8caae.mjs')).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
     this.swipeGestureChanged();
   }
   connectedCallback() {
@@ -14124,7 +14126,7 @@ const RouterOutlet = /* @__PURE__ */ proxyCustomElement$1(class RouterOutlet2 ex
         this.swipeHandler.onStart();
       }
     };
-    this.gesture = (await import('./_nuxt/swipe-back-0069284d.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
+    this.gesture = (await import('./_nuxt/swipe-back-93b8caae.mjs')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => {
       var _a;
       return (_a = this.ani) === null || _a === void 0 ? void 0 : _a.progressStep(step);
     }, (shouldComplete, step, dur) => {
@@ -14509,14 +14511,14 @@ const App = /* @__PURE__ */ proxyCustomElement$1(class App2 extends H$1 {
       rIC(async () => {
         const isHybrid2 = isPlatform(window, "hybrid");
         if (!config.getBoolean("_testing")) {
-          import('./_nuxt/index9-277407d0.mjs').then((module) => module.startTapClick(config));
+          import('./_nuxt/index9-b56462dd.mjs').then((module) => module.startTapClick(config));
         }
         if (config.getBoolean("statusTap", isHybrid2)) {
-          import('./_nuxt/status-tap-5e30cdcd.mjs').then((module) => module.startStatusTap());
+          import('./_nuxt/status-tap-fd228204.mjs').then((module) => module.startStatusTap());
         }
         if (config.getBoolean("inputShims", needInputShims())) {
           const platform = isPlatform(window, "ios") ? "ios" : "android";
-          import('./_nuxt/input-shims-8ea69739.mjs').then((module) => module.startInputShims(config, platform));
+          import('./_nuxt/input-shims-8d367036.mjs').then((module) => module.startInputShims(config, platform));
         }
         const hardwareBackButtonModule = await import('./_nuxt/hardware-back-button-b290b24e.mjs');
         if (config.getBoolean("hardwareBackButton", isHybrid2)) {
@@ -18354,43 +18356,68 @@ const _plugins = [
   router_h7T2ZmMnVl,
   ionic_JZxaXwxCQa
 ];
-const _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
+const useRealmAuth = () => {
+  const app = new Realm.App({ id: "vyre-ixkvi" });
+  const register = async (email, password) => {
+    await app.emailPasswordAuth.registerUser({ email, password });
+  };
+  const confirmUser = async (token, tokenId) => {
+    await app.emailPasswordAuth.confirmUser({ token, tokenId });
+  };
+  return {
+    register,
+    confirmUser
+  };
 };
-const _sfc_main$1 = {};
-function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
-  const _component_ion_app = IonApp;
-  const _component_ion_router_outlet = IonRouterOutlet;
-  _push(ssrRenderComponent(_component_ion_app, _attrs, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(ssrRenderComponent(_component_ion_router_outlet, null, null, _parent2, _scopeId));
-      } else {
-        return [
-          createVNode(_component_ion_router_outlet)
-        ];
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "app",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const { confirmUser } = useRealmAuth();
+    const isAccCreatedModalOpen = ref(false);
+    const setAccCreatedModal = (isOpen) => {
+      isAccCreatedModalOpen.value = isOpen;
+    };
+    App$1.addListener("appUrlOpen", async (event) => {
+      const urlObj = new URL(event.url);
+      const queryParams = new URLSearchParams(urlObj.search);
+      const token = queryParams.get("token");
+      const tokenId = queryParams.get("tokenId");
+      if (token !== null && tokenId !== null) {
+        await confirmUser(token, tokenId);
+        setAccCreatedModal(true);
       }
-    }),
-    _: 1
-  }, _parent));
-}
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_ion_app = IonApp;
+      const _component_ion_router_outlet = IonRouterOutlet;
+      _push(ssrRenderComponent(_component_ion_app, _attrs, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(ssrRenderComponent(_component_ion_router_outlet, null, null, _parent2, _scopeId));
+          } else {
+            return [
+              createVNode(_component_ion_router_outlet)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
+  }
+});
 const _sfc_setup$1 = _sfc_main$1.setup;
 _sfc_main$1.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("app.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const AppComponent = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", _sfc_ssrRender]]);
 const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-0717b704.mjs').then((r) => r.default || r));
-    const IslandRenderer = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/island-renderer-8b0a9e87.mjs').then((r) => r.default || r));
+    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-6d21ce1b.mjs').then((r) => r.default || r));
+    const IslandRenderer = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/island-renderer-aad2f4cf.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -18417,7 +18444,7 @@ const _sfc_main = {
           } else if (unref(SingleRenderer)) {
             ssrRenderVNode(_push, createVNode(resolveDynamicComponent(unref(SingleRenderer)), null, null), _parent);
           } else {
-            _push(ssrRenderComponent(unref(AppComponent), null, null, _parent));
+            _push(ssrRenderComponent(unref(_sfc_main$1), null, null, _parent));
           }
         },
         _: 1
@@ -18455,5 +18482,5 @@ const plugins = normalizePlugins(_plugins);
 }
 const entry$1 = (ctx) => entry(ctx);
 
-export { addEventListener$1 as $, IonTabButton as A, IonSearchbar as B, IonButtons as C, IonCol as D, IonGrid as E, IonRow as F, IonSegment as G, IonSegmentButton as H, IonModal as I, IonCardContent as J, IonTitle as K, IonToggle as L, IonSpinner as M, isRTL$1 as N, createGesture as O, clamp as P, createAnimation as Q, getIonPageElement as R, now$1 as S, pointerCoord as T, readTask as U, findClosestIonContent as V, componentOnReady as W, writeTask$1 as X, scrollToTop as Y, Keyboard as Z, _export_sfc as _, IonContent as a, removeEventListener as a0, KeyboardResize as a1, raf as a2, useRouter as a3, navigateTo as a4, useHead as a5, IonCard as b, createError as c, IonCardTitle as d, entry$1 as default, IonCardSubtitle as e, IonChip as f, IonIcon as g, IonLabel as h, IonList as i, IonItem as j, IonSelect as k, IonSelectOption as l, IonAvatar as m, IonInput as n, IonButton as o, useRoute as p, IonPage as q, IonHeader as r, IonToolbar as s, IonCardHeader as t, useIonRouter as u, IonFooter as v, IonBadge as w, IonTabs as x, IonRouterOutlet as y, IonTabBar as z };
+export { addEventListener$1 as $, IonTabButton as A, IonSearchbar as B, IonButtons as C, IonCol as D, IonGrid as E, IonRow as F, IonSegment as G, IonSegmentButton as H, IonModal as I, IonCardContent as J, IonTitle as K, IonToggle as L, useRealmAuth as M, IonSpinner as N, isRTL$1 as O, createGesture as P, clamp as Q, createAnimation as R, getIonPageElement as S, now$1 as T, pointerCoord as U, readTask as V, findClosestIonContent as W, componentOnReady as X, writeTask$1 as Y, scrollToTop as Z, Keyboard as _, IonContent as a, removeEventListener as a0, KeyboardResize as a1, raf as a2, useRouter as a3, navigateTo as a4, useHead as a5, IonCard as b, createError as c, IonCardTitle as d, entry$1 as default, IonCardSubtitle as e, IonChip as f, IonIcon as g, IonLabel as h, IonList as i, IonItem as j, IonSelect as k, IonSelectOption as l, IonAvatar as m, IonInput as n, IonButton as o, useRoute as p, IonPage as q, IonHeader as r, IonToolbar as s, IonCardHeader as t, useIonRouter as u, IonFooter as v, IonBadge as w, IonTabs as x, IonRouterOutlet as y, IonTabBar as z };
 //# sourceMappingURL=server.mjs.map
