@@ -1,10 +1,10 @@
 <template>
   <ion-app>
     <ion-router-outlet />
-    <accout-created-modal :is-acc-created-modal-open="isAccCreatedModalOpen" @closeModal="setAccCreatedModal(false)"/>
+    <!-- <accout-created-modal :is-acc-created-modal-open="isAccCreatedModalOpen" @closeModal="setAccCreatedModal(false)"/> -->
   </ion-app>
 </template>
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { App, URLOpenListenerEvent } from '@capacitor/app';
 const {confirmUser} = useRealmAuth()
 const isAccCreatedModalOpen = ref<boolean>(false)
@@ -46,7 +46,7 @@ App.addListener('appUrlOpen', async(event: URLOpenListenerEvent)=> {
 
 });
 
-</script>
+</script> -->
 <style>
 /* .page-enter-active,
 .page-leave-active {

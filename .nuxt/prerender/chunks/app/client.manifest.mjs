@@ -1,91 +1,100 @@
 const client_manifest = {
-  "_addAsset.vue.f1162ace.js": {
+  "_addAsset.vue.02799ba6.js": {
     "resourceType": "script",
     "module": true,
     "css": [
       "addAsset.a0f51ec2.css"
     ],
-    "file": "addAsset.vue.f1162ace.js",
+    "file": "addAsset.vue.02799ba6.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_index.da3dc2de.js",
+      "_swiper-vue.90c8b4a3.js"
     ]
   },
   "addAsset.a0f51ec2.css": {
     "file": "addAsset.a0f51ec2.css",
     "resourceType": "style"
   },
-  "_allAssets.497f2215.js": {
+  "_allAssets.82895cea.js": {
     "resourceType": "script",
     "module": true,
     "css": [
       "allAssets.06151451.css"
     ],
-    "file": "allAssets.497f2215.js",
+    "file": "allAssets.82895cea.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_index.da3dc2de.js",
+      "_swiper-vue.90c8b4a3.js"
     ]
   },
   "allAssets.06151451.css": {
     "file": "allAssets.06151451.css",
     "resourceType": "style"
   },
-  "_asset.9e52ff27.js": {
+  "_asset.118ce022.js": {
     "resourceType": "script",
     "module": true,
     "css": [
       "asset.ad0c2d66.css"
     ],
-    "file": "asset.9e52ff27.js",
+    "file": "asset.118ce022.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_index.da3dc2de.js",
+      "_swiper-vue.90c8b4a3.js"
     ]
   },
   "asset.ad0c2d66.css": {
     "file": "asset.ad0c2d66.css",
     "resourceType": "style"
   },
-  "_nigeria.58672fe9.js": {
+  "_index.da3dc2de.js": {
     "resourceType": "script",
     "module": true,
-    "file": "nigeria.58672fe9.js",
+    "file": "index.da3dc2de.js"
+  },
+  "_nigeria.f6144182.js": {
+    "resourceType": "script",
+    "module": true,
+    "file": "nigeria.f6144182.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js"
     ]
   },
-  "_rocket.3638caf2.js": {
+  "_rocket.df69a8ca.js": {
     "resourceType": "script",
     "module": true,
-    "file": "rocket.3638caf2.js",
+    "file": "rocket.df69a8ca.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js"
     ]
   },
-  "_swiper-vue.c91c2164.js": {
+  "_swiper-vue.90c8b4a3.js": {
     "resourceType": "script",
     "module": true,
     "css": [
       "swiper-vue.b5b61d6c.css"
     ],
-    "file": "swiper-vue.c91c2164.js"
+    "file": "swiper-vue.90c8b4a3.js"
   },
   "swiper-vue.b5b61d6c.css": {
     "file": "swiper-vue.b5b61d6c.css",
     "resourceType": "style"
   },
-  "_tabs.43cc45bd.js": {
+  "_tabs.69d2c72f.js": {
     "resourceType": "script",
     "module": true,
     "css": [
       "tabs.b85c5f07.css"
     ],
-    "file": "tabs.43cc45bd.js",
+    "file": "tabs.69d2c72f.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_useDarkMode.d10998af.js",
-      "_swiper-vue.c91c2164.js"
+      "_index.da3dc2de.js",
+      "_swiper-vue.90c8b4a3.js"
     ]
   },
   "tabs.b85c5f07.css": {
@@ -130,17 +139,6 @@ const client_manifest = {
     "file": "CalibreRegular.8f3af662.otf",
     "src": "assets/calibre/CalibreRegular.otf"
   },
-  "node_modules/@capacitor/app/dist/esm/web.js": {
-    "resourceType": "script",
-    "module": true,
-    "file": "web.a66e728d.js",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
-    ],
-    "isDynamicEntry": true,
-    "src": "node_modules/@capacitor/app/dist/esm/web.js"
-  },
   "node_modules/@ionic/core/components/focus-visible.js": {
     "resourceType": "script",
     "module": true,
@@ -151,10 +149,10 @@ const client_manifest = {
   "node_modules/@ionic/core/components/index9.js": {
     "resourceType": "script",
     "module": true,
-    "file": "index9.6113f509.js",
+    "file": "index9.062d53b0.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/@ionic/core/components/index9.js"
@@ -162,10 +160,10 @@ const client_manifest = {
   "node_modules/@ionic/core/components/input-shims.js": {
     "resourceType": "script",
     "module": true,
-    "file": "input-shims.94a01464.js",
+    "file": "input-shims.ca388dda.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/@ionic/core/components/input-shims.js"
@@ -173,10 +171,10 @@ const client_manifest = {
   "node_modules/@ionic/core/components/ios.transition.js": {
     "resourceType": "script",
     "module": true,
-    "file": "ios.transition.726f0f61.js",
+    "file": "ios.transition.53e4e5ac.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/@ionic/core/components/ios.transition.js"
@@ -184,10 +182,10 @@ const client_manifest = {
   "node_modules/@ionic/core/components/md.transition.js": {
     "resourceType": "script",
     "module": true,
-    "file": "md.transition.457a4017.js",
+    "file": "md.transition.bb32fba4.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/@ionic/core/components/md.transition.js"
@@ -195,10 +193,10 @@ const client_manifest = {
   "node_modules/@ionic/core/components/status-tap.js": {
     "resourceType": "script",
     "module": true,
-    "file": "status-tap.32ce4bcd.js",
+    "file": "status-tap.11d06091.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/@ionic/core/components/status-tap.js"
@@ -206,10 +204,10 @@ const client_manifest = {
   "node_modules/@ionic/core/components/swipe-back.js": {
     "resourceType": "script",
     "module": true,
-    "file": "swipe-back.c0aa6287.js",
+    "file": "swipe-back.371dc033.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/@ionic/core/components/swipe-back.js"
@@ -223,10 +221,10 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "error-404.1e8e7fe6.js",
+    "file": "error-404.f3b2f16e.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue"
@@ -244,10 +242,10 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "error-500.0dd7c00f.js",
+    "file": "error-500.ebb083c3.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue"
@@ -258,7 +256,7 @@ const client_manifest = {
   },
   "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
-    "file": "entry.4ba4a8bc.css",
+    "file": "entry.8acb958b.css",
     "src": "node_modules/nuxt/dist/app/entry.css"
   },
   "node_modules/nuxt/dist/app/entry.js": {
@@ -270,7 +268,7 @@ const client_manifest = {
       "CalibreRegular.8f3af662.otf"
     ],
     "css": [
-      "entry.4ba4a8bc.css"
+      "entry.8acb958b.css"
     ],
     "dynamicImports": [
       "node_modules/@ionic/core/components/ios.transition.js",
@@ -281,18 +279,17 @@ const client_manifest = {
       "node_modules/@ionic/core/components/status-tap.js",
       "node_modules/@ionic/core/components/input-shims.js",
       "node_modules/@ionic/core/components/focus-visible.js",
-      "node_modules/@capacitor/app/dist/esm/web.js",
       "virtual:nuxt:/Users/mac/vyreApp/.nuxt/error-component.mjs"
     ],
-    "file": "entry.3eb78313.js",
+    "file": "entry.d5c664f1.js",
     "imports": [
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isEntry": true,
     "src": "node_modules/nuxt/dist/app/entry.js"
   },
-  "entry.4ba4a8bc.css": {
-    "file": "entry.4ba4a8bc.css",
+  "entry.8acb958b.css": {
+    "file": "entry.8acb958b.css",
     "resourceType": "style"
   },
   "NunitoSans_10pt-Light.485e6b51.ttf": {
@@ -319,12 +316,13 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "_assetId_.932107dd.js",
+    "file": "_assetId_.6f404f13.js",
     "imports": [
-      "_tabs.43cc45bd.js",
+      "_tabs.69d2c72f.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js",
-      "_nigeria.58672fe9.js",
+      "_index.da3dc2de.js",
+      "_swiper-vue.90c8b4a3.js",
+      "_nigeria.f6144182.js",
       "_useDarkMode.d10998af.js"
     ],
     "isDynamicEntry": true,
@@ -343,12 +341,13 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "assets.24851eb5.js",
+    "file": "assets.1acdbd42.js",
     "imports": [
-      "_tabs.43cc45bd.js",
+      "_tabs.69d2c72f.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_asset.9e52ff27.js",
-      "_swiper-vue.c91c2164.js",
+      "_asset.118ce022.js",
+      "_index.da3dc2de.js",
+      "_swiper-vue.90c8b4a3.js",
       "_useDarkMode.d10998af.js"
     ],
     "isDynamicEntry": true,
@@ -367,13 +366,14 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "home-not.f2231156.js",
+    "file": "home-not.934ceb8d.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_asset.9e52ff27.js",
-      "_addAsset.vue.f1162ace.js",
+      "_asset.118ce022.js",
+      "_addAsset.vue.02799ba6.js",
       "_useDarkMode.d10998af.js",
-      "_swiper-vue.c91c2164.js"
+      "_index.da3dc2de.js",
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "pages/home-not.vue"
@@ -391,14 +391,15 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "home.15d49110.js",
+    "file": "home.ef630a3b.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_asset.9e52ff27.js",
-      "_addAsset.vue.f1162ace.js",
-      "_allAssets.497f2215.js",
+      "_asset.118ce022.js",
+      "_addAsset.vue.02799ba6.js",
+      "_allAssets.82895cea.js",
       "_useDarkMode.d10998af.js",
-      "_swiper-vue.c91c2164.js"
+      "_index.da3dc2de.js",
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "pages/home.vue"
@@ -416,14 +417,15 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "home2.eb32645a.js",
+    "file": "home2.427e9ee9.js",
     "imports": [
-      "_tabs.43cc45bd.js",
+      "_tabs.69d2c72f.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_addAsset.vue.f1162ace.js",
-      "_allAssets.497f2215.js",
-      "_rocket.3638caf2.js",
-      "_swiper-vue.c91c2164.js",
+      "_addAsset.vue.02799ba6.js",
+      "_allAssets.82895cea.js",
+      "_index.da3dc2de.js",
+      "_rocket.df69a8ca.js",
+      "_swiper-vue.90c8b4a3.js",
       "_useDarkMode.d10998af.js"
     ],
     "isDynamicEntry": true,
@@ -442,10 +444,10 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "index.aea53d99.js",
+    "file": "index.34c5a78a.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js",
+      "_swiper-vue.90c8b4a3.js",
       "_useDarkMode.d10998af.js"
     ],
     "isDynamicEntry": true,
@@ -464,14 +466,15 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "newhome.018cb038.js",
+    "file": "newhome.a3ee3f67.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_asset.9e52ff27.js",
-      "_addAsset.vue.f1162ace.js",
-      "_allAssets.497f2215.js",
+      "_asset.118ce022.js",
+      "_addAsset.vue.02799ba6.js",
+      "_allAssets.82895cea.js",
       "_useDarkMode.d10998af.js",
-      "_swiper-vue.c91c2164.js"
+      "_index.da3dc2de.js",
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "pages/newhome.vue"
@@ -483,11 +486,11 @@ const client_manifest = {
   "pages/notindex.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "notindex.8b980213.js",
+    "file": "notindex.244a5f0e.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_useDarkMode.d10998af.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "pages/notindex.vue"
@@ -501,13 +504,14 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "p2p.8d9deac3.js",
+    "file": "p2p.81dea825.js",
     "imports": [
-      "_tabs.43cc45bd.js",
+      "_tabs.69d2c72f.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_addAsset.vue.f1162ace.js",
-      "_swiper-vue.c91c2164.js",
-      "_nigeria.58672fe9.js",
+      "_addAsset.vue.02799ba6.js",
+      "_swiper-vue.90c8b4a3.js",
+      "_index.da3dc2de.js",
+      "_nigeria.f6144182.js",
       "_useDarkMode.d10998af.js"
     ],
     "isDynamicEntry": true,
@@ -526,11 +530,11 @@ const client_manifest = {
     "resourceType": "script",
     "module": true,
     "css": [],
-    "file": "signUp.836f3d88.js",
+    "file": "signUp.3c620dad.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_rocket.3638caf2.js",
-      "_swiper-vue.c91c2164.js"
+      "_rocket.df69a8ca.js",
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "pages/signUp.vue"
@@ -556,10 +560,10 @@ const client_manifest = {
       "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
       "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue"
     ],
-    "file": "error-component.1520863c.js",
+    "file": "error-component.cdc51cf0.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_swiper-vue.c91c2164.js"
+      "_swiper-vue.90c8b4a3.js"
     ],
     "isDynamicEntry": true,
     "src": "virtual:nuxt:/Users/mac/vyreApp/.nuxt/error-component.mjs"
