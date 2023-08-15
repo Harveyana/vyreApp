@@ -12,9 +12,9 @@ export default {
   "pages/signUp.vue": () => import('./_nuxt/signUp-styles.9eb835e2.mjs').then(interopDefault),
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": () => import('./_nuxt/error-404-styles.a5c3f351.mjs').then(interopDefault),
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": () => import('./_nuxt/error-500-styles.6b5b5ff2.mjs').then(interopDefault),
-  "components/Receive.vue": () => import('./_nuxt/Receive-styles.8c69ba30.mjs').then(interopDefault),
   "components/Transfer.vue": () => import('./_nuxt/Transfer-styles.73080bc0.mjs').then(interopDefault),
+  "components/Receive.vue": () => import('./_nuxt/Receive-styles.8c69ba30.mjs').then(interopDefault),
   "components/orderDetails.vue": () => import('./_nuxt/orderDetails-styles.116bbbef.mjs').then(interopDefault),
-  "components/order.vue": () => import('./_nuxt/order-styles.3b91588c.mjs').then(interopDefault),
-  "components/newOrder.vue": () => import('./_nuxt/newOrder-styles.794a70c9.mjs').then(interopDefault)
+  "components/newOrder.vue": () => import('./_nuxt/newOrder-styles.794a70c9.mjs').then(interopDefault),
+  "components/order.vue": () => import('./_nuxt/order-styles.3b91588c.mjs').then(interopDefault)
 }
